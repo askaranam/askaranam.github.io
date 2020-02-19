@@ -1,7 +1,6 @@
 
 askaranam.github.io
 ============
+This is my personal/academic website hosted on Github as [askaranam.github.io](http://askaranam.github.io) and powered by Jekyll. 
 
-This is my personal/academic website as hosted on Github at [askaranam.github.io](http://askaranam.github.io) and powered by Jekyll.
-=======
 
