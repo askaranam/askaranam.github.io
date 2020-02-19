@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Age, Income, Partisanship, Racial Attitudes and the Trump Vote in 2016 | Aditya Karanam</title>
+  <meta name="description" content="I downloaded the 2016 CCES data to model the relationships among age, family income, partisanship, and racial attitudes on the Trump vote.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/blog/2017/04/age-income-racism-partisanship-trump-vote-2016/">
+  <link rel="alternate" type="application/rss+xml" title="Aditya Karanam" href="http://localhost:4000/feed.xml" />
+<link rel='stylesheet' id='open-sans-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&#038;subset=latin%2Clatin-ext&#038;ver=4.2.4' type='text/css' media='all' />
+<link href='http://fonts.googleapis.com/css?family=Roboto:200' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:600italic,600,400,400italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://www.osu.edu/assets/fonts/webfonts.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/academicons-1.8.0/css/academicons.css">
+
+<!-- icon, perhaps -->
+<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="apple-touch-icon" type="image/png" href="/images/icon-192.png">
+
+
+<!-- OG protocol -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Age, Income, Partisanship, Racial Attitudes and the Trump Vote in 2016">
+<meta property="og:description" content="I downloaded the 2016 CCES data to model the relationships among age, family income, partisanship, and racial attitudes on the Trump vote.">
+<meta property="og:url" content="http://localhost:4000/blog/2017/04/age-income-racism-partisanship-trump-vote-2016/">
+<meta property="og:site_name" content="Aditya Karanam">
+<meta property="og:image" content="http://localhost:4000/images/buckeyeprotesteriran.jpg">
+
+<meta property="og:image:width" content="637" />
+<meta property="og:image:height" content="403" />
+
+<!-- Twitter cards -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@aditya_karanam">
+<meta name="twitter:title" content="Age, Income, Partisanship, Racial Attitudes and the Trump Vote in 2016" />
+<meta name="twitter:description" content="I downloaded the 2016 CCES data to model the relationships among age, family income, partisanship, and racial attitudes on the Trump vote." />
+<meta name="twitter:url" content="http://localhost:4000/blog/2017/04/age-income-racism-partisanship-trump-vote-2016/" />
+<meta name="twitter:image" content="http://localhost:4000/images/buckeyeprotesteriran-card.jpg">
+
+
+<link rel="author" href=""/>
+<meta name="google-site-verification" content="" />
+<meta name="msvalidate.01" content="" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Aditya Karanam</a>
+
+
+    <nav class="site-nav">
+
+      <a href="#" class="menu-icon menu.open">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>  
+
+    <div class="trigger"><h1>Main Navigation</h1>
+
+ <ul class="menu">
+
+    
+    
+     <li><a href="/about/" class="page-link">About</a>
+    
+    </li>
+    
+    
+     <li><a href="/research/" class="page-link">Research</a>
+    
+    </li>
+    
+    
+     <li><a href="/cv/" class="page-link">CV</a>
+    
+    </li>
+    
+    </ul>
+
+
+<!-- <ul class="menu">
+        <li> <a class="page-link" href="/about">About</a></li>
+        <li> <a class="page-link"  href="/blog">Blog</a>
+        <li> <a class="page-link" href="/blog">CV</a>
+        <li> <a class="page-link" href="/blog">For Students</a></li>
+        <li> <a class="page-link"  href="/blog">Research</a></a>
+        <li> <a class="page-link" href="/blog">Teaching</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">POSC 1020 – Introduction to International Relations</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">POSC 3410 – Quantitative Methods in Political Science</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">POSC 3610 – International Politics in Crisis</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3630-united-states-foreign-policy/">POSC 3630 – United States Foreign Policy</a></li>
+</ul></li>
+        <li> <a class="page-link" href="/blog">Miscellany</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">Clean USAID Greenbook Data</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">Journal of Peace Research *.bst File</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">My Custom Beamer Style</a></li>
+</ul> 
+
+</li>
+</ul> -->
+
+     </div>  
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Age, Income, Partisanship, Racial Attitudes and the Trump Vote in 2016</h1>
+    <p class="post-meta">Posted on April 27, 2017 by  steve  
+
+  in
+  
+  <a href="/categories/#Political Science" title="Political Science">Political Science</a>&nbsp;
+  
+
+
+</p>
+  </header>
+
+  <article class="post-content">
+    <dl class="wp-caption alignright" style="max-width: 450px">
+
+<dt><a href=""><img class="" src="/images/trump-supporter-myrtle-beach.jpg" alt="A Trump supporter at a rally in Myrtle Beach, S.C., signals his feelings about Mexican immigration. (ARON P. BERNSTEIN/ GETTY IMAGES)" /></a></dt>
+
+<dd>A Trump supporter at a rally in Myrtle Beach, S.C., signals his feelings about Mexican immigration. (ARON P. BERNSTEIN/ GETTY IMAGES)</dd>
+</dl>
+
+<p>I like to do some kind of statistical analysis of public opinion/attitudes data at the end of every semester, in part as a diversion from grading, but also to teach myself some new parlor tricks in R. The topics have focused on current events like the <a href="http://svmiller.com/blog/2016/12/trump-twitter-diversion-controversial-subjects-public-opinion/">topics of Trump’s Twitter outbursts</a>, <a href="http://svmiller.com/blog/2016/12/millennials-support-democracy-stop-blaming-the-damn-kids/">Millennials and democratic support</a>, <a href="http://localhost:4000/blog/2016/05/america-strong-leaders-world-values-survey-trump/">America’s “strong leader problem”</a>, and <a href="http://svmiller.com/blog/2015/12/gun-control-public-opinion-1972-2014/">gun control</a>. This one will explore the recently released Cooperative Congressional Election Study (CCES) data from 2016 to explore the correlates of an individual’s self-reported Trump vote in the 2016 election.</p>
+
+<p>The findings square well with intuition. I should also note that while these findings make sense, the results I report follow some tinkering with model specification (i.e. “hey, let’s interact those two things or square that term to see what happens”) and so a critique that <a href="http://www.stat.columbia.edu/~gelman/research/unpublished/p_hacking.pdf">my garden has a few forked paths</a> would be fair game. I doubt they seriously alter inferences, but it’s a fair critique that would be troublesome if I were submitting it for review. Code and data are freely available if you’d like to throw rocks at these results. The results themselves are interesting and a tl;dr version follows.</p>
+
+<blockquote>
+  <p><strong>tl;dr</strong>: Partisanship is a hell of a drug, constituting the largest (duh…) and most precise (duh…) effect in all the models. Cognitive racism has the second largest (estimated) magnitude effect and is the second most precise regression parameter. These interact in interesting ways. Age has a curvilinear effect. Older citizens were more likely to vote for Trump (duh…) but older Boomers and Silent folk in the sample experience a slight decline in their proclivity to vote for Trump. Increasing family income has no overall effect but there is an estimated curvilinear effect in which voters appear to be less likely to vote for Trump as family income increases past the median. Nothing here is terribly novel, per se. Just interesting.</p>
+</blockquote>
+
+<p>I’ll detail these findings below, but I’ll start first with the data and the methods. I understand this isn’t terribly exciting for the lay reader so I offer a table of contents for readers who want to skip ahead.</p>
+
+<ol>
+  <li><a href="#methods">Data and Methods</a></li>
+  <li><a href="#results">Results</a></li>
+  <li><a href="#age">The Effect of Age</a></li>
+  <li><a href="#faminc">The Curious Effect of Family Income</a></li>
+  <li><a href="#interact">How Partisanship and Cognitive Racism Interact</a></li>
+  <li><a href="#conclusion">Conclusion and Implications</a></li>
+  <li><a href="#code">Code and Footnotes</a></li>
+</ol>
+
+<h2 id="methods">Data and Methods</h2>
+
+<p>I downloaded the full first release of the 2016 CCES data, which is a stratified random sample of 64,600 Americans in which sampling was done prior to the election and after it. It’s data heaven for scholars who want to get at subgroups (e.g. South Carolinians, Hispanics, Americans with six-figure incomes) for which there are not a lot of observations in other outlets (e.g. General Social Survey, American National Election Survey) that have a sample size around 1,000.</p>
+
+<h3 id="dependent-variable">Dependent Variable</h3>
+
+<p>My dependent variable is whether the respondent said s/he voted for Trump in the 2016 election. While I will not address the issue in this post, scholars interested in this important topic may want to be mindful of the possibility of non-random missingness.<sup id="fnref:shytrump"><a href="#fn:shytrump" class="footnote">1</a></sup> Almost 30% of respondents did not answer this question. The percentage of Trump votes in the remaining data is 41.45%.</p>
+
+<h3 id="basic-demographics">Basic Demographics</h3>
+
+<p>I choose the usual suspects for explanatory variables. I gather the respondent’s age (technically: 2016 - reported year of birth) and square the variable to check for a non-linear effect. I code a dummy variable for women and the college educated. These were easy enough.</p>
+
+<p>CCES asks about family income in 16 ordinal categories. These range from less than $10,000 (1) to $500,000 or more (16), though I condense 13-16 to 13 to create a $200,000 or more category. Survey researchers interested in income know this is routinely a sore spot for those concerned about non-random missingness, but missingness is just about 10% of the data here. I also include a square term for family income with the intuition that the peculiarities of Trump’s policies (e.g. free trade and other public goods) might have caused some wealthier folks in the suburbs (<a href="http://www.latimes.com/nation/politics/trailguide/la-na-election-aftermath-updates-trail-orange-county-turns-1478716018-htmlstory.html">hello, Orange County</a>) who would otherwise vote for Republicans to cast their vote for another candidate.</p>
+
+<p>I include politically relevant ethnic/racial groups as fixed effects. These are African-Americans, Hispanics, and other races. To be clear, I’m using the <code class="language-plaintext highlighter-rouge">race</code> variable in CCES. <a href="http://www.everydaysociologyblog.com/2012/06/hispanic-is-not-a-race.html">Hispanic is an ethnicity, not a race</a>. Alas.<sup id="fnref:credit"><a href="#fn:credit" class="footnote">2</a></sup></p>
+
+<h3 id="political-and-religious-values">Political and Religious Values</h3>
+
+<p>The primary variables of interest proxy political and religious values. I include everyone’s favorite seven-item partisanship variable (i.e. strong Democrat to strong Republican). I include the five-item ideology variable, which goes from “very liberal” to “very conservative.” I estimate what I call a “latent religiosity” variable that gauges religiosity of the evangelical crowd in the United States. This is a latent estimate from a graded response model of variables, derived from Pew, that ask whether a respondent is a born-again Christian, how important religion is to the respondent, how often they attend church, and how often they pray. The ensuing estimate has a mean of zero and a standard deviation of one. People interested in more focused analyses of religion and politics should follow someone like <a href="https://ryanburge.github.io/">Ryan Burge</a> (Eastern Illinois) or, my wonderful colleague, <a href="https://www.clemson.edu/cbshs/faculty-staff/profiles/LAURAO">Laura Olson</a> at Clemson.</p>
+
+<h3 id="the-problems-of-racial-attitudes">The Problem(s) of Racial Attitudes</h3>
+
+<p>The problem of racial attitudes is the 800-pound gorilla (well, one of them) in the 2016 election. It’s a problem for two reasons I’ll mention here.</p>
+
+<p>One, it seemed to matter a lot in the 2016 election. No other candidate raised subtext to text like Trump, replacing the familiar “dog whistle” of past Republicans (e.g. Nixon’s <a href="https://twitter.com/AdamSerwer/status/857626382620295168">“law and order,”</a> Reagan’s <a href="http://www.npr.org/sections/codeswitch/2013/12/20/255819681/the-truth-behind-the-lies-of-the-original-welfare-queen">“welfare queen,”</a> Bush’s Horton ad) with a foghorn mounted on a tugboat. The start of his political career was a witch hunt to prove Barack Obama was Kenya-born with a forged birth certificate. Incitement of racial attitudes manifested in other aspects of his campaign, including staffing (e.g. Steve Bannon, whose website features a prominent category for <a href="https://www.buzzfeed.com/tasneemnashrulla/here-are-some-of-the-most-controversial-stories-published-by">“black crimes”</a>), inciting violence against predominantly persons of color protestors at rallies, and the core of his proposed policies (e.g. the wall, the ban). Those who cast doubt on the role of racism in the 2016 general election instead draw attention to <a href="https://fivethirtyeight.com/features/stop-saying-trumps-win-had-nothing-to-do-with-economics/">“economic anxiety”</a> or <a href="https://theawl.com/i-talked-to-some-trump-voters-too-24d8399a6147">working-class whites</a> or repurpose the problem of racism as <a href="http://www.politico.com/magazine/story/2016/01/donald-trump-2016-authoritarian-213533">a scholarly issue of authoritarianism</a>. More recent evidence suggests it’s racism—<a href="https://www.washingtonpost.com/news/monkey-cage/wp/2017/04/17/racism-motivated-trump-voters-more-than-authoritarianism-or-income-inequality/?utm_term=.6489898b6e01">not authoritarianism</a> and <a href="https://theintercept.com/2017/04/06/top-democrats-are-wrong-trump-supporters-were-more-motivated-by-racism-than-economic-issues/">not economic concerns</a>—that influenced some of Trump’s voters. Alas, it’s a problem the extent to which it’s debatable what motivated Trump’s die-hards among those factors.</p>
+
+<p>The second problem is a measurement problem. <a href="http://pages.iu.edu/~cdesante/">Christopher DeSante</a> (Indiana) and <a href="http://publicpolicy.unc.edu/people/candis-w-smith/">Candis Smith</a> (North Carolina) have a working paper presented at this year’s MPSA conference that highlights a few shortcomings with the ANES’ “racial resentment” items. The four items from ANES proxy attitudes about <a href="http://www.npr.org/sections/codeswitch/2017/04/19/524571669/model-minority-myth-again-used-as-a-racial-wedge-between-asians-and-blacks">the “model minority” myth</a> (e.g. “Irish, Italians, Jewish and many other minorities overcame prejudice… Blacks should do the same.”) and the legacy of slavery and civil rights abuses (e.g. “Generations of slavery and discrimination have created conditions that make it difficult for blacks”). The problem is these “racial resentment” items in ANES measure the concept that ANES wants, but they also measure conservative ideology. In other words, a respondent who firmly believes in a “conservative” ideology of <a href="https://en.wikipedia.org/wiki/Rugged_individualism">“rugged individualism”</a> could answer the same questions the same way as an objective racist even if racial resentment doesn’t motivate the answer. DeSante and Smith want a series of questions that measure or predict racism, but not conservative ideology. They found four that CCES incorporated into its 2016 survey. These are five-point Likert items:</p>
+
+<ol>
+  <li>“White people in the U.S. have certain advantages because of the color of their skin.”</li>
+  <li>“Racial problems in the U.S. are rare, isolated situations.”</li>
+  <li>“I am angry that racism exists.”</li>
+  <li>“I often find myself fearful of other races.”</li>
+</ol>
+
+<p>DeSante and Smith caution that these four items do not capture one concept. Rather, they capture two. The first two proxy what they call “cognitive racism” (i.e. a respondents’ awareness of racism, or lack thereof). The second two proxy what they call “empathetic racism” (i.e. sympathy [or lack thereof] for the experiences of racial minorities). I construct both indices using a graded response model, which also partially mollifies the problem of missing data. I should note that missingness on these items constitutes around 20% of the original data frame and bias could still be a major problem in another form.</p>
+
+<h3 id="model-choice">Model Choice</h3>
+
+<p>The dependent variables are binary, making a logistic transformation of the regression parameters appropriate. The models are ultimately a mixed effects estimation with just a random effect for states. I also make sure to <a href="http://www.stat.columbia.edu/~gelman/research/published/standardizing7.pdf">scale all non-binary predictors by two standard deviations</a> to provide a rough comparability of coefficient size, certainly among those variables scaled.</p>
+
+<h2 id="results">Results</h2>
+
+<p>I estimate four models explaining a vote for Trump. Model 1 is all voters. Model 2 is just white voters. Model 3 subsets the data to just those who said they voted for Obama in 2012. Model 4 analyzes a vote for Trump among those who self-identify as Democrats. The results follow.</p>
+
+<table align="center" style="padding-bottom: 20px; margin: 0px auto; text-align:center"><caption><strong>Four Models Explaining a Vote for Trump (CCES, 2016)</strong></caption>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="4"><strong>Voted for Trump</strong></td></tr>
+<tr><td style="text-align:left"></td><td><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All Voters&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></td><td><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;White Voters&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></td><td><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Obama Voters&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></td><td><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Democrats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></td></tr>
+<tr><td style="text-align:left"></td><td><strong>Model 1</strong></td><td><strong>Model 2</strong></td><td><strong>Model 3</strong></td><td><strong>Model 4</strong></td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr>
+<tr><td colspan="5" style="text-align:left"><em>Basic Socio-demographics</em></td></tr>
+<tr><td style="text-align:left">Age</td><td>0.543<sup>***</sup></td><td>0.552<sup>***</sup></td><td>-0.339<sup>***</sup></td><td>-0.155<sup>*</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.042)</td><td>(0.048)</td><td>(0.074)</td><td>(0.081)</td></tr>
+<tr><td style="text-align:left">Age^2</td><td>-0.224<sup>***</sup></td><td>-0.219<sup>**</sup></td><td>-0.120</td><td>-0.236</td></tr>
+<tr><td style="text-align:left"></td><td>(0.077)</td><td>(0.086)</td><td>(0.148)</td><td>(0.159)</td></tr>
+<tr><td style="text-align:left">Female</td><td>-0.086<sup>**</sup></td><td>-0.032</td><td>-0.176<sup>***</sup></td><td>-0.355<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.037)</td><td>(0.041)</td><td>(0.062)</td><td>(0.071)</td></tr>
+<tr><td style="text-align:left">College Educated</td><td>-0.535<sup>***</sup></td><td>-0.636<sup>***</sup></td><td>-0.487<sup>***</sup></td><td>-0.435<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.040)</td><td>(0.045)</td><td>(0.071)</td><td>(0.084)</td></tr>
+<tr><td style="text-align:left">Family Income</td><td>0.0003</td><td>-0.054</td><td>0.106</td><td>0.112</td></tr>
+<tr><td style="text-align:left"></td><td>(0.042)</td><td>(0.047)</td><td>(0.073)</td><td>(0.082)</td></tr>
+<tr><td style="text-align:left">Family Income^2</td><td>-0.168<sup>**</sup></td><td>-0.131</td><td>-0.400<sup>***</sup></td><td>-0.458<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.074)</td><td>(0.084)</td><td>(0.130)</td><td>(0.150)</td></tr>
+<tr><td style="text-align:left">Black</td><td>-1.041<sup>***</sup></td><td></td><td>-0.911<sup>***</sup></td><td>-1.457<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.091)</td><td></td><td>(0.122)</td><td>(0.138)</td></tr>
+<tr><td style="text-align:left">Hispanic/Latino</td><td>-0.302<sup>***</sup></td><td></td><td>-0.452<sup>***</sup></td><td>-0.612<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.073)</td><td></td><td>(0.117)</td><td>(0.128)</td></tr>
+<tr><td style="text-align:left">Other Race</td><td>-0.196<sup>*</sup></td><td></td><td>-0.289</td><td>-0.493<sup>**</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.109)</td><td></td><td>(0.176)</td><td>(0.215)</td></tr>
+<tr><td colspan="5" style="text-align:left"><em>Political/Religious Values</em></td></tr>
+<tr><td style="text-align:left">Partisanship (D to R)</td><td>3.113<sup>***</sup></td><td>3.171<sup>***</sup></td><td>2.542<sup>***</sup></td><td></td></tr>
+<tr><td style="text-align:left"></td><td>(0.049)</td><td>(0.056)</td><td>(0.080)</td><td></td></tr>
+<tr><td style="text-align:left">Ideology (L to C)</td><td>1.217<sup>***</sup></td><td>1.322<sup>***</sup></td><td>1.003<sup>***</sup></td><td>1.191<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.053)</td><td>(0.061)</td><td>(0.087)</td><td>(0.087)</td></tr>
+<tr><td style="text-align:left">Religiosity</td><td>0.562<sup>***</sup></td><td>0.599<sup>***</sup></td><td>0.719<sup>***</sup></td><td>0.750<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.040)</td><td>(0.044)</td><td>(0.069)</td><td>(0.082)</td></tr>
+<tr><td style="text-align:left">Cognitive Racism</td><td>1.971<sup>***</sup></td><td>1.971<sup>***</sup></td><td>1.926<sup>***</sup></td><td>1.928<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.049)</td><td>(0.057)</td><td>(0.083)</td><td>(0.093)</td></tr>
+<tr><td style="text-align:left">Empathetic Racism</td><td>0.636<sup>***</sup></td><td>0.657<sup>***</sup></td><td>0.780<sup>***</sup></td><td>0.808<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.038)</td><td>(0.042)</td><td>(0.064)</td><td>(0.075)</td></tr>
+<tr><td style="text-align:left">Partisanship*Cognitive Racism</td><td>-0.533<sup>***</sup></td><td>-0.664<sup>***</sup></td><td>-0.235</td><td></td></tr>
+<tr><td style="text-align:left"></td><td>(0.113)</td><td>(0.130)</td><td>(0.199)</td><td></td></tr>
+<tr><td style="text-align:left">Constant</td><td>-0.519<sup>***</sup></td><td>-0.535<sup>***</sup></td><td>-0.914<sup>***</sup></td><td>-1.498<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.049)</td><td>(0.054)</td><td>(0.074)</td><td>(0.087)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left">N</td><td>38,494</td><td>29,724</td><td>19,503</td><td>15,699</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td colspan="5" style="text-align:right; font-size: 12px"><sup>***</sup>p &lt; .01; <sup>**</sup>p &lt; .05; <sup>*</sup>p &lt; .1</td></tr>
+<tr><td colspan="5" style="text-align:right; font-size: 12px">All models include a random effect for state, which I omit here for presentation.</td></tr>
+</table>
+
+<p>Most findings here are straight-forward. Age and age-squared are both discernible from zero. The effect of increasing age is positive (duh…) but the squared term is negative. I’ll produce a graph below that suggests the negative effect of the square term doesn’t imply the elderly are more like the younger respondents (who were much less likely to vote for Trump). Instead, the effect of increasing age more or less plateaus among the later Boomers or the Silent folk.</p>
+
+<p>Family income has no discernible effect while the square term is significant. I’ll produce a graph below that suggests the effect of increasing family income in Model 1 is slightly positive, but effectively flat as the coefficient suggests, across the first several income categories. Thereafter, the effect becomes negative with some interesting implications for independents who lean Republican.</p>
+
+<dl class="wp-caption alignright" style="max-width: 350px">
+
+<dt><a href=""><img class="" src="/images/white-women-voted-for-trump.jpg" alt="Obligatory viral photo from the Women's March." /></a></dt>
+
+<dd>Obligatory viral photo from the Women's March.</dd>
+</dl>
+
+<p>Women were less likely to vote for Trump than men, all else equal across all voters. We can discern the negative coefficient from zero but the substantive effect appears to be rather small relative to other predictors. There is no difference between women and men when we subset the analysis to just white people. This squares well with the observation that white women, no matter the Billy Bush video, voted for Trump more than Clinton. The viral photo from the Women’s March in DC earlier this year is obligatory. I don’t make the rules; I just follow them.</p>
+
+<p>Consistent with the implications of Trump’s <a href="https://www.usatoday.com/story/news/politics/onpolitics/2016/02/24/donald-trump-nevada-poorly-educated/80860078/">“I love the poorly educated”</a> remark, the college educated were more likely to say they did not vote for Trump than those who did not attend or graduate from college. The effect is precise across all four models and among the larger effects in this category of variables.</p>
+
+<p>The race fixed effects are all intuitive. It should be unsurprising that these race fixed effects are all negative since they communicate the natural logged odds of voting for Trump for that category relative to the baseline of white respondents. African-Americans were unlikely to vote for Trump relative to white respondents and the estimated effect is the largest among the socio-demographic variables. Including all voters, Hispanics and people from other races were less likely to vote for Trump. A similar story holds in Model 3 among the Obama voters, though we cannot discern a difference between other races and white people. The effects are negative and significant for all race fixed effects in Model 4, which subsets the data to Democrats to see who voted for Trump. Put in other words, the results are consistent with the suggestion that whites were more likely to vote for Trump than those from other races and that those who did break from Obama to Trump, or crossed party lines to vote for him, were white. Of course, this isn’t a terribly controversial or path-breaking statement.</p>
+
+<p>The political/religious values have some of the most precise and largest estimated effects. Partisanship, the strongest drug in American politics, has the largest effect.<sup id="fnref:interaction"><a href="#fn:interaction" class="footnote">3</a></sup> Republican partisans vote for Republicans and Democrat partisans vote for Democrats. We can find cases contrary to that rule. We can also wonder if the Democrats that did cross party lines to vote for Trump were the “pivotal” Trump voter in this election (i.e. those in Michigan, Pennsylvania, and Wisconsin). However, they’re not the “typical” Trump voter. The typical Trump voter is a garden-variety Republican partisan.</p>
+
+<p>The religiosity variable is also positive and significant. The more religious a respondent is on the items comprising the measure—born-again identification, importance of religion, church attendance, and prayer frequency—the more likely they voted for Trump. This makes sense. “Values voters” are more likely to be Republican and were <a href="https://www.nytimes.com/2016/08/21/opinion/sunday/why-values-voters-value-donald-trump.html">more likely to vote for Trump</a> notwithstanding the peculiarities of Trump (i.e. everything) and his status as vanguard of the values voters’ party.</p>
+
+<p>The two racism variables are also positive and significant. The effect of cognitive racism is larger than the effect of empathetic racism when placed on a common scale. In fact, the effect of cognitive racism is not only the second largest estimated effect in the model, it’s also the second most precise.</p>
+
+<p>The interaction between cognitive racism and partisanship is negative and significant in Model 1 and Model 2, but is insignificant in Model 3. I’ll show a graph below that the negative and significant coefficients in Model 1 and Model 2 indicate there’s greater distance between Republicans and Democrats among the least racist than the most racist. In other words, increasing cognitive racism has a stronger effect on Democrats than Republicans as Republicans were unlikely to not vote for Trump anyway.</p>
+
+<h2 id="age">The Effect of Age</h2>
+
+<p>I provide some quantities of interest from Model 1 to better illustrate the findings. I start with the effect of increasing age for independents, including those who say they lean to either party. Every other variable in the model is set to either the mean (i.e. zero for the standardized variables) or the typical case. Thus, the graph below shows the effect of age for three different values of the partisanship variable for the white non-college-educated self-described “moderate” woman of average income with the mean score on the religiosity, ideology, and two racism variables.</p>
+
+<p><img src="../../../../images/2016-cces-trump-m1-age.png" alt="" /></p>
+
+<p>The results show the curvilinear effect that the age and age-squared terms imply. However, the “rainbow” you might otherwise see in a curvilinear relationship where a variable is positive and the square effect is negative is not complete. Instead, the graph suggests a near plateau for the older Boomers and the Silent folk who appear in the sample. The probability of a Trump vote starts to decrease, but only slightly, near the end of the age variable.</p>
+
+<h2 id="faminc">The Curious Effect of Family Income</h2>
+
+<p>Increasing income has no discernible effect on the likelihood of voting for Trump but the square term is negative and significant. The graph below illustrates what this looks like in the data for the three categories of independent voters. Again, everything else is set at the mean or the typical case (i.e. white non-college-educated self-described “moderate” women of average age with the mean score on the religiosity, ideology, and two racism variables).</p>
+
+<p><img src="../../../../images/2016-cces-trump-m1-faminc.png" alt="" /></p>
+
+<p>The category for Republican-leaning independents interests again. The poorest Republican-leaning independents in this category are likely to vote for Trump and the likelihood increases, however slightly, as income increases. The highest predicted probability is for the sixth income category ($50,000 - $59,999), which incidently includes the median household income. Thereafter, the predicted probability of a Trump vote starts to decrease even if the associated confidence intervals do not overlap with .5.</p>
+
+<p>If you’re curious, there are any number of ways to “model” this relationship. If you include all respondents (i.e. I drop those who say “I’m not sure” or said they didn’t vote), the relationship becomes a bit more intriguing. The confidence interval for the highest income category overlaps .5. If you retain the original 16 income categories on top of that, the predicted probability is actually .49. The relationship becomes more uncertain because there are only 177 total observations in the highest income category of $500,000 or more. That’s before listwise deletion of missing data excludes more observations on top of that. Splitting these observations further by partisanship creates even smaller subgroups. It’s why I condensed the highest income categories to $200,000 and above to mitigate that problem.</p>
+
+<p>Income is also tough for survey researchers. There is likely a difference in the proclivity of a Trump vote for a person whose household income is $200,000 versus one whose household income is $2,000,000. That latter person probably cares a lot more about capital gains taxes than the former person. However, that millionaire is likely to opt right out the sample if you get more specific about income. So, you get what you get and concede some heterogeneity in the highest income category as a result.</p>
+
+<p>That said, it’s not clear what’s ultimately at stake in trying to model the effect of increasing income on a vote for Trump unless you care about specific subgroups that I don’t estimate here. Independents were more likely to vote for someone other than Trump. Increasing income has no implication for Democratic-leaning independents either. More devoted partisans seemed likely to vote for their party’s candidate independent of income considerations. There is just one intriguing possibility for wealthier Republican-leaning independents and splitting the Republican-leaning independents further into subgroups of college-educated and those without a college diploma.</p>
+
+<p><img src="../../../../images/2016-cces-trump-m1-faminc-colled.png" alt="" /></p>
+
+<p>I’m not sure how much we can infer here, but the results might be consistent with a case like Orange County. Therein, a wealthier county with a lot of suburbanites <a href="http://www.towncharts.com/California/Education/Orange-County-CA-Education-data.html">and college graduates</a> accustomed to voting for Republican candidates in every election since the Great Depression switched to Clinton instead. We saw <a href="https://www.dallasnews.com/news/local-politics/2016/12/12/sessions-culberson-see-districts-turn-blue-presidential-race-age-trump-signal-long-term-trouble">a similar story unfold in TX-32</a>, though Democrats should kick themselves for not running a candidate to oppose Pete Sessions in the district’s House race.</p>
+
+<p>Beyond that, family income doesn’t appear to matter a whole lot in the 2016 election.</p>
+
+<h2 id="interact">How Partisanship and Cognitive Racism Interact</h2>
+
+<p>Model 1 and Model 2 showed statistically significant negative coefficients for the interaction between cognitive racism and partisanship. It implies the following two things the graph shows below. One, increasing cognitive racism has smaller effects on the likelihood of a Trump vote as partisanship with the GOP increases. These Republicans were going to vote for Trump anyway. Increasing cognitive racism instead has stronger effects on those scoring lower on partisanship (i.e. among Democrats).</p>
+
+<p><img src="../../../../images/2016-cces-trump-m1-cograc-partisanship.png" alt="" /></p>
+
+<p>Recall these plots set everything else at the mean or the typical case, meaning the plots show the varied effects of cognitive racism and partisanship for the white non-college-educated self-described “moderate” woman of average age and income with the mean score on the religiosity, ideology, and empathetic racism variable.</p>
+
+<p>Notice the left bound of the cognitive racism variable (i.e. the least racist). Independents, Democrat-leaning independents, and Democrat partisans are unlikely to vote for Trump. Even Republican-leaning independents are discernibly less likely to vote for Trump than vote for him in this estimation. However, self-idenitified Republicans are effectively on the fence while the least racist strong Republican partisans are discernibly more likely to vote for Trump than vote for someone else. Partisanship appears to be that strong among the most devout Republicans to withstand the questionably racist overtones of the Trump campaign among those strong Republicans who score near the bottom of the cognitive racism variable.</p>
+
+<p>Contrast that with the right bound of the cognitive racism variable (i.e. the most racist). The probability of a Republican vote in this position is asymptote to 1, which is not surprising. It is a bit surprising that Democrats are joining them. The most devout Republican was still voting for Trump even if she scored near the bottom of the cognitive racism variable. The most devout Democrat who scores near the max of the cognitive racism variable has a predicted probability above .5 of voting for Trump even if the confidence intervals surrounding the estimate overlap .5. Not-strong Democrats near the max of the cognitive racism variable are more likely to vote for Trump than for someone else, a finding that stands at odds with how not-strong Republicans were on the fence near the bottom of the cognitive racism variable.</p>
+
+<p>The graph underscores that cognitive racism has a stronger effect on Democrats than Republicans. Republicans and Democrats are closer to each other in the likelihood of voting for Trump near the max of the cognitive racism variable than they are near the minimum.</p>
+
+<h2 id="conclusion">Conclusion and Implications</h2>
+
+<p>The analyses here are largely illustrative and for my intellectual curiosity. They square with our intuition about the individual vote in the 2016 general election. Partisanship is a hell of a drug, constituting the largest and most precise effect in all the models. Cognitive racism has the second largest (estimated) magnitude effect and is the second most precise regression parameter. These interact in interesting ways; cognitive racism has a larger effect on Democrats than Republicans and Republicans and Democrats are closer to each other in the likelihood of voting for Trump near the max of the scale than near the minimum. Age and family income have some peculiar curvilinear effects as well.</p>
+
+<p>I’ll defer to someone with more focused insight on the nature of political attitudes in the United States, but peering into the CCES data has me wondering about some other exploratory analyses and interesting questions to raise.</p>
+
+<p>Is there meaningful heterogeneity among the Boomers? Boomers are a big generation—nominally those born from 1946 to 1964, <a href="http://www.pewresearch.org/fact-tank/2016/04/25/millennials-overtake-baby-boomers/">according to Pew</a>—with an eclectic array of experiences. I could be spun a plausible story that older Boomers who remember the Civil Rights movement, the Vietnam War, and the assassinations of Martin Luther King and the Kennedys might think more negatively of Trump. Younger Boomers, say those born in the late 1950s or early 1960s, might have missed the watershed movements of the mid-1960s as formative experiences and may have instead come of age during the mid-1970s in which the <a href="https://en.wikipedia.org/wiki/Presidency_of_Jimmy_Carter#.22Crisis_of_Confidence.22_.2F_.22Malaise.22_speech">malaise</a> was real and <a href="https://www.brennancenter.org/blog/americas-faulty-perception-crime-rates">crime rates were off the charts</a>. They’ll have more real memories of Ronald Reagan than, say, the March on Washington. Generation nostalgia in the 1970s would lead them to romanticize the 1950s too since that phenomonen, like clockwork, looks twenty years to the past. Alas, that’s conjecture on my end. Further, Reagan had a strong effect on older and younger Boomers alike.</p>
+
+<p>I’m also curious about the scope of missing data. Almost 30% of respondents did not answer the question about how they voted in the 2016 general election. Almost 20% of respondents did not answer the questions probing racism. Concerns of social desirability bias and Hawthorne effects might still be there in our surveys and experiments. Alas, CCES does well to gather the most informative data we could want on American political attitudes. I’m curious about how well we can predict and impute some of these data for which missingness could plausibly be a source of bias.</p>
+
+<h2 id="code">Code and Footnotes</h2>
+
+<p>Code is available on <a href="https://github.com/svmiller/2016-cces-trump-vote">my Github</a>.</p>
+<div class="footnotes">
+  <ol>
+    <li id="fn:shytrump">
+      <p>We tend to think this touches on a social desirability bias and that Trump voters do not like to reveal themselves to pollsters. More recent evidence suggests that there is <a href="https://alexandercoppock.com/working-papers/shy-trump-supporters/">no such thing as a “shy Trump supporter.”</a> At the least, they won’t raise major inferential problems. <a href="#fnref:shytrump" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:credit">
+      <p>To its credit, CCES does ask a separate ethnicity question about Hispanic identification to get at the fact you can have white Hispanics (e.g. me) and black Hispanics (e.g. Carmelo Anthony), among other combinations. I choose to keep the analysis simple and focus on the <code class="language-plaintext highlighter-rouge">race</code> variable. <a href="#fnref:credit" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:interaction">
+      <p>It’s important to note this is an interaction. Technically, the effect of increasing partisanship with the GOP observed in the model is when the standardized cognitive racism variable is zero. Likewise, the coefficient for the effect of cognitive racism is for when the standardized partisanship is zero. However, the interpretation is the same if you drop the interaction term, which I added only late into this project. <a href="#fnref:interaction" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </article>
+
+<div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'svmiller';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+<!--     <h2 class="footer-heading">Aditya Karanam</h2> -->
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li><strong>Aditya Karanam</strong></li>
+			<li>PhD Student</li>
+          <li><a href="mailto:aditya_ks@utexas.edu">aditya_ks@utexas.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+ 
+
+         <p class="text">
+		Department of Information, Risk, & Operations Management,<br />
+		McCombs School of Business, <br />
+    2110 Speed Way<br />
+		Austin, TX 78705</p> <!-- I'm a PhD Student at McCombs School of Business, UT, Austin with research interests in the area of Economics of Information Systems. Specifically, I am interested in New product design and Innovation. Topics on my site include my research interests and teaching.
+ -->
+      </div>
+
+      <div class="footer-col  footer-col-3">
+       <ul class="social-media-list">
+
+                  
+     
+
+          
+  <li>
+    <a href="https://github.com/askaranam">
+      <i class="fa fa-github" style="color:gray"></i> Github
+    </a>
+  </li>
+
+
+          
+
+          
+  <li>
+    <a href="https://twitter.com/aditya_karanam">
+      <i class="fa fa-twitter" style="color:gray"></i> Twitter
+    </a>
+  </li>
+
+
+
+
+
+
+
+       
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+		<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-37298398-1']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+	</script>
+  </body>
+</html>
+<!-- d.s.m.s.050600.062508.030515.080516.030818; k.050800.101218 | "Baby, I'm Yours" -->
+

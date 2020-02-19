@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Automatically Do (Just About) Everything in Your Syllabus with R Markdown | Aditya Karanam</title>
+  <meta name="description" content="I have a series of templates for R Markdown. Here's one for an syllabus. I offer a guide on how to use it.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/blog/2016/07/r-markdown-syllabus/">
+  <link rel="alternate" type="application/rss+xml" title="Aditya Karanam" href="http://localhost:4000/feed.xml" />
+<link rel='stylesheet' id='open-sans-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&#038;subset=latin%2Clatin-ext&#038;ver=4.2.4' type='text/css' media='all' />
+<link href='http://fonts.googleapis.com/css?family=Roboto:200' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:600italic,600,400,400italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://www.osu.edu/assets/fonts/webfonts.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/academicons-1.8.0/css/academicons.css">
+
+<!-- icon, perhaps -->
+<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="apple-touch-icon" type="image/png" href="/images/icon-192.png">
+
+
+<!-- OG protocol -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Automatically Do (Just About) Everything in Your Syllabus with R Markdown">
+<meta property="og:description" content="I have a series of templates for R Markdown. Here's one for an syllabus. I offer a guide on how to use it.">
+<meta property="og:url" content="http://localhost:4000/blog/2016/07/r-markdown-syllabus/">
+<meta property="og:site_name" content="Aditya Karanam">
+<meta property="og:image" content="http://localhost:4000/images/buckeyeprotesteriran.jpg">
+
+<meta property="og:image:width" content="637" />
+<meta property="og:image:height" content="403" />
+
+<!-- Twitter cards -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@aditya_karanam">
+<meta name="twitter:title" content="Automatically Do (Just About) Everything in Your Syllabus with R Markdown" />
+<meta name="twitter:description" content="I have a series of templates for R Markdown. Here's one for an syllabus. I offer a guide on how to use it." />
+<meta name="twitter:url" content="http://localhost:4000/blog/2016/07/r-markdown-syllabus/" />
+<meta name="twitter:image" content="http://localhost:4000/images/buckeyeprotesteriran-card.jpg">
+
+
+<link rel="author" href=""/>
+<meta name="google-site-verification" content="" />
+<meta name="msvalidate.01" content="" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Aditya Karanam</a>
+
+
+    <nav class="site-nav">
+
+      <a href="#" class="menu-icon menu.open">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>  
+
+    <div class="trigger"><h1>Main Navigation</h1>
+
+ <ul class="menu">
+
+    
+    
+     <li><a href="/about/" class="page-link">About</a>
+    
+    </li>
+    
+    
+     <li><a href="/research/" class="page-link">Research</a>
+    
+    </li>
+    
+    
+     <li><a href="/cv/" class="page-link">CV</a>
+    
+    </li>
+    
+    </ul>
+
+
+<!-- <ul class="menu">
+        <li> <a class="page-link" href="/about">About</a></li>
+        <li> <a class="page-link"  href="/blog">Blog</a>
+        <li> <a class="page-link" href="/blog">CV</a>
+        <li> <a class="page-link" href="/blog">For Students</a></li>
+        <li> <a class="page-link"  href="/blog">Research</a></a>
+        <li> <a class="page-link" href="/blog">Teaching</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">POSC 1020 – Introduction to International Relations</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">POSC 3410 – Quantitative Methods in Political Science</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">POSC 3610 – International Politics in Crisis</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3630-united-states-foreign-policy/">POSC 3630 – United States Foreign Policy</a></li>
+</ul></li>
+        <li> <a class="page-link" href="/blog">Miscellany</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">Clean USAID Greenbook Data</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">Journal of Peace Research *.bst File</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">My Custom Beamer Style</a></li>
+</ul> 
+
+</li>
+</ul> -->
+
+     </div>  
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Automatically Do (Just About) Everything in Your Syllabus with R Markdown</h1>
+    <p class="post-meta">Posted on July 5, 2016 by  steve  
+
+  in
+  
+  <a href="/categories/#R Markdown" title="R Markdown">R Markdown</a>&nbsp;
+  
+
+
+</p>
+  </header>
+
+  <article class="post-content">
+    <dl class="wp-caption alignright" style="max-width: 450px">
+
+<dt><a href=""><img class="" src="/images/itsinsyllabus.gif" alt="Via PhD Comics, naturally." /></a></dt>
+
+<dd>Via PhD Comics, naturally.</dd>
+</dl>
+
+<p>This will be the latest in <a href="http://svmiller.com/categories/#R%20Markdown">my series</a> of tutorials for making the most of <a href="http://rmarkdown.rstudio.com/">R Markdown</a>. <a href="https://github.com/svmiller/svm-r-markdown-templates">My repository</a> already has R Markdown LaTeX templates for <a href="http://svmiller.com/blog/2016/02/svm-r-markdown-manuscript/">academic manuscripts</a>, <a href="http://svmiller.com/blog/2016/03/svm-r-markdown-cv/">CVs</a>, and <a href="https://github.com/svmiller/svm-r-markdown-templates/blob/master/svm-latex-statement.tex">personal statements</a> (e.g. teaching statement, research statement). The syllabus is the next step.</p>
+
+<p>I’ve bemoaned <a href="http://svmiller.com/blog/2015/08/streamlining-the-syllabus-in-latex-with-advdate-and-datetime/">elsewhere on my blog</a> that the syllabus is more tedious than it is creative or imaginative. Long-time professors don’t waiver much in their views about what constitutes core material. This leaves the professor wanting to do just a few things in crafting the syllabus.</p>
+
+<ol>
+  <li>Conform the skeleton of the syllabus with the peculiar dates for the semester (e.g. conference travel days, semester holidays).</li>
+  <li>Seamlessly render bibliographic citations for required readings and course material assigned in a given week.</li>
+</ol>
+
+<p>R Markdown can do both these things and more. The syllabus template I designed will generate a fancy LaTeX syllabus (in PDF form) with just a few R packages and custom functions. I’ll start first with a description of the YAML metadata.</p>
+
+<h2 id="the-yaml-metadata">The YAML Metadata</h2>
+
+<p>The YAML metadata starts every R Markdown document and provides basic information for the document the user wants to generate. My template (<code class="language-plaintext highlighter-rouge">svm-latex-syllabus.tex</code>) adds a few other custom fields as well.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">output</span><span class="pi">:</span> 
+  <span class="na">pdf_document</span><span class="pi">:</span>
+    <span class="na">keep_tex</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">fig_caption</span><span class="pi">:</span> <span class="s">yes</span>
+    <span class="na">latex_engine</span><span class="pi">:</span> <span class="s">pdflatex</span>
+    <span class="na">template</span><span class="pi">:</span> <span class="s">~/Dropbox/miscelanea/svm-r-markdown-templates/svm-latex-syllabus.tex</span>
+<span class="na">geometry</span><span class="pi">:</span> <span class="s">margin=1in</span>
+
+<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">POSC</span><span class="nv"> </span><span class="s">0000:</span><span class="nv"> </span><span class="s">A</span><span class="nv"> </span><span class="s">Class</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">R</span><span class="nv"> </span><span class="s">Markdown</span><span class="nv"> </span><span class="s">Syllabus"</span>
+<span class="na">author</span><span class="pi">:</span> <span class="s">Steven V. Miller</span>
+<span class="na">date</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Fall</span><span class="nv"> </span><span class="s">2016"</span>
+
+<span class="na">email</span><span class="pi">:</span> <span class="s2">"</span><span class="s">svmille@clemson.edu"</span>
+<span class="na">web</span><span class="pi">:</span> <span class="s2">"</span><span class="s">svmiller.com/teaching"</span>
+<span class="na">officehours</span><span class="pi">:</span> <span class="s2">"</span><span class="s">W</span><span class="nv"> </span><span class="s">09:00-11:30</span><span class="nv"> </span><span class="s">a.m."</span>
+<span class="na">office</span><span class="pi">:</span> <span class="s2">"</span><span class="s">230A</span><span class="nv"> </span><span class="s">Brackett</span><span class="nv"> </span><span class="s">Hall"</span>
+<span class="na">classroom</span><span class="pi">:</span> <span class="s2">"</span><span class="s">*online*"</span>
+<span class="na">classhours</span><span class="pi">:</span> <span class="s2">"</span><span class="s">TR</span><span class="nv"> </span><span class="s">02:00-03:45</span><span class="nv"> </span><span class="s">p.m."</span>
+
+<span class="na">fontfamily</span><span class="pi">:</span> <span class="s">mathpazo</span>
+<span class="na">fontsize</span><span class="pi">:</span> <span class="s">11pt</span>
+<span class="na">header-includes</span><span class="pi">:</span>
+   <span class="pi">-</span> <span class="s">\linespread{1.05}</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<p>The entries after <code class="language-plaintext highlighter-rouge">output:</code> are fairly standard and some are optional. I prefer to set <code class="language-plaintext highlighter-rouge">keep_tex: true</code> to generate a raw .tex file with the finished PDF because I find it useful for debugging. I also like to make sure <code class="language-plaintext highlighter-rouge">latex_engine</code> is set to <code class="language-plaintext highlighter-rouge">pdflatex</code> even if it’s probably default with the <code class="language-plaintext highlighter-rouge">pdf_document</code> option. I also like to make sure the margins are set to one inch on all sides with the <code class="language-plaintext highlighter-rouge">geometry</code> entry.</p>
+
+<p>The next three entries coincide with what LaTeX users will recognize as the <code class="language-plaintext highlighter-rouge">\maketitle</code> call for a PDF document. <code class="language-plaintext highlighter-rouge">title</code> is the title of the course. I prefer to keep the department initials and course number in it as well. <code class="language-plaintext highlighter-rouge">author</code> should be the name of the professor while <code class="language-plaintext highlighter-rouge">date</code> should be the semester.</p>
+
+<p>The next six fields coincide with entries in a table shortly after the title, author, and date. These should be intuitive. Put the professor’s e-mail, course website, office hours, office, classroom, and class hours to fill out the basic course information. It will eventually look like this.</p>
+
+<dl class="wp-caption aligncenter" style="max-width: 800px">
+
+<dt><a href=""><img class="" src="/images/rmarkdown-syllabus-title.png" alt="The title of my R Markdown syllabus template." /></a></dt>
+
+<dd>The title of my R Markdown syllabus template.</dd>
+</dl>
+
+<p>The final three entries are optional as well. I prefer the <code class="language-plaintext highlighter-rouge">mathpazo</code> font family for LaTeX and like to set the size of the font to 11pt. <code class="language-plaintext highlighter-rouge">mathpazo</code> also looks better with a linespread of 1.05, which is why I set to include that in the header.</p>
+
+<h2 id="automatically-render-dates-in-r-markdown">Automatically Render Dates in R Markdown</h2>
+
+<p>My previous LaTeX syllabi included <a href="http://svmiller.com/blog/2015/08/streamlining-the-syllabus-in-latex-with-advdate-and-datetime/">LaTeX hacks</a> to automatically render dates in the syllabus. It’s even easier to do it in R and R Markdown. It also requires less markup.</p>
+
+<p>Put the following code in an R “chunk” somewhere in your R Markdown document (preferably near the top).</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mon</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"2016-08-15"</span><span class="p">)</span><span class="w">
+
+</span><span class="n">advdate</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span><span class="w"> </span><span class="n">adv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+ </span><span class="n">tmon</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">obj</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">7</span><span class="o">*</span><span class="p">(</span><span class="n">adv</span><span class="m">-1</span><span class="p">)</span><span class="w">
+ </span><span class="n">tfri</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">obj</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">7</span><span class="o">*</span><span class="p">(</span><span class="n">adv</span><span class="m">-1</span><span class="p">)</span><span class="w">
+ </span><span class="n">tmon</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">format</span><span class="p">(</span><span class="n">tmon</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="o">=</span><span class="s2">"%m/%d"</span><span class="p">)</span><span class="w">
+ </span><span class="n">tfri</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">format</span><span class="p">(</span><span class="n">tfri</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="o">=</span><span class="s2">"%m/%d"</span><span class="p">)</span><span class="w">
+ </span><span class="n">zadv</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sprintf</span><span class="p">(</span><span class="s2">"%02d"</span><span class="p">,</span><span class="w"> </span><span class="n">adv</span><span class="p">)</span><span class="w">
+ </span><span class="n">tmp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">paste</span><span class="p">(</span><span class="s2">"Week "</span><span class="p">,</span><span class="n">zadv</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span><span class="s2">", "</span><span class="p">,</span><span class="w"> </span><span class="n">tmon</span><span class="p">,</span><span class="s2">" - "</span><span class="p">,</span><span class="n">tfri</span><span class="p">)</span><span class="w">
+ </span><span class="nf">return</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The code itself is fairly simple. First set the first Monday of the first week of the semester. This is August 15, 2016 of the upcoming fall semester for me at Clemson University. Whatever it is for you, set it in <code class="language-plaintext highlighter-rouge">YYYY-MM-DD</code> format.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">advdate</code> function I wrote is a simple hack. It identifies the date object you give it, jumps ahead however many weeks you want, and advances it five days (which should be Friday if you set it at Monday). It returns a character object that will say something like <code class="language-plaintext highlighter-rouge">Week 01, 08/15 - 08/19</code>.</p>
+
+<p>Notice what I do with this function within my R Markdown syllabus. I hide it in a subsection block, follow it with a colon and a description of the week’s readings. Here’s the actual code in my R Markdown document.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">##  `r advdate(mon, 6)`: Keep</span><span class="w">
+
+</span><span class="c1">##  `r advdate(mon, 7)`: Going</span><span class="w">
+
+</span><span class="c1">##  `r advdate(mon, 8)`: Down</span><span class="w">
+
+</span><span class="c1">##  `r advdate(mon, 9)`: the</span><span class="w">
+
+</span><span class="c1">##  `r advdate(mon, 10)`: Line</span><span class="w">
+
+</span><span class="c1">##  `r advdate(mon, 11)`: Until</span><span class="w">
+
+</span><span class="c1">##  `r advdate(mon, 12)`: You</span><span class="w">
+
+</span><span class="c1">## `r advdate(mon, 13)`: Are</span><span class="w">
+
+</span><span class="c1">##  `r advdate(mon, 14)`: Done</span><span class="w">
+
+</span><span class="c1">##  `r advdate(mon, 15)`: with</span><span class="w">
+
+</span><span class="c1">##  `r advdate(mon, 16)`: your</span><span class="w">
+
+</span><span class="c1">##  `r advdate(mon, 17)`: Syllabus </span><span class="w">
+</span></code></pre></div></div>
+
+<p>The reader can see what this will look like in the PDF I embed at the end of the post. It’s also available on my Github repository.</p>
+
+<h2 id="render-bibliographic-citations-with-your-bib-file">Render Bibliographic Citations with Your .bib File</h2>
+
+<p>LaTeX’ virtue is its ability to flawlessly handle end-of-the-paper references. It curiously struggles with <em>full</em> mid-document bibliographic citations like professors typically want in their syllabi. <code class="language-plaintext highlighter-rouge">bibentry</code> is the package to use in these situations but it works with so few styles.</p>
+
+<p><a href="https://cran.r-project.org/web/packages/RefManageR/index.html">RefManageR</a> is a lot more flexible. It also requires minimal markup.</p>
+
+<p>Here’s what it looks like with my personal .bib file. Place the following code as an R chunk somewhere in your R Markdown document. You can place it in the same chunk as the <code class="language-plaintext highlighter-rouge">advdate</code> function.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">RefManageR</span><span class="p">)</span><span class="w">
+</span><span class="n">bib</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ReadBib</span><span class="p">(</span><span class="s2">"~/Dropbox/master.bib"</span><span class="p">)</span><span class="w"> </span><span class="c1"># Change to whatever is your .bib file</span><span class="w">
+</span><span class="n">myopts</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">BibOptions</span><span class="p">(</span><span class="n">bib.style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"authoryear"</span><span class="p">,</span><span class="w"> </span><span class="n">style</span><span class="o">=</span><span class="s2">"latex"</span><span class="p">,</span><span class="w"> </span><span class="n">first.inits</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">max.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+<p>The syntax to use it is fairly simple. Let’s say my syllabus has required readings of R. Harrison Wagner’s (2007) <a href="http://www.press.umich.edu/224960/war_and_the_state"><em>War and the State</em></a> and John Vasquez’ (2009) <a href="http://www.cambridge.org/us/academic/subjects/politics-international-relations/international-relations-and-international-organisations/war-puzzle-revisited"><em>The War Puzzle Revisited</em></a>. Telling my students that in my syllabus is as easy as finding the two bibtexkeys in my .bib file and telling R to print/display them from the BibEntry object (i.e. <code class="language-plaintext highlighter-rouge">bib</code>).</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">## Required Readings</span><span class="w">
+
+</span><span class="err">``</span><span class="n">`{r, echo = FALSE, results="asis"} 
+bib["vasquez2009twp", "wagner2007ws"]
+`</span><span class="err">``</span><span class="w"> </span></code></pre></figure>
+
+<p>This will generate the following LaTeX code that R Markdown will ultimately compile into your finished PDF.</p>
+
+<div class="language-latex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">\section</span><span class="p">{</span>Required Readings<span class="p">}</span><span class="k">\label</span><span class="p">{</span>required-readings<span class="p">}</span>
+
+<span class="k">\inputencoding</span><span class="p">{</span>utf8<span class="p">}</span> Vasquez, John A (2009).
+<span class="k">\emph</span><span class="p">{</span>The War Puzzle Revisited<span class="p">}</span>. New York, NY: Cambridge University
+Press.
+
+<span class="k">\inputencoding</span><span class="p">{</span>utf8<span class="p">}</span> Wagner, R. Harrison (2007).
+<span class="k">\emph</span><span class="p">{</span>War and the State: The Theory of International Politics<span class="p">}</span>. Ann
+Arbor, MI: The University of Michigan Press.
+</code></pre></div></div>
+
+<p><a href="https://cran.r-project.org/web/packages/RefManageR/index.html">RefManageR</a> is useful for those of us wedded to our .bib files but it’s far from a panacea. <a href="https://cran.r-project.org/web/packages/RefManageR/index.html">RefManageR</a> has a limited number of styles too, which may not satisfy political scientists (in particular) who want APSA style citations. <a href="https://cran.r-project.org/web/packages/rcrossref/index.html">rcrossref</a> can do this but it requires (to the best of my knowledge) <a href="http://www.crosscite.org/cn/">DOI numbers</a> and it will not know how to italicize things like the book or journal title.</p>
+
+<h2 id="do-even-more-in-r-markdown">Do Even More in R Markdown</h2>
+
+<p>The reader can see some of the other things I do with R Markdown in my syllabus. I prominently embed some R code to model the bivariate relationship between attendance and grades to induce my students to attend class. You can see how I dynamically report this relationship in <a href="https://github.com/svmiller/svm-r-markdown-templates">the .Rmd file</a> I upload to <a href="http://github.com/svmiller">my Github</a>.</p>
+
+<p>Here’s what a finished PDF syllabus will look like with my template.</p>
+
+<iframe src="//docs.google.com/viewer?url=https://dl.dropboxusercontent.com/s/um7nm66o7iancqe/svm-rmarkdown-syllabus-example.pdf?dl=0&amp;hl=en_US&amp;embedded=true" class="gde-frame" style="width:100%; height:800px; border: none;" scrolling="no"></iframe>
+
+
+  </article>
+
+<div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'svmiller';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+<!--     <h2 class="footer-heading">Aditya Karanam</h2> -->
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li><strong>Aditya Karanam</strong></li>
+			<li>PhD Student</li>
+          <li><a href="mailto:aditya_ks@utexas.edu">aditya_ks@utexas.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+ 
+
+         <p class="text">
+		Department of Information, Risk, & Operations Management,<br />
+		McCombs School of Business, <br />
+    2110 Speed Way<br />
+		Austin, TX 78705</p> <!-- I'm a PhD Student at McCombs School of Business, UT, Austin with research interests in the area of Economics of Information Systems. Specifically, I am interested in New product design and Innovation. Topics on my site include my research interests and teaching.
+ -->
+      </div>
+
+      <div class="footer-col  footer-col-3">
+       <ul class="social-media-list">
+
+                  
+     
+
+          
+  <li>
+    <a href="https://github.com/askaranam">
+      <i class="fa fa-github" style="color:gray"></i> Github
+    </a>
+  </li>
+
+
+          
+
+          
+  <li>
+    <a href="https://twitter.com/aditya_karanam">
+      <i class="fa fa-twitter" style="color:gray"></i> Twitter
+    </a>
+  </li>
+
+
+
+
+
+
+
+       
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+		<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-37298398-1']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+	</script>
+  </body>
+</html>
+<!-- d.s.m.s.050600.062508.030515.080516.030818; k.050800.101218 | "Baby, I'm Yours" -->
+

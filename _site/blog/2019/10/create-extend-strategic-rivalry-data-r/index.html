@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Create and Extend Strategic (International) Rivalry Data in R | Aditya Karanam</title>
+  <meta name="description" content="A few lines in R (thanks to tidyverse) can take raw rivalry data from Thompson and Dreyer (2012) and create some usable data frames for conflict research.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/blog/2019/10/create-extend-strategic-rivalry-data-r/">
+  <link rel="alternate" type="application/rss+xml" title="Aditya Karanam" href="http://localhost:4000/feed.xml" />
+<link rel='stylesheet' id='open-sans-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&#038;subset=latin%2Clatin-ext&#038;ver=4.2.4' type='text/css' media='all' />
+<link href='http://fonts.googleapis.com/css?family=Roboto:200' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:600italic,600,400,400italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://www.osu.edu/assets/fonts/webfonts.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/academicons-1.8.0/css/academicons.css">
+
+<!-- icon, perhaps -->
+<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="apple-touch-icon" type="image/png" href="/images/icon-192.png">
+
+
+<!-- OG protocol -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Create and Extend Strategic (International) Rivalry Data in R">
+<meta property="og:description" content="A few lines in R (thanks to tidyverse) can take raw rivalry data from Thompson and Dreyer (2012) and create some usable data frames for conflict research.">
+<meta property="og:url" content="http://localhost:4000/blog/2019/10/create-extend-strategic-rivalry-data-r/">
+<meta property="og:site_name" content="Aditya Karanam">
+<meta property="og:image" content="http://localhost:4000/images/bettanier-black-spot-1887.jpg">
+
+<meta property="og:image:width" content="637" />
+<meta property="og:image:height" content="403" />
+
+<!-- Twitter cards -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@aditya_karanam">
+<meta name="twitter:title" content="Create and Extend Strategic (International) Rivalry Data in R" />
+<meta name="twitter:description" content="A few lines in R (thanks to tidyverse) can take raw rivalry data from Thompson and Dreyer (2012) and create some usable data frames for conflict research." />
+<meta name="twitter:url" content="http://localhost:4000/blog/2019/10/create-extend-strategic-rivalry-data-r/" />
+<meta name="twitter:image" content="http://localhost:4000/images/bettanier-black-spot-1887.jpg">
+
+
+<link rel="author" href=""/>
+<meta name="google-site-verification" content="" />
+<meta name="msvalidate.01" content="" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Aditya Karanam</a>
+
+
+    <nav class="site-nav">
+
+      <a href="#" class="menu-icon menu.open">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>  
+
+    <div class="trigger"><h1>Main Navigation</h1>
+
+ <ul class="menu">
+
+    
+    
+     <li><a href="/about/" class="page-link">About</a>
+    
+    </li>
+    
+    
+     <li><a href="/research/" class="page-link">Research</a>
+    
+    </li>
+    
+    
+     <li><a href="/cv/" class="page-link">CV</a>
+    
+    </li>
+    
+    </ul>
+
+
+<!-- <ul class="menu">
+        <li> <a class="page-link" href="/about">About</a></li>
+        <li> <a class="page-link"  href="/blog">Blog</a>
+        <li> <a class="page-link" href="/blog">CV</a>
+        <li> <a class="page-link" href="/blog">For Students</a></li>
+        <li> <a class="page-link"  href="/blog">Research</a></a>
+        <li> <a class="page-link" href="/blog">Teaching</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">POSC 1020 – Introduction to International Relations</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">POSC 3410 – Quantitative Methods in Political Science</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">POSC 3610 – International Politics in Crisis</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3630-united-states-foreign-policy/">POSC 3630 – United States Foreign Policy</a></li>
+</ul></li>
+        <li> <a class="page-link" href="/blog">Miscellany</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">Clean USAID Greenbook Data</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">Journal of Peace Research *.bst File</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">My Custom Beamer Style</a></li>
+</ul> 
+
+</li>
+</ul> -->
+
+     </div>  
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Create and Extend Strategic (International) Rivalry Data in R</h1>
+    <p class="post-meta">Posted on October 18, 2019 by  steve  
+
+  in
+  
+  <a href="/categories/#R" title="R">R</a>&nbsp;
+  
+  <a href="/categories/#Political Science" title="Political Science">Political Science</a>&nbsp;
+  
+
+
+</p>
+  </header>
+
+  <article class="post-content">
+    <dl class="wp-caption alignright" style="max-width: 400px">
+
+<dt><a href=""><img class="" src="/images/bettanier-black-spot-1887.jpg" alt="Alfred Bettanier's (1887) painting stylizes the Franco-German enmity and its focal point at the 'black spot' of Alsace-Lorraine." /></a></dt>
+
+<dd>Alfred Bettanier's (1887) painting stylizes the Franco-German enmity and its focal point at the 'black spot' of Alsace-Lorraine.</dd>
+</dl>
+
+<p>This is another one of those things I find myself doing from time to time in my research so it might be advisable to write it down and remember how to do it.</p>
+
+<p>Rivalries are an important concept in the quantitative study of international conflict. This relates to one of the more important takeaways from the data on inter-state disputes: they’re not randomly assigned across dyads. A few dyads are <a href="https://www.amazon.com/Bound-Struggle-Strategic-Evolution-International/dp/0472112740">disproportionately responsible for large conflicts and wars</a>. I use the India-Pakistan dyad in <a href="http://posc3610.svmiller.com/">my upper-division conflict course</a> as an illustration of this phenomenon. The dyad was created in 1947 following the contentious partition of British Raj along ill-defined Radcliffe Line. War immediately followed for <a href="http://svmiller.com/blog/2015/04/some-psfrustrations-from-an-ir-perspective/">the cause of territorial consolidation</a> and relations have been tense ever since. Indeed, India and Pakistan have had four wars since their mutual creation and have been in a MID (often a fatal MID) <a href="https://github.com/svmiller/posc3610/blob/master/recurrent-conflict/posc3610-lecture-recurrent-conflict.pdf">around 70% of their existence</a>. The rivalry scholarship in international relations argues these previous crises lead to the emergence of rivalry relationships in which states view each other as threats and compete against each other. This makes future crises more likely.</p>
+
+<p>There are a number of ways of identifying rivalry relationships. Most classic rivalry scholarship identified rivalries based on past disputes. <a href="https://muse.jhu.edu/book/7260">Diehl and Goertz (2000)</a>, for example, develop a rivalry classification that depends on the volume of MIDs in a given window of time. However useful, this “dispute-density” approach uses past dispute history to predict future disputes in a matter not unlike how <a href="https://www.jstor.org/stable/2669306">roll call votes in the past are use to predict roll call votes in the future</a>. Any observed relationship might simply be a tautology.</p>
+
+<p>For that reason, I’ve been to drawn to <a href="https://www.jstor.org/stable/3096060?seq=1#metadata_info_tab_contents">Thompson’s (2000)</a> and later <a href="https://www.amazon.com/Handbook-International-Rivalries-Correlates-War/dp/0872894878">Thompson and Dreyer’s (2012)</a> “diplomatic history” approach. Herein, researchers look into diplomatic relations to see how states interact with each other, whether diplomatic communiqués treat the other side as threats, and whether military exercises target the other side with that in mind. This approach might be more “perceptive” than the dispute-density approach but it is at least conceptually distinct from the phenomenon we want rivalry to explain (i.e. conflict recurrence).</p>
+
+<p>However, the ensuing data are less of a data set one can download and more a history of rivalry relationships that Thompson and Dreyer summarize in <a href="https://www.amazon.com/Handbook-International-Rivalries-Correlates-War/dp/0872894878">their book</a>. Nevertheless, the appendix of their book, and a few lines of R code, can create some data sets to use in our standard dyad-year modeling approach to conflict onset.</p>
+
+<ol>
+  <li><a href="#rawdata">The (Raw) Data</a></li>
+  <li><a href="#prepdata">Prep the Data</a></li>
+  <li><a href="#createrivalryyear">Create (Non)-Directed Rivalry Year Data</a></li>
+</ol>
+
+<h2 id="rawdata">The (Raw) Data</h2>
+
+<p>I scanned Thompson and Dreyer’s (2012) book at the appendix and created a spreadsheet that I make available in <a href="https://github.com/svmiller/stevemisc">my <code class="language-plaintext highlighter-rouge">stevemisc</code> package</a> as a data object titled <code class="language-plaintext highlighter-rouge">strategic_rivalries</code>. Alternatively, a .csv of the data <a href="https://gist.github.com/svmiller/63dace4aa5a00eddce307d964c7bac23">is available here</a>. Let’s load that raw data and take a gander at it. The data are purposely minimal right now because it’s a quick scan of the information from the appendix. The goal is to record it in a spreadsheet and extend it later.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># library(tidyverse)</span><span class="w">
+</span><span class="c1"># library(stevemisc)</span><span class="w">
+</span><span class="n">data</span><span class="p">(</span><span class="s2">"strategic_rivalries"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># alternatively:</span><span class="w">
+</span><span class="c1"># strategic_rivalries &lt;- read_csv("https://gist.githubusercontent.com/svmiller/63dace4aa5a00eddce307d964c7bac23/raw/3941ed5654cff77dc4509ff7b81e664cf8b0875e/strategic_rivalries.csv")</span><span class="w">
+
+</span><span class="n">strategic_rivalries</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">head</span><span class="p">(</span><span class="m">5</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">kable</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="o">=</span><span class="s2">"html"</span><span class="p">,</span><span class="w">
+        </span><span class="n">table.attr</span><span class="o">=</span><span class="s1">'id="stevetable"'</span><span class="p">,</span><span class="w">
+        </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"The First Five Rows of the Strategic Rivalry Data"</span><span class="p">,</span><span class="w">
+        </span><span class="n">align</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"c"</span><span class="p">,</span><span class="s2">"l"</span><span class="p">,</span><span class="s2">"l"</span><span class="p">,</span><span class="w"> </span><span class="s2">"l"</span><span class="p">,</span><span class="w"> </span><span class="s2">"l"</span><span class="p">,</span><span class="w"> </span><span class="s2">"c"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">,</span><span class="s2">"l"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<table id="stevetable">
+<caption>The First Five Rows of the Strategic Rivalry Data</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> rivalryno </th>
+   <th style="text-align:left;"> rivalryname </th>
+   <th style="text-align:left;"> sidea </th>
+   <th style="text-align:left;"> sideb </th>
+   <th style="text-align:left;"> styear </th>
+   <th style="text-align:center;"> endyear </th>
+   <th style="text-align:center;"> region </th>
+   <th style="text-align:left;"> type1 </th>
+   <th style="text-align:center;"> type2 </th>
+   <th style="text-align:center;"> type3 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:left;"> Austria-France </td>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:left;"> France </td>
+   <td style="text-align:left;"> 1494 </td>
+   <td style="text-align:center;"> 1918 </td>
+   <td style="text-align:center;"> European GPs </td>
+   <td style="text-align:left;"> spatial </td>
+   <td style="text-align:center;"> positional </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:left;"> Austria-Ottoman Empire </td>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:left;"> Ottoman Empire </td>
+   <td style="text-align:left;"> 1494 </td>
+   <td style="text-align:center;"> 1908 </td>
+   <td style="text-align:center;"> European GPs </td>
+   <td style="text-align:left;"> spatial </td>
+   <td style="text-align:center;"> positional </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:left;"> France-Spain </td>
+   <td style="text-align:left;"> France </td>
+   <td style="text-align:left;"> Spain </td>
+   <td style="text-align:left;"> 1494 </td>
+   <td style="text-align:center;"> 1700 </td>
+   <td style="text-align:center;"> European GPs </td>
+   <td style="text-align:left;"> positional </td>
+   <td style="text-align:center;"> spatial </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 3 </td>
+   <td style="text-align:left;"> Britain-France 1 </td>
+   <td style="text-align:left;"> Great Britain </td>
+   <td style="text-align:left;"> France </td>
+   <td style="text-align:left;"> 1494 </td>
+   <td style="text-align:center;"> 1716 </td>
+   <td style="text-align:center;"> European GPs </td>
+   <td style="text-align:left;"> spatial </td>
+   <td style="text-align:center;"> positional </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 5 </td>
+   <td style="text-align:left;"> Ottoman Empire-Spain </td>
+   <td style="text-align:left;"> Ottoman Empire </td>
+   <td style="text-align:left;"> Spain </td>
+   <td style="text-align:left;"> 1494 </td>
+   <td style="text-align:center;"> 1585 </td>
+   <td style="text-align:center;"> European GPs </td>
+   <td style="text-align:left;"> spatial </td>
+   <td style="text-align:center;"> positional </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+</tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">rivalryno</code> is a unique rivalry number that starts at 1 and ends at 197. <code class="language-plaintext highlighter-rouge">rivalryname</code> is the name of the rivalry that Thompson and Dreyer give this particular observation. In most cases, it’s a simple concatenation of the two participants in an alphabetical order. Cases where there are multiple rivalries in a given dyad will have numbers next to them (e.g. Britain-Spain 1, Britain-Spain 2). <code class="language-plaintext highlighter-rouge">sidea</code> and <code class="language-plaintext highlighter-rouge">sideb</code> are the participants in the rivalry. The rivalry data are non-directed but <code class="language-plaintext highlighter-rouge">sidea</code> is whatever country comes first alphabetically. <code class="language-plaintext highlighter-rouge">styear</code> and <code class="language-plaintext highlighter-rouge">endyear</code> are the start year and end year (respectively) for the rivalry. Ongoing rivalries have a right bound of 2010, but could conceivably be extended to the present year in almost every case.</p>
+
+<p><code class="language-plaintext highlighter-rouge">region</code> is where Thompson and Dreyer code the rivalry as occurring. These regions that Thompson and Dreyer describe are multiple and mostly consistent across time and space, but users interested in regional rivalries may want to explore these locations and standardize them further. For example, the “Germany-United States 2” rivalry (1933-1945) and “Russia-United States 2” (2007-present) rivalries are both in “Multiple” regions despite some different focal points between the two whereas the “Russia-United States 1” (1945-1989) rivalry is in the “Global” region. Of note: European great power rivalries have their own region (“European GPs”).</p>
+
+<p>Finally, <code class="language-plaintext highlighter-rouge">type1</code>, <code class="language-plaintext highlighter-rouge">type2</code>, and <code class="language-plaintext highlighter-rouge">type3</code> variables describe the nature of the rivalry and what it concerned, in order of importance. Not every rivalry has a second or third dimension, but every rivalry must have a primary dimension coded in the <code class="language-plaintext highlighter-rouge">type1</code> variable. There are four categories of rivalry in the Thompson and Dreyer (2012) data. “Spatial” rivalries are contested over the control of territory, broadly defined. The Armenia-Azerbaijan rivalry (1991-present) is a good example of an exclusively spatial rivalry since most of the relationship concerns Nagorno-Karabakh. “Positional” rivalries are competitions for relative shares of influence in a region. The Iran-Israel rivalry (1979-present) is a good example of an exclusively positional rivalry since the concern largely hinges on Israel’s misgivings about Iran’s aspirations in the region after the overthrow of the Shah in 1979. “Ideological” rivalries are relationships where two sides contest virtues of competing economic/political systems. The “Costa Rica-Nicaragua 2” (1948-1990) rivalry is the only exclusively ideological rivalry in the data. Therein, democratic Costa Rica and Marxist Nicaragua actively advocated regime change for the other side. “Interventionary” rivalries are new types of rivalries that Thompson and Dreyer introduce to this project. These are relationships in which states intrude into the internal affairs of other states for sake of leverage in the other state’s decision-making. They are often done without clear spatial, positional, or even ideological reasons. The concept borrows from <a href="https://www.jstor.org/stable/3993184?seq=1#metadata_info_tab_contents">Cliffe’s (1999) discussion of “mutual intervention”</a> in the Horn of Africa and it should be no surprise that all interventionary rivalries in the data are located in Central Africa or East Africa.</p>
+
+<p>Many rivalries have a second dimension but very few have three dimensions. The West Germany-East Germany rivalry (1949-1973) is an accessible three-dimensional rivalry in this data. Therein, the rivalry was primarily ideological (<code class="language-plaintext highlighter-rouge">type1</code>), but had a secondary positional aspect (<code class="language-plaintext highlighter-rouge">type2</code>) and a minimal, but still important, spatial/territorial element (<code class="language-plaintext highlighter-rouge">type3</code>) on top of that.</p>
+
+<p>There is more coding necessary to get the most use out of these data, but the raw data can already communicate some basic descriptive statistics about strategic rivalries. For example, here are the the 10 longest rivalries in the data. It’s unsurprising that the top seven are European great power rivalries.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">strategic_rivalries</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">endyear</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">styear</span><span class="p">)</span><span class="m">+1</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">arrange</span><span class="p">(</span><span class="o">-</span><span class="n">duration</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">head</span><span class="p">(</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">select</span><span class="p">(</span><span class="n">rivalryname</span><span class="p">,</span><span class="w"> </span><span class="n">styear</span><span class="p">,</span><span class="w"> </span><span class="n">endyear</span><span class="p">,</span><span class="w"> </span><span class="n">region</span><span class="p">,</span><span class="w"> </span><span class="n">type1</span><span class="p">,</span><span class="w"> </span><span class="n">duration</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">kable</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="o">=</span><span class="s2">"html"</span><span class="p">,</span><span class="w">
+    </span><span class="n">table.attr</span><span class="o">=</span><span class="s1">'id="stevetable"'</span><span class="p">,</span><span class="w">
+    </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"The Ten Longest Rivalries in the History of the World"</span><span class="p">,</span><span class="w">
+    </span><span class="n">align</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"l"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">,</span><span class="s2">"l"</span><span class="p">,</span><span class="s2">"l"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<table id="stevetable">
+<caption>The Ten Longest Rivalries in the History of the World</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> rivalryname </th>
+   <th style="text-align:center;"> styear </th>
+   <th style="text-align:center;"> endyear </th>
+   <th style="text-align:left;"> region </th>
+   <th style="text-align:left;"> type1 </th>
+   <th style="text-align:center;"> duration </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Austria-France </td>
+   <td style="text-align:center;"> 1494 </td>
+   <td style="text-align:center;"> 1918 </td>
+   <td style="text-align:left;"> European GPs </td>
+   <td style="text-align:left;"> spatial </td>
+   <td style="text-align:center;"> 425 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Austria-Ottoman Empire </td>
+   <td style="text-align:center;"> 1494 </td>
+   <td style="text-align:center;"> 1908 </td>
+   <td style="text-align:left;"> European GPs </td>
+   <td style="text-align:left;"> spatial </td>
+   <td style="text-align:center;"> 415 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ottoman Empire-Russia </td>
+   <td style="text-align:center;"> 1668 </td>
+   <td style="text-align:center;"> 1918 </td>
+   <td style="text-align:left;"> European GPs </td>
+   <td style="text-align:left;"> spatial </td>
+   <td style="text-align:center;"> 251 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ottoman Empire-Venice </td>
+   <td style="text-align:center;"> 1494 </td>
+   <td style="text-align:center;"> 1717 </td>
+   <td style="text-align:left;"> European GPs </td>
+   <td style="text-align:left;"> spatial </td>
+   <td style="text-align:center;"> 224 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Britain-France 1 </td>
+   <td style="text-align:center;"> 1494 </td>
+   <td style="text-align:center;"> 1716 </td>
+   <td style="text-align:left;"> European GPs </td>
+   <td style="text-align:left;"> spatial </td>
+   <td style="text-align:center;"> 223 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> France-Spain </td>
+   <td style="text-align:center;"> 1494 </td>
+   <td style="text-align:center;"> 1700 </td>
+   <td style="text-align:left;"> European GPs </td>
+   <td style="text-align:left;"> positional </td>
+   <td style="text-align:center;"> 207 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> France-Prussia </td>
+   <td style="text-align:center;"> 1756 </td>
+   <td style="text-align:center;"> 1955 </td>
+   <td style="text-align:left;"> European GPs </td>
+   <td style="text-align:left;"> spatial </td>
+   <td style="text-align:center;"> 200 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Colombia-Venezuela </td>
+   <td style="text-align:center;"> 1831 </td>
+   <td style="text-align:center;"> 2010 </td>
+   <td style="text-align:left;"> South America </td>
+   <td style="text-align:left;"> spatial </td>
+   <td style="text-align:center;"> 180 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Britain-Russia </td>
+   <td style="text-align:center;"> 1778 </td>
+   <td style="text-align:center;"> 1956 </td>
+   <td style="text-align:left;"> European GPs </td>
+   <td style="text-align:left;"> positional </td>
+   <td style="text-align:center;"> 179 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bolivia-Chile </td>
+   <td style="text-align:center;"> 1836 </td>
+   <td style="text-align:center;"> 2010 </td>
+   <td style="text-align:left;"> South America </td>
+   <td style="text-align:left;"> spatial </td>
+   <td style="text-align:center;"> 175 </td>
+  </tr>
+</tbody>
+</table>
+
+<p>We can also do a basic summary of the distribution of rivalries by primary rivalry type. The modal category is clearly spatial rivalry, which coincides with over 45% of all primary rivalry types. Positional rivalries over relative shares of influence in a region are the next most common. The least common rivalry type is interventionary. These are rivalries exclusive to Sub-Saharan Africa.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">strategic_rivalries</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">group_by</span><span class="p">(</span><span class="n">type1</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">summarize</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">())</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">ungroup</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">arrange</span><span class="p">(</span><span class="o">-</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">percent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="n">mround2</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">)),</span><span class="s2">"%"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">kable</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="o">=</span><span class="s2">"html"</span><span class="p">,</span><span class="w">
+        </span><span class="n">table.attr</span><span class="o">=</span><span class="s1">'id="stevetable"'</span><span class="p">,</span><span class="w">
+        </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"The Distribution of Rivalries by Primary Rivalry Type, 1494-2010"</span><span class="p">,</span><span class="w">
+        </span><span class="n">align</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"l"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<table id="stevetable">
+<caption>The Distribution of Rivalries by Primary Rivalry Type, 1494-2010</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> type1 </th>
+   <th style="text-align:center;"> n </th>
+   <th style="text-align:center;"> percent </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> spatial </td>
+   <td style="text-align:center;"> 89 </td>
+   <td style="text-align:center;"> 45.18% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> positional </td>
+   <td style="text-align:center;"> 65 </td>
+   <td style="text-align:center;"> 32.99% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ideological </td>
+   <td style="text-align:center;"> 30 </td>
+   <td style="text-align:center;"> 15.23% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> interventionary </td>
+   <td style="text-align:center;"> 13 </td>
+   <td style="text-align:center;"> 6.6% </td>
+  </tr>
+</tbody>
+</table>
+
+<h2 id="prepdata">Prep the Data</h2>
+
+<p>A user will need to prep the data a little to get some usable dyad-year data from this raw list of strategic rivalries. Importantly, the data are non-directed but the dyad is “ordered” alphabetically rather than by a numeric coding system (a la Correlates of War [CoW] state system membership). This will make for some headaches in standard dyad-year data because Portugal (ccode: 235) precedes Spain (ccode: 230) in the rivalry list, but will never precede Spain in a non-directed dyad-year design that relies on CoW system membership data.</p>
+
+<p>Fortunately, <a href="https://cran.r-project.org/web/packages/countrycode/index.html">the <code class="language-plaintext highlighter-rouge">countrycode</code> package</a> is great for this. We’ll first convert <code class="language-plaintext highlighter-rouge">sidea</code> and <code class="language-plaintext highlighter-rouge">sideb</code> to a <code class="language-plaintext highlighter-rouge">ccodea</code> and <code class="language-plaintext highlighter-rouge">ccodeb</code>. The package will take care of almost everything here, though there are a few caveats that I’ll highlight in the code below.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">require</span><span class="p">(</span><span class="n">countrycode</span><span class="p">)</span><span class="w">
+
+</span><span class="n">strategic_rivalries</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">ccodea</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">countrycode</span><span class="p">(</span><span class="n">sidea</span><span class="p">,</span><span class="w"> </span><span class="s2">"country.name"</span><span class="p">,</span><span class="w"> </span><span class="s2">"cown"</span><span class="p">),</span><span class="w">
+         </span><span class="n">ccodeb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">countrycode</span><span class="p">(</span><span class="n">sideb</span><span class="p">,</span><span class="w"> </span><span class="s2">"country.name"</span><span class="p">,</span><span class="w"> </span><span class="s2">"cown"</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">strategic_rivalries</span><span class="w">
+
+</span><span class="c1"># Austria is "Austria" in the rivalry data, but Austria-Hungary before it.</span><span class="w">
+</span><span class="c1"># We'll fix some of this a bit later too.</span><span class="w">
+</span><span class="n">strategic_rivalries</span><span class="o">$</span><span class="n">ccodea</span><span class="p">[</span><span class="n">strategic_rivalries</span><span class="o">$</span><span class="n">sidea</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"Austria"</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">300</span><span class="w">
+</span><span class="c1"># Prussia doesn't appear as a partial matching term for successor state Germany</span><span class="w">
+</span><span class="n">strategic_rivalries</span><span class="o">$</span><span class="n">ccodea</span><span class="p">[</span><span class="n">strategic_rivalries</span><span class="o">$</span><span class="n">sidea</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"Prussia"</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">255</span><span class="w"> 
+</span><span class="c1"># countrycode instinctively gives Germany's ccode to West Germany</span><span class="w">
+</span><span class="n">strategic_rivalries</span><span class="o">$</span><span class="n">ccodea</span><span class="p">[</span><span class="n">strategic_rivalries</span><span class="o">$</span><span class="n">sidea</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"West Germany"</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">260</span><span class="w"> 
+</span><span class="c1"># Ottoman Empire doesn't appear as a matching term for successor state Turkey</span><span class="w">
+</span><span class="n">strategic_rivalries</span><span class="o">$</span><span class="n">ccodea</span><span class="p">[</span><span class="n">strategic_rivalries</span><span class="o">$</span><span class="n">sidea</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"Ottoman Empire"</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">640</span><span class="w">
+</span><span class="c1"># Silly error, but countrycode doesn't know between Vietnams</span><span class="w">
+</span><span class="n">strategic_rivalries</span><span class="o">$</span><span class="n">ccodea</span><span class="p">[</span><span class="n">strategic_rivalries</span><span class="o">$</span><span class="n">sidea</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"North Vietnam"</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">816</span><span class="w">
+
+
+</span><span class="n">strategic_rivalries</span><span class="o">$</span><span class="n">ccodeb</span><span class="p">[</span><span class="n">strategic_rivalries</span><span class="o">$</span><span class="n">sideb</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"Ottoman Empire"</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">640</span><span class="w">
+</span><span class="c1"># Note: I'm creating this since Venice never appears in the CoW data. I won't ever use it.</span><span class="w">
+</span><span class="c1"># You probably won't either.</span><span class="w">
+</span><span class="n">strategic_rivalries</span><span class="o">$</span><span class="n">ccodeb</span><span class="p">[</span><span class="n">strategic_rivalries</span><span class="o">$</span><span class="n">sideb</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"Venice"</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">324</span><span class="w"> 
+</span><span class="n">strategic_rivalries</span><span class="o">$</span><span class="n">ccodeb</span><span class="p">[</span><span class="n">strategic_rivalries</span><span class="o">$</span><span class="n">sideb</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"Prussia"</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">255</span><span class="w">
+</span><span class="c1"># countrycode always struggles with Serbia as successor state to Yugoslavia.</span><span class="w">
+</span><span class="n">strategic_rivalries</span><span class="o">$</span><span class="n">ccodeb</span><span class="p">[</span><span class="n">strategic_rivalries</span><span class="o">$</span><span class="n">sideb</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"Serbia"</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">345</span><span class="w"> 
+</span></code></pre></div></div>
+
+<p>Next, we’ll create a <code class="language-plaintext highlighter-rouge">ccode1</code> and <code class="language-plaintext highlighter-rouge">ccode2</code> variable that makes these non-directed. The lower country code will always appear first.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">strategic_rivalries</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">ccode1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ifelse</span><span class="p">(</span><span class="n">ccodeb</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">ccodea</span><span class="p">,</span><span class="w"> </span><span class="n">ccodea</span><span class="p">,</span><span class="w"> </span><span class="n">ccodeb</span><span class="p">),</span><span class="w">
+         </span><span class="n">ccode2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ifelse</span><span class="p">(</span><span class="n">ccodeb</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">ccodea</span><span class="p">,</span><span class="w"> </span><span class="n">ccodeb</span><span class="p">,</span><span class="w"> </span><span class="n">ccodea</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">strategic_rivalries</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="createrivalryyear">Create (Non)-Directed Rivalry-Year Data</h2>
+
+<p>The process of extending these rivalry data into rivalry-year data is effectively identical to what I showed in my guide on <a href="http://svmiller.com/blog/2019/01/create-country-year-dyad-year-from-country-data/">how to create country-year, non-directed dyad-year, and directed dyad-year data</a>. People who have read that guide will see what is happening; <code class="language-plaintext highlighter-rouge">rowwise()</code> and <code class="language-plaintext highlighter-rouge">unnest()</code> are doing all the heavy-lifting here. Do note we need a quick fix for that one Austrian rivalry that actually extends past 1918.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># NRY: non-directed rivalry-years</span><span class="w">
+
+</span><span class="n">strategic_rivalries</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="c1"># We don't need these two columns and they'll only get in the way.</span><span class="w">
+  </span><span class="n">select</span><span class="p">(</span><span class="o">-</span><span class="n">ccodea</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">ccodeb</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="c1"># Prepare the pipe to think rowwise. If you don't, the next mutate command will fail.</span><span class="w">
+  </span><span class="n">rowwise</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="c1"># Create a list in a tibble that we're going to expand soon.</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">seq</span><span class="p">(</span><span class="n">styear</span><span class="p">,</span><span class="w"> </span><span class="n">endyear</span><span class="p">)))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="c1"># Unnest the list, which will expand the data.</span><span class="w">
+  </span><span class="n">unnest</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="c1"># Minor note: ccode change for Austria, post-1918 for rivalryno 79.</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">ccode1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ifelse</span><span class="p">(</span><span class="n">ccode1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">300</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">year</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">1919</span><span class="p">,</span><span class="w"> </span><span class="m">305</span><span class="p">,</span><span class="w"> </span><span class="n">ccode1</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">NRY</span><span class="w">
+</span></code></pre></div></div>
+
+<p>This dynamic document isn’t also creating non-directed dyad-year data, but merging non-directed <em>rivalry</em>-year data into non-directed <em>dyad</em>-year data is easy since there would be common keys of <code class="language-plaintext highlighter-rouge">ccode1</code>, <code class="language-plaintext highlighter-rouge">ccode2</code>, and <code class="language-plaintext highlighter-rouge">year</code>. It would look like this.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Assume an object (NDY) has complete non-directed dyad-year data.</span><span class="w">
+</span><span class="c1"># See: svmiller.com/blog/2019/01/create-country-year-dyad-year-from-country-data/</span><span class="w">
+
+</span><span class="n">NRY</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="c1"># Let's just select stuff we may want since we don't want too huge a data frame.</span><span class="w">
+  </span><span class="n">select</span><span class="p">(</span><span class="n">ccode1</span><span class="p">,</span><span class="w"> </span><span class="n">ccode2</span><span class="p">,</span><span class="w"> </span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">type1</span><span class="o">:</span><span class="n">type3</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="c1"># Simple mutate: every row means there's an ongoing rivalry. Duh.</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">ongorivalry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="c1"># And left_join...</span><span class="w">
+  </span><span class="n">left_join</span><span class="p">(</span><span class="n">NDY</span><span class="p">,</span><span class="w"> </span><span class="n">.</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="c1"># if ongorivalry is NA, it's actually zero</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">ongorivalry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ifelse</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">ongorivalry</span><span class="p">),</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">ongorivalry</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">NDY</span><span class="w">
+</span></code></pre></div></div>
+
+<p>That’s it. Doing this takes a table of 197 rivalries in Thompson and Dreyer’s appendix, entered to a spreadsheet in about 30 minutes (if I recall that effort correctly), saved as an R data set, and extends it into rivalry-year data to be quickly merged into dyad-year data. Just a few lines of R code from <code class="language-plaintext highlighter-rouge">tidyerse</code> with some light maintenance from the <code class="language-plaintext highlighter-rouge">countrycode</code> package are all you need.</p>
+
+
+  </article>
+
+<div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'svmiller';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+<!--     <h2 class="footer-heading">Aditya Karanam</h2> -->
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li><strong>Aditya Karanam</strong></li>
+			<li>PhD Student</li>
+          <li><a href="mailto:aditya_ks@utexas.edu">aditya_ks@utexas.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+ 
+
+         <p class="text">
+		Department of Information, Risk, & Operations Management,<br />
+		McCombs School of Business, <br />
+    2110 Speed Way<br />
+		Austin, TX 78705</p> <!-- I'm a PhD Student at McCombs School of Business, UT, Austin with research interests in the area of Economics of Information Systems. Specifically, I am interested in New product design and Innovation. Topics on my site include my research interests and teaching.
+ -->
+      </div>
+
+      <div class="footer-col  footer-col-3">
+       <ul class="social-media-list">
+
+                  
+     
+
+          
+  <li>
+    <a href="https://github.com/askaranam">
+      <i class="fa fa-github" style="color:gray"></i> Github
+    </a>
+  </li>
+
+
+          
+
+          
+  <li>
+    <a href="https://twitter.com/aditya_karanam">
+      <i class="fa fa-twitter" style="color:gray"></i> Twitter
+    </a>
+  </li>
+
+
+
+
+
+
+
+       
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+		<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-37298398-1']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+	</script>
+  </body>
+</html>
+<!-- d.s.m.s.050600.062508.030515.080516.030818; k.050800.101218 | "Baby, I'm Yours" -->
+

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Two Helpful R Markdown/Jekyll Tips for an Easier Blogging Experience | Aditya Karanam</title>
+  <meta name="description" content="Here are two tips for having what I think will be an easier blogging experience in R Markdown and Jekyll.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/blog/2019/08/two-helpful-rmarkdown-jekyll-tips/">
+  <link rel="alternate" type="application/rss+xml" title="Aditya Karanam" href="http://localhost:4000/feed.xml" />
+<link rel='stylesheet' id='open-sans-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&#038;subset=latin%2Clatin-ext&#038;ver=4.2.4' type='text/css' media='all' />
+<link href='http://fonts.googleapis.com/css?family=Roboto:200' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:600italic,600,400,400italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://www.osu.edu/assets/fonts/webfonts.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/academicons-1.8.0/css/academicons.css">
+
+<!-- icon, perhaps -->
+<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="apple-touch-icon" type="image/png" href="/images/icon-192.png">
+
+
+<!-- OG protocol -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Two Helpful R Markdown/Jekyll Tips for an Easier Blogging Experience">
+<meta property="og:description" content="Here are two tips for having what I think will be an easier blogging experience in R Markdown and Jekyll.">
+<meta property="og:url" content="http://localhost:4000/blog/2019/08/two-helpful-rmarkdown-jekyll-tips/">
+<meta property="og:site_name" content="Aditya Karanam">
+<meta property="og:image" content="http://localhost:4000/images/brent-rambo.jpg">
+
+<meta property="og:image:width" content="637" />
+<meta property="og:image:height" content="403" />
+
+<!-- Twitter cards -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@aditya_karanam">
+<meta name="twitter:title" content="Two Helpful R Markdown/Jekyll Tips for an Easier Blogging Experience" />
+<meta name="twitter:description" content="Here are two tips for having what I think will be an easier blogging experience in R Markdown and Jekyll." />
+<meta name="twitter:url" content="http://localhost:4000/blog/2019/08/two-helpful-rmarkdown-jekyll-tips/" />
+<meta name="twitter:image" content="http://localhost:4000/images/brent-rambo.jpg">
+
+
+<link rel="author" href=""/>
+<meta name="google-site-verification" content="" />
+<meta name="msvalidate.01" content="" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Aditya Karanam</a>
+
+
+    <nav class="site-nav">
+
+      <a href="#" class="menu-icon menu.open">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>  
+
+    <div class="trigger"><h1>Main Navigation</h1>
+
+ <ul class="menu">
+
+    
+    
+     <li><a href="/about/" class="page-link">About</a>
+    
+    </li>
+    
+    
+     <li><a href="/research/" class="page-link">Research</a>
+    
+    </li>
+    
+    
+     <li><a href="/cv/" class="page-link">CV</a>
+    
+    </li>
+    
+    </ul>
+
+
+<!-- <ul class="menu">
+        <li> <a class="page-link" href="/about">About</a></li>
+        <li> <a class="page-link"  href="/blog">Blog</a>
+        <li> <a class="page-link" href="/blog">CV</a>
+        <li> <a class="page-link" href="/blog">For Students</a></li>
+        <li> <a class="page-link"  href="/blog">Research</a></a>
+        <li> <a class="page-link" href="/blog">Teaching</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">POSC 1020 – Introduction to International Relations</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">POSC 3410 – Quantitative Methods in Political Science</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">POSC 3610 – International Politics in Crisis</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3630-united-states-foreign-policy/">POSC 3630 – United States Foreign Policy</a></li>
+</ul></li>
+        <li> <a class="page-link" href="/blog">Miscellany</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">Clean USAID Greenbook Data</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">Journal of Peace Research *.bst File</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">My Custom Beamer Style</a></li>
+</ul> 
+
+</li>
+</ul> -->
+
+     </div>  
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Two Helpful R Markdown/Jekyll Tips for an Easier Blogging Experience</h1>
+    <p class="post-meta">Posted on August 1, 2019 by  steve  
+
+  in
+  
+  <a href="/categories/#R Markdown" title="R Markdown">R Markdown</a>&nbsp;
+  
+  <a href="/categories/#Jekyll" title="Jekyll">Jekyll</a>&nbsp;
+  
+
+
+</p>
+  </header>
+
+  <article class="post-content">
+    <dl class="wp-caption alignright" style="max-width: 410px">
+
+<dt><a href=""><img class="" src="/images/brent-rambo.gif" alt="Jekyll rules the world. Your Jekyll friend, Steve" /></a></dt>
+
+<dd>Jekyll rules the world. Your Jekyll friend, Steve</dd>
+</dl>
+
+<p><em>Last updated: August 02, 2019</em></p>
+
+<p>It’s crazy to think <a href="http://svmiller.com/blog/2015/08/create-your-website-in-jekyll/">I transitioned my website from Wordpress to Jekyll</a> four years ago this month. About two and a half years ago <a href="http://svmiller.com/blog/2017/07/how-serious-are-americans-about-democracy-americasbarometer/">(example)</a>, I started doing some R blogging by using <a href="https://github.com/yihui/servr">the <code class="language-plaintext highlighter-rouge">servr</code> package</a> to render some R Markdown-based analyses as blog posts.</p>
+
+<p>The former experience (Jekyll) has been much easier than the latter experience (getting R Markdown to play nice with Jekyll). Basically, <code class="language-plaintext highlighter-rouge">servr</code> works as a wrapper for rendering a site in Jekyll, scanning a directory for some source R Markdown scripts and rendering them as blog posts. I’ve never had a great experience with it for two reasons. First, <code class="language-plaintext highlighter-rouge">servr</code> always struck me as clunky in approach and perhaps even clunkier in execution. It’s a great tool for compiling and rendering R Markdown files as a blog posts, but it seems like conceptual overkill when only a handful of my blog posts include analyses in R. I found the experience clunky as well. <code class="language-plaintext highlighter-rouge">servr</code> seemed to take more time building (“serving”) my website than a standard <code class="language-plaintext highlighter-rouge">jekyll serve -w</code> call in a terminal. It wanted to render any R Markdown file it could find rather than the one I wanted it to render, which raised the possibility of it breaking a post from a few years ago because of a package dependency issue that I may not have noticed emerge over the years. It would also choke, violently, on any error I committed in the document and take 30 seconds or so to reset after spamming the R console with errors. <a href="https://imgur.com/gallery/ZG3r5">There has to be a better way!</a></p>
+
+<p>I think I stumbled on two tips for a better blogging experience with Jekyll and R Markdown and thought sharing them here might help some others.</p>
+
+<h2 id="manually-render-r-markdown-posts-with-a-few-lines-in-yaml">Manually Render R Markdown Posts with a Few Lines in YAML</h2>
+
+<p>It might be better to skip <code class="language-plaintext highlighter-rouge">servr</code> altogether and just manually compile your R Markdown posts to the <code class="language-plaintext highlighter-rouge">_posts</code> directory (where Jekyll stores blog posts by default). Just a few lines in the YAML will do it.</p>
+
+<p>First, assume you store your R Markdown posts in a separate directory (typically <code class="language-plaintext highlighter-rouge">_source</code>, which is <a href="https://github.com/svmiller/svmiller.github.io/tree/master/_source">how I have it on my Github</a>) and want to render them to the <code class="language-plaintext highlighter-rouge">_posts</code> directory. This is what the <code class="language-plaintext highlighter-rouge">servr</code> package does when it builds a Jekyll site. Toward that end, keep the R Markdown files in that <code class="language-plaintext highlighter-rouge">_source</code> directory but change your YAML to be someting like this (based on the post on which I’m working right now).</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Two Helpful R Markdown/Jekyll Tips for an Easier Blogging Experience</span>
+<span class="na">output</span><span class="pi">:</span>
+  <span class="na">md_document</span><span class="pi">:</span>
+    <span class="na">variant</span><span class="pi">:</span> <span class="s">gfm</span>
+    <span class="na">preserve_yaml</span><span class="pi">:</span> <span class="s">TRUE</span>
+<span class="na">knit</span><span class="pi">:</span> <span class="s">(function(inputFile, encoding) {</span>
+  <span class="s">rmarkdown::render(inputFile, encoding = encoding, output_dir = "../_posts") })</span>
+<span class="na">author</span><span class="pi">:</span> <span class="s2">"</span><span class="s">steve"</span>
+<span class="na">date</span><span class="pi">:</span> <span class="s1">'</span><span class="s">2019-08-01'</span>
+<span class="na">excerpt</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Here</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">two</span><span class="nv"> </span><span class="s">tips</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">having</span><span class="nv"> </span><span class="s">what</span><span class="nv"> </span><span class="s">I</span><span class="nv"> </span><span class="s">think</span><span class="nv"> </span><span class="s">will</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">easier</span><span class="nv"> </span><span class="s">blogging</span><span class="nv"> </span><span class="s">experience</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">R</span><span class="nv"> </span><span class="s">Markdown</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">Jekyll."</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="na">categories</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">R Markdown</span>
+  <span class="pi">-</span> <span class="s">Jekyll</span>
+<span class="na">image</span><span class="pi">:</span> <span class="s">brent-rambo.jpg</span> <span class="c1"># for open graph protocol</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<p>This looks like boilerplate YAML for any post on a Jekyll blog. It’s the <code class="language-plaintext highlighter-rouge">output:</code> and <code class="language-plaintext highlighter-rouge">knit:</code> fields I want to highlight here. First, I think it’s a better approach for my blogging workflow to just manually render a document as if I were rendering an academic paper. For this purpose, change the output to <code class="language-plaintext highlighter-rouge">md_document:</code>. The <code class="language-plaintext highlighter-rouge">variant: gfm</code> (Github-flavored markdown) is probably optional, but <code class="language-plaintext highlighter-rouge">preserve_yaml: TRUE</code> is not. Make sure to put that in there.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">knit:</code> option is a convoluted way of specifying that the finished markdown document should be in the <code class="language-plaintext highlighter-rouge">_posts</code> directory. The relative path there (i.e. <code class="language-plaintext highlighter-rouge">../</code>) says to backtrack one directory (i.e. from <code class="language-plaintext highlighter-rouge">_source</code>) to the root directory, and then go into the <code class="language-plaintext highlighter-rouge">_posts</code> directory.</p>
+
+<p>I like this workflow better than using <code class="language-plaintext highlighter-rouge">servr</code> to build my blog. Here, I can build my site in terminal with <code class="language-plaintext highlighter-rouge">jekyll serve -w</code> and open up the preview version at <code class="language-plaintext highlighter-rouge">http://localhost:4000</code>, and use R Markdown to knit the R Markdown document as a blog post. From there, it’s a matter of clicking the link to the blog post in the browser and refreshing every time I update the R Markdown document to see what it looks like.</p>
+
+<h3 id="alternatively-just-knit-it-in-the-console-if-you-have-some-jekyll-liquid-tags">Alternatively: Just Knit it in the Console if You Have Some Jekyll Liquid Tags</h3>
+
+<p>The aforementioned setup should work for most people in most applications. However, most of my posts have a lead image that’s wrapped in a Jekyll <a href="https://jekyllrb.com/docs/liquid/">Liquid</a> tag. You can see what it does <a href="https://github.com/svmiller/svmiller.github.io/blob/master/_includes/image.html">here</a>. It basically calls in a few parameters to render an image like how my Wordpress installation used to do it.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">dl</span> <span class="nb">id</span><span class="o">=</span><span class="s2">""</span> <span class="k">class</span><span class="o">=</span><span class="s2">"wp-caption align{{include.align}}"</span> <span class="n">style</span><span class="o">=</span><span class="s2">"max-width: {{include.width}}px"</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="n">dt</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">"{{ include.href }}"</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="k">class</span><span class="o">=</span><span class="s2">""</span> <span class="n">src</span><span class="o">=</span><span class="s2">"{{ include.url }}"</span> <span class="n">alt</span><span class="o">=</span><span class="s2">"{{ include.caption }}"</span> <span class="o">/&gt;&lt;</span><span class="sr">/a&gt;&lt;/</span><span class="n">dt</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="n">dd</span><span class="o">&gt;</span><span class="p">{{</span> <span class="kp">include</span><span class="p">.</span><span class="nf">caption</span> <span class="p">}}</span><span class="o">&lt;</span><span class="sr">/dd&gt;
+&lt;/</span><span class="n">dl</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>This creates a problem for using R Markdown to render to a normal markdown document. For one, I know of no way to pass raw HTML through R Markdown to render it to a Markdown document. Further, R Markdown won’t correctly process Liquid tags either. It’d be nice if it ignored it, but it’ll try (and fail) to render it. In addition, a clever use of the <code class="language-plaintext highlighter-rouge">results="asis"</code> option with a <code class="language-plaintext highlighter-rouge">cat()</code> function will still lead to problems. Basically, it creates a quotation mark encoding issue in which standard <a href="https://www.cl.cam.ac.uk/~mgk25/ucs/quotes.html">“neutral”</a> quotation marks get rendered as left and right quotation marks. That’ll break a Liquid tag; it seems.</p>
+
+<p>There’s a workaround if you’re wanting to use Liquid tags in R Markdown posts. First, wrap the Liquid tag in an R Markdown chunk. Set <code class="language-plaintext highlighter-rouge">eval=TRUE</code>, <code class="language-plaintext highlighter-rouge">echo=FALSE</code>, and, importantly, <code class="language-plaintext highlighter-rouge">results="asis"</code>. Thereafter, wrap it in a <code class="language-plaintext highlighter-rouge">cat()</code> command in R as I do for the lead image.</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cat('<span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span><span class="nx">image.html</span><span class="w"> </span><span class="nx">url="/images/brent-rambo.gif</span><span class="s2">" caption="</span><span class="nv">Jekyll</span><span class="w"> </span><span class="nv">rules</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">world</span>.<span class="w"> </span><span class="nv">Your</span><span class="w"> </span><span class="nv">Jekyll</span><span class="w"> </span><span class="nv">friend</span><span class="p">,</span><span class="w"> </span><span class="nv">Steve</span><span class="s2">" width=410 align="</span><span class="nv">right</span>"<span class="w"> </span><span class="p">%}</span> ')
+</code></pre></div></div>
+
+<p>Then, just knit it and specify and output file in the <code class="language-plaintext highlighter-rouge">_posts</code> directory. It helps to set the working directory to the <code class="language-plaintext highlighter-rouge">_source</code> directory of the Jekyll blog before you do this.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setwd</span><span class="p">(</span><span class="s2">"~/Dropbox/svmiller.github.io/_source"</span><span class="p">)</span><span class="w"> </span><span class="c1"># adjust to your preferences.</span><span class="w">
+</span><span class="n">knitr</span><span class="o">::</span><span class="n">knit</span><span class="p">(</span><span class="s2">"2019-08-01-two-helpful-rmarkdown-jekyll-tips.Rmd"</span><span class="p">,</span><span class="w">
+            </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"../_posts/2019-08-01-two-helpful-rmarkdown-jekyll-tips.md"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The benefit of this approach is it skips R Markdown’s <code class="language-plaintext highlighter-rouge">render</code> function altogether. Plus, this approach means you can ignore the <code class="language-plaintext highlighter-rouge">knit:</code> field in the YAML. However, it does mean making sure you correctly spelled the output file. The silver lining here is typing out this command once means it’s in the console in Rstudio. Hitting up in the console will retrieve it from the session history so you don’t have to keep typing it out.</p>
+
+<h2 id="tweak-where-the-r-graphs-are-stored">Tweak Where the R Graphs Are Stored</h2>
+
+<p>One problem I kept encountering in doing R Markdown blogging is the graphs I generated would never have the URLs I wanted them to have. I usually set a setup chunk with an option like <code class="language-plaintext highlighter-rouge">knitr::opts_chunk$set(fig.path = '../images')</code>. This saved the graphs where I wanted them to go (i.e. in <a href="https://github.com/svmiller/svmiller.github.io/tree/master/images">the <code class="language-plaintext highlighter-rouge">images</code> directory on my blog</a>) because the <code class="language-plaintext highlighter-rouge">_source</code> or <code class="language-plaintext highlighter-rouge">_post</code> directory shares the same directory as the <code class="language-plaintext highlighter-rouge">images</code> directory. However, the rendered post would have images with locations like <code class="language-plaintext highlighter-rouge">http://svmiller.com/2019/08/images/image-name.png</code> because of my custom permalinks when I wanted <code class="language-plaintext highlighter-rouge">http://svmiller.com/images/image-name.png</code>.</p>
+
+<p>This too is an easy fix. For each of the R Markdown posts in the source directory, make a <code class="language-plaintext highlighter-rouge">setup</code> chunk at the top of the document (after the YAML). Set <code class="language-plaintext highlighter-rouge">include=FALSE</code> and <code class="language-plaintext highlighter-rouge">cache=FALSE</code>, Then add the following bits of code, per <a href="http://www.randigriffin.com/2017/04/25/how-to-knit-for-mysite.html">this post from Randi Griffin</a>.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">base_dir</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"~/Dropbox/svmiller.github.io/"</span><span class="w"> </span><span class="c1"># i.e. where the jekyll blog is on the hard drive.</span><span class="w">
+</span><span class="n">base_url</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"/"</span><span class="w"> </span><span class="c1"># keep as is</span><span class="w">
+</span><span class="n">fig_path</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"images/"</span><span class="w"> </span><span class="c1"># customize to heart's content, I 'spose.</span><span class="w">
+
+</span><span class="n">knitr</span><span class="o">::</span><span class="n">opts_knit</span><span class="o">$</span><span class="n">set</span><span class="p">(</span><span class="n">base.dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">base_dir</span><span class="p">,</span><span class="w"> </span><span class="n">base.url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">base_url</span><span class="p">)</span><span class="w">
+</span><span class="n">knitr</span><span class="o">::</span><span class="n">opts_chunk</span><span class="o">$</span><span class="n">set</span><span class="p">(</span><span class="n">fig.path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fig_path</span><span class="p">,</span><span class="w">
+                      </span><span class="n">cache.path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'../cache/'</span><span class="p">,</span><span class="w">
+                      </span><span class="n">message</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">warning</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span><span class="w">
+                      </span><span class="n">cache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> 
+</span></code></pre></div></div>
+
+<p>The R Markdown blogging workflow is much more straightforward after that. I can now seamlessly generate and display some graphs when I render the R Markdown document. For example, here is a graph on GDP forecasts I did and stored in my <code class="language-plaintext highlighter-rouge">stevemisc</code> package as <a href="https://github.com/svmiller/stevemisc/blob/master/man/usa_chn_gdp_forecasts.Rd">a data set</a>. This is for an in-class lecture for <a href="http://posc1020.svmiller.com/">my intro class</a> on the future of international politics (in particular, the <a href="https://en.wikipedia.org/wiki/Chinese_Century">“Rise of China”</a>).</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">usa_chn_gdp_forecasts</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">gdp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ifelse</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">gdp</span><span class="p">),</span><span class="w"> </span><span class="n">f_gdp</span><span class="p">,</span><span class="w"> </span><span class="n">gdp</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">gdp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gdp</span><span class="o">/</span><span class="m">1e12</span><span class="p">,</span><span class="w">
+         </span><span class="n">f_lo80</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f_lo80</span><span class="o">/</span><span class="m">1e12</span><span class="p">,</span><span class="w">
+         </span><span class="n">f_hi80</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f_hi80</span><span class="o">/</span><span class="m">1e12</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="n">aes</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">gdp</span><span class="p">,</span><span class="w">  </span><span class="n">linetype</span><span class="o">=</span><span class="n">Country</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Country</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="n">Country</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">theme_steve_web</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_ribbon</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">ymin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f_lo80</span><span class="p">,</span><span class="w"> </span><span class="n">ymax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f_hi80</span><span class="p">),</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.4</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">1.5</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">seq</span><span class="p">(</span><span class="m">1960</span><span class="p">,</span><span class="w"> </span><span class="m">2050</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">xlab</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ylab</span><span class="p">(</span><span class="s2">"Gross Domestic Product (Observed and Forecasted) in Trillions Constant 2010 US$"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_vline</span><span class="p">(</span><span class="n">xintercept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2037</span><span class="p">,</span><span class="n">linetype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"dashed"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">scale_color_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Set1"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">annotate</span><span class="p">(</span><span class="s2">"text"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="m">2036</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">35</span><span class="p">,</span><span class="w"> 
+           </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"China surpasses the U.S. in GDP\n(2037)"</span><span class="p">,</span><span class="w"> 
+           </span><span class="n">hjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Open Sans"</span><span class="p">)</span><span class="w">  </span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"China Should Surpass the U.S. in GDP by 2037"</span><span class="p">,</span><span class="w">
+       </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"China's yearly growth in economic activity to date is greater than the growth we observe in U.S. economic output even as (reasonable) worries about China's economic trajectory persist."</span><span class="p">,</span><span class="w">
+       </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Data: World Bank national accounts data, and OECD National Accounts data files. Forecast based on last year in World Bank data (2017)."</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/images/gdp-forecasts-usa-chn-1.png" alt="plot of chunk gdp-forecasts-usa-chn" /></p>
+
+  </article>
+
+<div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'svmiller';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+<!--     <h2 class="footer-heading">Aditya Karanam</h2> -->
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li><strong>Aditya Karanam</strong></li>
+			<li>PhD Student</li>
+          <li><a href="mailto:aditya_ks@utexas.edu">aditya_ks@utexas.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+ 
+
+         <p class="text">
+		Department of Information, Risk, & Operations Management,<br />
+		McCombs School of Business, <br />
+    2110 Speed Way<br />
+		Austin, TX 78705</p> <!-- I'm a PhD Student at McCombs School of Business, UT, Austin with research interests in the area of Economics of Information Systems. Specifically, I am interested in New product design and Innovation. Topics on my site include my research interests and teaching.
+ -->
+      </div>
+
+      <div class="footer-col  footer-col-3">
+       <ul class="social-media-list">
+
+                  
+     
+
+          
+  <li>
+    <a href="https://github.com/askaranam">
+      <i class="fa fa-github" style="color:gray"></i> Github
+    </a>
+  </li>
+
+
+          
+
+          
+  <li>
+    <a href="https://twitter.com/aditya_karanam">
+      <i class="fa fa-twitter" style="color:gray"></i> Twitter
+    </a>
+  </li>
+
+
+
+
+
+
+
+       
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+		<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-37298398-1']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+	</script>
+  </body>
+</html>
+<!-- d.s.m.s.050600.062508.030515.080516.030818; k.050800.101218 | "Baby, I'm Yours" -->
+

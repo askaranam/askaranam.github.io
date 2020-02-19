@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Make Your Presentations Fun in Xaringan | Aditya Karanam</title>
+  <meta name="description" content="I have a series of templates for R Markdown. Here's one for a Xaringan presentation. I offer a guide on how to use it.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/blog/2018/02/r-markdown-xaringan-theme/">
+  <link rel="alternate" type="application/rss+xml" title="Aditya Karanam" href="http://localhost:4000/feed.xml" />
+<link rel='stylesheet' id='open-sans-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&#038;subset=latin%2Clatin-ext&#038;ver=4.2.4' type='text/css' media='all' />
+<link href='http://fonts.googleapis.com/css?family=Roboto:200' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:600italic,600,400,400italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://www.osu.edu/assets/fonts/webfonts.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/academicons-1.8.0/css/academicons.css">
+
+<!-- icon, perhaps -->
+<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="apple-touch-icon" type="image/png" href="/images/icon-192.png">
+
+
+<!-- OG protocol -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Make Your Presentations Fun in Xaringan">
+<meta property="og:description" content="I have a series of templates for R Markdown. Here's one for a Xaringan presentation. I offer a guide on how to use it.">
+<meta property="og:url" content="http://localhost:4000/blog/2018/02/r-markdown-xaringan-theme/">
+<meta property="og:site_name" content="Aditya Karanam">
+<meta property="og:image" content="http://localhost:4000/images/buckeyeprotesteriran.jpg">
+
+<meta property="og:image:width" content="637" />
+<meta property="og:image:height" content="403" />
+
+<!-- Twitter cards -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@aditya_karanam">
+<meta name="twitter:title" content="Make Your Presentations Fun in Xaringan" />
+<meta name="twitter:description" content="I have a series of templates for R Markdown. Here's one for a Xaringan presentation. I offer a guide on how to use it." />
+<meta name="twitter:url" content="http://localhost:4000/blog/2018/02/r-markdown-xaringan-theme/" />
+<meta name="twitter:image" content="http://localhost:4000/images/buckeyeprotesteriran-card.jpg">
+
+
+<link rel="author" href=""/>
+<meta name="google-site-verification" content="" />
+<meta name="msvalidate.01" content="" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Aditya Karanam</a>
+
+
+    <nav class="site-nav">
+
+      <a href="#" class="menu-icon menu.open">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>  
+
+    <div class="trigger"><h1>Main Navigation</h1>
+
+ <ul class="menu">
+
+    
+    
+     <li><a href="/about/" class="page-link">About</a>
+    
+    </li>
+    
+    
+     <li><a href="/research/" class="page-link">Research</a>
+    
+    </li>
+    
+    
+     <li><a href="/cv/" class="page-link">CV</a>
+    
+    </li>
+    
+    </ul>
+
+
+<!-- <ul class="menu">
+        <li> <a class="page-link" href="/about">About</a></li>
+        <li> <a class="page-link"  href="/blog">Blog</a>
+        <li> <a class="page-link" href="/blog">CV</a>
+        <li> <a class="page-link" href="/blog">For Students</a></li>
+        <li> <a class="page-link"  href="/blog">Research</a></a>
+        <li> <a class="page-link" href="/blog">Teaching</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">POSC 1020 – Introduction to International Relations</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">POSC 3410 – Quantitative Methods in Political Science</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">POSC 3610 – International Politics in Crisis</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3630-united-states-foreign-policy/">POSC 3630 – United States Foreign Policy</a></li>
+</ul></li>
+        <li> <a class="page-link" href="/blog">Miscellany</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">Clean USAID Greenbook Data</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">Journal of Peace Research *.bst File</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">My Custom Beamer Style</a></li>
+</ul> 
+
+</li>
+</ul> -->
+
+     </div>  
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Make Your Presentations Fun in Xaringan</h1>
+    <p class="post-meta">Posted on February 3, 2018 by  steve  
+
+  in
+  
+  <a href="/categories/#R Markdown" title="R Markdown">R Markdown</a>&nbsp;
+  
+
+
+</p>
+  </header>
+
+  <article class="post-content">
+    <dl class="wp-caption alignright" style="max-width: 325px">
+
+<dt><a href=""><img class="" src="/images/sheena-easton-morning-train.jpg" alt="It's better to re-purpose Sheena Easton's '9 to 5' (or 'Morning Train') as describing a total-conflict game a la 'Holmes-and-Moriarty' or 'matching pennies.'" /></a></dt>
+
+<dd>It's better to re-purpose Sheena Easton's '9 to 5' (or 'Morning Train') as describing a total-conflict game a la 'Holmes-and-Moriarty' or 'matching pennies.'</dd>
+</dl>
+
+<p>This will be the latest in <a href="http://svmiller.com/categories/#R%20Markdown">my series</a> of tutorials for making the most of <a href="http://rmarkdown.rstudio.com/">R Markdown</a>. <a href="https://github.com/svmiller/svm-r-markdown-templates">My repository</a> already has R Markdown LaTeX templates for <a href="http://svmiller.com/blog/2016/02/svm-r-markdown-manuscript/">academic manuscripts</a>, <a href="http://svmiller.com/blog/2016/03/svm-r-markdown-cv/">CVs</a>, <a href="https://github.com/svmiller/svm-r-markdown-templates/blob/master/svm-latex-statement.tex">personal statements</a> (e.g. teaching statement, research statement), and <a href="http://svmiller.com/blog/2016/07/r-markdown-syllabus/">syllabi</a>. Here, I offer a CSS theme for Xaringan.</p>
+
+<h2 id="what-is-xaringan-why-use-it">What is Xaringan? Why Use It?</h2>
+
+<p><a href="https://github.com/yihui/xaringan">Xaringan</a> is Yihui Xie’s pet project for creating slideshows with <a href="http://remarkjs.com/">remark.js</a>.  You can use <code class="language-plaintext highlighter-rouge">devtools</code> in R to install the package:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">devtools</span><span class="o">::</span><span class="n">install_github</span><span class="p">(</span><span class="s1">'yihui/xaringan'</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>From there, Rstudio users can get started by going to the menu and selecting: <code class="language-plaintext highlighter-rouge">File -&gt; New File -&gt; R Markdown -&gt; From Template -&gt; Ninja Presentation</code>. You’ll get a standard R Markdown document that you can compile by pressing the <code class="language-plaintext highlighter-rouge">Knit</code> button.</p>
+
+<p>The “why” part is a little more interesting. Part of the answer here is that this slideshow presentation is quite popular among R Markdown users and so the justification for creating a presentation that conforms to my style hinges largely on that kind of circular explanation. You should use it because people use it.</p>
+
+<p>That’s not satisfying, so another answer to the question hinges on what Xaringan can do relative to my standard approach of using R Markdown to knit to Beamer. Xaringan knits to HTML and provides the user considerable flexibility in what the slideshow can present. If you have an interactive presentation, like <code class="language-plaintext highlighter-rouge">leaflet</code> maps or a Shiny app, you won’t adequately present those using a Beamer PDF. Further, maybe you’re the kind of presenter that likes to liven things up using GIFs. To the best of my knowledge, GIFs are non-starters in Beamer PDFs. They’re unnecessary for communicating information. All the same, they might be the presenter’s style. Beamer won’t help but Xaringan will.</p>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<p>Xaringan will look familiar to those proficient in Pandoc or those who use R Markdown for other outlets. Here’s what the YAML will look like with a few comments to follow.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Steve's</span><span class="nv"> </span><span class="s">Xaringan</span><span class="nv"> </span><span class="s">Presentation"</span>
+<span class="na">subtitle</span><span class="pi">:</span> <span class="s2">"</span><span class="s">POSC</span><span class="nv"> </span><span class="s">0000</span><span class="nv"> </span><span class="s">--</span><span class="nv"> </span><span class="s">It</span><span class="nv"> </span><span class="s">Would</span><span class="nv"> </span><span class="s">Be</span><span class="nv"> </span><span class="s">Cool</span><span class="nv"> </span><span class="s">If</span><span class="nv"> </span><span class="s">This</span><span class="nv"> </span><span class="s">Were</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">Actual</span><span class="nv"> </span><span class="s">Class</span><span class="nv"> </span><span class="s">Presentation"</span>
+<span class="na">author</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Steven</span><span class="nv"> </span><span class="s">V.</span><span class="nv"> </span><span class="s">Miller&lt;br</span><span class="nv"> </span><span class="s">/&gt;</span><span class="nv"> </span><span class="s">&lt;br</span><span class="nv"> </span><span class="s">/&gt;</span><span class="nv"> </span><span class="s">&lt;br</span><span class="nv"> </span><span class="s">/&gt;</span><span class="nv"> </span><span class="s">Department</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">Political</span><span class="nv"> </span><span class="s">Science"</span>
+<span class="na">output</span><span class="pi">:</span>
+  <span class="s">xaringan::moon_reader:</span>
+    <span class="s">css</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">default"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">~/Dropbox/miscelanea/svm-r-markdown-templates/svm-xaringan-style.css"</span><span class="pi">]</span>
+    <span class="na">lib_dir</span><span class="pi">:</span> <span class="s">libs</span>
+    <span class="na">nature</span><span class="pi">:</span>
+      <span class="na">highlightStyle</span><span class="pi">:</span> <span class="s">github</span>
+      <span class="na">highlightLines</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">countIncrementalSlides</span><span class="pi">:</span> <span class="no">false</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">title</code> and <code class="language-plaintext highlighter-rouge">subtitle</code> should be intuitive. Do notice what I did with the <code class="language-plaintext highlighter-rouge">author</code> field. Xaringan, to the best of my knowledge, doesn’t allow you to casually add new fields to YAML like you could with any of my other LaTeX templates. Toward that end, I’d have to fudge Xie’s package and re-purpose it as something different to download. I’d rather not do that even though I would love to add an <code class="language-plaintext highlighter-rouge">institute</code> field like I have for my Beamer presentations. All the same, some manual HTML (i.e. three HTML line breaks <code class="language-plaintext highlighter-rouge">&lt;br /&gt;</code>) have the same effect.</p>
+
+<p>Pay careful attention to the <code class="language-plaintext highlighter-rouge">css</code> entry underneath <code class="language-plaintext highlighter-rouge">output</code>. You can specify a relative path to the CSS <a href="https://github.com/svmiller/svm-r-markdown-templates/blob/master/svm-xaringan-style.css">from my Github</a>. You can place it in the same directory or place it in the same directory as my other stuff (if you’ve been using it). Just make sure the relative path is correct.</p>
+
+<p>There’s one additional comment I want to add about the CSS file. Open it and find these lines:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.title-slide</span> <span class="p">{</span>
+	<span class="nl">background-color</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+  <span class="nl">background-image</span><span class="p">:</span> <span class="sx">url(/home/steve/Dropbox/teaching/clemson-academic.png)</span><span class="p">;</span>
+	<span class="nl">background-position</span><span class="p">:</span> <span class="nb">center</span> <span class="nb">bottom</span> <span class="m">170px</span><span class="p">;</span>
+	<span class="nl">background-size</span><span class="p">:</span> <span class="m">30%</span><span class="p">;</span>
+	<span class="nl">border-bottom</span><span class="p">:</span> <span class="m">0px</span> <span class="nb">solid</span>  <span class="m">#522D80</span><span class="p">;</span>
+	<span class="nl">box-shadow</span><span class="p">:</span>  <span class="m">0</span> <span class="m">55px</span> <span class="m">0</span> <span class="m">#fff</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>See that <code class="language-plaintext highlighter-rouge">background-image</code> line? Change it. Or even get rid of it if you don’t want it. I like to have a horizontal university logo near the bottom of all my presentations so I included that. However, it’s highly unlikely you and I share the same university affiliation. Change it to whatever you like though, I should add, I think horizontal/rectangular logos work better here than a square logo.</p>
+
+<h2 id="is-xaringan-different-from-r-markdown">Is Xaringan Different From R Markdown?</h2>
+
+<p>Yes, a little. Xaringan has the following features that deviate a little from R Markdown you may be using for ioslides or Beamer. It wasn’t obvious to me at first but I think I mostly figured out the following differences.</p>
+
+<ul>
+  <li>Slide breaks are <code class="language-plaintext highlighter-rouge">---</code> whereas they’re automatically inferred from <code class="language-plaintext highlighter-rouge">slide_level</code> in a Beamer presentation. Don’t forget that.</li>
+  <li><code class="language-plaintext highlighter-rouge">--</code> can have the same effect of hiding content until the next click on the keyboard or your presentation clicker.</li>
+  <li>You can be quite liberal with HTML, CSS, and different styles. You’ll notice I created a <code class="language-plaintext highlighter-rouge">fullscale</code> class in addition to other classes (e.g. <code class="language-plaintext highlighter-rouge">center</code> and <code class="language-plaintext highlighter-rouge">bottom</code>, or even <code class="language-plaintext highlighter-rouge">inverse</code>) you can call into your presentation. Use them as you like them.</li>
+</ul>
+
+<h2 id="so-what-fun-stuff-can-you-do-with-xaringan">So What Fun Stuff Can You Do With Xaringan?</h2>
+
+<p>Well, <a href="http://svmiller.com/miscellany/svm-xaringan-example.html#1">here’s my presentation using Xaringan</a>. Long story short, you can have all sorts of fun. Click on the following frame and start clicking right to see the presentation if you don’t want to follow the link in the first sentence in this paragraph.</p>
+
+<iframe src="http://svmiller.com/miscellany/svm-xaringan-example.html" class="gde-frame" style="height: 400px; width: 100%; border: none;" scrolling="yes"></iframe>
+
+<p>I’ll probably fudge some CSS later but it’s functional now. Let me know if you find it useful.</p>
+
+  </article>
+
+<div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'svmiller';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+<!--     <h2 class="footer-heading">Aditya Karanam</h2> -->
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li><strong>Aditya Karanam</strong></li>
+			<li>PhD Student</li>
+          <li><a href="mailto:aditya_ks@utexas.edu">aditya_ks@utexas.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+ 
+
+         <p class="text">
+		Department of Information, Risk, & Operations Management,<br />
+		McCombs School of Business, <br />
+    2110 Speed Way<br />
+		Austin, TX 78705</p> <!-- I'm a PhD Student at McCombs School of Business, UT, Austin with research interests in the area of Economics of Information Systems. Specifically, I am interested in New product design and Innovation. Topics on my site include my research interests and teaching.
+ -->
+      </div>
+
+      <div class="footer-col  footer-col-3">
+       <ul class="social-media-list">
+
+                  
+     
+
+          
+  <li>
+    <a href="https://github.com/askaranam">
+      <i class="fa fa-github" style="color:gray"></i> Github
+    </a>
+  </li>
+
+
+          
+
+          
+  <li>
+    <a href="https://twitter.com/aditya_karanam">
+      <i class="fa fa-twitter" style="color:gray"></i> Twitter
+    </a>
+  </li>
+
+
+
+
+
+
+
+       
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+		<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-37298398-1']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+	</script>
+  </body>
+</html>
+<!-- d.s.m.s.050600.062508.030515.080516.030818; k.050800.101218 | "Baby, I'm Yours" -->
+

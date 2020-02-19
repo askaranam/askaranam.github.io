@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>An Empirical Analysis of RuPaul's Drag Race Contestants | Aditya Karanam</title>
+  <meta name="description" content="My wife got me into watching RuPaul's Drag Race, so here's an empirical analysis of the top performers of the show with the idea of starting a grease fire on the subreddit.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/blog/2019/02/dragracer-rupauls-drag-race-analysis/">
+  <link rel="alternate" type="application/rss+xml" title="Aditya Karanam" href="http://localhost:4000/feed.xml" />
+<link rel='stylesheet' id='open-sans-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&#038;subset=latin%2Clatin-ext&#038;ver=4.2.4' type='text/css' media='all' />
+<link href='http://fonts.googleapis.com/css?family=Roboto:200' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:600italic,600,400,400italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://www.osu.edu/assets/fonts/webfonts.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/academicons-1.8.0/css/academicons.css">
+
+<!-- icon, perhaps -->
+<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="apple-touch-icon" type="image/png" href="/images/icon-192.png">
+
+
+<!-- OG protocol -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="An Empirical Analysis of RuPaul's Drag Race Contestants">
+<meta property="og:description" content="My wife got me into watching RuPaul's Drag Race, so here's an empirical analysis of the top performers of the show with the idea of starting a grease fire on the subreddit.">
+<meta property="og:url" content="http://localhost:4000/blog/2019/02/dragracer-rupauls-drag-race-analysis/">
+<meta property="og:site_name" content="Aditya Karanam">
+<meta property="og:image" content="http://localhost:4000/images/buckeyeprotesteriran.jpg">
+
+<meta property="og:image:width" content="637" />
+<meta property="og:image:height" content="403" />
+
+<!-- Twitter cards -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@aditya_karanam">
+<meta name="twitter:title" content="An Empirical Analysis of RuPaul's Drag Race Contestants" />
+<meta name="twitter:description" content="My wife got me into watching RuPaul's Drag Race, so here's an empirical analysis of the top performers of the show with the idea of starting a grease fire on the subreddit." />
+<meta name="twitter:url" content="http://localhost:4000/blog/2019/02/dragracer-rupauls-drag-race-analysis/" />
+<meta name="twitter:image" content="http://localhost:4000/images/buckeyeprotesteriran-card.jpg">
+
+
+<link rel="author" href=""/>
+<meta name="google-site-verification" content="" />
+<meta name="msvalidate.01" content="" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Aditya Karanam</a>
+
+
+    <nav class="site-nav">
+
+      <a href="#" class="menu-icon menu.open">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>  
+
+    <div class="trigger"><h1>Main Navigation</h1>
+
+ <ul class="menu">
+
+    
+    
+     <li><a href="/about/" class="page-link">About</a>
+    
+    </li>
+    
+    
+     <li><a href="/research/" class="page-link">Research</a>
+    
+    </li>
+    
+    
+     <li><a href="/cv/" class="page-link">CV</a>
+    
+    </li>
+    
+    </ul>
+
+
+<!-- <ul class="menu">
+        <li> <a class="page-link" href="/about">About</a></li>
+        <li> <a class="page-link"  href="/blog">Blog</a>
+        <li> <a class="page-link" href="/blog">CV</a>
+        <li> <a class="page-link" href="/blog">For Students</a></li>
+        <li> <a class="page-link"  href="/blog">Research</a></a>
+        <li> <a class="page-link" href="/blog">Teaching</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">POSC 1020 – Introduction to International Relations</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">POSC 3410 – Quantitative Methods in Political Science</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">POSC 3610 – International Politics in Crisis</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3630-united-states-foreign-policy/">POSC 3630 – United States Foreign Policy</a></li>
+</ul></li>
+        <li> <a class="page-link" href="/blog">Miscellany</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">Clean USAID Greenbook Data</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">Journal of Peace Research *.bst File</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">My Custom Beamer Style</a></li>
+</ul> 
+
+</li>
+</ul> -->
+
+     </div>  
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">An Empirical Analysis of RuPaul's Drag Race Contestants</h1>
+    <p class="post-meta">Posted on February 17, 2019 by  steve  
+
+  in
+  
+  <a href="/categories/#R" title="R">R</a>&nbsp;
+  
+  <a href="/categories/#RuPaul's Drag Race" title="RuPaul's Drag Race">RuPaul's Drag Race</a>&nbsp;
+  
+
+
+</p>
+  </header>
+
+  <article class="post-content">
+    <dl class="wp-caption alignright" style="max-width: 410px">
+
+<dt><a href=""><img class="" src="/images/kameron-michaels.jpg" alt="Kameron Michaels isn't quite sure what's happening below, but she's certainly a little revolted at the sight." /></a></dt>
+
+<dd>Kameron Michaels isn't quite sure what's happening below, but she's certainly a little revolted at the sight.</dd>
+</dl>
+
+<p><em>Last updated: May 31, 2019</em></p>
+
+<p>My wife got me hooked into watching RuPaul’s Drag Race with her. The long and short of it is I didn’t need to have my arm twisted to watch or enjoy the show. Indeed, drag nights at Icon in Tuscaloosa—incidentally home to <a href="https://twitter.com/leland2genesis?lang=en">the performer who gave Trinity her “Tuck” moniker</a>—are some of my fondest memories of graduate school. A performer who routinely served as opening act for her—<a href="http://obits.al.com/obituaries/birmingham/obituary.aspx?n=kevin-thomas&amp;pid=188344432&amp;fhid=6039">and sadly passed away</a> last year—was among the sweetest/kindest people I knew in town.<sup id="fnref:herdoc"><a href="#fn:herdoc" class="footnote">1</a></sup> I had a receptiveness to drag as concept and creative outlet, but oddly did not know about the show until my wife told me about it.</p>
+
+<p>My wife also informed me of the debates that fans have about the show, some of which can be quite heated. Several of these—at least the ones that aren’t completely subjective or involve questions that quickly devolve to total grease fires—involve concerns of measurement and ranking. Certainly, the show has evolved from Season 1 to Season 10, but how would a fan rank, say, Jinkx Monsoon’s run to the crown in Season 5 versus Bianca Del Rio in Season 6? Or Bob the Drag Queen in Season 8?</p>
+
+<p>This creates a lot of conversation on the subreddit for the show and spawns numerous videos where fans can upvote or downvote a particular performer or carry on these debates. I hear it as an opportunity to scrape <a href="https://rupaulsdragrace.fandom.com">the wiki for the show</a> and create a few data sets to see if I can measure these things myself. Toward that end, I’m creating a package in R (<a href="https://github.com/svmiller/dragracer"><code class="language-plaintext highlighter-rouge">dragracer</code></a>) that will contain various data sets for this. Mostly, I just wanted to call dibs on having an R package for the show named <code class="language-plaintext highlighter-rouge">dragracer</code>.</p>
+
+<h2 id="about-the-datamethods">About the Data/Methods</h2>
+
+<p>The data package is a work in progress and leans heavily on scraping the wiki, especially <a href="https://rupaulsdragrace.fandom.com/wiki/RuPaul's_Drag_Race_(Season_10)#Contestants">the contestant-level information that the wiki turns into pyramidal tables</a>. I have, so far, three data sets in the package. <code class="language-plaintext highlighter-rouge">rpdr_contep</code> is contestant-episode-level data about how contestants fared, if they appeared, in episodes as the season progressed. <code class="language-plaintext highlighter-rouge">rpdr_contestants</code> is contestant-level data that includes some background information on the contestants along with metrics of their performances through the season. <code class="language-plaintext highlighter-rouge">rpdr_ep</code> contains some episode-level data that would have been difficult or tedious to build into the contestant-episode-level data. These are data points like the mini-challenge winners, the runway theme (where applicable), and some information about the lip-sync.</p>
+
+<p>There are some additional caveats.</p>
+
+<ul>
+  <li>I interpret “HIGH TEAM” codings in the wiki as cases where the contestant was on a winning team for a main challenge, but the contestant herself is safe.</li>
+  <li>“Eliminations” are broadly understood as cases where a participant was removed from the show. As a result, there is an <code class="language-plaintext highlighter-rouge">outcome</code> variable that codes whether a contestant was a winner, scored high, was safe, scored low, or was in the bottom two for the main challenge and runway and a corollary <code class="language-plaintext highlighter-rouge">eliminated</code> variable if the contestant was removed from the show. The overlap here is substantial, obviously. However, there are a few cases where a contestant was removed despite winning a challenge (Willam, Season 4) or scoring safe (Eureka O’Hara, Season 9) for some other reason.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">minichalw</code> column in the contestant-episode data is mostly uninformative. I should delete it or better sync the episode-level data with it.</li>
+  <li>Finales are sui generis and users should not read too much into them. They also evolve substantially over the show’s 11 seasons. For example, the first three seasons had finales where the finale itself effectively had a bottom and, practically, an elimination. Seasons 4-8 had top threes (later top fours) where there was no “bottom” or elimination, just a crowning. Season 9 started the newer trend of having a top four and semifinal competition that leads to a lip-sync for the crown. Users who want to compare performers should subset out finales.</li>
+  <li>Related: Seasons 6 through 8 have a <code class="language-plaintext highlighter-rouge">penultimate</code> column. These were episodes in which RuPaul whittled the top four to a top 3. They’re unique episodes in that no one was a bottom, but everyone lip-synced. This created three winners and one bottom/elimination. I code those episodes as such but encourage users to subset those out when comparing contestant performances. However, I do not do this Season 11. Therein, there was no winner, but a clear bottom two in the episode that sent Vanessa Vanjie Mateo home and put Brooke Lynn Hytes as the fourth semifinalist.</li>
+  <li>The episode-level data has a <code class="language-plaintext highlighter-rouge">numqueens</code> column that codes the number of participants who were active in the episode. There were several cases where RuPaul reintroduced a performer—or, in the case of Season 7, an entire damn cast—at the start of the episode. In more than a few cases, those reintroduced were eliminated the exact same episode.</li>
+  <li>Related to that: I code that episode in Season 7 as a case where Pearl and Trixie Mattel were joint winners.</li>
+  <li>The finales for Season 9 and Season 10 are cases where the runner-up(s) (e.g. Peppermint, Season 9) scored high and those who lost the semifinals (e.g. Trinity Taylor, Season 9) were bottoms for that episode. Again, these are finales so the user should subset them out when comparing queens across different seasons.</li>
+</ul>
+
+<h2 id="an-empirical-analysis-of-rupauls-drag-race-performances">An Empirical Analysis of RuPaul’s Drag Race Performances</h2>
+
+<p>The data are far from perfect or complete, but they’re workable for an empirical analysis of contestant performance for the 11 main seasons of RuPaul’s Drag Race. Here, I’ll explore some of the best performers in the history of the show with some rudimentary metrics. Namely, which contestants had the highest percentage of competitive (i.e. non-special, but non-finale) episodes in which they won, or scored high/won? Which queens scored the highest on the <a href="https://rupaulsdragrace.fandom.com/wiki/%22Dusted_or_Busted%22_Scoring_System">“Dusted or Busted” scoring system</a>? The data aren’t too hard to generate and require a few lines in <code class="language-plaintext highlighter-rouge">tidyverse</code>. The <a href="https://github.com/svmiller/svmiller.github.io/blob/master/_source/2019-02-17-dragracer-rupauls-drag-race-analysis.Rmd">source code</a>, along with version history, is available on the <code class="language-plaintext highlighter-rouge">_source</code> directory for my website.</p>
+
+<!-- Notice the case exclusion rules, which I think are justifiable in this context.[^nominic]
+
+
+[^nominic]: For now, I'm omitting mini-challenge wins from consideration because I don't think the data I have are too reliable.  -->
+
+<!--
+```r
+rdr_contep %>% 
+  filter(participant == 1 & finale == 0 & penultimate == 0) %>%
+  mutate(high = ifelse(outcome == "HIGH", 1, 0),
+         win = ifelse(outcome == "WIN", 1, 0),
+         low = ifelse(outcome == "LOW", 1, 0),
+         safe = ifelse(outcome == "SAFE", 1, 0),
+         highsafe = ifelse(outcome %in% c("HIGH", "SAFE"), 1, 0),
+         winhigh = ifelse(outcome %in% c("HIGH", "WIN"), 1, 0),
+        btm = ifelse(outcome == "BTM", 1, 0),
+         lowbtm = ifelse(outcome %in% c("BTM", "LOW"), 1, 0)) %>%
+  group_by(season,Contestant,Rank) %>%
+  mutate(numcontests = n()) %>%
+  group_by(season,Contestant, numcontests, Rank) %>%
+  summarize(perc_high = sum(high)/unique(numcontests),
+            perc_win = sum(win)/unique(numcontests),
+            perc_winhigh = sum(winhigh)/unique(numcontests),
+            perc_low = sum(low)/unique(numcontests),
+            perc_btm = sum(btm)/unique(numcontests),
+            perc_lowbtm = sum(lowbtm)/unique(numcontests),
+            num_high = sum(high),
+            num_win = sum(win),
+            num_winhigh = sum(winhigh),
+            num_btm = sum(btm),
+            num_low = sum(low),
+            num_lowbtm = sum(lowbtm),
+            bd_score = 2*sum(win, na.rm=T) +
+              1*sum(high, na.rm=T) +
+              (sum(safe, na.rm=T)*0) +
+              (sum(low, na.rm=T)*-1) + (sum(btm, na.rm=T)*-2)) -> rdr_contestant_outcomes
+```
+-->
+
+<h3 id="comparing-the-season-winners">Comparing the Season Winners</h3>
+
+<p>This will facilitate some kind of comparison, say, among the season-winners by reference to thier performance in main challenges/runways through the course of a season. I choose to focus on the percentage of wins, bottoms, etc. because the number of competitive episodes varies considerably through the 11 seasons. For example, Bebe Zahara Benet had just six episodes before the finale in which she could’ve been eliminated. Raja, Season’s 3 winner, had the most (12). Seasons since then have had 10 or 11 competitive episodes, excluding the eight competitive episodes in Season 8.</p>
+
+<table id="stevetable">
+<caption>Ranking the RuPaul's Drag Race Winners from Season 1 to Season 11</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> season </th>
+   <th style="text-align:left;"> contestant </th>
+   <th style="text-align:center;"> % Wins </th>
+   <th style="text-align:center;"> % Wins/Highs </th>
+   <th style="text-align:center;"> % Bottom </th>
+   <th style="text-align:center;"> % Bottom/Low </th>
+   <th style="text-align:center;"> D/B Score </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> S01 </td>
+   <td style="text-align:left;"> BeBe Zahara Benet </td>
+   <td style="text-align:center;"> 33.33% </td>
+   <td style="text-align:center;"> 50% </td>
+   <td style="text-align:center;"> 16.67% </td>
+   <td style="text-align:center;"> 16.67% </td>
+   <td style="text-align:center;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S02 </td>
+   <td style="text-align:left;"> Tyra Sanchez </td>
+   <td style="text-align:center;"> 33.33% </td>
+   <td style="text-align:center;"> 55.56% </td>
+   <td style="text-align:center;"> 0% </td>
+   <td style="text-align:center;"> 11.11% </td>
+   <td style="text-align:center;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S03 </td>
+   <td style="text-align:left;"> Raja </td>
+   <td style="text-align:center;"> 25% </td>
+   <td style="text-align:center;"> 58.33% </td>
+   <td style="text-align:center;"> 8.33% </td>
+   <td style="text-align:center;"> 16.67% </td>
+   <td style="text-align:center;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S04 </td>
+   <td style="text-align:left;"> Sharon Needles </td>
+   <td style="text-align:center;"> 36.36% </td>
+   <td style="text-align:center;"> 54.55% </td>
+   <td style="text-align:center;"> 9.09% </td>
+   <td style="text-align:center;"> 18.18% </td>
+   <td style="text-align:center;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S05 </td>
+   <td style="text-align:left;"> Jinkx Monsoon </td>
+   <td style="text-align:center;"> 18.18% </td>
+   <td style="text-align:center;"> 81.82% </td>
+   <td style="text-align:center;"> 9.09% </td>
+   <td style="text-align:center;"> 9.09% </td>
+   <td style="text-align:center;"> 9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S06 </td>
+   <td style="text-align:left;"> Bianca Del Rio </td>
+   <td style="text-align:center;"> 30% </td>
+   <td style="text-align:center;"> 70% </td>
+   <td style="text-align:center;"> 0% </td>
+   <td style="text-align:center;"> 0% </td>
+   <td style="text-align:center;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S07 </td>
+   <td style="text-align:left;"> Violet Chachki </td>
+   <td style="text-align:center;"> 27.27% </td>
+   <td style="text-align:center;"> 45.45% </td>
+   <td style="text-align:center;"> 0% </td>
+   <td style="text-align:center;"> 18.18% </td>
+   <td style="text-align:center;"> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S08 </td>
+   <td style="text-align:left;"> Bob the Drag Queen </td>
+   <td style="text-align:center;"> 37.5% </td>
+   <td style="text-align:center;"> 37.5% </td>
+   <td style="text-align:center;"> 12.5% </td>
+   <td style="text-align:center;"> 12.5% </td>
+   <td style="text-align:center;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S09 </td>
+   <td style="text-align:left;"> Sasha Velour </td>
+   <td style="text-align:center;"> 18.18% </td>
+   <td style="text-align:center;"> 63.64% </td>
+   <td style="text-align:center;"> 0% </td>
+   <td style="text-align:center;"> 9.09% </td>
+   <td style="text-align:center;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S10 </td>
+   <td style="text-align:left;"> Aquaria </td>
+   <td style="text-align:center;"> 27.27% </td>
+   <td style="text-align:center;"> 36.36% </td>
+   <td style="text-align:center;"> 0% </td>
+   <td style="text-align:center;"> 18.18% </td>
+   <td style="text-align:center;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S11 </td>
+   <td style="text-align:left;"> Yvie Oddly </td>
+   <td style="text-align:center;"> 7.69% </td>
+   <td style="text-align:center;"> 30.77% </td>
+   <td style="text-align:center;"> 7.69% </td>
+   <td style="text-align:center;"> 15.38% </td>
+   <td style="text-align:center;"> 2 </td>
+  </tr>
+</tbody>
+</table>
+
+<p>The table won’t reveal too much that stands at odds with what long-running fans of the show already know. Sharon Needles had the most main challenge wins of any season-winner and, in my interpretation of the data, is tied with Shea Couleé (a Season 9 semifinalist) for most main challenge wins of any performer. Fans will qualify that Sharon won her challenges outright while Shea shared two of her wins with Sasha Velour. This may matter to the allocation of prize money but won’t matter in the data as I have it.</p>
+
+<p>Perhaps the strongest contestants are in the middle two seasons. Jinkx Monsoon and Bianca Del Rio effectively dominated their seasons. Jinkx stands out in particular for winning or placing high in nine of her 11 competitive episodes. A “safe” in the season-opener and bottom-two performance in the last competitive episode of the season before the finale sandwiched a run of excellence in which she won or scored high. This is particularly impressive because, if you want to treat the show as something other than reality TV in which winners are determined by RuPaul’s discretion, her season might have been the most competitive. Roxxxy Andrews, Alaska, Detox, and Alyssa Edwards are legendary names as drag performers.</p>
+
+<p>Likewise, Bianca Del Rio has the distinction of the first and, to date, only queen to never land in the bottom two or even get a “low” rating for a given episode. She is not alone as a winner to have never lip-synced for her life, but she is unique for not even ranking low. That effectively explains the one-point differential favoring Bianca Del Rio over Jinkx Monsoon in the “Dusted or Busted” scoring system.</p>
+
+<p>Bob the Drag Queen and Aquaria stand out for scoring eye-openingly low in the “Dusted or Busted” scoring system. Both are, from what I’ve gathered, well-respected among fans of the show, and I think their low scores have some intuitive explanations. In Bob’s case, she had just eight competitive episodes in what amounts to a conspicuously abbreviated season. That she has 12% of her appearances in the bottom means she was in the bottom just once. Fans will remember that episode well. She lip-synced against Derrick Barry to the tune of one of my all-time favorite jams: Sylvester’s “You Make Me Feel (Mighty Real).” That contest was not close.</p>
+
+<p>In Aquaria’s case, her season might have been the most competitive top to bottom in the show’s history. Blair St. Clair (9th place) and Mayhem Miller (10th place) could probably crack top five each in most other seasons. Vanessa Vanjie Mateo, 14th place in Season 10, may even make a long run in Season 11 <em>(ed, May 31/2019: she did)</em>.</p>
+
+<p>The conclusion of Season 11 and addition of Yvie Oddly to this list of winners means the current champion has surpassed BeBe Zahara Benet for lowest “Dusted or Busted” score to ever win a season. She has the fewest wins (1, and a shared one at that) and the fewest number of wins/highs (3) of any eventual champion. I can qualify that the episode prior to the reunion was one in which Yvie would’ve won if Ru had announced a winner. She had the best runway look (in a walk) and Ru named her first as a semifinalist. Alas, that episode is coded as a safe. Had Ru announced her as a winner that episode, her “Dusted or Busted” score improves to 4.</p>
+
+<h3 id="who-were-the-lowest-ranked-performers-to-land-in-the-top-four">Who Were the Lowest-Ranked Performers to Land in the Top Four?</h3>
+
+<p>The data can also be used to identify the lowest-scoring performers to get a top four finish in the show’s 10 seasons. There are several metrics available for ranking these performers, but I’ll go in descending order, by “Dusted or Busted” score.</p>
+
+<table id="stevetable">
+<caption>The Lowest Ranked Top Four Performers from Season 1 to Season 11</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> season </th>
+   <th style="text-align:center;"> rank </th>
+   <th style="text-align:left;"> contestant </th>
+   <th style="text-align:center;"> % Wins </th>
+   <th style="text-align:center;"> % Wins/Highs </th>
+   <th style="text-align:center;"> % Bottom </th>
+   <th style="text-align:center;"> % Bottom/Low </th>
+   <th style="text-align:center;"> D/B Score </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> S06 </td>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:left;"> Darienne Lake </td>
+   <td style="text-align:center;"> 10% </td>
+   <td style="text-align:center;"> 20% </td>
+   <td style="text-align:center;"> 30% </td>
+   <td style="text-align:center;"> 60% </td>
+   <td style="text-align:center;"> -6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S02 </td>
+   <td style="text-align:center;"> 3 </td>
+   <td style="text-align:left;"> Jujubee </td>
+   <td style="text-align:center;"> 0% </td>
+   <td style="text-align:center;"> 22.22% </td>
+   <td style="text-align:center;"> 33.33% </td>
+   <td style="text-align:center;"> 44.44% </td>
+   <td style="text-align:center;"> -5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S01 </td>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:left;"> Shannel </td>
+   <td style="text-align:center;"> 0% </td>
+   <td style="text-align:center;"> 16.67% </td>
+   <td style="text-align:center;"> 33.33% </td>
+   <td style="text-align:center;"> 50% </td>
+   <td style="text-align:center;"> -4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S05 </td>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:left;"> Detox </td>
+   <td style="text-align:center;"> 9.09% </td>
+   <td style="text-align:center;"> 18.18% </td>
+   <td style="text-align:center;"> 27.27% </td>
+   <td style="text-align:center;"> 36.36% </td>
+   <td style="text-align:center;"> -4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S10 </td>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:left;"> Kameron Michaels </td>
+   <td style="text-align:center;"> 9.09% </td>
+   <td style="text-align:center;"> 27.27% </td>
+   <td style="text-align:center;"> 27.27% </td>
+   <td style="text-align:center;"> 36.36% </td>
+   <td style="text-align:center;"> -3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S01 </td>
+   <td style="text-align:center;"> 3 </td>
+   <td style="text-align:left;"> Rebecca Glasscock </td>
+   <td style="text-align:center;"> 16.67% </td>
+   <td style="text-align:center;"> 33.33% </td>
+   <td style="text-align:center;"> 33.33% </td>
+   <td style="text-align:center;"> 50% </td>
+   <td style="text-align:center;"> -2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S02 </td>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:left;"> Tatianna </td>
+   <td style="text-align:center;"> 11.11% </td>
+   <td style="text-align:center;"> 22.22% </td>
+   <td style="text-align:center;"> 22.22% </td>
+   <td style="text-align:center;"> 33.33% </td>
+   <td style="text-align:center;"> -2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S08 </td>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:left;"> Chi Chi DeVayne </td>
+   <td style="text-align:center;"> 12.5% </td>
+   <td style="text-align:center;"> 25% </td>
+   <td style="text-align:center;"> 25% </td>
+   <td style="text-align:center;"> 37.5% </td>
+   <td style="text-align:center;"> -2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S04 </td>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:left;"> Latrice Royale </td>
+   <td style="text-align:center;"> 18.18% </td>
+   <td style="text-align:center;"> 36.36% </td>
+   <td style="text-align:center;"> 27.27% </td>
+   <td style="text-align:center;"> 36.36% </td>
+   <td style="text-align:center;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S03 </td>
+   <td style="text-align:center;"> 3 </td>
+   <td style="text-align:left;"> Alexis Mateo </td>
+   <td style="text-align:center;"> 25% </td>
+   <td style="text-align:center;"> 41.67% </td>
+   <td style="text-align:center;"> 25% </td>
+   <td style="text-align:center;"> 41.67% </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+</tbody>
+</table>
+
+<p>A couple of names stand out. Darienne Lake has the lowest “Dusted or Busted” score of any contestant with a top four finish. In fact, she finished bottom or low in six of her 10 competitive episodes. The distance between her and the next lowest scoring top four performer by “Dusted or Busted” score (Courtney Act) is seven points.</p>
+
+<p>Several names will be familiar and unsurprising entries on this list, thinking especially of Shannel, Jujubee, and Tatianna. Jujubee emerged as the queen of the read and the lip-sync assassin of Season 2. She was in the bottom two three times and sent home Sahara Davenport, Pandora Boxx, and Tatianna. No matter, bottom two performances are still penalized heavily in this scoring system. Tatianna, likewise, is in the bottom 10 in this metric. From my outside reading of how fans interpret the show, Tatianna was perhaps raw in Season 2—apparently only 20 years old at the time of filming. She was excellent in Season 2 of All-Stars, though. It is interesting to see two of Season 2’s top four in this list, though.</p>
+
+<p>Kameron Michaels is the only No. 2 finisher to appear in this top ten. Fans of the show will note she mostly played it safe but, as the competition whittled down, otherwise “safe” performances put her in the bottom two. The interesting anecdote to emerge from that, however, is she appears to have the most consecutive “shantays” in lip-sync battles. In four-straight episodes, she shantayed in lip-syncs against Eureka O’Hara (a double shantay), Monét X Change, Miz Cracker, and Asia O’Hara. Do note that lip-syncs are selection effects. Kameron’s final lip-sync in that run was also a semifinal. Further, RuPaul is generally unforgiving of multiple, consecutive appearances in the bottom two (see: Alyssa Edwards [Season 5], Akashia [Season 1]). However, that four-episode run for Kameron Michaels is an all-time best and likely won’t be matched, given the nature of the show and the peculiar string of those lip-syncs.</p>
+
+<p>Detox’s entry into this list is one of those head-scratchers that makes sense upon further review. Detox can match high-concept looks with great comedy, but that and her top three performance in All-Stars 2 belie that her performance in Season 5 included only one win and four appearances in the “low” or “bottom” categories.</p>
+
+<h3 id="which-contestants-were-robbed-their-season">Which Contestants Were “Robbed?” Their Season</h3>
+
+<p>I added this table after Season 11 ended because the selection of the champion is arguably a bit controversial. Not only does Yvie have the lowest “Dusted or Busted” score of any champion in a given season, but the queen she beat in the finale, Brooke Lynn Hytes, had a “Dusted or Busted” score a full three points higher. In fact, a latent variable analysis that I provide below will contend Brooke Lynne Hytes had the eighth best season of any performer in the show’s history.</p>
+
+<p>This would not be the first time a queen was “robbed” from winning her particular season (at least, if that’s how you want to spin it). Long-time fans of the show probably know Ru started the first season with the idea of crowning BeBe Zahara Benet at the end, forgetting along the way that it meant Nina Flowers had a better season and finished second. The most prominent case of this might have been Shea Couleé, who entered the semifinals as the top performer in that season and was bulldozed in the semifinal by arguably the best individual lip sync in the show’s history. Sasha Velour deserved to advance on the merits of the lip sync but it did mean Shea Couleé, who had arguably the third best run in the show’s history to that point, did not snatch the crown.</p>
+
+<p>There are four such cases I show below where an individual performer had a higher “Dusted or Busted” score than the eventual winner that season. All four have unique situations. Nina finished second despite having the overall better record than Bebe Zahara Benet, but Ongina was woefully underplaced in her season. She too had a better “Dusted or Busted” score than the eventual champion, but finished in fifth place. Shea Couleé had arguably the best season run in the show’s history but was eliminated in the semifinals. More recently, Brooke Lynn Hytes can now boast the biggest point differential in show history over an eventual champion. Her three-point cushion over the eventual season champion may not be topped.</p>
+
+<table id="stevetable">
+<caption>Queens Whose D/B Scores Were Greater Than the Season Champion</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> Season </th>
+   <th style="text-align:left;"> Contestant </th>
+   <th style="text-align:center;"> Rank </th>
+   <th style="text-align:center;"> Number of Wins </th>
+   <th style="text-align:center;"> Number of Wins for Champion </th>
+   <th style="text-align:center;"> D/B Score </th>
+   <th style="text-align:center;"> Champions's D/B Score </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> S01 </td>
+   <td style="text-align:left;"> Nina Flowers </td>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:center;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S01 </td>
+   <td style="text-align:left;"> Ongina </td>
+   <td style="text-align:center;"> 5 </td>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:center;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S09 </td>
+   <td style="text-align:left;"> Shea Couleé </td>
+   <td style="text-align:center;"> 3 </td>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> 9 </td>
+   <td style="text-align:center;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S11 </td>
+   <td style="text-align:left;"> Brooke Lynn Hytes </td>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> 3 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> 5 </td>
+   <td style="text-align:center;"> 2 </td>
+  </tr>
+</tbody>
+</table>
+
+<p>One other metric for classifying “robbed” queens is to locate those queens who 1) finished outside the top four in a season but 2) had a higher “Dusted or Busted” score than the lowest-ranked performer to land in the top four. There are over 43 such instances in the data, but much of that is in Season 6 because Darienne Lake had such a low score by the end of the season that even contestants like Gia Gunn and Laganja Estranja had comfortably outperformed her. The table below subsets that list to just the cases of performers who had the highest such difference in a given season and arranges them by largest difference.</p>
+
+<table id="stevetable">
+<caption>Select Queens Outside Top Four Who Finished With Higher ''Dusted or Busted'' Scores Than Lowest Ranked Top Four Performer</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> Season </th>
+   <th style="text-align:left;"> Contestant </th>
+   <th style="text-align:center;"> Rank </th>
+   <th style="text-align:center;"> D/B Score </th>
+   <th style="text-align:center;"> Lowest D/B Score in Top 4 </th>
+   <th style="text-align:left;"> Lowest Ranked Top 4 Queen </th>
+   <th style="text-align:center;"> Difference </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> S06 </td>
+   <td style="text-align:left;"> BenDeLaCreme </td>
+   <td style="text-align:center;"> 5 </td>
+   <td style="text-align:center;"> 3 </td>
+   <td style="text-align:center;"> -6 </td>
+   <td style="text-align:left;"> Darienne Lake </td>
+   <td style="text-align:center;"> 9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S01 </td>
+   <td style="text-align:left;"> Ongina </td>
+   <td style="text-align:center;"> 5 </td>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:center;"> -4 </td>
+   <td style="text-align:left;"> Shannel </td>
+   <td style="text-align:center;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S02 </td>
+   <td style="text-align:left;"> Jessica Wild </td>
+   <td style="text-align:center;"> 6 </td>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> -5 </td>
+   <td style="text-align:left;"> Jujubee </td>
+   <td style="text-align:center;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S04 </td>
+   <td style="text-align:left;"> Willam </td>
+   <td style="text-align:center;"> 7 </td>
+   <td style="text-align:center;"> 3 </td>
+   <td style="text-align:center;"> -1 </td>
+   <td style="text-align:left;"> Latrice Royale </td>
+   <td style="text-align:center;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S05 </td>
+   <td style="text-align:left;"> Ivy Winters </td>
+   <td style="text-align:center;"> 7 </td>
+   <td style="text-align:center;"> 0 </td>
+   <td style="text-align:center;"> -4 </td>
+   <td style="text-align:left;"> Detox </td>
+   <td style="text-align:center;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S05 </td>
+   <td style="text-align:left;"> Lineysha Sparx </td>
+   <td style="text-align:center;"> 9 </td>
+   <td style="text-align:center;"> 0 </td>
+   <td style="text-align:center;"> -4 </td>
+   <td style="text-align:left;"> Detox </td>
+   <td style="text-align:center;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S07 </td>
+   <td style="text-align:left;"> Katya </td>
+   <td style="text-align:center;"> 5 </td>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:center;"> 0 </td>
+   <td style="text-align:left;"> Pearl </td>
+   <td style="text-align:center;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S10 </td>
+   <td style="text-align:left;"> Miz Cracker </td>
+   <td style="text-align:center;"> 5 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> -3 </td>
+   <td style="text-align:left;"> Kameron Michaels </td>
+   <td style="text-align:center;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S08 </td>
+   <td style="text-align:left;"> Thorgy Thor </td>
+   <td style="text-align:center;"> 6 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> -2 </td>
+   <td style="text-align:left;"> Chi Chi DeVayne </td>
+   <td style="text-align:center;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S08 </td>
+   <td style="text-align:left;"> Acid Betty </td>
+   <td style="text-align:center;"> 8 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> -2 </td>
+   <td style="text-align:left;"> Chi Chi DeVayne </td>
+   <td style="text-align:center;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S09 </td>
+   <td style="text-align:left;"> Valentina </td>
+   <td style="text-align:center;"> 7 </td>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:left;"> Peppermint </td>
+   <td style="text-align:center;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S09 </td>
+   <td style="text-align:left;"> Eureka O'Hara </td>
+   <td style="text-align:center;"> 11 </td>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:left;"> Peppermint </td>
+   <td style="text-align:center;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> S11 </td>
+   <td style="text-align:left;"> Plastique Tiara </td>
+   <td style="text-align:center;"> 8 </td>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:left;"> Silky Nutmeg Ganache </td>
+   <td style="text-align:center;"> 1 </td>
+  </tr>
+</tbody>
+</table>
+
+<p>There should be some care in interpreting this table. I don’t agree with all of it (e.g. I’m on the record as being a big Kameron Michaels fan). Also consider that Eureka O’Hara and Lineysha Sparx had fewer episodes on which they could’ve accrued “Dusted or Busted” score deductions and these metrics are largely driven by the number of contests in which a queen appears. Yet, this table offers substantive support to the contention that Darienne Lake advancing over BenDeLaCreme in Season 6 was almost unforgivable. Further, Ongina was woefully underplaced in Season 1. Also, Acid Betty should’ve been on more episodes.</p>
+
+<h3 id="a-simple-item-response-model-for-ranking-all-contestants">A Simple Item Response Model for Ranking All Contestants</h3>
+
+<p>Finally, I decided to run a simple graded response model on the data for all contestants. The graded response model includes the number of performances in which the contestant won, won or scored high, or was in the bottom.<sup id="fnref:lowbtmcomment"><a href="#fn:lowbtmcomment" class="footnote">2</a></sup> I also include the contestant’s final rank for the season and the “Dusted or Busted” score. Conceptually, these polytomous measures of a contestant’s performances are judges of a contestant’s ability based on discrete scale. This is obviously rudimentary, and someone more versed in IRT modeling will balk at treating the “Dusted or Busted” score in this way, but the model ran and I’m not submitting it for peer review and I don’t have time to invest in a more comprehensive model. Your critiques can sashay away.</p>
+
+<p>The top 25 participants on this metric are listed below, with accompanying standard errors around the latent estimate.</p>
+
+<p><img src="/images/top-rupauls-drag-race-performers-1.png" alt="plot of chunk top-rupauls-drag-race-performers" /></p>
+
+<p>Fans of the show are free to read into this what they want. I’m not too invested in what this demonstrates, but a few things are worth mentioning as quick hitters.</p>
+
+<dl class="wp-caption alignright" style="max-width: 250px">
+
+<dt><a href=""><img class="" src="/images/bendela-going-home.gif" alt="She went home." /></a></dt>
+
+<dd>She went home.</dd>
+</dl>
+
+<p>The model wants to downweight Bob the Drag Queen for being on an abbreviated season. She’s not the lowest-ranked winner on this list; in fact: Bebe Zahara Benet is not even on it. I don’t think fans of the show hold Bob in low regard. Her snatch game, always an important metric, is among the best. However, metrics for evaluating contestants focus on raw counts (e.g. wins, highs, etc). Toward that end, being on an abbreviated season hurts Bob’s rankings.</p>
+
+<p>BenDeLaCreme and Katya are the only contestants without top four finishes on this list. This is a case where a model might tell you something that’s intuitively true, but probably not implied by what you thought from the inputs. In other words: these two are great. Katya could’ve won All-Stars 2 and the only reason BenDeLaCreme didn’t win All-Stars 3 is because she chose not to win it.</p>
+
+<h3 id="conclusion-as--takes">Conclusion: As 🔥 #Takes</h3>
+
+<p>I don’t have much to conclude, but I do have a few #takes that I’ll offer as heaters here.</p>
+
+<ul>
+  <li>The scorecard is pretty clear Tyra Sanchez deserved to win Season 2, but I bet RuPaul wishes she could go back and do that one again.</li>
+  <li>Kameron Michaels should’ve won Season 10. Hey, I didn’t say these takes were good, just that they were 🔥.</li>
+  <li>Sasha Velour needs a street named after her in Urbana. Hell, next-door <a href="https://www.chicagotribune.com/news/ct-xpm-2001-01-16-0101160268-story.html">Champaign had a street named after REO Speedwagon</a> when I was living in that city. Why not Sasha Velour for Urbana?</li>
+  <li>Acid Betty needed more episodes on Season 8. Her three high performances in the first three episodes push her up a lot of rankings for someone who otherwise landed No. 8 in a season.</li>
+  <li>I would’ve put Aquaria as a bottom instead of Monét in episode 10 of Season 10. That would’ve put Aquaria, the future winner of the season, in front of the grim reaper of lip-syncs (Kameron Michaels). And, yeah, there’s no way RuPaul would’ve sent Aquaria home instead of Kameron Michaels, but the thought experiment is fun.</li>
+  <li>I feel most scoring metrics for RuPaul’s Drag Race should include a category that awards 10 points to a contestant if she is able to check the box of “is Alyssa Edwards.” I think that’s appropriate.</li>
+  <li>I am compelled to support Nina West in Season 11 because she is from Columbus. I will disregard any critiques of her as wrong as a result.</li>
+</ul>
+
+<h3 id="addendum-season-11--takes">Addendum: Season 11 🔥 #Takes</h3>
+
+<p>Btw, nailed it. This was from February.</p>
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Hot and maybe only RuPaul&#39;s Drag Race Season 11 <a href="https://twitter.com/hashtag/take?src=hash&amp;ref_src=twsrc%5Etfw">#take</a> for a while: I think this season Ru goes hunting for a &quot;mid-market&quot; winner after three-straight NY-based winners. Lot of options for that this season. Heart says <a href="https://twitter.com/NinaWest?ref_src=twsrc%5Etfw">@NinaWest</a> (O-H...). Gut says <a href="https://twitter.com/OddlyYvie?ref_src=twsrc%5Etfw">@OddlyYvie</a> (of Denver).</p>&mdash; Steven V. Miller (@stevenvmiller) <a href="https://twitter.com/stevenvmiller/status/1101109692498132998?ref_src=twsrc%5Etfw">February 28, 2019</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<ul>
+  <li>Jaymes Mansfield might appreciate this reference, but Silky for me was the first performer in the show’s history to have what pro wrestling fans call <a href="https://allthetropes.fandom.com/wiki/X_Pac_Heat">“X-Pac Heat.”</a> There have been other villains in the show’s history you want to see vanquished or defeated. Phi’Phi O’Hara (Season 4), Roxxxy Andrews (Season 5), and The Vixen (Season 10)  come to mind here as performers who took on a villain role but were still enjoyable to watch the extent to which a viewer wanted to see some measure of comeuppance. However, like the canonical case of X-Pac, I didn’t want to see Silky get her just deserts. I just wanted her off my television so I could enjoy the other performers.</li>
+  <li>I think Chris says it best here. Nina was great on Season 11 because her character on the show augmented other performers around her (prominently Brooke in the L.A.D.P. challenge). Silky just sucked up and rerouted the energy in the room in a way that doesn’t make for good television and isn’t compelling to watch.</li>
+</ul>
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Trying to be a Nina West in a Silky Ganache world. (Be brave enough to be kind)</p>&mdash; Chris Skovron (@cskovron) <a href="https://twitter.com/cskovron/status/1119403735237709824?ref_src=twsrc%5Etfw">April 20, 2019</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<ul>
+  <li>Not the first to make this observation, but this would be the first winner who lip-synced after Snatch Game. It was going to be the case no matter if Ru had gone with the Brooke edit or the Yvie edit.</li>
+  <li>I’m hoping Yvie’s win offers some pause for future performers who think the path through the finale is to make compound reveals. Yvie’s final two lip syncs were light on reveals (“Free Britney” in the first and the backward head reveal in the second). Contrast that with the compound reveals that Silky had in the lip sync that made no sense and were poorly timed. One tells a story through the song. The other is mindless theatrics. One works better than the other.</li>
+  <li>That said, Brooke’s final lip sync reveal was hilarious. I love a good fourth wall break.</li>
+  <li>Both of Silky’s wins were cases where I thought it was clear Nina had the better main challenge performance and runway look. Nina should’ve received those two wins instead. That would put Nina West at four wins on the season and would have made it almost impossible to deny her the crown. My apologies to Shea Couleé.</li>
+  <li>Also, political scientist speaking, Silky’s explanation for why she registers as a Republican was the dumbest thing I’ve heard an educated person say on that show. The rationale behind what she said was basically nails on a chalkboard as I heard it.</li>
+  <li>I’m still a bit apoplectic that none of the judges understood or got Nina’s Ohio flag dress.</li>
+  <li>Ra’Jah O’Hara has the distinction of being tied with Carmen Carrera for the worst ever D/B score in the show’s history (-8).</li>
+  <li>I thought this season took a while to get going. With 15 queens in the mix, the space seemed kind of crowded and it took about four or five episodes to figure out who some of these queens were and identify with them and their craft.</li>
+</ul>
+<div class="footnotes">
+  <ol>
+    <li id="fn:herdoc">
+      <p>The University of Alabama’s Center for Ethics and Social Responsibility <a href="http://documentingjustice.org/bambi-was-a-boy/">produced a video about her experience</a> that’s worth watching. <a href="#fnref:herdoc" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:lowbtmcomment">
+      <p>I had also included the number of performances in the bottom or with a low mark. This factor didn’t load well and the model improved for its absence. <a href="#fnref:lowbtmcomment" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </article>
+
+<div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'svmiller';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+<!--     <h2 class="footer-heading">Aditya Karanam</h2> -->
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li><strong>Aditya Karanam</strong></li>
+			<li>PhD Student</li>
+          <li><a href="mailto:aditya_ks@utexas.edu">aditya_ks@utexas.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+ 
+
+         <p class="text">
+		Department of Information, Risk, & Operations Management,<br />
+		McCombs School of Business, <br />
+    2110 Speed Way<br />
+		Austin, TX 78705</p> <!-- I'm a PhD Student at McCombs School of Business, UT, Austin with research interests in the area of Economics of Information Systems. Specifically, I am interested in New product design and Innovation. Topics on my site include my research interests and teaching.
+ -->
+      </div>
+
+      <div class="footer-col  footer-col-3">
+       <ul class="social-media-list">
+
+                  
+     
+
+          
+  <li>
+    <a href="https://github.com/askaranam">
+      <i class="fa fa-github" style="color:gray"></i> Github
+    </a>
+  </li>
+
+
+          
+
+          
+  <li>
+    <a href="https://twitter.com/aditya_karanam">
+      <i class="fa fa-twitter" style="color:gray"></i> Twitter
+    </a>
+  </li>
+
+
+
+
+
+
+
+       
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+		<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-37298398-1']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+	</script>
+  </body>
+</html>
+<!-- d.s.m.s.050600.062508.030515.080516.030818; k.050800.101218 | "Baby, I'm Yours" -->
+

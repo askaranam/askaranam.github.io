@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>An Illustration of Instrumental Variables and a Two-Stage Least Squares (2SLS) Regression | Aditya Karanam</title>
+  <meta name="description" content="This is a simple illustration of correlated errors and addressing correlated errors with an instrumental variable and a two-stage least squares (2SLS) regression.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/blog/2019/09/instrumental-variables-2sls/">
+  <link rel="alternate" type="application/rss+xml" title="Aditya Karanam" href="http://localhost:4000/feed.xml" />
+<link rel='stylesheet' id='open-sans-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&#038;subset=latin%2Clatin-ext&#038;ver=4.2.4' type='text/css' media='all' />
+<link href='http://fonts.googleapis.com/css?family=Roboto:200' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:600italic,600,400,400italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://www.osu.edu/assets/fonts/webfonts.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/academicons-1.8.0/css/academicons.css">
+
+<!-- icon, perhaps -->
+<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="apple-touch-icon" type="image/png" href="/images/icon-192.png">
+
+
+<!-- OG protocol -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="An Illustration of Instrumental Variables and a Two-Stage Least Squares (2SLS) Regression">
+<meta property="og:description" content="This is a simple illustration of correlated errors and addressing correlated errors with an instrumental variable and a two-stage least squares (2SLS) regression.">
+<meta property="og:url" content="http://localhost:4000/blog/2019/09/instrumental-variables-2sls/">
+<meta property="og:site_name" content="Aditya Karanam">
+<meta property="og:image" content="http://localhost:4000/images/sans-bad-time.jpg">
+
+<meta property="og:image:width" content="637" />
+<meta property="og:image:height" content="403" />
+
+<!-- Twitter cards -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@aditya_karanam">
+<meta name="twitter:title" content="An Illustration of Instrumental Variables and a Two-Stage Least Squares (2SLS) Regression" />
+<meta name="twitter:description" content="This is a simple illustration of correlated errors and addressing correlated errors with an instrumental variable and a two-stage least squares (2SLS) regression." />
+<meta name="twitter:url" content="http://localhost:4000/blog/2019/09/instrumental-variables-2sls/" />
+<meta name="twitter:image" content="http://localhost:4000/images/sans-bad-time.jpg">
+
+
+<link rel="author" href=""/>
+<meta name="google-site-verification" content="" />
+<meta name="msvalidate.01" content="" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Aditya Karanam</a>
+
+
+    <nav class="site-nav">
+
+      <a href="#" class="menu-icon menu.open">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>  
+
+    <div class="trigger"><h1>Main Navigation</h1>
+
+ <ul class="menu">
+
+    
+    
+     <li><a href="/about/" class="page-link">About</a>
+    
+    </li>
+    
+    
+     <li><a href="/research/" class="page-link">Research</a>
+    
+    </li>
+    
+    
+     <li><a href="/cv/" class="page-link">CV</a>
+    
+    </li>
+    
+    </ul>
+
+
+<!-- <ul class="menu">
+        <li> <a class="page-link" href="/about">About</a></li>
+        <li> <a class="page-link"  href="/blog">Blog</a>
+        <li> <a class="page-link" href="/blog">CV</a>
+        <li> <a class="page-link" href="/blog">For Students</a></li>
+        <li> <a class="page-link"  href="/blog">Research</a></a>
+        <li> <a class="page-link" href="/blog">Teaching</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">POSC 1020 – Introduction to International Relations</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">POSC 3410 – Quantitative Methods in Political Science</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">POSC 3610 – International Politics in Crisis</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3630-united-states-foreign-policy/">POSC 3630 – United States Foreign Policy</a></li>
+</ul></li>
+        <li> <a class="page-link" href="/blog">Miscellany</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">Clean USAID Greenbook Data</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">Journal of Peace Research *.bst File</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">My Custom Beamer Style</a></li>
+</ul> 
+
+</li>
+</ul> -->
+
+     </div>  
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">An Illustration of Instrumental Variables and a Two-Stage Least Squares (2SLS) Regression</h1>
+    <p class="post-meta">Posted on September 11, 2019 by  steve  
+
+  in
+  
+  <a href="/categories/#R" title="R">R</a>&nbsp;
+  
+
+
+</p>
+  </header>
+
+  <article class="post-content">
+    <dl class="wp-caption alignright" style="max-width: 400px">
+
+<dt><a href=""><img class="" src="/images/sans-bad-time.jpg" alt="Do you wanna have a bad time? 'Cause if your errors are correlated, you are REALLY not going to like what happens next. " /></a></dt>
+
+<dd>Do you wanna have a bad time? 'Cause if your errors are correlated, you are REALLY not going to like what happens next. </dd>
+</dl>
+
+<p>I’ll be teaching a quantitative public policy analysis class for <a href="https://www.clemson.edu/cbshs/departments/political-science/academics/policy-studies/index.html">Clemson University’s Policy Studies program</a> and I’m finalizing a syllabus for that class. My intuition is such a class I’ve been asked to teach will have a different focus than a graduate-level quantitative methods class. The overlap is obviously substantial but a graduate-level quantitative methods class will care more about statistical inference from sample statistics to population parameters under known assumptions (e.g. random sampling, central limit theorem) whereas a quantitative public policy analysis class will be more interested in causal inference and the scope of treatment effects. Further, the class itself will be an introduction at the graduate-level to a quantitative approach to policy analysis, and likely the first exposure students in the program are getting to statistics for the social sciences. The class will have to be gentle, but communicate an important concern in the policy analysis world: does a policy treatment work, and by how much?</p>
+
+<p>There will have to be some discussion of endogeneity. Yes, that “E-word” is one that is easy to use to dismiss someone’s research. It’s so easy that invoking it may come across as a signal of laziness or contempt. Still, it’s an important topic the extent to which an endogenous treatment variable for a quantitative policy analysis can influence the kind of precision we want to communicate about treatment effects. After all, endogeneity emerges when a treatment is correlated with the error term and it’s ideal to address that in a regression framework. This post will offer an illustration of how to do that with an instrumental variable and a two-stage least squares (2SLS) regression.</p>
+
+<p>First, let’s build a correlation matrix that communicates correlations among four types of variables. The first, <code class="language-plaintext highlighter-rouge">control</code>, is a standard statistical control that is not terribly interesting to us as researchers but we’ll include it anyway for a multiple regression. <code class="language-plaintext highlighter-rouge">treat</code> is the treatment of interest to us and <code class="language-plaintext highlighter-rouge">instr</code> is a possible instrument for <code class="language-plaintext highlighter-rouge">treat</code> that we have in the data. <code class="language-plaintext highlighter-rouge">e</code> is the error term.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">vars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"control"</span><span class="p">,</span><span class="w"> </span><span class="s2">"treat"</span><span class="p">,</span><span class="w"> </span><span class="s2">"instr"</span><span class="p">,</span><span class="w"> </span><span class="s2">"e"</span><span class="p">)</span><span class="w">
+</span><span class="n">Correlations</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="n">cbind</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0.001</span><span class="p">,</span><span class="w"> </span><span class="m">0.001</span><span class="p">,</span><span class="w"> </span><span class="m">0.001</span><span class="p">,</span><span class="w">
+                             </span><span class="m">0.001</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0.85</span><span class="p">,</span><span class="w"> </span><span class="m">-0.5</span><span class="p">,</span><span class="w">
+                             </span><span class="m">0.001</span><span class="p">,</span><span class="w"> </span><span class="m">0.85</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0.001</span><span class="p">,</span><span class="w">
+                             </span><span class="m">0.001</span><span class="p">,</span><span class="w"> </span><span class="m">-0.5</span><span class="p">,</span><span class="w"> </span><span class="m">0.001</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="n">nrow</span><span class="o">=</span><span class="m">4</span><span class="p">)</span><span class="w">
+</span><span class="n">rownames</span><span class="p">(</span><span class="n">Correlations</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">colnames</span><span class="p">(</span><span class="n">Correlations</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vars</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The specified correlation matrix suggests the following relationships. First, <code class="language-plaintext highlighter-rouge">control</code> is fundamentally uncorrelated with anything else. Its correlations with the treatment variable, the potential instrument, and the errors are only .001. As a result, we are not too interested in this variable for the sake of this exercise. Second, the correlation between the treatment variable (<code class="language-plaintext highlighter-rouge">treat</code>) and the errors is -.5. This implies there is a fairly large—however imprecise that language is—negative correlation between the treatment variable that most concerns us and the error term. This makes the treatment endogenous to the errors. Third, the correlation between the treatment variable and the potential instrument is strong; a correlation of .85 is a strong positive relationship. Finally, the correlation between the instrumental variable and the errors is only .001. That means that instrumental variable (<code class="language-plaintext highlighter-rouge">instr</code>) satisfies the <a href="https://stats.stackexchange.com/questions/281323/instrumental-variable-exclusion-restriction">exclusion restriction</a>; it will only affect the outcome through the treatment variable (<code class="language-plaintext highlighter-rouge">treat</code>).</p>
+
+<p>We can generate some fake data to illustrate these correlations, though this exercise requires some Cholesky decomposition and more matrix-related stuff than I enjoy doing with data.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># number of observations to simulate</span><span class="w">
+</span><span class="n">nobs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1000</span><span class="w">
+
+</span><span class="c1"># Cholesky decomposition</span><span class="w">
+</span><span class="n">U</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">chol</span><span class="p">(</span><span class="n">Correlations</span><span class="p">))</span><span class="w">
+</span><span class="n">nvars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">dim</span><span class="p">(</span><span class="n">U</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span><span class="w">
+
+</span><span class="c1"># Jenny, I got your number...</span><span class="w">
+</span><span class="n">set.seed</span><span class="p">(</span><span class="m">8675309</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Random variables that follow the correlation matrix</span><span class="w">
+</span><span class="n">rdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="n">rnorm</span><span class="p">(</span><span class="n">nvars</span><span class="o">*</span><span class="n">nobs</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="n">nrow</span><span class="o">=</span><span class="n">nvars</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="o">=</span><span class="n">nobs</span><span class="p">)</span><span class="w">
+</span><span class="n">X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">U</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">rdata</span><span class="w">
+</span><span class="c1"># Transpose, convert to data, then tbl_df()</span><span class="w">
+</span><span class="c1"># require(tidyverse)</span><span class="w">
+</span><span class="n">Data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">as.data.frame</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">tbl_df</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The actual correlation matrix of the simulated data corresponds well enough with the specified correlation matrix.</p>
+
+<center>
+
+<table style="text-align:center"><caption><strong>A Correlation Matrix of the Data</strong></caption>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td>Control</td><td>Treatment</td><td>Instrument</td><td>e</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Control</td><td>1</td><td>0.020</td><td>0.016</td><td>0.003</td></tr>
+<tr><td style="text-align:left">Treatment</td><td>0.020</td><td>1</td><td>0.854</td><td>-0.502</td></tr>
+<tr><td style="text-align:left">Instrument</td><td>0.016</td><td>0.854</td><td>1</td><td>-0.011</td></tr>
+<tr><td style="text-align:left">e</td><td>0.003</td><td>-0.502</td><td>-0.011</td><td>1</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr></table>
+<br /></center>
+
+<p>Let’s further assume that there is some outcome <code class="language-plaintext highlighter-rouge">y</code> that is a linear function of some slope-intercept (or “constant”) + <code class="language-plaintext highlighter-rouge">control</code>, <code class="language-plaintext highlighter-rouge">treat</code>, and the error term <code class="language-plaintext highlighter-rouge">e</code>. Such that:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Data</span><span class="o">$</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">with</span><span class="p">(</span><span class="n">Data</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="o">*</span><span class="n">control</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="o">*</span><span class="n">treat</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>In other words, the true underlying effect of <code class="language-plaintext highlighter-rouge">control</code> and <code class="language-plaintext highlighter-rouge">treat</code> on the outcome <code class="language-plaintext highlighter-rouge">y</code> is 1 and the estimated value of <code class="language-plaintext highlighter-rouge">y</code> when all other parameters are at 0 is 5. A simple ordinary least squares model (i.e. <code class="language-plaintext highlighter-rouge">M1 &lt;- lm(y ~ control + treat, data=Data)</code>) would produce the following results.</p>
+
+<center>
+
+<table style="text-align:center"><caption><strong>A Simple OLS Model Where the Treatment is Correlated With the Errors</strong></caption>
+<tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td><em>Dependent variable:</em></td></tr>
+<tr><td></td><td colspan="1" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td>Y (Outcome)</td></tr>
+<tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Control</td><td>1.012<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.027)</td></tr>
+<tr><td style="text-align:left"></td><td></td></tr>
+<tr><td style="text-align:left">Treatment</td><td>0.511<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.027)</td></tr>
+<tr><td style="text-align:left"></td><td></td></tr>
+<tr><td style="text-align:left">Constant</td><td>5.011<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.027)</td></tr>
+<tr><td style="text-align:left"></td><td></td></tr>
+<tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>1,000</td></tr>
+<tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.644</td></tr>
+<tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td style="text-align:right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr>
+<tr><td style="text-align:left"></td><td style="text-align:right"></td></tr>
+</table>
+<br /></center>
+
+<p>Notice the effect of the treatment variable is biased downward because of its negative correlation with the error term <code class="language-plaintext highlighter-rouge">e</code>. The true relationship is 1 but the coefficient is nowhere near it and 95% confidence intervals around the coefficient won’t be anywhere close to 1 either.</p>
+
+<p>One solution here is to use an instrumental variable estimator for the affected treatment variable and employ a 2SLS regression. There are a lot of econometrics texts on what this is doing along with ample statistical notation and theoretical discussion, but here is how someone more interested in the application should think about this.</p>
+
+<p>First, take all of the endogenous variables and run regressions with these as the dependent variable and all other exogenous and all instrumental variables as explanatory variables. These regressions generate predicted/fitted values for all the endogenous variables from what an applied researcher can think of as a “first stage regression.” This works when, in our case, all the explanatory variables in this first stage are uncorrelated with the error term and the ensuing fitted/predicted values for the endogoneous variable are also uncorrelated with the error term. The source of variation in the endogenous variable that was correlated with the error term got sucked into the error term of this first-stage regression. The “second stage” returns to the original OLS regression model but replaces the previously correlated variables with their fitted values from the first stage. The estimators that follow are unbiased and consistent.</p>
+
+<p>In our case, this pertains to just one variable (<code class="language-plaintext highlighter-rouge">treat</code>) that we know is endogenous. While econometrics textbooks can bombard entry-level students with notation and theory to communicate this point, the application in R makes it seem much more accessible.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># First-stage model...</span><span class="w">
+</span><span class="n">FSM</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lm</span><span class="p">(</span><span class="n">treat</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">control</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">instr</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">Data</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Generate treat_hat variable</span><span class="w">
+</span><span class="n">Data</span><span class="o">$</span><span class="n">treat_hat</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">fitted</span><span class="p">(</span><span class="n">FSM</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Second-stage model...</span><span class="w">
+</span><span class="n">SSM</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lm</span><span class="p">(</span><span class="n">y</span><span class="w">  </span><span class="o">~</span><span class="w"> </span><span class="n">control</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">treat_hat</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">Data</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The following table will show the results of all three analyses.</p>
+
+<center>
+
+<table style="text-align:center"><caption><strong>A Comparison of OLS and Two-Stage Least Squares (2SLS) Regression</strong></caption>
+<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="3"><em>Model</em></td></tr>
+<tr><td></td><td colspan="3" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td>OLS (Endogenous Treatment)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>First-Stage Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>Second-Stage Model</td></tr>
+<tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td></tr>
+<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Control</td><td>1.012<sup>***</sup></td><td>0.006</td><td>1.003<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.027)</td><td>(0.017)</td><td>(0.016)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Treatment</td><td>0.511<sup>***</sup></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td>(0.027)</td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Instrumental Variable</td><td></td><td>0.847<sup>***</sup></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.016)</td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Treatment (fitted values)</td><td></td><td></td><td>0.987<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td>(0.019)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Constant</td><td>5.011<sup>***</sup></td><td>-0.010</td><td>5.018<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.027)</td><td>(0.017)</td><td>(0.016)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td></tr>
+<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>1,000</td><td>1,000</td><td>1,000</td></tr>
+<tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.644</td><td>0.729</td><td>0.870</td></tr>
+<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td colspan="3" style="text-align:right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr>
+<tr><td style="text-align:left"></td><td colspan="3" style="text-align:right"></td></tr>
+</table>
+<br /></center>
+
+<p>The first model is the OLS model that showed a clear downward bias in the coefficient size for the treatment when the treatment is correlated with the error term. The true effect of the treatment on the response variable <code class="language-plaintext highlighter-rouge">y</code> is 1 but the OLS coefficient for the treatment is only .511. The first-stage model attempts to remove the variation in the treatment that is correlated with the error term by regressing the treatment variable on the control variable and the instrumental variable that is correlated with the treatment but not the error term. This results in fitted values for the treatment (<code class="language-plaintext highlighter-rouge">treat_hat</code>) that are substituted for the endogenous treatment variable in the second-stage model. This second-stage model is identical in form to the OLS model, but only with a treatment variable where the sources of endogeneity have been stripped from the variable. The coefficient for this fitted treatment variable approaches 1, which is what the true effect is from the data-generating process.</p>
+
+<p>The goal for this post is to offer something more accessible to my future students in quantitative public policy analysis on how to deal with endogeneity in important treatment variables. There are a number of approaches here but instrumental varables and 2SLS are particularly attractive. Econometrics textbooks can make this seem daunting but students who learn more by application than by notation will find these tools relatively straightforward.</p>
+
+
+  </article>
+
+<div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'svmiller';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+<!--     <h2 class="footer-heading">Aditya Karanam</h2> -->
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li><strong>Aditya Karanam</strong></li>
+			<li>PhD Student</li>
+          <li><a href="mailto:aditya_ks@utexas.edu">aditya_ks@utexas.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+ 
+
+         <p class="text">
+		Department of Information, Risk, & Operations Management,<br />
+		McCombs School of Business, <br />
+    2110 Speed Way<br />
+		Austin, TX 78705</p> <!-- I'm a PhD Student at McCombs School of Business, UT, Austin with research interests in the area of Economics of Information Systems. Specifically, I am interested in New product design and Innovation. Topics on my site include my research interests and teaching.
+ -->
+      </div>
+
+      <div class="footer-col  footer-col-3">
+       <ul class="social-media-list">
+
+                  
+     
+
+          
+  <li>
+    <a href="https://github.com/askaranam">
+      <i class="fa fa-github" style="color:gray"></i> Github
+    </a>
+  </li>
+
+
+          
+
+          
+  <li>
+    <a href="https://twitter.com/aditya_karanam">
+      <i class="fa fa-twitter" style="color:gray"></i> Twitter
+    </a>
+  </li>
+
+
+
+
+
+
+
+       
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+		<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-37298398-1']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+	</script>
+  </body>
+</html>
+<!-- d.s.m.s.050600.062508.030515.080516.030818; k.050800.101218 | "Baby, I'm Yours" -->
+

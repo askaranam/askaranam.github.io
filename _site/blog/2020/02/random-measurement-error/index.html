@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Visualizing Random Measurement Error in R | Aditya Karanam</title>
+  <meta name="description" content="Here is how I think about teaching random measurement error to students, all in R.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/blog/2020/02/random-measurement-error/">
+  <link rel="alternate" type="application/rss+xml" title="Aditya Karanam" href="http://localhost:4000/feed.xml" />
+<link rel='stylesheet' id='open-sans-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&#038;subset=latin%2Clatin-ext&#038;ver=4.2.4' type='text/css' media='all' />
+<link href='http://fonts.googleapis.com/css?family=Roboto:200' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:600italic,600,400,400italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://www.osu.edu/assets/fonts/webfonts.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/academicons-1.8.0/css/academicons.css">
+
+<!-- icon, perhaps -->
+<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="apple-touch-icon" type="image/png" href="/images/icon-192.png">
+
+
+<!-- OG protocol -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Visualizing Random Measurement Error in R">
+<meta property="og:description" content="Here is how I think about teaching random measurement error to students, all in R.">
+<meta property="og:url" content="http://localhost:4000/blog/2020/02/random-measurement-error/">
+<meta property="og:site_name" content="Aditya Karanam">
+<meta property="og:image" content="http://localhost:4000/images/bullseyes.png">
+
+<meta property="og:image:width" content="637" />
+<meta property="og:image:height" content="403" />
+
+<!-- Twitter cards -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@aditya_karanam">
+<meta name="twitter:title" content="Visualizing Random Measurement Error in R" />
+<meta name="twitter:description" content="Here is how I think about teaching random measurement error to students, all in R." />
+<meta name="twitter:url" content="http://localhost:4000/blog/2020/02/random-measurement-error/" />
+<meta name="twitter:image" content="http://localhost:4000/images/bullseyes.png">
+
+
+<link rel="author" href=""/>
+<meta name="google-site-verification" content="" />
+<meta name="msvalidate.01" content="" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Aditya Karanam</a>
+
+
+    <nav class="site-nav">
+
+      <a href="#" class="menu-icon menu.open">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>  
+
+    <div class="trigger"><h1>Main Navigation</h1>
+
+ <ul class="menu">
+
+    
+    
+     <li><a href="/about/" class="page-link">About</a>
+    
+    </li>
+    
+    
+     <li><a href="/research/" class="page-link">Research</a>
+    
+    </li>
+    
+    
+     <li><a href="/cv/" class="page-link">CV</a>
+    
+    </li>
+    
+    </ul>
+
+
+<!-- <ul class="menu">
+        <li> <a class="page-link" href="/about">About</a></li>
+        <li> <a class="page-link"  href="/blog">Blog</a>
+        <li> <a class="page-link" href="/blog">CV</a>
+        <li> <a class="page-link" href="/blog">For Students</a></li>
+        <li> <a class="page-link"  href="/blog">Research</a></a>
+        <li> <a class="page-link" href="/blog">Teaching</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">POSC 1020 – Introduction to International Relations</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">POSC 3410 – Quantitative Methods in Political Science</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">POSC 3610 – International Politics in Crisis</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3630-united-states-foreign-policy/">POSC 3630 – United States Foreign Policy</a></li>
+</ul></li>
+        <li> <a class="page-link" href="/blog">Miscellany</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">Clean USAID Greenbook Data</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">Journal of Peace Research *.bst File</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">My Custom Beamer Style</a></li>
+</ul> 
+
+</li>
+</ul> -->
+
+     </div>  
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Visualizing Random Measurement Error in R</h1>
+    <p class="post-meta">Posted on February 8, 2020 by  steve  
+
+  in
+  
+  <a href="/categories/#R" title="R">R</a>&nbsp;
+  
+
+
+</p>
+  </header>
+
+  <article class="post-content">
+    <dl class="wp-caption alignright" style="max-width: 300px">
+
+<dt><a href=""><img class="" src="/images/bullseyes.png" alt="I think we all get the bullseyes as metaphors of measurement error when we get taught this stuff in graduate school." /></a></dt>
+
+<dd>I think we all get the bullseyes as metaphors of measurement error when we get taught this stuff in graduate school.</dd>
+</dl>
+
+<ol>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#rcode">R Code</a></li>
+</ol>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>I’m preparing a week’s lecture/discussion section and lab on measurement error in <a href="http://post8000.svmiller.com/">my graduate-level methods class</a>. The thought occurred to put some of what I intend to do in that class here on my website so, next time I see it, I could think of ways to improve it in the next iteration of the class in another semester. New preps are always a pain and a first class is a guinea pig of a kind.</p>
+
+<p>Briefly: students learning quantitative methods must consider two forms of measurement error. The first is random (stochastic) measurement error. These are deviations in the recorded value that is neither a function of the “true” signal being measured nor deviations that emerge in predictable and constant ways. Systematic measurement error is when the recorded values differ from the “true” values to be measured in a way that is both consistent and predictable. Students learn that neither is necessarily ideal but that systematic measurement error is a bigger concern than random measurement error. For one, random measurement error is built into a lot of what applied statisticians do. Indeed, random assignment purposesly introduces random error into our design the extent to which treatment and control groups could differ, if randomly, beyond the systematic introduction of a treatment. Second, systematic measurement error has the unwelcome effect of pulling our measurements off their “true” value in the population. Thus, systematic measurement error creates <em>mismeasures</em> of the “concept” or “signal” in question. Again: the bullseyes illustrate this.</p>
+
+<p>This understanding of systematic and random measurement error will touch on related things students learn. Again, briefly, systematic measurement error coincides with measurement “bias.” In the measurement sense, “bias” means the measure includes something else that is fundamental beyond just what the measurement purports to capture. My go-to for a social science audience is <a href="https://www.cambridge.org/core/journals/american-political-science-review/article/an-alternative-conceptualization-of-political-tolerance-illusory-increases-1950s1970s/1FC27090011442D83E587F0E6DFEB810">the problem of measuring “political tolerance” during the Cold War</a> by reference to whether Americans would allow communists or atheists to run for elected office or give a speech in the respondent’s town. The measure that follows, by assuming “least-liked groups” of communists and atheists, measured political tolerance. It also measured political ideology, religiosity, and variable fear of the Soviet Union that gradually waned from the peak of the mid-1950s through the mid-1970s. The “political tolerance” example is nice jumping-off point to what “bias” implies for inferences. Bias means our measures are “invalid” and our inferences are likely to be “biased” as well. This careens us as researchers into “Type 1 error” territory, in which we are inclined to say a relationship exists involving our biased measure despite the fact that no such relationship exists in the population.</p>
+
+<p>Random measurement error creates some problems as well, though we don’t treat these as the same scale of danger as we do the problems typically associated with systematic measurement error. Generally, random measurement error coincides with “unreliable” estimates that have a higher “variance.” The noise in our estimates often eliminates the possibility of making inferences. We call this a “Type 2 error.” In other words, a true relationship exists but we are unable to proverbially detect the signal from the din we measured. To be fair, this is unwelcome and we should not be content with it. But, we tell students (and learned ourselves) that it is worse to misrepresent a relationship that does not objectively exist than it is to fail to detect a relationship that actually does exist.</p>
+
+<p>Anywho, here’s some R code to think about teaching this stuff, with a focus at least on random measurement error. Yes, I know I ramble.</p>
+
+<h2 id="rcode">R Code</h2>
+
+<p>Here are some R packages you’ll need for this post. Check <a href="https://github.com/svmiller/svmiller.github.io/tree/master/_source">the <code class="language-plaintext highlighter-rouge">_source</code> directory for my website</a> on Github for the full thing since I may likely condense some of the code because graphs, for example, are code-heavy.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">stevemisc</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">stargazer</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>I recently added a <a href="https://twitter.com/stevenvmiller/status/1226564517586505728"><code class="language-plaintext highlighter-rouge">cor2data</code></a> function to <a href="https://github.com/svmiller/stevemisc">my <code class="language-plaintext highlighter-rouge">stevemisc</code> package</a>. It will take any correlation matrix and simulate data from it that is just <code class="language-plaintext highlighter-rouge">rnorm(n, 0, 1)</code> for all variables named in the matrix. The underlying code is effectively identical to <a href="http://svmiller.com/blog/2019/09/instrumental-variables-2sls/">what I did here</a> to introduce potential readers/students to instrumental variable analysis.</p>
+
+<p>In this case, we’ll create a data set of 1,000 observations with the following correlation matrix. There are just an <code class="language-plaintext highlighter-rouge">x1</code>, an <code class="language-plaintext highlighter-rouge">x2</code>, and an error term <code class="language-plaintext highlighter-rouge">e</code>. Nothing is correlated in any meaningful way. From this correlation matrix, we’ll create 1,000 observations with my go-to reproducible seed. Thereafter, we’re going to create an outcome <code class="language-plaintext highlighter-rouge">y</code> that is a simple linear function of all three things. In other words, <code class="language-plaintext highlighter-rouge">x1</code> and <code class="language-plaintext highlighter-rouge">x2</code> objectively change <code class="language-plaintext highlighter-rouge">y</code> by 1 with each unit increase in <code class="language-plaintext highlighter-rouge">x1</code> or <code class="language-plaintext highlighter-rouge">x2</code> (plus or minus some random error <code class="language-plaintext highlighter-rouge">e</code>) and the estimated value of <code class="language-plaintext highlighter-rouge">y</code> when <code class="language-plaintext highlighter-rouge">x1</code> and <code class="language-plaintext highlighter-rouge">x2</code> are zero is 1.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">vars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"x1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"x2"</span><span class="p">,</span><span class="w">  </span><span class="s2">"e"</span><span class="p">)</span><span class="w">
+</span><span class="n">Cor</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="n">cbind</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0.001</span><span class="p">,</span><span class="w"> </span><span class="m">0.001</span><span class="p">,</span><span class="w">
+                    </span><span class="m">0.001</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0.001</span><span class="p">,</span><span class="w">
+                    </span><span class="m">0.001</span><span class="p">,</span><span class="w"> </span><span class="m">0.001</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="n">nrow</span><span class="o">=</span><span class="m">3</span><span class="p">)</span><span class="w">
+</span><span class="n">rownames</span><span class="p">(</span><span class="n">Cor</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">colnames</span><span class="p">(</span><span class="n">Cor</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vars</span><span class="w">
+
+</span><span class="c1"># from stevemisc</span><span class="w">
+</span><span class="n">Data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cor2data</span><span class="p">(</span><span class="n">Cor</span><span class="p">,</span><span class="w"> </span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="m">8675309</span><span class="p">)</span><span class="w"> </span><span class="c1"># Jenny I got your number...</span><span class="w">
+
+</span><span class="n">Data</span><span class="o">$</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">with</span><span class="p">(</span><span class="n">Data</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="o">*</span><span class="n">x1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="o">*</span><span class="n">x2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Here is a simple OLS model regressing <code class="language-plaintext highlighter-rouge">y</code> on <code class="language-plaintext highlighter-rouge">x1</code> and <code class="language-plaintext highlighter-rouge">x2</code> (along with some other regressions looking at just <code class="language-plaintext highlighter-rouge">x1</code> and <code class="language-plaintext highlighter-rouge">x2</code>). The coefficients that emerge from the OLS model are in orbit what the true population effects are. However, it is worth noting the effect of <code class="language-plaintext highlighter-rouge">x1</code> is more than two standard errors from the true population effect. The difference is not huge or necessarily immediately noticeable, but it’s worth mentioning.</p>
+
+<center>
+
+<table style="text-align:center"><caption><strong>A Simple OLS Model</strong></caption>
+<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="3"><em>Dependent variable:</em></td></tr>
+<tr><td></td><td colspan="3" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td colspan="3">y (Outcome)</td></tr>
+<tr><td style="text-align:left"></td><td>Just x1</td><td>Just x2</td><td>Full Model</td></tr>
+<tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td></tr>
+<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">x1</td><td>0.909<sup>***</sup></td><td></td><td>0.913<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.046)</td><td></td><td>(0.033)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">x2</td><td></td><td>0.983<sup>***</sup></td><td>0.986<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.044)</td><td>(0.033)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Constant</td><td>0.985<sup>***</sup></td><td>0.978<sup>***</sup></td><td>0.981<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.046)</td><td>(0.044)</td><td>(0.033)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td></tr>
+<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>1,000</td><td>1,000</td><td>1,000</td></tr>
+<tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.283</td><td>0.336</td><td>0.622</td></tr>
+<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td colspan="3" style="text-align:right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr>
+<tr><td style="text-align:left"></td><td colspan="3" style="text-align:right"></td></tr>
+</table>
+<br /></center>
+
+<h3 id="random-measurement-error-in-x">Random Measurement Error in X</h3>
+
+<p>We can show what random measurement error does to our inferences with these parameters in mind and through this setup. When I talk to undergraduates about random measurement error in the coding sense, I talk about having, say, a lazy undergraduate working for me coding fatalities in a conflict. However, this hypothetical coder is lazy and sloppy. In some cases, the coder entered an 11 instead of 1, or a 1000 instead of 100 (or vice-versa). The nature of the coding error is not systematic. It’s just sloppy or lazy. Alternatively: “random.”</p>
+
+<p>Here’s a way of showing this in our setup. For every 10th value in <code class="language-plaintext highlighter-rouge">x2</code> in our data set of 1,000 observations, we will substitute that particular value for some other value that will range from the implausible to the plausible and back again. Since all variables in the data frame are generated randomly from a normal distribution with a mean of zero and a standard deviation of one, this type of coding error is not targeting any subset of the distribution. It does not hinge on whether the 10th value is large or small, positive or negative. The 10th value generated from <code class="language-plaintext highlighter-rouge">rnorm</code> does not depend on the previous value. This is ultimately a way of mimicking random measurement error.</p>
+
+<p>The values we’ll substitute will range from -500 to 500 at various increments. Since <code class="language-plaintext highlighter-rouge">x2</code> is simulated to have a mean of zero and a standard deviation of one, the values we’ll substitute will range from the statistically impossible, given the distribution of the data (e.g. -500), to the plausible (e.g. 0, the mean).</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">new_vals</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">-500</span><span class="p">,</span><span class="w"> </span><span class="m">-100</span><span class="p">,</span><span class="w"> </span><span class="m">-10</span><span class="p">,</span><span class="w"> </span><span class="m">-5</span><span class="p">,</span><span class="w"> </span><span class="m">-3</span><span class="p">,</span><span class="w"> </span><span class="m">-2</span><span class="p">,</span><span class="w"> </span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w">
+              </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">500</span><span class="p">)</span><span class="w">
+
+</span><span class="n">new_vals</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">seq</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">),</span><span class="w"> </span><span class="n">seq</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">),</span><span class="w"> </span><span class="m">75</span><span class="p">,</span><span class="w"> </span><span class="n">seq</span><span class="p">(</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="m">100</span><span class="p">))</span><span class="w">
+
+</span><span class="n">new_vals</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">new_vals</span><span class="o">*</span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">new_vals</span><span class="p">)</span><span class="w">
+
+</span><span class="n">Xmods</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tibble</span><span class="p">()</span><span class="w">
+
+
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">new_vals</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="c1"># Looping through new_vals</span><span class="w">
+</span><span class="c1"># For every 10th value for x2, recode it to whatever the ith value is in new_vals</span><span class="w">
+</span><span class="n">Data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate_at</span><span class="p">(</span><span class="n">vars</span><span class="p">(</span><span class="s2">"x2"</span><span class="p">),</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">x2nv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">~</span><span class="n">ifelse</span><span class="p">(</span><span class="n">row_number</span><span class="p">()</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="m">10</span><span class="p">)),</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">x2</span><span class="p">)))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Data</span><span class="w">
+  </span><span class="c1"># regress y  on this particular new x2nv variable</span><span class="w">
+  </span><span class="n">mod</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lm</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x2nv</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">Data</span><span class="p">)</span><span class="w">
+  </span><span class="c1"># grab r-square</span><span class="w">
+  </span><span class="n">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">broom</span><span class="o">::</span><span class="n">glance</span><span class="p">(</span><span class="n">mod</span><span class="p">)[</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">pull</span><span class="p">()</span><span class="w">
+  </span><span class="c1"># create a broom table that codes whatever the ith value of new_vals is, and the adjr2 as well</span><span class="w">
+  </span><span class="n">broomed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">broom</span><span class="o">::</span><span class="n">tidy</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">mutate</span><span class="p">(</span><span class="n">mod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r2</span><span class="p">)</span><span class="w">
+  </span><span class="c1"># bind it to Xmods</span><span class="w">
+  </span><span class="n">Xmods</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bind_rows</span><span class="p">(</span><span class="n">Xmods</span><span class="p">,</span><span class="w"> </span><span class="n">broomed</span><span class="p">)</span><span class="w">
+  
+</span><span class="p">}</span><span class="w">
+
+</span><span class="c1"># grab/broom up M3, for context</span><span class="w">
+</span><span class="n">M3df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">broom</span><span class="o">::</span><span class="n">tidy</span><span class="p">(</span><span class="n">M3</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">lwr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">estimate</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="n">qnorm</span><span class="p">(</span><span class="m">.025</span><span class="p">))</span><span class="o">*</span><span class="n">std.error</span><span class="p">,</span><span class="w">
+         </span><span class="n">upr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">estimate</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="n">qnorm</span><span class="p">(</span><span class="m">.025</span><span class="p">))</span><span class="o">*</span><span class="n">std.error</span><span class="p">)</span><span class="w">  </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">broom</span><span class="o">::</span><span class="n">glance</span><span class="p">(</span><span class="n">M3</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">pull</span><span class="p">(</span><span class="m">1</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Here is way of visualizing what random measurement error in <code class="language-plaintext highlighter-rouge">x2</code> does to inferences we want to make about the relationship between <code class="language-plaintext highlighter-rouge">x2</code> and <code class="language-plaintext highlighter-rouge">y</code>. Recall that <code class="language-plaintext highlighter-rouge">y</code> is objectively, in part, a function of <code class="language-plaintext highlighter-rouge">x2</code> wherein each unit increase in <code class="language-plaintext highlighter-rouge">x2</code> coincides with an increase of 1 in <code class="language-plaintext highlighter-rouge">y</code> even as there is an estimated (and independent) effect of <code class="language-plaintext highlighter-rouge">x1</code> and an error term as well. This amounts to a Type 2 error. The true population effect is 1. Our OLS estimates for <code class="language-plaintext highlighter-rouge">x2</code> without random measurement error includes 1. However, random measurement error pushes the estimated effect to zero and precludes us from detecting that signal. You can call this a “bias” of a sort; random measurement error in an independent variable biases a regression coefficient to zero. I don’t know if we necessarily think of this in the same way we think of “bias” in the systematic context, but that’s because a lot of us were molded in the context of null hypothesis testing.</p>
+
+<p><img src="/images/random-measurement-error-x2-1.png" alt="plot of chunk random-measurement-error-x2" /></p>
+
+<p>There is an interesting effect on the intercept too. The more, for lack of better term, “plausible” the random measurement error is in the scale of <code class="language-plaintext highlighter-rouge">x2</code> (e.g. recoding every 10th value to be 0, i.e. the mean), the more the intercept is stressed from its true value as well. The less plausible the random measurement error is, the more the intercept is unchanged.</p>
+
+<p>Another way of looking at the fundamental takeaway here is to compare the R-squared values from these models. The effect of increasing measurement error in <code class="language-plaintext highlighter-rouge">x2</code>, at least in how I’ve done that in this exercise, is to collapse the R-squared from the model with no measurement bias to the model that excludes <code class="language-plaintext highlighter-rouge">x2</code> outright. Random measurement as severe at both tails reduces the measure of <code class="language-plaintext highlighter-rouge">x2</code> to noise.</p>
+
+<p><img src="/images/random-measurement-error-x2-rsq-1.png" alt="plot of chunk random-measurement-error-x2-rsq" /></p>
+
+<h3 id="random-measurement-error-in-y">Random Measurement Error in Y</h3>
+
+<p>Random measurement error in the dependent variable does not have quite the same effect, even if the fundamental takeaway in terms of what random measurement error does will be the same. We’ll do what we did previously for <code class="language-plaintext highlighter-rouge">x2</code>, but for <code class="language-plaintext highlighter-rouge">y</code> instead.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Ymods</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tibble</span><span class="p">()</span><span class="w">
+
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">new_vals</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="n">Data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate_at</span><span class="p">(</span><span class="n">vars</span><span class="p">(</span><span class="s2">"y"</span><span class="p">),</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">ynv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">~</span><span class="n">ifelse</span><span class="p">(</span><span class="n">row_number</span><span class="p">()</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="m">10</span><span class="p">)),</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Data</span><span class="w">
+  </span><span class="n">mod</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lm</span><span class="p">(</span><span class="n">ynv</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">Data</span><span class="p">)</span><span class="w">
+  </span><span class="n">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">broom</span><span class="o">::</span><span class="n">glance</span><span class="p">(</span><span class="n">mod</span><span class="p">)[</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">pull</span><span class="p">()</span><span class="w">
+  </span><span class="n">broomed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">broom</span><span class="o">::</span><span class="n">tidy</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">mutate</span><span class="p">(</span><span class="n">mod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r2</span><span class="p">)</span><span class="w">
+  </span><span class="n">Ymods</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bind_rows</span><span class="p">(</span><span class="n">Ymods</span><span class="p">,</span><span class="w"> </span><span class="n">broomed</span><span class="p">)</span><span class="w">
+  
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Random measurement error in the dependent variable will not really bias the regression coefficients. The intercept will want to travel in the direction of the random measurement error in <code class="language-plaintext highlighter-rouge">y</code>, which isn’t too surprising when you internalize that the intercept is the estimate of <em>y</em> when all covariates are set to zero. However, the regression coefficients for <code class="language-plaintext highlighter-rouge">x1</code> and <code class="language-plaintext highlighter-rouge">x2</code> don’t materially move much. They just get noisier. Random measurement error in an independent variable will push its coefficient to zero. Random measurement error in the dependent variable will extend out the standard errors for the independent variables.</p>
+
+<p><img src="/images/random-measurement-error-y-1.png" alt="plot of chunk random-measurement-error-y" /></p>
+
+<p>Comparing the R-squared values will illustrate what’s happening here. Random measurement error, whether in an independent variable or a dependent variable, decreases R-squared. This has implications for the standard error since R-squared appears in the numerator of <a href="http://seismo.berkeley.edu/~kirchner/eps_120/Toolkits/Toolkit_10.pdf">the standard error of the slope</a>. Standard errors increase as R-square increases.</p>
+
+<p><img src="/images/random-measurement-error-y-rsq-1.png" alt="plot of chunk random-measurement-error-y-rsq" /></p>
+
+<p>I should think soon about extending this framework to explore systematic measurement error and bias in this setup. Already, <a href="http://svmiller.com/blog/2019/09/instrumental-variables-2sls/">my post on instrumental variables</a> does this. However, I wanted something on my website that at least unpacks random measurement error as well.</p>
+
+
+  </article>
+
+<div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'svmiller';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+<!--     <h2 class="footer-heading">Aditya Karanam</h2> -->
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li><strong>Aditya Karanam</strong></li>
+			<li>PhD Student</li>
+          <li><a href="mailto:aditya_ks@utexas.edu">aditya_ks@utexas.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+ 
+
+         <p class="text">
+		Department of Information, Risk, & Operations Management,<br />
+		McCombs School of Business, <br />
+    2110 Speed Way<br />
+		Austin, TX 78705</p> <!-- I'm a PhD Student at McCombs School of Business, UT, Austin with research interests in the area of Economics of Information Systems. Specifically, I am interested in New product design and Innovation. Topics on my site include my research interests and teaching.
+ -->
+      </div>
+
+      <div class="footer-col  footer-col-3">
+       <ul class="social-media-list">
+
+                  
+     
+
+          
+  <li>
+    <a href="https://github.com/askaranam">
+      <i class="fa fa-github" style="color:gray"></i> Github
+    </a>
+  </li>
+
+
+          
+
+          
+  <li>
+    <a href="https://twitter.com/aditya_karanam">
+      <i class="fa fa-twitter" style="color:gray"></i> Twitter
+    </a>
+  </li>
+
+
+
+
+
+
+
+       
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+		<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-37298398-1']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+	</script>
+  </body>
+</html>
+<!-- d.s.m.s.050600.062508.030515.080516.030818; k.050800.101218 | "Baby, I'm Yours" -->
+

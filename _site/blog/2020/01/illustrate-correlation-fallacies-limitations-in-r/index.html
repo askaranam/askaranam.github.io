@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Illustrate Some Correlation Limitations and Fallacies in R | Aditya Karanam</title>
+  <meta name="description" content="Here are some sample data sets to show some classic limitations/fallacies of correlations, emphasizing the importance of exploratory data visualization/analysis.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/blog/2020/01/illustrate-correlation-fallacies-limitations-in-r/">
+  <link rel="alternate" type="application/rss+xml" title="Aditya Karanam" href="http://localhost:4000/feed.xml" />
+<link rel='stylesheet' id='open-sans-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&#038;subset=latin%2Clatin-ext&#038;ver=4.2.4' type='text/css' media='all' />
+<link href='http://fonts.googleapis.com/css?family=Roboto:200' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:600italic,600,400,400italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://www.osu.edu/assets/fonts/webfonts.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/academicons-1.8.0/css/academicons.css">
+
+<!-- icon, perhaps -->
+<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="apple-touch-icon" type="image/png" href="/images/icon-192.png">
+
+
+<!-- OG protocol -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Illustrate Some Correlation Limitations and Fallacies in R">
+<meta property="og:description" content="Here are some sample data sets to show some classic limitations/fallacies of correlations, emphasizing the importance of exploratory data visualization/analysis.">
+<meta property="og:url" content="http://localhost:4000/blog/2020/01/illustrate-correlation-fallacies-limitations-in-r/">
+<meta property="og:site_name" content="Aditya Karanam">
+<meta property="og:image" content="http://localhost:4000/images/simpsons-paradox.jpg">
+
+<meta property="og:image:width" content="637" />
+<meta property="og:image:height" content="403" />
+
+<!-- Twitter cards -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@aditya_karanam">
+<meta name="twitter:title" content="Illustrate Some Correlation Limitations and Fallacies in R" />
+<meta name="twitter:description" content="Here are some sample data sets to show some classic limitations/fallacies of correlations, emphasizing the importance of exploratory data visualization/analysis." />
+<meta name="twitter:url" content="http://localhost:4000/blog/2020/01/illustrate-correlation-fallacies-limitations-in-r/" />
+<meta name="twitter:image" content="http://localhost:4000/images/simpsons-paradox.jpg">
+
+
+<link rel="author" href=""/>
+<meta name="google-site-verification" content="" />
+<meta name="msvalidate.01" content="" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Aditya Karanam</a>
+
+
+    <nav class="site-nav">
+
+      <a href="#" class="menu-icon menu.open">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>  
+
+    <div class="trigger"><h1>Main Navigation</h1>
+
+ <ul class="menu">
+
+    
+    
+     <li><a href="/about/" class="page-link">About</a>
+    
+    </li>
+    
+    
+     <li><a href="/research/" class="page-link">Research</a>
+    
+    </li>
+    
+    
+     <li><a href="/cv/" class="page-link">CV</a>
+    
+    </li>
+    
+    </ul>
+
+
+<!-- <ul class="menu">
+        <li> <a class="page-link" href="/about">About</a></li>
+        <li> <a class="page-link"  href="/blog">Blog</a>
+        <li> <a class="page-link" href="/blog">CV</a>
+        <li> <a class="page-link" href="/blog">For Students</a></li>
+        <li> <a class="page-link"  href="/blog">Research</a></a>
+        <li> <a class="page-link" href="/blog">Teaching</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">POSC 1020 – Introduction to International Relations</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">POSC 3410 – Quantitative Methods in Political Science</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">POSC 3610 – International Politics in Crisis</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3630-united-states-foreign-policy/">POSC 3630 – United States Foreign Policy</a></li>
+</ul></li>
+        <li> <a class="page-link" href="/blog">Miscellany</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">Clean USAID Greenbook Data</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">Journal of Peace Research *.bst File</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">My Custom Beamer Style</a></li>
+</ul> 
+
+</li>
+</ul> -->
+
+     </div>  
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Illustrate Some Correlation Limitations and Fallacies in R</h1>
+    <p class="post-meta">Posted on January 28, 2020 by  steve  
+
+  in
+  
+  <a href="/categories/#R" title="R">R</a>&nbsp;
+  
+
+
+</p>
+  </header>
+
+  <article class="post-content">
+    <dl class="wp-caption alignright" style="max-width: 400px">
+
+<dt><a href=""><img class="" src="/images/simpsons-paradox.jpg" alt="The Simpsons Paradox, not to be confused with Simpson's paradox (HT: @fMRI_guy)." /></a></dt>
+
+<dd>The Simpsons Paradox, not to be confused with Simpson's paradox (HT: @fMRI_guy).</dd>
+</dl>
+
+<p>I’m teaching <a href="http://post8000.svmiller.com">a grad-level methods class</a> this semester that is heavier on applied data analysis for a public policy audience than <a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">my undergraduate class</a>, which is more focused on boilerplate research design stuff for political science. It is in part a chore in as much as it’s a new prep. The emphasis on causal inference is more narrow/focused now than it was when I was learning related material in graduate school (and certainly for a different purpose).</p>
+
+<p>It’s also a blessing because it’s giving me some opportunity to rethink/retool how I teach this stuff for a wide audience. Along the way, I’m compiling some instructional tools into <a href="https://github.com/svmiller/post8000r">an R package, <code class="language-plaintext highlighter-rouge">post8000r</code></a>, that is right now on <a href="https://github.com/svmiller/">my Github</a>. My goals here are multiple. First: disseminate sample data sets for in-class instruction of these topics of interest to both my students and researchers/teachers who would like a handy package for methods instruction. Second, I’m also trying to teach my students, by example, how to code some things within a <a href="https://www.tidyverse.org/">tidyverse</a> workflow. Every class I teach this semester has a Tuesday lecture/discussion with a Thursday lab, where students learn to implement the week’s topics in R.</p>
+
+<p>This week is all about association and causality, even though the lab session will focus more on some associational techniques like correlation along with a discussion of where correlation analysis can go awry. Here are some of the applications, starting with first a list of packages I’ll be using in this workflow.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span><span class="w"> </span><span class="c1"># you should know what this is</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">stevemisc</span><span class="p">)</span><span class="w"> </span><span class="c1"># devtools::install_github("svmiller/stevemisc")</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">post8000r</span><span class="p">)</span><span class="w"> </span><span class="c1"># devtools::install_github("svmiller/post8000r")</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggpmisc</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggrepel</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">knitr</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">kableExtra</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="anscombes-quartet">Anscombe’s Quartet</h2>
+
+<p><a href="http://doi.org/10.2307/2682899">Francis J. Anscombe’s (1973) famous quartet</a> is a go-to illustration for how simple associational analyses, even linear regression, can mislead the researcher if s/he is not taking care to actually look at the underlying data. Here, Anscombe created four data sets, each with 11 observations and two variables (<code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code>). All four quartets have the same mean for <code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code>, the same variance for <code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code>, the same regression line (<code class="language-plaintext highlighter-rouge">y</code>-intercept and slope for <code class="language-plaintext highlighter-rouge">x</code>), the same residual sum of squares, and the same correlation. However, they look quite differently.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">anscombe</code> data come default in R, so there’s no need to add it to my R package. But some R code will underscore the peculiar nature of Anscombe’s quartet.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span><span class="p">(</span><span class="s2">"anscombe"</span><span class="p">)</span><span class="w"> </span><span class="c1"># from datasets</span><span class="w">
+
+</span><span class="n">anscombe</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">summarize_all</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sd</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">gather</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">separate</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"var"</span><span class="p">,</span><span class="w"> </span><span class="s2">"stat"</span><span class="p">),</span><span class="w"> </span><span class="s2">"_"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">group_split</span><span class="p">(</span><span class="n">stat</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">bind_cols</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">rename</span><span class="p">(</span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w">
+         </span><span class="n">sd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value1</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">select</span><span class="p">(</span><span class="n">var</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">kable</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="o">=</span><span class="s2">"html"</span><span class="p">,</span><span class="w">
+        </span><span class="n">table.attr</span><span class="o">=</span><span class="s1">'id="stevetable"'</span><span class="p">,</span><span class="w">
+        </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"The Means and Standard Deviations from Anscombe's Quartet"</span><span class="p">,</span><span class="w">
+        </span><span class="n">col.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"Variable"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Mean"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Standard Deviation"</span><span class="p">),</span><span class="w">
+        </span><span class="n">align</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"l"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<table id="stevetable">
+<caption>The Means and Standard Deviations from Anscombe's Quartet</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Variable </th>
+   <th style="text-align:center;"> Mean </th>
+   <th style="text-align:center;"> Standard Deviation </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> x1 </td>
+   <td style="text-align:center;"> 9.000000 </td>
+   <td style="text-align:center;"> 3.316625 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x2 </td>
+   <td style="text-align:center;"> 9.000000 </td>
+   <td style="text-align:center;"> 3.316625 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x3 </td>
+   <td style="text-align:center;"> 9.000000 </td>
+   <td style="text-align:center;"> 3.316625 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x4 </td>
+   <td style="text-align:center;"> 9.000000 </td>
+   <td style="text-align:center;"> 3.316625 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> y1 </td>
+   <td style="text-align:center;"> 7.500909 </td>
+   <td style="text-align:center;"> 2.031568 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> y2 </td>
+   <td style="text-align:center;"> 7.500909 </td>
+   <td style="text-align:center;"> 2.031657 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> y3 </td>
+   <td style="text-align:center;"> 7.500000 </td>
+   <td style="text-align:center;"> 2.030424 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> y4 </td>
+   <td style="text-align:center;"> 7.500909 </td>
+   <td style="text-align:center;"> 2.030578 </td>
+  </tr>
+</tbody>
+</table>
+
+<p>However, a scatterplot (with overlaying regression line) will show that each quartet looks quite different from the other even if they have the identical mean, standard deviation, regression line, and correlation. Quartet 1 has a fairly strong, positive relationship between <code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code>, even if there is some random noise. Quartet 2 has a clear curvilinear relationship that is not neatly captured by a single regression line. Quartet 3 is otherwise a perfect positive relationship up until that lone outlier. Quartet 4 is almost a perfect zero relationship between <code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code> until that one outlier (the eighth observation in the quartet) makes it seem like a positive relationship exists when there isn’t one.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">anscombe</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">gather</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"Quartet "</span><span class="p">,</span><span class="w"> </span><span class="n">stringr</span><span class="o">::</span><span class="n">str_sub</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="m">-1</span><span class="p">)),</span><span class="w">
+         </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stringr</span><span class="o">::</span><span class="n">str_sub</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">group_split</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">bind_cols</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">rename</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w">
+         </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value1</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">select</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">group</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">theme_steve_web</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">post_bg</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">group</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"lm"</span><span class="p">,</span><span class="w"> </span><span class="n">se</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">formula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">stat_poly_eq</span><span class="p">(</span><span class="n">formula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w">
+               </span><span class="n">eq.with.lhs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"italic(hat(y))~`=`~"</span><span class="p">,</span><span class="w">
+               </span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste</span><span class="p">(</span><span class="n">..eq.label..</span><span class="p">,</span><span class="w"> </span><span class="s2">"~~~~~("</span><span class="p">,</span><span class="n">..rr.label..</span><span class="p">,</span><span class="s2">")"</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">)),</span><span class="w">
+               </span><span class="n">geom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"label_npc"</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.33</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="s2">"#619cff"</span><span class="p">,</span><span class="w">
+               </span><span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">,</span><span class="w">
+               </span><span class="n">parse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+       </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+       </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Anscombe's Quartet, Visualized"</span><span class="p">,</span><span class="w">
+       </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Anscombe's quartet emphasizes the importance of exploratory data analysis beyond the simple descriptive statistics."</span><span class="p">,</span><span class="w">
+       </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Source: Anscombe (1973)."</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/images/anscombes-quartet-ggplot-1.png" alt="plot of chunk anscombes-quartet-ggplot" /></p>
+
+<p>Basically: look at your data. Look at your model too.</p>
+
+<h2 id="simpsons-paradox">Simpson’s Paradox</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Simpson%27s_paradox">Simpson’s paradox</a> is a well-known problem of correlation in which a correlation analysis, almost always done in a bivariate context, may reveal a relationship that is reversed upon the introduction of some third variable. Every stylized case I’ve seen of Simpson’s paradox conceptualizes  the third factor as some kind of grouping/category effect (certainly of interest to me as a mixed effects modeler), even if this may not be necessary to show a Simpson reversal.</p>
+
+<p>One of the classic pedagogical cases of a Simpson’s paradox is from <a href="https://pdfs.semanticscholar.org/29c3/0e9dc77b56340faa5e6ad35e0741a5a83d49.pdf">Deborah Lynne Guber’s (1999)</a> study of public school expenditures and SAT performance in 1994-95 across all 50 states. There are other cases I’ve seen of a Simpson reversal, incidentally most involving education, but these data were readily available and are part of my <code class="language-plaintext highlighter-rouge">post8000r</code> package as the <code class="language-plaintext highlighter-rouge">Guber99</code> data frame.</p>
+
+<p>Guber tackles a troubling correlation at the state-level in these data from 1994-95. Namely, states that spend more (per pupil) on students appear to have lower total SAT scores to show for it. The correlation between the two variables in the data is -0.381.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Guber99</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="n">aes</span><span class="p">(</span><span class="n">expendpp</span><span class="p">,</span><span class="w"> </span><span class="n">total</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">theme_steve_web</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">post_bg</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"lm"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_text_repel</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">state</span><span class="p">),</span><span class="w"> </span><span class="n">family</span><span class="o">=</span><span class="s2">"Open Sans"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">annotate</span><span class="p">(</span><span class="s2">"label"</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="m">1085</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="m">9</span><span class="p">,</span><span class="w"> 
+         </span><span class="n">label</span><span class="o">=</span><span class="n">paste</span><span class="p">(</span><span class="s2">"Pearson's R = "</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">cor</span><span class="p">(</span><span class="n">Guber99</span><span class="o">$</span><span class="n">expendpp</span><span class="p">,</span><span class="w"> </span><span class="n">Guber99</span><span class="o">$</span><span class="n">total</span><span class="p">),</span><span class="m">3</span><span class="p">)),</span><span class="w"> 
+          </span><span class="n">size</span><span class="o">=</span><span class="m">3.5</span><span class="p">,</span><span class="w"> </span><span class="n">family</span><span class="o">=</span><span class="s2">"Open Sans"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"The Correlation Between Student Expenditures and Total SAT Scores in 50 States, 1994-95"</span><span class="p">,</span><span class="w">
+       </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"The data suggest a negative correlation: more spending leads to lower SAT scores."</span><span class="p">,</span><span class="w">
+       </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Source: Guber (1999)."</span><span class="p">,</span><span class="w">
+       </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Current Expenditure per Pupil in Public Elementary and Secondary Schools"</span><span class="p">,</span><span class="w">
+       </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Average Total SAT Score"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/images/guber99-simple-correlation-expenditure-sat-1.png" alt="plot of chunk guber99-simple-correlation-expenditure-sat" /></p>
+
+<p>However, this naive negative correlation masks that a confounding variable changes the relationship between student expenditures and SAT scores. In Guber’s case, this is the percentage of the state with students taking the SAT. Per Guber, one likely culprit here is that SAT test-taking is more ubiquitous in wealthier, more populous, and spendier (sic) states like New York and Connecticut. In states where SAT test-taking is not as common, some combination of the ACT as test-taking alternative and self-selection (i.e. the best, most motivated students in some of these states take the SAT to go to college out of their states) is enough to reverse the relationship between student expenditures and total SAT score.</p>
+
+<p>A few lines in R and some arbitrary quartile cuts will emphasize what’s happening here.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Guber99</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="c1"># create quick-and-dirty quartiles for perc of state taking SAT</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.factor</span><span class="p">(</span><span class="n">ntile</span><span class="p">(</span><span class="n">perctakers</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">)))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">forcats</span><span class="o">::</span><span class="n">fct_recode</span><span class="p">(</span><span class="n">group</span><span class="p">,</span><span class="w"> 
+                                         </span><span class="s2">"Lowest Quartile"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                                         </span><span class="s2">"Second Quartile"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                                         </span><span class="s2">"Third Quartile"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+                                         </span><span class="s2">"Highest Quartile"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"4"</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Guber99</span><span class="w">
+
+</span><span class="n">Guber99</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">group_by</span><span class="p">(</span><span class="n">group</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">summarize</span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">cor</span><span class="p">(</span><span class="n">expendpp</span><span class="p">,</span><span class="w"> </span><span class="n">total</span><span class="p">),</span><span class="w"> </span><span class="m">3</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+   </span><span class="n">kable</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="o">=</span><span class="s2">"html"</span><span class="p">,</span><span class="w">
+        </span><span class="n">table.attr</span><span class="o">=</span><span class="s1">'id="stevetable"'</span><span class="p">,</span><span class="w">
+        </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"The Correlation Between Student Expenditures and SAT Score, by Percentage of State Taking SAT"</span><span class="p">,</span><span class="w">
+        </span><span class="n">col.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"SAT Test-Taker Percentage Quartile"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Pearson's r"</span><span class="p">),</span><span class="w">
+        </span><span class="n">align</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"l"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<table id="stevetable">
+<caption>The Correlation Between Student Expenditures and SAT Score, by Percentage of State Taking SAT</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> SAT Test-Taker Percentage Quartile </th>
+   <th style="text-align:center;"> Pearson's r </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Lowest Quartile </td>
+   <td style="text-align:center;"> 0.278 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Second Quartile </td>
+   <td style="text-align:center;"> 0.301 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Third Quartile </td>
+   <td style="text-align:center;"> 0.376 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Highest Quartile </td>
+   <td style="text-align:center;"> 0.142 </td>
+  </tr>
+</tbody>
+</table>
+
+<p>A graph will also show this as well.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Faceted annotations can be a pain...</span><span class="w">
+</span><span class="n">Guber99</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">group_by</span><span class="p">(</span><span class="n">group</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">summarize</span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cor</span><span class="p">(</span><span class="n">expendpp</span><span class="p">,</span><span class="w"> </span><span class="n">total</span><span class="p">),</span><span class="w">
+            </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"Pearson's r: "</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Correlations</span><span class="w">
+
+
+</span><span class="n">Guber99</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="n">aes</span><span class="p">(</span><span class="n">expendpp</span><span class="p">,</span><span class="w"> </span><span class="n">total</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">theme_steve_web</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">post_bg</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"lm"</span><span class="p">)</span><span class="w">  </span><span class="o">+</span><span class="w">
+  </span><span class="n">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">group</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_label</span><span class="p">(</span><span class="n">size</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="m">3.5</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">Correlations</span><span class="p">,</span><span class="w">
+    </span><span class="n">mapping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">9.5</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1100</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">label</span><span class="p">),</span><span class="w">
+    </span><span class="n">hjust</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">1.05</span><span class="p">,</span><span class="w"> </span><span class="n">vjust</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">1.5</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"The Correlation Between Student Expenditures and Total SAT Scores in 50 States, by Percentage of Test-Takers, 1994-95"</span><span class="p">,</span><span class="w">
+       </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"The data suggest a negative correlation between student expenditures and SAT performance is a function of the percentage of students taking the SAT."</span><span class="p">,</span><span class="w">
+       </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Source: Guber (1999)."</span><span class="p">,</span><span class="w">
+       </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Current Expenditure per Pupil in Public Elementary and Secondary Schools"</span><span class="p">,</span><span class="w">
+       </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Average Total SAT Score"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/images/guber99-correlation-expenditure-sat-test-takers-group-plot-1.png" alt="plot of chunk guber99-correlation-expenditure-sat-test-takers-group-plot" /></p>
+
+<p>Basically: think long and hard about grouping effects in your data since they can confound inferences you may want to make from bivariate correlations.</p>
+
+<h2 id="ecological-fallacy">Ecological Fallacy</h2>
+
+<p>The ecological fallacy is one of the classic limitations about correlation about which we have long known. Namely: inferences and correlations at the individual-level need not be equivalent at the group-level.</p>
+
+<p>We have <a href="https://www.jstor.org/stable/2087176?seq=1#metadata_info_tab_contents">W.S. Robinson (1950)</a> to thank for this classic cautionary tale. His case concerns illiteracy rates from the 1930 Census, later cleaned and amended by <a href="https://www.jstor.org/stable/2087176?seq=1#metadata_info_tab_contents">Grotenhuis et al. (2011)</a>, and included in my <code class="language-plaintext highlighter-rouge">post8000r</code> package as the <code class="language-plaintext highlighter-rouge">Illiteracy30</code> data frame.</p>
+
+<p>It’s not too problematic to note that literacy rates in the U.S. cluster on race and immigrant status, certainly by the early 20th century when Robinson conducted this analysis. The explanations here are multiple, for which a summary of which Europeans migrated to the U.S. and why will illustrate the issue. The unequal allocation of public goods (like education) on race—certainly during the Jim Crow era—will add further background. It should be unsurprising that there were higher illiteracy rates for those 10 years old or above among non-white, non-native-born people in the U.S. relative to the white, native-born population in the U.S.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Illiteracy30</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">summarize_if</span><span class="p">(</span><span class="n">is.numeric</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">gather</span><span class="p">(</span><span class="n">var</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"Total Population"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Total Population"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"Native White"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Native White"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"White, Foreign/Mixed Parentage"</span><span class="p">,</span><span class="s2">"White, Foreign/Mixed Parentage"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"Foreign-Born White"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Foreign-Born White"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"Black"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Black"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">literacy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"Total"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Illiterate"</span><span class="p">),</span><span class="w"> </span><span class="m">5</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">group_by</span><span class="p">(</span><span class="n">category</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">prop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">value</span><span class="o">/</span><span class="nf">max</span><span class="p">(</span><span class="n">value</span><span class="p">),</span><span class="w"> </span><span class="m">3</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">filter</span><span class="p">(</span><span class="n">literacy</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">"Total"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">select</span><span class="p">(</span><span class="n">category</span><span class="p">,</span><span class="w"> </span><span class="n">prop</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">kable</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="o">=</span><span class="s2">"html"</span><span class="p">,</span><span class="w">
+        </span><span class="n">table.attr</span><span class="o">=</span><span class="s1">'id="stevetable"'</span><span class="p">,</span><span class="w">
+        </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Illiteracy Rates in the 1930 U.S. Census"</span><span class="p">,</span><span class="w">
+        </span><span class="n">col.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"Group"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Proportion of Population 10 Years or Older That is Illiterate"</span><span class="p">),</span><span class="w">
+        </span><span class="n">align</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"l"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<table id="stevetable">
+<caption>Illiteracy Rates in the 1930 U.S. Census</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Group </th>
+   <th style="text-align:center;"> Proportion of Population 10 Years or Older That is Illiterate </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Total Population </td>
+   <td style="text-align:center;"> 0.043 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Native White </td>
+   <td style="text-align:center;"> 0.018 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> White, Foreign/Mixed Parentage </td>
+   <td style="text-align:center;"> 0.006 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Foreign-Born White </td>
+   <td style="text-align:center;"> 0.099 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Black </td>
+   <td style="text-align:center;"> 0.163 </td>
+  </tr>
+</tbody>
+</table>
+
+<p>However, there is interesting variation in the data by level of analysis. Consider the case of interest to Robinson for the foreign-born population (evidently recorded as “foreign-born white” in the Census data). Clearly, the foreign-born population are more likely to be illiterate. Almost 10% of the foreign-born white population is illiterate relative to 4% of the total population (and 1.8% of the native-born white population). In a comparison of states, the correlation between the percentage of the state population that is foreign-born and the percentage of the foreign-born in the state that is illiterate is .188 but the correlation between the percentage of the state that is foreign-born and the percentage of the overall state that is illiterate is -.524. These are two very different correlations at two different levels, which makes sense when you understand where immigrants tended to settle when they arrived in the U.S.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Illiteracy30</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">foreignp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fbwhite</span><span class="o">/</span><span class="n">pop</span><span class="p">,</span><span class="w">
+         </span><span class="n">illiterate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pop_il</span><span class="o">/</span><span class="n">pop</span><span class="p">,</span><span class="w">
+         </span><span class="n">fbilliterate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fbwhite_il</span><span class="o">/</span><span class="n">fbwhite</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">select</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">foreignp</span><span class="p">,</span><span class="w"> </span><span class="n">illiterate</span><span class="p">,</span><span class="w"> </span><span class="n">fbilliterate</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">gather</span><span class="p">(</span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="o">:</span><span class="m">4</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ifelse</span><span class="p">(</span><span class="n">group</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"illiterate"</span><span class="p">,</span><span class="w"> </span><span class="s2">"% of Overall State That Is Illiterate"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"% of Foreign-Born in State That Is Illiterate"</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Summaries</span><span class="w">
+
+</span><span class="c1"># Faceted annotations can be a pain...</span><span class="w">
+</span><span class="n">Summaries</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">group_by</span><span class="p">(</span><span class="n">group</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">summarize</span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cor</span><span class="p">(</span><span class="n">foreignp</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">),</span><span class="w">
+            </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"Pearson's r: "</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Correlations</span><span class="w">
+
+
+</span><span class="n">Summaries</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="n">aes</span><span class="p">(</span><span class="n">foreignp</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">theme_steve_web</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">post_bg</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">group</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_label</span><span class="p">(</span><span class="n">size</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="m">3.5</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">Correlations</span><span class="p">,</span><span class="w">
+    </span><span class="n">mapping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">.28</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">.18</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">label</span><span class="p">),</span><span class="w">
+    </span><span class="n">hjust</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">1.05</span><span class="p">,</span><span class="w"> </span><span class="n">vjust</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">1.5</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">"lm"</span><span class="p">)</span><span class="w">  </span><span class="o">+</span><span class="w">
+  </span><span class="n">scale_x_continuous</span><span class="p">(</span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scales</span><span class="o">::</span><span class="n">percent</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">scale_y_continuous</span><span class="p">(</span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scales</span><span class="o">::</span><span class="n">percent</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"The Ecological Fallacy of Foreign-Born American Residents and Illiteracy Rates from the 1930 Census"</span><span class="p">,</span><span class="w">
+       </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Generally: immigrants settled in areas of economic opportunity, which is where literacy rates were higher. This explains the different correlations first observed by Robinson (1950)."</span><span class="p">,</span><span class="w">
+       </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Source: 1930 U.S. Census. See also: Robinson (1950), Grotenhuis et al. (2011)."</span><span class="p">,</span><span class="w">
+       </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Percentage of the State That Is Foreign Born"</span><span class="p">,</span><span class="w">
+       </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/images/robinson-1950-ecological-fallacy-foreign-born-illiteracy-1.png" alt="plot of chunk robinson-1950-ecological-fallacy-foreign-born-illiteracy" /></p>
+
+<p>Basically: be mindful of your unit of analysis. Ecological correlations are not substitutes for individual correlations.</p>
+
+
+  </article>
+
+<div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'svmiller';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+<!--     <h2 class="footer-heading">Aditya Karanam</h2> -->
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li><strong>Aditya Karanam</strong></li>
+			<li>PhD Student</li>
+          <li><a href="mailto:aditya_ks@utexas.edu">aditya_ks@utexas.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+ 
+
+         <p class="text">
+		Department of Information, Risk, & Operations Management,<br />
+		McCombs School of Business, <br />
+    2110 Speed Way<br />
+		Austin, TX 78705</p> <!-- I'm a PhD Student at McCombs School of Business, UT, Austin with research interests in the area of Economics of Information Systems. Specifically, I am interested in New product design and Innovation. Topics on my site include my research interests and teaching.
+ -->
+      </div>
+
+      <div class="footer-col  footer-col-3">
+       <ul class="social-media-list">
+
+                  
+     
+
+          
+  <li>
+    <a href="https://github.com/askaranam">
+      <i class="fa fa-github" style="color:gray"></i> Github
+    </a>
+  </li>
+
+
+          
+
+          
+  <li>
+    <a href="https://twitter.com/aditya_karanam">
+      <i class="fa fa-twitter" style="color:gray"></i> Twitter
+    </a>
+  </li>
+
+
+
+
+
+
+
+       
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+		<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-37298398-1']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+	</script>
+  </body>
+</html>
+<!-- d.s.m.s.050600.062508.030515.080516.030818; k.050800.101218 | "Baby, I'm Yours" -->
+

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>What's the Matter with Wisconsin? Probably Not Vote Hacking | Aditya Karanam</title>
+  <meta name="description" content="John Bonifaz and J. Alex Halderman think they have evidence of vote hacking in Wisconsin. I don't think they do.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/blog/2016/11/wisconsin-vote-hacking-probably-not-stop-it/">
+  <link rel="alternate" type="application/rss+xml" title="Aditya Karanam" href="http://localhost:4000/feed.xml" />
+<link rel='stylesheet' id='open-sans-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&#038;subset=latin%2Clatin-ext&#038;ver=4.2.4' type='text/css' media='all' />
+<link href='http://fonts.googleapis.com/css?family=Roboto:200' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:600italic,600,400,400italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://www.osu.edu/assets/fonts/webfonts.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/academicons-1.8.0/css/academicons.css">
+
+<!-- icon, perhaps -->
+<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="apple-touch-icon" type="image/png" href="/images/icon-192.png">
+
+
+<!-- OG protocol -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What's the Matter with Wisconsin? Probably Not Vote Hacking">
+<meta property="og:description" content="John Bonifaz and J. Alex Halderman think they have evidence of vote hacking in Wisconsin. I don't think they do.">
+<meta property="og:url" content="http://localhost:4000/blog/2016/11/wisconsin-vote-hacking-probably-not-stop-it/">
+<meta property="og:site_name" content="Aditya Karanam">
+<meta property="og:image" content="http://localhost:4000/images/buckeyeprotesteriran.jpg">
+
+<meta property="og:image:width" content="637" />
+<meta property="og:image:height" content="403" />
+
+<!-- Twitter cards -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@aditya_karanam">
+<meta name="twitter:title" content="What's the Matter with Wisconsin? Probably Not Vote Hacking" />
+<meta name="twitter:description" content="John Bonifaz and J. Alex Halderman think they have evidence of vote hacking in Wisconsin. I don't think they do." />
+<meta name="twitter:url" content="http://localhost:4000/blog/2016/11/wisconsin-vote-hacking-probably-not-stop-it/" />
+<meta name="twitter:image" content="http://localhost:4000/images/buckeyeprotesteriran-card.jpg">
+
+
+<link rel="author" href=""/>
+<meta name="google-site-verification" content="" />
+<meta name="msvalidate.01" content="" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Aditya Karanam</a>
+
+
+    <nav class="site-nav">
+
+      <a href="#" class="menu-icon menu.open">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>  
+
+    <div class="trigger"><h1>Main Navigation</h1>
+
+ <ul class="menu">
+
+    
+    
+     <li><a href="/about/" class="page-link">About</a>
+    
+    </li>
+    
+    
+     <li><a href="/research/" class="page-link">Research</a>
+    
+    </li>
+    
+    
+     <li><a href="/cv/" class="page-link">CV</a>
+    
+    </li>
+    
+    </ul>
+
+
+<!-- <ul class="menu">
+        <li> <a class="page-link" href="/about">About</a></li>
+        <li> <a class="page-link"  href="/blog">Blog</a>
+        <li> <a class="page-link" href="/blog">CV</a>
+        <li> <a class="page-link" href="/blog">For Students</a></li>
+        <li> <a class="page-link"  href="/blog">Research</a></a>
+        <li> <a class="page-link" href="/blog">Teaching</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">POSC 1020 – Introduction to International Relations</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">POSC 3410 – Quantitative Methods in Political Science</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">POSC 3610 – International Politics in Crisis</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3630-united-states-foreign-policy/">POSC 3630 – United States Foreign Policy</a></li>
+</ul></li>
+        <li> <a class="page-link" href="/blog">Miscellany</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">Clean USAID Greenbook Data</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">Journal of Peace Research *.bst File</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">My Custom Beamer Style</a></li>
+</ul> 
+
+</li>
+</ul> -->
+
+     </div>  
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">What's the Matter with Wisconsin? Probably Not Vote Hacking</h1>
+    <p class="post-meta">Posted on November 24, 2016 by  steve  
+
+  in
+  
+  <a href="/categories/#Political Science" title="Political Science">Political Science</a>&nbsp;
+  
+
+
+</p>
+  </header>
+
+  <article class="post-content">
+    <dl class="wp-caption alignright" style="max-width: 450px">
+
+<dt><a href=""><img class="" src="/images/votinglines600.jpg" alt="Voters line up at the Kenosha Public Museum to cast their votes in Wisconsin's recall election. (Zbigniew Bzdak, Chicago Tribune)" /></a></dt>
+
+<dd>Voters line up at the Kenosha Public Museum to cast their votes in Wisconsin's recall election. (Zbigniew Bzdak, Chicago Tribune)</dd>
+</dl>
+
+<p>Remember when Clinton supporters derided Trump supporters, whose chosen candidate was already making pre-emptive claims of <a href="http://www.politico.com/story/2016/10/donald-trump-rigged-election-guide-230302">“rigged elections”</a> and <a href="http://www.factcheck.org/2016/10/trumps-bogus-voter-fraud-claims/">“voter fraud”</a> when it looked like Clinton was en route to an easy victory? Then Nov. 8 threw a major curveball. Trump swept almost every swing state and broke the Democrats’ “blue wall” in Michigan, Pennsylvania, and Wisconsin. Trump is now the president-elect of the United States no matter how improbable that seemed at almost every point in the election campaign.</p>
+
+<p>This has invited some reservations among Democrats about vote-rigging. After all, the Russian government targeted the Democratic National Committee to hack for party documents and communiques, using Wikileaks as its own “disinformation” service to selectively leak documents that were more scintillating (i.e. gossip) than criminal. I’m honest-to-god amazed this was not a major deal during the campaign season. Republicans controlled both chambers of Congress (and, thus, investigatory and oversight capabilities) and seemed all too eager to benefit from this assault on American democratic processes if it would help them in November. News media in the United States, supposedly democracy’s fourth estate, were all too eager to compound the problem by promoting things like John Podesta’s risotto recipe as news. Clicks and ratings uber alles for American media. It’s a business first and foremost, driven by profit more than political or social responsibility.</p>
+
+<p>While Russian security services effectively “hacked” American political processes in support of their <a href="http://www.politico.com/story/2016/10/trump-russia-useful-idiot-madeleine-albright-230238">useful</a> <a href="https://newrepublic.com/article/137333/donald-trump-useful-idiot-dangerous-people">idiot</a>—seriously, <a href="http://www.motherjones.com/politics/2016/11/will-congress-investigate-russian-interference-2016-campaign">the National Security Adviser even said so!</a>—it seemed untenable to think Russian security services could hack the actual votes themselves. Make no mistake; <a href="http://www.politico.com/magazine/story/2016/10/seven-reasons-the-new-russian-hack-announcement-is-a-big-deal-214330">Kremlin actors are artisans</a> at vote-rigging. However, the U.S. process is so decentralized with a myriad of safeguards to make vote-hacking an impossibility.</p>
+
+<p><a href="http://nymag.com/daily/intelligencer/2016/11/activists-urge-hillary-clinton-to-challenge-election-results.html">Enter John Bonifaz and J. Alex Halderman</a>, respectively a voting rights attorney and director of the University of Michigan Center for Computer Security and Society, who are asking the Clinton campaign to demand a vote audit in the three “blue wall” states she lost. Here’s the money passage, with a particular emphasis on the shocking result in Wisconsin.</p>
+
+<blockquote>
+  <p>The academics presented findings showing that in Wisconsin, Clinton received 7 percent fewer votes in counties that relied on electronic-voting machines compared with counties that used optical scanners and paper ballots. Based on this statistical analysis, Clinton may have been denied as many as 30,000 votes; she lost Wisconsin by 27,000. While it’s important to note the group has not found proof of hacking or manipulation, they are arguing to the campaign that the suspicious pattern merits an independent review — especially in light of the fact that the Obama White House has accused the Russian government of hacking the Democratic National Committee.</p>
+</blockquote>
+
+<p>Color me as suspicious and opportunistic. One, I’m unconvinced by the claim that Bonifaz and Halderman advance, even if I have a lot of respect for Halderman as an established voice in the field of computer science. Two, I’m opportunistic because I think this will probably be a cool exercise for my <a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">quantitative methods in political science</a> kids.</p>
+
+<p>So, here’s what I did. I gathered county-level information for all Wisconsin’s 72 counties. I consulted Census data to get estimates on the percentage of the county that’s black, the percentage of the county that’s white, the size of the county (i.e. population), and the percentage of the county that has a college education. I used <a href="https://www.verifiedvoting.org/verifier/#year/2016/state/55">Verified Voting</a> to determine which of these counties had paper ballots. Thereafter, I found official vote tallies in 2012 for Obama and Romney at the county-level and added (admittedly unofficial) 2016 results at the county-level (using POLITICO).</p>
+
+<p>Thereafter, I test the hypothesis that Bonifaz and Halderman make implicit. Paper ballots <em>reduce</em> the difference between Obama’s vote share in 2012 and Clinton’s vote share in 2016 among Wisconsin’s counties. In essence, an observable negative association between paper ballots and this vote share that is discernible from zero is consistent with the vote hacking argument that Bonifaz and Halderman advance. The results follow.<sup id="fnref:scale"><a href="#fn:scale" class="footnote">1</a></sup></p>
+
+<table align="center" style="padding-bottom: 20px; margin: 0px auto;text-align:center"><caption><strong>Simple Regression of Wisconsin County Presidential Election Results</strong></caption>
+<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="3"><em>Dependent variable:</em></td></tr>
+<tr><td></td><td colspan="3" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td colspan="2">Vote Share: Obama - Clinton&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>Turnout: 2016 - 2012</td></tr>
+<tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td></tr>
+<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Paper Ballots</td><td>-0.050<sup>***</sup></td><td>-0.003</td><td>-579.949</td></tr>
+<tr><td style="text-align:left"></td><td>(0.010)</td><td>(0.007)</td><td>(1,060.756)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">% White</td><td></td><td>0.001<sup>**</sup></td><td>-2.179</td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.0003)</td><td>(40.098)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">% Black</td><td></td><td>-0.001</td><td>-2,467.117<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.001)</td><td>(161.225)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">% College Educated</td><td></td><td>-0.005<sup>***</sup></td><td>15.607</td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.001)</td><td>(94.576)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">County Population (logged)</td><td></td><td>-0.008<sup>**</sup></td><td>177.968</td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.004)</td><td>(602.739)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Constant</td><td>0.118<sup>***</sup></td><td>0.206<sup>***</sup></td><td>-907.052</td></tr>
+<tr><td style="text-align:left"></td><td>(0.005)</td><td>(0.038)</td><td>(5,634.320)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td></tr>
+<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>72</td><td>72</td><td>72</td></tr>
+<tr><td style="text-align:left">R<sup>2</sup></td><td>0.276</td><td>0.754</td><td>0.854</td></tr>
+<tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.265</td><td>0.736</td><td>0.843</td></tr>
+<tr><td colspan="4" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td colspan="3" style="text-align:right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr>
+</table>
+
+<p>Notice the first model, a simple bivariate model that regresses the difference in vote share from Obama to Clinton on the presence of paper balloting in the county. The results suggest a negative statistical association that is distinguishable from zero. In other words, the presence of paper ballots in the county <em>reduces</em> the difference in vote share from Obama to Clinton by an estimated .05 percent. In an election as close as Wisconsin, that would be grounds for a vote audit.</p>
+
+<p>However, look what happens when we add just some basic controls: percentage of the county that’s white, black, college educated, and logged population size. The effect of paper ballots goes to zero with a standard error that dwarves the coefficient. Meanwhile, whiter counties have bigger vote shares between Obama and Clinton (i.e. Obama did better in the county as a share of the overall vote than Clinton) while more educated counties have a smaller vote share between Obama and Clinton. Larger counties saw a smaller discrepancy in the vote share difference between Obama and Clinton. Intuitively, Trump seems to have done his damage in smaller, ostensibly more rural counties. These counties are whiter and have fewer college graduates. I don’t think anyone would challenge Trump’s message played well to these voters. The data suggest it and give a more plausible alternative explanation to the paper ballots arguments offered by Bonifaz and Halderman.</p>
+
+<p>Put another way, this paints the story we’ve been telling generally about the election results in the Rust Belt: Trump did well among whiter counties and those without a lot of college graduates. They are not the “typical” Trump voter (i.e. a garden variety Republican partisan), but they were the “pivotal” voter in this election.</p>
+
+<p>For morbid curiosity, I decided to test what at the county level among these covariates explains depressed turnout. This analysis is a bit problematic since vote tallies are not final, but we nevertheless observed a decline in turnout country-wide relative to 2008 (and even 2012).</p>
+
+<p>The only significant predictor in this model is the percentage of the county that’s black. The findings here are rather stark. Each unit (i.e. percentage point) increase in the percent of the county that’s black coincides with an estimated decrease of turnout by 2,467 votes relative to 2012. That’s… that’s something.</p>
+
+<p>I’m a political scientist that teaches quantitative methods every semester so it would be professional malfeasance to not caution about the <a href="https://en.wikipedia.org/wiki/Ecological_fallacy">ecological fallacy</a> in these results. We don’t know <em>who</em> didn’t vote among these blacker counties; we can just discern that turnout was lower relative to 2012 in counties with a greater percentage of black citizens. The reader is free to arrive at any conclusion s/he wants for this absent solid individual-level information. Possible culprits include Obama’s absence from the ballot, <a href="http://www.politifact.com/truth-o-meter/statements/2016/aug/28/reince-priebus/did-hillary-clinton-call-african-american-youth-su/">Clinton’s “superpredators” comment</a>, the Trump campaign’s <a href="http://www.wsj.com/articles/donald-trumps-new-attack-strategy-keep-clinton-voters-home-1476221895">“negative turnout” strategy</a>, or <a href="http://isthmus.com/opinion/opinion/voter-suppression-in-wisconsin-in-2016-election/">the voter suppression efforts in Wisconsin</a>. The last is a serious normative concern but is just one of several possible culprits to explain this finding.</p>
+
+<p>So, did the Russian government hack voting machines in Wisconsin? Unlikely. The evidence Bonifaz and Halderman provide is weak. A simple investigation of the county-level results suggest an interpretation consistent with more plausible alternative explanations. Absent more convincing evidence, disappointed Democrats should be reticent to engage in the behavior for which they spent the better part of September and October lambasting Trump supporters.</p>
+
+<p><a href="https://github.com/svmiller/2016-trump-shift">Code/data are available on my Github</a>.</p>
+<div class="footnotes">
+  <ol>
+    <li id="fn:scale">
+      <p>I regrettably did not scale these variables, which I always tell my students to do. Some of the regression parameters are not as directly interpretable as a result. <a href="#fnref:scale" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </article>
+
+<div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'svmiller';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+<!--     <h2 class="footer-heading">Aditya Karanam</h2> -->
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li><strong>Aditya Karanam</strong></li>
+			<li>PhD Student</li>
+          <li><a href="mailto:aditya_ks@utexas.edu">aditya_ks@utexas.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+ 
+
+         <p class="text">
+		Department of Information, Risk, & Operations Management,<br />
+		McCombs School of Business, <br />
+    2110 Speed Way<br />
+		Austin, TX 78705</p> <!-- I'm a PhD Student at McCombs School of Business, UT, Austin with research interests in the area of Economics of Information Systems. Specifically, I am interested in New product design and Innovation. Topics on my site include my research interests and teaching.
+ -->
+      </div>
+
+      <div class="footer-col  footer-col-3">
+       <ul class="social-media-list">
+
+                  
+     
+
+          
+  <li>
+    <a href="https://github.com/askaranam">
+      <i class="fa fa-github" style="color:gray"></i> Github
+    </a>
+  </li>
+
+
+          
+
+          
+  <li>
+    <a href="https://twitter.com/aditya_karanam">
+      <i class="fa fa-twitter" style="color:gray"></i> Twitter
+    </a>
+  </li>
+
+
+
+
+
+
+
+       
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+		<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-37298398-1']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+	</script>
+  </body>
+</html>
+<!-- d.s.m.s.050600.062508.030515.080516.030818; k.050800.101218 | "Baby, I'm Yours" -->
+

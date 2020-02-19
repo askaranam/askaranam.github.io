@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>How Should You Store/Load Your Bigger Data Sets? An Experiment With Six Waves of World Values Survey Data | Aditya Karanam</title>
+  <meta name="description" content="Storing your bigger data sets as an SQL database ensures the fastest load time, but the best bang for the buck might be serialization through fst or base R.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/blog/2019/01/how-should-you-store-load-bigger-data-sets-wvs/">
+  <link rel="alternate" type="application/rss+xml" title="Aditya Karanam" href="http://localhost:4000/feed.xml" />
+<link rel='stylesheet' id='open-sans-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&#038;subset=latin%2Clatin-ext&#038;ver=4.2.4' type='text/css' media='all' />
+<link href='http://fonts.googleapis.com/css?family=Roboto:200' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:600italic,600,400,400italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://www.osu.edu/assets/fonts/webfonts.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/academicons-1.8.0/css/academicons.css">
+
+<!-- icon, perhaps -->
+<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="apple-touch-icon" type="image/png" href="/images/icon-192.png">
+
+
+<!-- OG protocol -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How Should You Store/Load Your Bigger Data Sets? An Experiment With Six Waves of World Values Survey Data">
+<meta property="og:description" content="Storing your bigger data sets as an SQL database ensures the fastest load time, but the best bang for the buck might be serialization through fst or base R.">
+<meta property="og:url" content="http://localhost:4000/blog/2019/01/how-should-you-store-load-bigger-data-sets-wvs/">
+<meta property="og:site_name" content="Aditya Karanam">
+<meta property="og:image" content="http://localhost:4000/images/world-values-survey.jpg">
+
+<meta property="og:image:width" content="637" />
+<meta property="og:image:height" content="403" />
+
+<!-- Twitter cards -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@aditya_karanam">
+<meta name="twitter:title" content="How Should You Store/Load Your Bigger Data Sets? An Experiment With Six Waves of World Values Survey Data" />
+<meta name="twitter:description" content="Storing your bigger data sets as an SQL database ensures the fastest load time, but the best bang for the buck might be serialization through fst or base R." />
+<meta name="twitter:url" content="http://localhost:4000/blog/2019/01/how-should-you-store-load-bigger-data-sets-wvs/" />
+<meta name="twitter:image" content="http://localhost:4000/images/world-values-survey.jpg">
+
+
+<link rel="author" href=""/>
+<meta name="google-site-verification" content="" />
+<meta name="msvalidate.01" content="" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Aditya Karanam</a>
+
+
+    <nav class="site-nav">
+
+      <a href="#" class="menu-icon menu.open">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>  
+
+    <div class="trigger"><h1>Main Navigation</h1>
+
+ <ul class="menu">
+
+    
+    
+     <li><a href="/about/" class="page-link">About</a>
+    
+    </li>
+    
+    
+     <li><a href="/research/" class="page-link">Research</a>
+    
+    </li>
+    
+    
+     <li><a href="/cv/" class="page-link">CV</a>
+    
+    </li>
+    
+    </ul>
+
+
+<!-- <ul class="menu">
+        <li> <a class="page-link" href="/about">About</a></li>
+        <li> <a class="page-link"  href="/blog">Blog</a>
+        <li> <a class="page-link" href="/blog">CV</a>
+        <li> <a class="page-link" href="/blog">For Students</a></li>
+        <li> <a class="page-link"  href="/blog">Research</a></a>
+        <li> <a class="page-link" href="/blog">Teaching</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">POSC 1020 – Introduction to International Relations</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">POSC 3410 – Quantitative Methods in Political Science</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">POSC 3610 – International Politics in Crisis</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3630-united-states-foreign-policy/">POSC 3630 – United States Foreign Policy</a></li>
+</ul></li>
+        <li> <a class="page-link" href="/blog">Miscellany</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">Clean USAID Greenbook Data</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">Journal of Peace Research *.bst File</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">My Custom Beamer Style</a></li>
+</ul> 
+
+</li>
+</ul> -->
+
+     </div>  
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">How Should You Store/Load Your Bigger Data Sets? An Experiment With Six Waves of World Values Survey Data</h1>
+    <p class="post-meta">Posted on January 22, 2019 by  steve  
+
+  in
+  
+  <a href="/categories/#R" title="R">R</a>&nbsp;
+  
+
+
+</p>
+  </header>
+
+  <article class="post-content">
+    <dl class="wp-caption alignright" style="max-width: 350px">
+
+<dt><a href=""><img class="" src="/images/world-values-survey.jpg" alt="World Values Survey" /></a></dt>
+
+<dd>World Values Survey</dd>
+</dl>
+
+<p>How should you store and load your bigger data sets? Academics increasingly work with larger data sets but still mostly rely on computation through their personal computers. Cloud computing is available, either through Amazon or the university, but there’s a greater convenience in eschewing the cloud and analyzing the data on a personal computer. This is certainly how I approach things as I work in R, even after all these years.</p>
+
+<p>However, there are costs with this approach that I’ve yet to address. Namely, a decent desktop and laptop (16 GB RAM each) still won’t save the user (i.e. me) from getting bogged in load times for the larger data sets. The World Values Survey in its longitudinal form—which I’ve used the most for my various research projects—is around 1.6 GB in disk space (contingent on the particular file, as I’ll discuss). It’s certainly not the largest data set any political scientist has ever used, but its 1,410 columns and 341,271 rows will be a fair bit larger than at least 90% of other data sets a political scientist will use at a given time. Should the need arise to run a few regressions on the data, a user will have to wait a few minutes for the data to load before spending any additional time recoding the data or running regressions.</p>
+
+<p>I’ve wrestled with this for a while and have explored alternatives for how to save/store larger data sets and—more importantly for me—how to load them quickly. What followed is a quick experiment with the longitudinal World Values Survey (WVS) data on the quickest way to store/load data that could be plausibly construed as “big.”</p>
+
+<h2 id="the-setup">The Setup</h2>
+
+<p>The setup for this experiment leans heavily on my approach to data workflow, in which I take a “laundering” approach that stores raw data in a <code class="language-plaintext highlighter-rouge">data</code> directory on my Dropbox. Thereafter, to facilitate reproducibility for a given project, I ‘launder’ the data fresh for each project but always leave the raw data untouched. Whereas I’ve worked with WVS data for the past 10 years, I have a standing <code class="language-plaintext highlighter-rouge">wvs</code> subfolder in my data directory on Dropbox and have stored various WVS formats there. For transparency’s sake, the last download I did of the six waves of WVS data came from <a href="http://www.worldvaluessurvey.org/WVSDocumentationWV6.jsp">its April 18, 2015 update</a>.</p>
+
+<p>Again, the data span 1,410 columns and 341,271 rows. This might not be the largest data set in wide use for political scientists, but it is among the biggest and would in all likelihood be the largest public opinion/attitudes data set that is widely available today.</p>
+
+<p>I have saved the following formats of WVS data over the years. First, I have original downloads that WVS provides of its data as an R <code class="language-plaintext highlighter-rouge">.Rdata</code> file as well as an SPSS <code class="language-plaintext highlighter-rouge">.sav</code> file.<sup id="fnref:dta"><a href="#fn:dta" class="footnote">1</a></sup> In the past, I had loaded that WVS data and saved it as two different serialized data frames. The first is an R serialized data frame through the <code class="language-plaintext highlighter-rouge">readRDS()</code> function that comes standard in R. The second format is a fast serialization through the <a href="https://www.fstpackage.org/"><code class="language-plaintext highlighter-rouge">fst</code> package</a>.</p>
+
+<p>The final format is an SQLite database. SQLite is one of many relational database management system options. I’m still teaching myself the ins and outs of various SQL standards, but SQLite’s main advantage for R users is its more lightweight nature. My (limited) understanding is SQLite is not ideal for when there are a lot of users making a lot of queries on a database at a given time. However, that limitation won’t apply to an individual R user trying to access a data source. This should make SQLite a go-to for relational database management sytems for users interested in doing their own statistical analyses and queries on larger data sets.</p>
+
+<p>This amounts to five different versions of the same data source I have in my WVS subdirectory. For the sake of this experiment, I looped through a load of a particular format 10 times and saved the time it took to perform the task into a data frame. This is not the most elegant code, but here is what this loop would look like for the <code class="language-plaintext highlighter-rouge">.Rdata</code> format.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># load rdata method -----</span><span class="w">
+</span><span class="c1"># -----------------------</span><span class="w">
+</span><span class="n">setwd</span><span class="p">(</span><span class="s2">"~/Dropbox/data/wvs"</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span><span class="w">
+
+</span><span class="n">rdata_times</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data.frame</span><span class="p">()</span><span class="w">
+
+</span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">main_call</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">system.time</span><span class="p">(</span><span class="n">load</span><span class="p">(</span><span class="s2">"WVS_Longitudinal_1981_2014_R_v2015_04_18.rdata"</span><span class="p">))</span><span class="w">
+  </span><span class="n">times</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.data.frame</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">data.matrix</span><span class="p">(</span><span class="n">main_call</span><span class="p">)))</span><span class="w">
+  </span><span class="n">rdata_times</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rbind</span><span class="p">(</span><span class="n">rdata_times</span><span class="p">,</span><span class="w"> </span><span class="n">times</span><span class="p">)</span><span class="w">
+  </span><span class="n">print</span><span class="p">(</span><span class="n">times</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">rdata_times</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">Method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"load (Rdata)"</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">rdata_times</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="the-results">The Results</h2>
+
+<h3 id="which-format-has-the-fastest-load-time">Which Format Has the Fastest Load Time?</h3>
+
+<p>Here is a box-and-whisker plot of the load times across the 10 trials for each format. The results are pretty clear that the fastest load times came when the data were stored in some format other than what WVS provides for its users.</p>
+
+<p><img src="/images/bwplotwvsloadtimes-1.png" alt="plot of chunk bwplotwvsloadtimes" /></p>
+
+<p>The box-and-whisker plot will easily communicate the scale of time saved through loading the data frame as an SQLite database or serialized data frame. The table below will summarize the average load time and standard deviation of a load time as well.</p>
+
+<table id="stevetable">
+<caption>Average Load Times (and Standard Deviations) of Five Methods in R</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Method </th>
+   <th style="text-align:center;"> Mean Load Time (Seconds) </th>
+   <th style="text-align:center;"> Standard Deviation Load Time (Seconds) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> dplyr::src_sqlite() </td>
+   <td style="text-align:center;"> 0.05 </td>
+   <td style="text-align:center;"> 0.09 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fst::read_fst() </td>
+   <td style="text-align:center;"> 1.90 </td>
+   <td style="text-align:center;"> 0.34 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> haven::read_sav() </td>
+   <td style="text-align:center;"> 124.06 </td>
+   <td style="text-align:center;"> 8.53 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> load() # Rdata </td>
+   <td style="text-align:center;"> 174.63 </td>
+   <td style="text-align:center;"> 1.93 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> readRDS() </td>
+   <td style="text-align:center;"> 7.30 </td>
+   <td style="text-align:center;"> 0.03 </td>
+  </tr>
+</tbody>
+</table>
+
+<p>The average load time in R for an SQLite database of this size was .05 seconds, which is an almost instantaneous load time on par with calling in <code class="language-plaintext highlighter-rouge">data(mtcars)</code> in base R. The average speed of that load time is roughly 40 times faster than loading the data as a serialized data frame through the <code class="language-plaintext highlighter-rouge">fst</code> package and about 160 times faster than loading the data as an R serialized data frame.</p>
+
+<p>The load times for the standard objects you can download on the WVS’ website stand out. All told, the typical load time for a standard WVS download as either an SPSS file or Rdata file is more than two minutes (SPSS) or almost three minutes (Rdata). That’s a lot of time spent waiting for the data to load into an R session. It may not seem like it, but the user will feel it when it’s happening.</p>
+
+<h3 id="another-consideration-object-size">Another Consideration: Object Size</h3>
+
+<p>This experiment would be incomplete without a consideration of the storage of these various data frames. A SQLite database (and presumably other SQL-standard relational database management systems) might have the fastest load times but are they the most economical means to <em>storing</em> data?</p>
+
+<table id="stevetable">
+<caption>A Comparison of WVS Longitudinal Data File Sizes</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Data Type </th>
+   <th style="text-align:center;"> Disk Space (in MB) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> SQLite </td>
+   <td style="text-align:center;"> 1575.11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Rdata </td>
+   <td style="text-align:center;"> 1443.28 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> SPSS (sav) </td>
+   <td style="text-align:center;"> 578.31 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Stata (dta) </td>
+   <td style="text-align:center;"> 569.94 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Serialized Data Frame (fst) </td>
+   <td style="text-align:center;"> 182.24 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Serialized Data Frame (RDS) </td>
+   <td style="text-align:center;"> 45.90 </td>
+  </tr>
+</tbody>
+</table>
+
+<p>The answer here suggests a trade-off between load speed and disk storage. The SQLite database takes up the most disk space despite being the fastest to load. It’s a testament to how fast relational databases are that they load that quickly despite consuming that much disk space. However, a user interested in an optimal trade-off between size and speed may wonder if that approach is worth it when hard drive space may be an issue.</p>
+
+<p>Elsewhere, standard binaries for R or statistical software users—like R’s Rdata format, SPSS’ <code class="language-plaintext highlighter-rouge">.sav</code> format, or Stata’s <code class="language-plaintext highlighter-rouge">.dta</code> format—consume a fair bit of disk space but offer little in the way of speed of access.<sup id="fnref:dta2"><a href="#fn:dta2" class="footnote">2</a></sup> This might make them a worst-case scenario, at least for R users. A R user who accesses the WVS data in SPSS’ native format has a file that takes about a third of the disk space but takes well over 2,000 times as long to load, on average.</p>
+
+<p>There’s an intriguing trade-off between size and speed for the serialized data frames. The fst serialized data frame consumes only 182.24 MB of disk space but will load in just under two seconds, on average. That amounts to a binary that is more than three times as small as an SPSS binary but takes fractions of the time to load into an R session as the SPSS binary. The R serialized data frame is the smallest format of all options under consideration here, measuring at a bite-sized 45.89 MB. It does take a discernibly longer time to load relative to the <code class="language-plaintext highlighter-rouge">fst</code> format—about four times as long, on average. However, the compression is optimal and will hog far less space on a cloud storage or hard drive as some other options.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>How should you store and load your bigger data sets? There’s value to learning how to save your data as an SQL-standard relational database. I chose SQLite but I doubt the central takeaway would differ if the database were MySQL or PostgreSQL. The load times for the relational database were discernibly faster than the other options.</p>
+
+<p>However, the SQLite database consumed the most disk space by far. If hard drive space is a premium, the user may want to consider a serialized data frame approach. Data frame serialization through the <code class="language-plaintext highlighter-rouge">fst</code> package is the faster of the two options but the R serialized data frame (RDS) compensates for the relatively longer load times with better standard file compression. The R serialized data frame was the smallest of the files under consideration here and is about 1/4th the size of the fst-compressed data frame.</p>
+
+<p>There are some tradeoffs worth belaboring. Consider that the relational database (SQLite) and the <code class="language-plaintext highlighter-rouge">fst</code>-compressed serialized data frame load the fastest and the fst option has the added benefit of great file compression on the hard drive. However, both approaches, at least as far as I know, discard variable labels in the data frame. I’m fine with this tradeoff because WVS data are well-sourced, both online and as downloadable PDFs. I have a lot of experience with variable names as well. However, users still learning the ropes of the WVS data may want those variable labels, especially if they’re proficient with the <code class="language-plaintext highlighter-rouge">sjmisc</code> package or like the <code class="language-plaintext highlighter-rouge">get_var_info()</code> function that I wrote into <a href="https://github.com/svmiller/stevemisc">my <code class="language-plaintext highlighter-rouge">stevemisc</code> package</a>. Thus, the user may want one of the binary formats (R, SPSS, or Stata).</p>
+
+<p>In addition, there is still a startup cost here for the SQLite approach, the <code class="language-plaintext highlighter-rouge">fst</code> approach, and even the R serialized data frame approach. The user will still need to load the data as one of these binaries and then save/store the data as one of these other formats. Ideally, this is just a one-off cost sunk into saving time later with additional analyses, but downloading and using the binaries are unavoidable the extent to which that is the data that WVS makes available.</p>
+
+<p>There are caveats I should add here as well. I’m still teaching myself the ins and outs of SQL. I created that database from a CSV of the longitudinal WVS data within sqlite3 itself. This may account for the size issue (for all I know). Further, the <code class="language-plaintext highlighter-rouge">fst</code> package has some compression options. You could conceivably make the compression even more compact. I went with a default compression, for what it’s worth.</p>
+
+<p>I think one implication of this experiment concerns how WVS makes its data available. WVS clearly needs SPSS and Stata binaries since not every person interested in their data use R. That part is fine and I’m not contesting that. However, I don’t think there’s value in the Rdata format and there are several reasons for this.</p>
+
+<p>For one, the Rdata format is well over a gigabyte in size. WVS will feel that bandwith crunch when users download the data, even if the data are zipped. Second, R’s <code class="language-plaintext highlighter-rouge">load</code> command is clunky, especially as WVS handles it. Basically, the data get loaded into the R session with an object name like <code class="language-plaintext highlighter-rouge">WVS_Longitudinal_1981_2014_R_v2015_04_18</code>. The user cannot change this. S/he can only duplicate the data to a more accessible object name (e.g. <code class="language-plaintext highlighter-rouge">WVS</code>) and discard <code class="language-plaintext highlighter-rouge">WVS_Longitudinal_1981_2014_R_v2015_04_18</code> to avoid consuming too much memory in the R session.</p>
+
+<p>An R serialized data frame offers a substantial improvement on this approach. For one, the R serialized data frame is compressed to around 1/30th the size of the Rdata format. Unlike the <code class="language-plaintext highlighter-rouge">fst</code> compression or the SQL-standard relational database, the R serialized data frame can keep the variable labels. It can even be saved as a tibble, which are invaluable for larger data sets.</p>
+
+<p>Further, the user has the option of assigning the object when s/he loads it into the R session. Whereas the <code class="language-plaintext highlighter-rouge">load</code> command comes with a preset output, the user can assign a more intuitive/acccessible name to the object (i.e. <code class="language-plaintext highlighter-rouge">WVS &lt;- readRDS("wvs6wave-20150418.rds")</code>, in my case). Notice the implication here. An R user should only need the <code class="language-plaintext highlighter-rouge">load()</code> and <code class="language-plaintext highlighter-rouge">save()</code> functions when s/he is loading or save <em>multiple</em> objects to or from an R session. Here, WVS is providing just one object (a single data frame). A serialized data frame is <a href="https://www.fromthebottomoftheheap.net/2012/04/01/saving-and-loading-r-objects/">far more useful in this situation</a>.</p>
+
+<p>Finally, the R serialized data frame requires no other package that isn’t already part of base R. It and its companion function <code class="language-plaintext highlighter-rouge">saveRDS()</code> come standard in R. I think WVS would find considerable value in eschewing the Rdata format for its users to download and providing an RDS file instead.</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:dta">
+      <p>I also have Stata <code class="language-plaintext highlighter-rouge">.dta</code> files but <code class="language-plaintext highlighter-rouge">haven</code>, my preferred package for loading foreign databases, doesn’t always play nice with Stata files. I’ve had greater difficulties with newer Stata binaries (i.e. after Stata 12), which in part behooved this project. <a href="#fnref:dta" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:dta2">
+      <p>Again, I have the Stata version of this but <code class="language-plaintext highlighter-rouge">haven</code> doesn’t always play nice with Stata binaries that are newer than Stata 12. It’s why I don’t include it in the load time analysis. From experience, the load time for a Stata binary in R will closely resemble the load time for the Rdata format or the SPSS binary. <a href="#fnref:dta2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </article>
+
+<div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'svmiller';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+<!--     <h2 class="footer-heading">Aditya Karanam</h2> -->
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li><strong>Aditya Karanam</strong></li>
+			<li>PhD Student</li>
+          <li><a href="mailto:aditya_ks@utexas.edu">aditya_ks@utexas.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+ 
+
+         <p class="text">
+		Department of Information, Risk, & Operations Management,<br />
+		McCombs School of Business, <br />
+    2110 Speed Way<br />
+		Austin, TX 78705</p> <!-- I'm a PhD Student at McCombs School of Business, UT, Austin with research interests in the area of Economics of Information Systems. Specifically, I am interested in New product design and Innovation. Topics on my site include my research interests and teaching.
+ -->
+      </div>
+
+      <div class="footer-col  footer-col-3">
+       <ul class="social-media-list">
+
+                  
+     
+
+          
+  <li>
+    <a href="https://github.com/askaranam">
+      <i class="fa fa-github" style="color:gray"></i> Github
+    </a>
+  </li>
+
+
+          
+
+          
+  <li>
+    <a href="https://twitter.com/aditya_karanam">
+      <i class="fa fa-twitter" style="color:gray"></i> Twitter
+    </a>
+  </li>
+
+
+
+
+
+
+
+       
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+		<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-37298398-1']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+	</script>
+  </body>
+</html>
+<!-- d.s.m.s.050600.062508.030515.080516.030818; k.050800.101218 | "Baby, I'm Yours" -->
+

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Mixed Effects Modeling Tips: Use a Fast Optimizer, but Perform Optimizer Checks | Aditya Karanam</title>
+  <meta name="description" content="Computation time is a premium in estimating mixed effects models, but you can always make sure the heuristics you choose aren't influencing your results with the allFit function.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/blog/2018/06/mixed-effects-models-optimizer-checks/">
+  <link rel="alternate" type="application/rss+xml" title="Aditya Karanam" href="http://localhost:4000/feed.xml" />
+<link rel='stylesheet' id='open-sans-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&#038;subset=latin%2Clatin-ext&#038;ver=4.2.4' type='text/css' media='all' />
+<link href='http://fonts.googleapis.com/css?family=Roboto:200' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:600italic,600,400,400italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://www.osu.edu/assets/fonts/webfonts.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/academicons-1.8.0/css/academicons.css">
+
+<!-- icon, perhaps -->
+<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="apple-touch-icon" type="image/png" href="/images/icon-192.png">
+
+
+<!-- OG protocol -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mixed Effects Modeling Tips: Use a Fast Optimizer, but Perform Optimizer Checks">
+<meta property="og:description" content="Computation time is a premium in estimating mixed effects models, but you can always make sure the heuristics you choose aren't influencing your results with the allFit function.">
+<meta property="og:url" content="http://localhost:4000/blog/2018/06/mixed-effects-models-optimizer-checks/">
+<meta property="og:site_name" content="Aditya Karanam">
+<meta property="og:image" content="http://localhost:4000/images/r-logo.png">
+
+<meta property="og:image:width" content="637" />
+<meta property="og:image:height" content="403" />
+
+<!-- Twitter cards -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@aditya_karanam">
+<meta name="twitter:title" content="Mixed Effects Modeling Tips: Use a Fast Optimizer, but Perform Optimizer Checks" />
+<meta name="twitter:description" content="Computation time is a premium in estimating mixed effects models, but you can always make sure the heuristics you choose aren't influencing your results with the allFit function." />
+<meta name="twitter:url" content="http://localhost:4000/blog/2018/06/mixed-effects-models-optimizer-checks/" />
+<meta name="twitter:image" content="http://localhost:4000/images/r-logo.png">
+
+
+<link rel="author" href=""/>
+<meta name="google-site-verification" content="" />
+<meta name="msvalidate.01" content="" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Aditya Karanam</a>
+
+
+    <nav class="site-nav">
+
+      <a href="#" class="menu-icon menu.open">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>  
+
+    <div class="trigger"><h1>Main Navigation</h1>
+
+ <ul class="menu">
+
+    
+    
+     <li><a href="/about/" class="page-link">About</a>
+    
+    </li>
+    
+    
+     <li><a href="/research/" class="page-link">Research</a>
+    
+    </li>
+    
+    
+     <li><a href="/cv/" class="page-link">CV</a>
+    
+    </li>
+    
+    </ul>
+
+
+<!-- <ul class="menu">
+        <li> <a class="page-link" href="/about">About</a></li>
+        <li> <a class="page-link"  href="/blog">Blog</a>
+        <li> <a class="page-link" href="/blog">CV</a>
+        <li> <a class="page-link" href="/blog">For Students</a></li>
+        <li> <a class="page-link"  href="/blog">Research</a></a>
+        <li> <a class="page-link" href="/blog">Teaching</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">POSC 1020 – Introduction to International Relations</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">POSC 3410 – Quantitative Methods in Political Science</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">POSC 3610 – International Politics in Crisis</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3630-united-states-foreign-policy/">POSC 3630 – United States Foreign Policy</a></li>
+</ul></li>
+        <li> <a class="page-link" href="/blog">Miscellany</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">Clean USAID Greenbook Data</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">Journal of Peace Research *.bst File</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">My Custom Beamer Style</a></li>
+</ul> 
+
+</li>
+</ul> -->
+
+     </div>  
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Mixed Effects Modeling Tips: Use a Fast Optimizer, but Perform Optimizer Checks</h1>
+    <p class="post-meta">Posted on June 28, 2018 by  steve  
+
+  in
+  
+  <a href="/categories/#R" title="R">R</a>&nbsp;
+  
+
+
+</p>
+  </header>
+
+  <article class="post-content">
+    <dl class="wp-caption alignright" style="max-width: 350px">
+
+<dt><a href=""><img class="" src="/images/r-logo.png" alt="The R logo, just 'cause." /></a></dt>
+
+<dd>The R logo, just 'cause.</dd>
+</dl>
+
+<p>My goals for writing this are two-fold. First, it’d been a long time since my last blog post. I usually average 7-10 posts a year and this will only be the second one. Second, I’ve been meaning to offer some tips/tutorials for mixed effects modelers who are still new to the craft. Mixed effects modeling is my method of choice for evaluating and explaining social/political phenomenon. I think I’ve become pretty good at it over the past 10 years, but everything I know I ultimately taught myself through trial and error. Stackoverflow is nice but I was always reticent to post there to search for answers I feel I should’ve known already. It does mean that while I everything I know is self-taught, I’ve learned a lot of tricks along the way and I think it would be good to share them.</p>
+
+<p>Here, I start what might be a series of similar posts with one of the nagging issues of mixed effects modeling: computation time. Computation time can drag in the mixed effects modeling framework in R because <code class="language-plaintext highlighter-rouge">lme4</code>, the most popular mixed effects modeling tool in R, performs a myriad of convergence checks that can drag on forever. Modeling several hundred thousand observations (like I routinely do with the World Values Survey) can compound the problem.</p>
+
+<p>Here, I offer some tips on how to make the most computation times by selecting the fastest optimizer and, importantly, benchmarking the fast optimizer you choose against a series of different optimizers using the <code class="language-plaintext highlighter-rouge">allFit</code> function. I will start with the sample data I’ll be using for this post.</p>
+
+<h2 id="a-brief-description-of-the-data">A Brief Description of the Data</h2>
+
+<p>We’ll start with a toy data set I created from six waves of American responses in the World Values Survey for <a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">my quantitative methods class</a>. This data set probes attitudes toward the justifiability of an abortion, a question of long-running interest to “values” and “modernization” scholarship. It appears in the surveys the World Values Survey administered in 1982, 1990, 1995, 1999, 2006, and, most recently, 2011. The variable itself is coded from 1 to 10 with increasing values indicating a greater “justifiability” of abortion on this 1-10 numeric scale. I’ll offer two dependent variables below from this variable. The first will treat this 1-10 scale as interval and estimate a linear mixed effects model on it. This is problematic because the distribution of the data would not satisfy the assumptions of a continuous and normally distributed dependent variable, but I would not be the first person to do this and I’m ultimately trying to do something else with this exercise. The second will condense the variable to a binary measure where 1 indicates a response that abortion is at least somewhat justifiable. A zero will indicate a response that abortion is never justifiable.</p>
+
+<p>I’ll keep the list of covariates simple. The models include the respondent’s age in years, whether the respondent is a woman, the ideology of the respondent on a 10-point scale (where increasing values indicate greater ideology to the political right), how satisfied the respondent is with her/his life on a 10-point scale, the child autonomy index (i.e. a five-point measure where increasing values indicate the respondent believes children should learn values of “determiniation/perseverance” and “independence” more than values of “obedience” and “religious faith”), and the importance of God in the respondent’s life on a 1-10 scale. The point here is not to be exhaustive of attitudes about abortion in the United States, but to provide something simple and intuitive for another purpose.</p>
+
+<p>You can see the exact code I’m using below, along with the rescaling I do.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">RCurl</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">lme4</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">dotwhisker</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">stevemisc</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">broom</span><span class="p">)</span><span class="w">
+ 
+</span><span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">getURL</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/svmiller/wvs-usa-abortion-attitudes/master/wvs-usa-abortion-attitudes-data.csv"</span><span class="p">)</span><span class="w">
+</span><span class="n">Data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">tbl_df</span><span class="p">()</span><span class="w">
+
+</span><span class="n">Data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">ajd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">car</span><span class="o">::</span><span class="n">recode</span><span class="p">(</span><span class="n">aj</span><span class="p">,</span><span class="w"> </span><span class="s2">"1=0; 2:10=1"</span><span class="p">),</span><span class="w">
+         </span><span class="n">z_age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arm</span><span class="o">::</span><span class="n">rescale</span><span class="p">(</span><span class="n">age</span><span class="p">),</span><span class="w">
+         </span><span class="n">z_ideo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arm</span><span class="o">::</span><span class="n">rescale</span><span class="p">(</span><span class="n">ideology</span><span class="p">),</span><span class="w">
+         </span><span class="n">z_satisf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arm</span><span class="o">::</span><span class="n">rescale</span><span class="p">(</span><span class="n">satisfinancial</span><span class="p">),</span><span class="w">
+         </span><span class="n">z_cai</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arm</span><span class="o">::</span><span class="n">rescale</span><span class="p">(</span><span class="n">cai</span><span class="p">),</span><span class="w">
+         </span><span class="n">z_god</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arm</span><span class="o">::</span><span class="n">rescale</span><span class="p">(</span><span class="n">godimportant</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Data</span><span class="w">
+
+</span><span class="n">M1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lmer</span><span class="p">(</span><span class="n">aj</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">z_age</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">female</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+             </span><span class="n">z_ideo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z_satisf</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z_cai</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z_god</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">year</span><span class="p">),</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Data</span><span class="p">,</span><span class="w">
+           </span><span class="n">control</span><span class="o">=</span><span class="n">lmerControl</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">"bobyqa"</span><span class="p">,</span><span class="w">
+                                 </span><span class="n">optCtrl</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">maxfun</span><span class="o">=</span><span class="m">2e5</span><span class="p">)))</span><span class="w">
+</span><span class="n">M2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">glmer</span><span class="p">(</span><span class="n">ajd</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">z_age</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">female</span><span class="w"> </span><span class="o">+</span><span class="w">
+              </span><span class="n">z_ideo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z_satisf</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z_cai</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z_god</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+              </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">year</span><span class="p">),</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Data</span><span class="p">,</span><span class="w"> </span><span class="n">family</span><span class="o">=</span><span class="n">binomial</span><span class="p">(</span><span class="n">link</span><span class="o">=</span><span class="s2">"logit"</span><span class="p">),</span><span class="w">
+            </span><span class="n">control</span><span class="o">=</span><span class="n">glmerControl</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">"bobyqa"</span><span class="p">,</span><span class="w">
+                                 </span><span class="n">optCtrl</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">maxfun</span><span class="o">=</span><span class="m">2e5</span><span class="p">)))</span><span class="w">
+</span></code></pre></div></div>
+
+<p>I provide the results below with my optimizer of choice. I am partial to bound optimization by quadratic approximation (BOBYQA) with a set maximum of 200,000 iterations (BOBYQA recommends at least 100,000). I do this because I’ve found, in my experience, this optimization to be a nice medium between speed and a valid convergence. It rarely gives me convergence warnings and, in the rare event that it does, it almost never provides parameter estimates that would differ much from other forms of convergence.</p>
+
+<p>The results below are substantively intuitive. Age might have a negative effect on attitudes toward abortion, but we see that in the logistic model and not the linear model. It should be unsurprising that increasing ideology to the right and increasing religiosity (i.e. the importance of God in the respondent’s life) decrease attitudes toward abortion’s justifiability. The child autonomy index has a positive effect on the justifiability of abortion, which is consistent with received wisdom from “modernization” and “values” scholarship.</p>
+
+<p><img src="/images/ajdwplots-1.png" alt="plot of chunk ajdwplots" /></p>
+
+<h2 id="performing-optimizer-checks">Performing Optimizer Checks</h2>
+
+<p>You can conveniently refit your statistical model with multiple different optimizers using the <code class="language-plaintext highlighter-rouge">allFit</code> function, which you can import from the <code class="language-plaintext highlighter-rouge">lme4</code> package on Github. I’ll briefly summarize these optimizers below.</p>
+
+<p>The standard generalized linear mixed effects model estimation does parameter optimization through a combination of BOBYQA and the <a href="https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method">Nelder-Mead “downhill simplex” method</a>. This approach is “standard” for estimation but, in practice, creates much longer computation times as the optimization goes through a series of convergence checks. It’s understandable for a precaution; sometimes the model needs these convergence checks and the researcher should know the results of these convergence checks. However, it can create a wait for your results and it may not matter, contingent on the model you estimate.</p>
+
+<p><code class="language-plaintext highlighter-rouge">allFit</code> will test whether your optimization choice you make for convenience may change the results of the model. It will re-estimate your model with a series of different optimizers. These are the aforementioned Nelder-Mead method and the BOBYQA method. It’ll use those same optimizers, but permit additional stopping criteria through non-linear optimization (<code class="language-plaintext highlighter-rouge">nlopt</code>) if the optimization procedures believes it has found the optimum. This speeds up computation at the expense of additional convergence checks. Additional optimization methods include large-scale, quasi-Newton, bound-constrained optimization of <a href="https://epubs.siam.org/doi/abs/10.1137/0916069">the Byrd et al. (1995) method</a> (<code class="language-plaintext highlighter-rouge">L-BFGS-B</code>), <a href="https://archive.siam.org/books/textbooks/fr18_book.pdf">iterative derivative-free <em>k</em>-bounded optimization</a> of the Nelder-Mead method (<code class="language-plaintext highlighter-rouge">nmkb</code>), and <a href="https://epubs.siam.org/doi/abs/10.1137/S1052623493253991">non-linear minimization with box constraints</a> (<code class="language-plaintext highlighter-rouge">nlminb</code>). My worry is I forgot one of these optimizers that <code class="language-plaintext highlighter-rouge">allFit</code> has, so these are the optmizers with which I’m most familiar.</p>
+
+<p>Here’s how you would perform these additional optimizer checks in my sample analysis.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">AF1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">allFit</span><span class="p">(</span><span class="n">M1</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="o">=</span><span class="nb">F</span><span class="p">)</span><span class="w">
+</span><span class="n">AF2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">allFit</span><span class="p">(</span><span class="n">M2</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="o">=</span><span class="nb">F</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>You can leverage <code class="language-plaintext highlighter-rouge">allFit</code> in multiple ways. First, it would be useful information for the appendix of your paper, should you choose the fastest optimizer you want at the expense of multiple and potentially redundant convergence checks, to report the log-likelihoods of the various models that <code class="language-plaintext highlighter-rouge">allFit</code> estimated. I do this graphically below.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">AF1_lliks</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sort</span><span class="p">(</span><span class="n">sapply</span><span class="p">(</span><span class="n">AF1</span><span class="p">,</span><span class="n">logLik</span><span class="p">))</span><span class="w">
+</span><span class="n">AF2_lliks</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sort</span><span class="p">(</span><span class="n">sapply</span><span class="p">(</span><span class="n">AF2</span><span class="p">,</span><span class="n">logLik</span><span class="p">))</span><span class="w">
+
+</span><span class="c1"># require(tidyverse) </span><span class="w">
+</span><span class="c1"># require(stevemisc)</span><span class="w">
+</span><span class="n">bind_rows</span><span class="p">(</span><span class="n">AF1_lliks</span><span class="p">,</span><span class="w"> </span><span class="n">AF2_lliks</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">remove_rownames</span><span class="p">(</span><span class="n">.</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"Linear Mixed Effects Model"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Logistic Mixed Effects Model"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">select</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">everything</span><span class="p">())</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">group_by</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">gather</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">Optimizer</span><span class="p">,</span><span class="w"> </span><span class="n">llik</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="o">:</span><span class="n">ncol</span><span class="p">(</span><span class="n">.</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="n">aes</span><span class="p">(</span><span class="n">Optimizer</span><span class="p">,</span><span class="w"> </span><span class="n">llik</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">theme_steve_web</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">post_bg</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylab</span><span class="p">(</span><span class="s2">"Log-Likelihood"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"The Log-Likelihoods of Seven Different Optimizers in Our Two Models"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/images/optimizerlls-1.png" alt="plot of chunk optimizerlls" /></p>
+
+<p>The easiest way to interpret this is that these log-likelihoods should all be within thousandths of a decimal point from each other. The optimizer does not influence the parameter estimates if these facets all have dots in a single column like this. Here, we can be assured that the model’s parameters we report do not depend on the optimizer we chose.</p>
+
+<p>You could also do something similar with the <em>z</em>-statistics and <em>t</em>-statistics of a particular variable from the model. Let’s assume I’m interested, for theoretical reasons, in the effect of the child autonomy index on attitudes toward abortion in my model. I’m trying to build an argument about this relationship we observe and demonstrate to reviewers that the effect is not sensitive to the optimizer. Toward that end, I can pool all the coefficients for the child autonomy index variable across all the optimizers and present them as a faceted plot like above. The intuition here is straightforward, as it was above. If the points on the plot below all form a single column across both facets, then the parameter for the variable is robust to the particular optimizer.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tidy</span><span class="p">(</span><span class="n">AF1</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">bind_rows</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">tidy</span><span class="p">(</span><span class="n">AF1</span><span class="p">[[</span><span class="m">2</span><span class="p">]]))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">bind_rows</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">tidy</span><span class="p">(</span><span class="n">AF1</span><span class="p">[[</span><span class="m">3</span><span class="p">]]))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">bind_rows</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">tidy</span><span class="p">(</span><span class="n">AF1</span><span class="p">[[</span><span class="m">4</span><span class="p">]]))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">bind_rows</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">tidy</span><span class="p">(</span><span class="n">AF1</span><span class="p">[[</span><span class="m">5</span><span class="p">]]))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">bind_rows</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">tidy</span><span class="p">(</span><span class="n">AF1</span><span class="p">[[</span><span class="m">6</span><span class="p">]]))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">bind_rows</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">tidy</span><span class="p">(</span><span class="n">AF1</span><span class="p">[[</span><span class="m">7</span><span class="p">]]))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">filter</span><span class="p">(</span><span class="n">term</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"z_cai"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">Optimizer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"BOBYQA"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Nelder-Mead"</span><span class="p">,</span><span class="w">
+                       </span><span class="s2">"nlminb"</span><span class="p">,</span><span class="w"> </span><span class="s2">"nmkb"</span><span class="p">,</span><span class="w">
+                       </span><span class="s2">"L-BFGS-B"</span><span class="p">,</span><span class="w">
+                       </span><span class="s2">"nlopt: Nelder-Mead"</span><span class="p">,</span><span class="w">
+                       </span><span class="s2">"nlopt: BOBYQA"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">Model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Linear Mixed Effects Model"</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">AF1_zcai</span><span class="w">
+
+</span><span class="n">tidy</span><span class="p">(</span><span class="n">AF2</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">bind_rows</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">tidy</span><span class="p">(</span><span class="n">AF2</span><span class="p">[[</span><span class="m">2</span><span class="p">]]))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">bind_rows</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">tidy</span><span class="p">(</span><span class="n">AF2</span><span class="p">[[</span><span class="m">3</span><span class="p">]]))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">bind_rows</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">tidy</span><span class="p">(</span><span class="n">AF2</span><span class="p">[[</span><span class="m">4</span><span class="p">]]))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">bind_rows</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">tidy</span><span class="p">(</span><span class="n">AF2</span><span class="p">[[</span><span class="m">5</span><span class="p">]]))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">bind_rows</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">tidy</span><span class="p">(</span><span class="n">AF2</span><span class="p">[[</span><span class="m">6</span><span class="p">]]))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">bind_rows</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">tidy</span><span class="p">(</span><span class="n">AF2</span><span class="p">[[</span><span class="m">7</span><span class="p">]]))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">filter</span><span class="p">(</span><span class="n">term</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"z_cai"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">Optimizer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"BOBYQA"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Nelder-Mead"</span><span class="p">,</span><span class="w">
+                       </span><span class="s2">"nlminb"</span><span class="p">,</span><span class="w"> </span><span class="s2">"nmkb"</span><span class="p">,</span><span class="w">
+                       </span><span class="s2">"L-BFGS-B"</span><span class="p">,</span><span class="w">
+                       </span><span class="s2">"nlopt: Nelder-Mead"</span><span class="p">,</span><span class="w">
+                       </span><span class="s2">"nlopt: BOBYQA"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">Model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Logistic Mixed Effects Model"</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">AF2_zcai</span><span class="w">
+
+</span><span class="n">bind_rows</span><span class="p">(</span><span class="n">AF1_zcai</span><span class="p">,</span><span class="w"> </span><span class="n">AF2_zcai</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="n">aes</span><span class="p">(</span><span class="n">Optimizer</span><span class="p">,</span><span class="w"> </span><span class="n">statistic</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">theme_steve_web</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">post_bg</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">Model</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1.96</span><span class="p">,</span><span class="w"> </span><span class="n">linetype</span><span class="o">=</span><span class="s2">"dashed"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylab</span><span class="p">(</span><span class="s2">"z-statistic"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Vertical line represents a z-value (or t-value, in the linear model) of 1.96, the conventional cutoff for statistical significance."</span><span class="p">,</span><span class="w">
+       </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"A Comparison of the Effect of the Child Autonomy Index Across Multiple Optimizers"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/images/optimizerzts-1.png" alt="plot of chunk optimizerzts" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">allFit</code> will helpfully store the estimation times of these models as well. This will be useful as you figure out which optimizer gives you the most “bang for your buck” (i.e. what converges the fastest, especially if you’re short on memory and time). The results suggest you can get the most bang for your buck through non-linear optimization of the Nelder-Mead and BOBYQA methods. This is unsurprising, at least in our example, because these optimization procedures permit stopping convergence checks earlier if it the procedure believes it has already found an approximate optimum. The differences may not matter as much for linear models in the mixed effects framework. These already estimate quickly, all things considered.</p>
+
+<p><img src="/images/allfittimes-1.png" alt="plot of chunk allfittimes" /></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Optimizer performance is an advanced topic for those fluent in the mixed effects modeling framework in R. However, it’s useful information for beginners as they explore model estimation and, importantly, want to estimate as many models as they can within as short of a time as possible.</p>
+
+<p>It’s useful for researchers to take advantage of the <code class="language-plaintext highlighter-rouge">allFit</code> function in R, at least as a robustness check for the appendix of the paper. You can use this wrapper function to re-estimate the statistical model with multiple optimizers to see if the log-likelihoods of the model chosen for presentation is sensitive to the particular optimizer of the model. The researcher can also compare <em>z</em>/<em>t</em> statistics for a particular coefficent across multiple optimizers. A researcher just learning about the mixed effects modeling framework can also use the <code class="language-plaintext highlighter-rouge">allFit</code> function to identify what optimizers converge the fastest. If you’re like me, who learned mixed effects models by estimating hundreds of models just to see how the process worked, this is useful information. You don’t need to be advanced in the method to appreciate it.</p>
+
+
+  </article>
+
+<div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'svmiller';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+<!--     <h2 class="footer-heading">Aditya Karanam</h2> -->
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li><strong>Aditya Karanam</strong></li>
+			<li>PhD Student</li>
+          <li><a href="mailto:aditya_ks@utexas.edu">aditya_ks@utexas.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+ 
+
+         <p class="text">
+		Department of Information, Risk, & Operations Management,<br />
+		McCombs School of Business, <br />
+    2110 Speed Way<br />
+		Austin, TX 78705</p> <!-- I'm a PhD Student at McCombs School of Business, UT, Austin with research interests in the area of Economics of Information Systems. Specifically, I am interested in New product design and Innovation. Topics on my site include my research interests and teaching.
+ -->
+      </div>
+
+      <div class="footer-col  footer-col-3">
+       <ul class="social-media-list">
+
+                  
+     
+
+          
+  <li>
+    <a href="https://github.com/askaranam">
+      <i class="fa fa-github" style="color:gray"></i> Github
+    </a>
+  </li>
+
+
+          
+
+          
+  <li>
+    <a href="https://twitter.com/aditya_karanam">
+      <i class="fa fa-twitter" style="color:gray"></i> Twitter
+    </a>
+  </li>
+
+
+
+
+
+
+
+       
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+		<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-37298398-1']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+	</script>
+  </body>
+</html>
+<!-- d.s.m.s.050600.062508.030515.080516.030818; k.050800.101218 | "Baby, I'm Yours" -->
+

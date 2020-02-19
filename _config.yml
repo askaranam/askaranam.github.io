@@ -1,0 +1,30 @@
+# Site settings
+title: Aditya Karanam
+email: aditya_ks@utexas.edu
+description: > # this means to ignore newlines until "baseurl:"
+  I'm a PhD Student at McCombs School of Business, UT, Austin with research interests in the
+  area of Economics of Information Systems. Specifically, I am interested in New product design and Innovation.
+  Topics on my site include my research interests and teaching.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://askaranam.github.io" # the base hostname & protocol for your site
+twitter_username: aditya_karanam
+github_username:  askaranam
+
+
+# Build settings
+markdown: kramdown
+
+# Other options
+permalink: blog/:year/:month/:title/
+jobtitle: "PhD Student"
+excerpt_separator: "<!--more-->"
+
+# SEO stuff
+google_author: ""
+google_site_verification: ""
+bing_webmastertools_id: ""
+
+plugins_dir:
+  - jekyll-sitemap
+
+exclude: ['*.Rmd']

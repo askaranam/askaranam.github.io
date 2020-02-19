@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>An R Markdown Template for Beamer Presentations | Aditya Karanam</title>
+  <meta name="description" content="I have a series of templates for R Markdown. This post documents my Beamer presentations, and how to use this template as I use it.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/blog/2019/08/r-markdown-template-beamer-presentations/">
+  <link rel="alternate" type="application/rss+xml" title="Aditya Karanam" href="http://localhost:4000/feed.xml" />
+<link rel='stylesheet' id='open-sans-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&#038;subset=latin%2Clatin-ext&#038;ver=4.2.4' type='text/css' media='all' />
+<link href='http://fonts.googleapis.com/css?family=Roboto:200' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:600italic,600,400,400italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://www.osu.edu/assets/fonts/webfonts.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/academicons-1.8.0/css/academicons.css">
+
+<!-- icon, perhaps -->
+<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="apple-touch-icon" type="image/png" href="/images/icon-192.png">
+
+
+<!-- OG protocol -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="An R Markdown Template for Beamer Presentations">
+<meta property="og:description" content="I have a series of templates for R Markdown. This post documents my Beamer presentations, and how to use this template as I use it.">
+<meta property="og:url" content="http://localhost:4000/blog/2019/08/r-markdown-template-beamer-presentations/">
+<meta property="og:site_name" content="Aditya Karanam">
+<meta property="og:image" content="http://localhost:4000/images/rick-astley.png">
+
+<meta property="og:image:width" content="637" />
+<meta property="og:image:height" content="403" />
+
+<!-- Twitter cards -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@aditya_karanam">
+<meta name="twitter:title" content="An R Markdown Template for Beamer Presentations" />
+<meta name="twitter:description" content="I have a series of templates for R Markdown. This post documents my Beamer presentations, and how to use this template as I use it." />
+<meta name="twitter:url" content="http://localhost:4000/blog/2019/08/r-markdown-template-beamer-presentations/" />
+<meta name="twitter:image" content="http://localhost:4000/images/rick-astley.png">
+
+
+<link rel="author" href=""/>
+<meta name="google-site-verification" content="" />
+<meta name="msvalidate.01" content="" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Aditya Karanam</a>
+
+
+    <nav class="site-nav">
+
+      <a href="#" class="menu-icon menu.open">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>  
+
+    <div class="trigger"><h1>Main Navigation</h1>
+
+ <ul class="menu">
+
+    
+    
+     <li><a href="/about/" class="page-link">About</a>
+    
+    </li>
+    
+    
+     <li><a href="/research/" class="page-link">Research</a>
+    
+    </li>
+    
+    
+     <li><a href="/cv/" class="page-link">CV</a>
+    
+    </li>
+    
+    </ul>
+
+
+<!-- <ul class="menu">
+        <li> <a class="page-link" href="/about">About</a></li>
+        <li> <a class="page-link"  href="/blog">Blog</a>
+        <li> <a class="page-link" href="/blog">CV</a>
+        <li> <a class="page-link" href="/blog">For Students</a></li>
+        <li> <a class="page-link"  href="/blog">Research</a></a>
+        <li> <a class="page-link" href="/blog">Teaching</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">POSC 1020 – Introduction to International Relations</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">POSC 3410 – Quantitative Methods in Political Science</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">POSC 3610 – International Politics in Crisis</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3630-united-states-foreign-policy/">POSC 3630 – United States Foreign Policy</a></li>
+</ul></li>
+        <li> <a class="page-link" href="/blog">Miscellany</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">Clean USAID Greenbook Data</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">Journal of Peace Research *.bst File</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">My Custom Beamer Style</a></li>
+</ul> 
+
+</li>
+</ul> -->
+
+     </div>  
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">An R Markdown Template for Beamer Presentations</h1>
+    <p class="post-meta">Posted on August 17, 2019 by  steve  
+
+  in
+  
+  <a href="/categories/#R Markdown" title="R Markdown">R Markdown</a>&nbsp;
+  
+
+
+</p>
+  </header>
+
+  <article class="post-content">
+    <dl class="wp-caption alignright" style="max-width: 400px">
+
+<dt><a href=""><img class="" src="/images/rick-astley.png" alt="Congressman Rick Astley makes another pledge on the campaign trail" /></a></dt>
+
+<dd>Congressman Rick Astley makes another pledge on the campaign trail</dd>
+</dl>
+
+<p>I’ll keep the introduction to this post fairly simple. It’s back-to-school season for professors, which means it’s time to prepare syllabi and lectures for the coming school year. I realized as I was doing some website maintenance that I never formally introduced the most common R Markdown template that I use: <a href="https://github.com/svmiller/svm-r-markdown-templates/blob/master/svm-latex-beamer.tex">my Beamer template</a>. Over four years ago, I talked a little about <a href="http://svmiller.com/blog/2015/02/moving-from-beamer-to-r-markdown/">why people should move from Beamer to R Markdown</a> and use the latter as a wrapper for the former. However, I’ve tweaked my Beamer templates so much since that I should probably describe it more in detail.</p>
+
+<p>Consider this another installment in <a href="http://svmiller.com/categories/#R%20Markdown">my catalog of posts on R Markdown</a>, complementing my suite of templates for things like <a href="http://svmiller.com/blog/2016/02/svm-r-markdown-manuscript/">academic manuscripts</a>, <a href="http://svmiller.com/blog/2016/03/svm-r-markdown-cv/">CVs</a>, <a href="http://svmiller.com/blog/2016/07/r-markdown-syllabus/">syllabi</a>, <a href="http://svmiller.com/blog/2018/02/r-markdown-xaringan-theme/">Xaringan presentations</a>, and <a href="http://svmiller.com/blog/2019/06/r-markdown-memo-template/">memos</a> (among other templates). You can also skip this and head straight to <a href="https://github.com/svmiller/svm-r-markdown-templates">my Github repo for all these things</a>.</p>
+
+<h2 id="getting-started-with-the-yaml">Getting Started with the YAML</h2>
+
+<p>Here is what the YAML will resemble for my standard Beamer presentation.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">An Example R Markdown Document</span>
+<span class="na">subtitle</span><span class="pi">:</span> <span class="s">(A Subtitle Would Go Here if This Were a Class)</span>
+<span class="na">author</span><span class="pi">:</span> <span class="s">Steven V. Miller</span>
+<span class="na">institute</span><span class="pi">:</span> <span class="s">Department of Political Science</span>
+<span class="na">titlegraphic</span><span class="pi">:</span> <span class="s">/Dropbox/teaching/clemson-academic.png</span>
+<span class="na">fontsize</span><span class="pi">:</span> <span class="s">10pt</span>
+<span class="na">output</span><span class="pi">:</span>
+ <span class="na">beamer_presentation</span><span class="pi">:</span>
+    <span class="na">template</span><span class="pi">:</span> <span class="s">../svm-latex-beamer.tex</span>
+    <span class="na">keep_tex</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">latex_engine</span><span class="pi">:</span> <span class="s">xelatex</span> <span class="c1"># pdflatex also works here</span>
+    <span class="na">dev</span><span class="pi">:</span> <span class="s">cairo_pdf</span> <span class="c1"># I typically comment this out  if latex_engine: pdflatex</span>
+    <span class="na">slide_level</span><span class="pi">:</span> <span class="m">3</span>
+<span class="na">make149</span><span class="pi">:</span> <span class="no">true</span>
+<span class="na">mainfont</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Open</span><span class="nv"> </span><span class="s">Sans"</span> <span class="c1"># Try out some font options if xelatex</span>
+<span class="na">titlefont</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Titillium</span><span class="nv"> </span><span class="s">Web"</span> <span class="c1"># Try out some font options if xelatex</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<p>Long-time users of my templates or R Markdown should recognize a fair bit here. Make <code class="language-plaintext highlighter-rouge">title:</code> the topic of your presentation. <code class="language-plaintext highlighter-rouge">subtitle:</code> is optional, but try to use it since it looks nice and fleshes out the title page. The <code class="language-plaintext highlighter-rouge">author:</code> field should be who you are (or me, you’re free to make everything about and by me). The <code class="language-plaintext highlighter-rouge">institute:</code> field should be your department or employer.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">titlegraphic:</code> field should be a relative(-ish) path to a brand marker for your university or employer. LaTeX (as far as I know) is a bit wonky about paths. My template specifies this field like this, if you wanted to see what it looks like under the proverbial hood.</p>
+
+<div class="language-latex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">% \titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~/Dropbox/teaching/clemson-academic.png}} </span>
+<span class="c">% if you want to know what this looks like without it as a Markdown field. </span>
+<span class="c">% -----------------------------------------------------------------------------------------------------</span>
+<span class="p">$</span><span class="nb">if</span><span class="o">(</span><span class="nb">titlegraphic</span><span class="o">)</span><span class="p">$</span><span class="k">\titlegraphic</span><span class="p">{</span><span class="k">\includegraphics</span><span class="na">[width=0.3\paperwidth]</span><span class="p">{</span><span class="k">\string</span>~<span class="p">$</span><span class="nb">titlegraphic</span><span class="p">$}}$</span><span class="nb">endif</span><span class="p">$</span>
+</code></pre></div></div>
+
+<p>Thus, start a relative(-ish) path to your university’s “brand” marker, wherever it is on your hard drive. If you’re a new student trying to figure this stuff out for the first time and are unaware what I mean by “brand” in the context of universities: trust me; your university has a brand “guideline” and has copious guides to “protecting” the “brand.” Your university speaks of itself like a corporation and would hire two dozen Darren Rovells to “protect” and “promote” the “brand” if they haven’t already. Don’t believe me? Here’s my beloved alma mater <a href="https://www.cnn.com/2019/08/14/us/the-ohio-state-university-trademark-trnd/index.html">trying to file a trademark for the most common word in the English language</a> to protect its “brand” by arguing the most common word in the English language is actually its intellectual property.</p>
+
+<p>Just search “brand” on your university’s website and you should be good to go from there. For what it’s worth, the <code class="language-plaintext highlighter-rouge">titlegraphic:</code> field is optional. You can omit this if you’d like, but then you should make the <code class="language-plaintext highlighter-rouge">institute:</code> field your university or employer.</p>
+
+<p>The stuff under <code class="language-plaintext highlighter-rouge">output:</code> is worth belaboring a little bit. <code class="language-plaintext highlighter-rouge">template:</code> should obviously be where <a href="https://github.com/svmiller/svm-r-markdown-templates/blob/master/svm-latex-beamer.tex">the actual .tex template</a> is and <code class="language-plaintext highlighter-rouge">keep_tex:</code> is optional if you want to keep or discard the intermediate .tex file for the Beamer presentation. Thereafter, you can use the <code class="language-plaintext highlighter-rouge">latex_engine:</code> option to favor xelatex (as I do now) over pdflatex (which I used to use back when I first created my template). The only real reason for this switch is if you wanted to customize the font options (more on that later). If you set <code class="language-plaintext highlighter-rouge">latex_engine: xelatex</code>, you should also set <code class="language-plaintext highlighter-rouge">dev: cairo_pdf</code>. This will allow you to use some fancy fonts in your ggplot graphs.</p>
+
+<p>As a final little note on the stuff under <code class="language-plaintext highlighter-rouge">output:</code>, I typically set <code class="language-plaintext highlighter-rouge">slide_level: 3</code> so that three pound signs (###) denote a new slide. Two pound signs are a subsection and one pound sign is a section.</p>
+
+<p>The final set of options are stuff I’ve added over the years. Most computer screens these days are widescreen, even the computers you’ll find in your class room. I want to leverage this space as well as I can. Thus, I created a <code class="language-plaintext highlighter-rouge">make149:</code> option so my presentations can have a 14:9 aspect ratio. This is optional. Commented out, the presentation would be the default aspect ratio for a Beamer presentation. I’m pretty sure that’s 4:3.</p>
+
+<p>Finally, if you’ve set <code class="language-plaintext highlighter-rouge">latex_engine: xelatex</code>, why not give yourself some fonts of choice? My main font (<code class="language-plaintext highlighter-rouge">mainfont:</code>) is <a href="https://fonts.google.com/specimen/Open+Sans">Open Sans</a> while the title fonts (<code class="language-plaintext highlighter-rouge">titlefont:</code>, for slides and the title page) is <a href="https://fonts.google.com/specimen/Titillium+Web">Titillium Web</a>. You may recognize these fonts on my website as well. For as much as I just riffed on universities being snobby about their “brand”, I suppose I have mine as well.</p>
+
+<h2 id="add-your-own-colors-to-the-tex-file">Add Your Own Colors to the .tex File</h2>
+
+<p>Assuming you don’t want your presentations to be <del>orange and purple</del> ahem, <a href="https://www.clemson.edu/brand/guide/color.html">“Clemson Orange” and “Regalia”</a>, head over to <a href="https://github.com/svmiller/svm-r-markdown-templates/blob/master/svm-latex-beamer.tex">the .tex file</a> and find the stretch of code you see below.</p>
+
+<div class="language-latex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">% Some optional colors. Change or add as you see fit.</span>
+<span class="c">%---------------------------------------------------</span>
+<span class="k">\definecolor</span><span class="p">{</span>clemsonpurple<span class="p">}{</span>HTML<span class="p">}{</span>522D80<span class="p">}</span>
+ <span class="k">\definecolor</span><span class="p">{</span>clemsonorange<span class="p">}{</span>HTML<span class="p">}{</span>F66733<span class="p">}</span>
+<span class="k">\definecolor</span><span class="p">{</span>uiucblue<span class="p">}{</span>HTML<span class="p">}{</span>003C7D<span class="p">}</span>
+<span class="k">\definecolor</span><span class="p">{</span>uiucorange<span class="p">}{</span>HTML<span class="p">}{</span>F47F24<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Change or add anything you see fit for your purposes. I always found hex color codes to be intuitive, so that’s how I enter them.</p>
+
+<p>You may also want to change the colors for your frame titles and the like. Those are options are listed below.</p>
+
+<div class="language-latex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">% Some optional color adjustments to Beamer. Change as you see fit.</span>
+<span class="c">%------------------------------------------------------------------</span>
+<span class="k">\setbeamercolor</span><span class="p">{</span>frametitle<span class="p">}{</span>fg=clemsonpurple,bg=white<span class="p">}</span>
+<span class="k">\setbeamercolor</span><span class="p">{</span>title<span class="p">}{</span>fg=clemsonpurple,bg=white<span class="p">}</span>
+<span class="k">\setbeamercolor</span><span class="p">{</span>local structure<span class="p">}{</span>fg=clemsonpurple<span class="p">}</span>
+<span class="k">\setbeamercolor</span><span class="p">{</span>section in toc<span class="p">}{</span>fg=clemsonpurple,bg=white<span class="p">}</span>
+<span class="c">% \setbeamercolor{subsection in toc}{fg=clemsonorange,bg=white}</span>
+<span class="k">\setbeamercolor</span><span class="p">{</span>footline<span class="p">}{</span>fg=clemsonpurple!50, bg=white<span class="p">}</span>
+<span class="k">\setbeamercolor</span><span class="p">{</span>block title<span class="p">}{</span>fg=clemsonorange,bg=white<span class="p">}</span>
+</code></pre></div></div>
+
+<p>I’m of the mentality that most Beamer presentations waste precious space with things like overhead or side navigation panels. It’s why omit those things entirely, even <a href="https://tex.stackexchange.com/questions/686/how-to-get-rid-of-navigation-symbols-in-beamer">the navigation symbols</a> (i.e. the tribal arm band tattoo of Beamer presentations).<sup id="fnref:cabo"><a href="#fn:cabo" class="footnote">1</a></sup> It’s more important to make the presentation informative than, well, gaudy. Yeah, I’m especially looking at you, <a href="http://deic.uab.es/~iblanes/beamer_gallery/individual/PaloAlto-default-default.html">Palo Alto</a>. However, I do have a subtle cosmetic touch at the footline that has some of these colors. Go a bit further down until you find this stretch of code and change the Clemson color codes you see.</p>
+
+<div class="language-latex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">% Allow for those simple two-tone footlines I like. </span>
+<span class="c">% Edit the colors as you see fit.</span>
+<span class="c">%--------------------------------------------------</span>
+<span class="k">\defbeamertemplate*</span><span class="p">{</span>footline<span class="p">}{</span>my footline<span class="p">}{</span><span class="c">%</span>
+    <span class="k">\ifnum\insertpagenumber</span>=1
+    <span class="k">\hbox</span><span class="p">{</span><span class="c">%</span>
+        <span class="nt">\begin{beamercolorbox}</span>[wd=<span class="k">\paperwidth</span>,ht=.8ex,dp=1ex,center]<span class="p">{}</span><span class="c">%</span>
+      <span class="c">% empty environment to raise height</span>
+        <span class="nt">\end{beamercolorbox}</span><span class="c">%</span>
+    <span class="p">}</span><span class="c">%</span>
+    <span class="k">\vskip</span>0pt<span class="c">%</span>
+    <span class="k">\else</span><span class="c">%</span>
+        <span class="k">\Tiny</span><span class="p">{</span><span class="c">%</span>
+            <span class="k">\hfill</span><span class="c">%</span>
+		<span class="k">\vspace*</span><span class="p">{</span>1pt<span class="p">}</span><span class="c">%</span>
+            <span class="k">\insertframenumber</span>/<span class="k">\inserttotalframenumber</span> <span class="k">\hspace*</span><span class="p">{</span>0.1cm<span class="p">}</span><span class="c">%</span>
+            <span class="k">\newline</span><span class="c">%</span>
+            <span class="k">\color</span><span class="p">{</span>clemsonpurple<span class="p">}{</span><span class="k">\rule</span><span class="p">{</span><span class="k">\paperwidth</span><span class="p">}{</span>0.4mm<span class="p">}}</span><span class="k">\newline</span><span class="c">%</span>
+            <span class="k">\color</span><span class="p">{</span>clemsonorange<span class="p">}{</span><span class="k">\rule</span><span class="p">{</span><span class="k">\paperwidth</span><span class="p">}{</span>.4mm<span class="p">}}</span><span class="c">%</span>
+        <span class="p">}</span><span class="c">%</span>
+    <span class="k">\fi</span><span class="c">%</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>There are some other final color options here you may want to change if you want to de-Clemson your presentation.</p>
+
+<div class="language-latex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">% Various cosmetic things, though I must confess I forget what exactly these do and why I included them.</span>
+<span class="c">%-------------------------------------------------------------------------------------------------------</span>
+<span class="k">\setbeamercolor</span><span class="p">{</span>structure<span class="p">}{</span>fg=blue<span class="p">}</span>
+<span class="k">\setbeamercolor</span><span class="p">{</span>local structure<span class="p">}{</span>parent=structure<span class="p">}</span>
+<span class="k">\setbeamercolor</span><span class="p">{</span>item projected<span class="p">}{</span>parent=item,use=item,fg=clemsonpurple,bg=white<span class="p">}</span>
+<span class="k">\setbeamercolor</span><span class="p">{</span>enumerate item<span class="p">}{</span>parent=item<span class="p">}</span>
+
+<span class="c">% Adjust some item elements. More cosmetic things.</span>
+<span class="c">%-------------------------------------------------</span>
+<span class="k">\setbeamertemplate</span><span class="p">{</span>itemize item<span class="p">}{</span><span class="k">\color</span><span class="p">{</span>clemsonpurple<span class="p">}$$</span><span class="nv">\bullet</span><span class="p">$$}</span>
+<span class="k">\setbeamertemplate</span><span class="p">{</span>itemize subitem<span class="p">}{</span><span class="k">\color</span><span class="p">{</span>clemsonpurple<span class="p">}</span><span class="k">\scriptsize</span><span class="p">{$$</span><span class="nv">\bullet</span><span class="p">$$}}</span>
+<span class="k">\setbeamertemplate</span><span class="p">{</span>itemize/enumerate body end<span class="p">}{</span><span class="k">\vspace</span><span class="p">{</span>.6<span class="k">\baselineskip</span><span class="p">}}</span> <span class="c">% So I'm less inclined to use \medskip and \bigskip in Markdown.</span>
+</code></pre></div></div>
+
+<h2 id="a-sample-r-markdown-slide">A Sample R Markdown Slide</h2>
+
+<p>Of course, no sample R Markdown Beamer presentation of mine is complete without weirdness. My sample presentation (which shows <a href="https://github.com/svmiller/svm-r-markdown-templates/blob/master/beamer-example/svm-rmarkdown-beamer-example.pdf">what the finished product looks like</a>) riffs on using pop culture inanities as illustrations of political science concepts, so here’s “Rickrolling” toward an illustration of <a href="https://en.wikipedia.org/wiki/Median_voter_theorem">median voter theorem</a>.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">### Rick Astley's Re-election Platform</span><span class="w">
+
+</span><span class="n">Rick</span><span class="w"> </span><span class="n">Astley</span><span class="err">'</span><span class="n">s</span><span class="w"> </span><span class="n">campaign</span><span class="w"> </span><span class="n">promises</span><span class="o">:</span><span class="w">
+
+</span><span class="o">-</span><span class="w"> </span><span class="n">Never</span><span class="w"> </span><span class="n">gonna</span><span class="w"> </span><span class="n">give</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">up.</span><span class="w">
+</span><span class="o">-</span><span class="w"> </span><span class="n">Never</span><span class="w"> </span><span class="n">gonna</span><span class="w"> </span><span class="n">let</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">down.</span><span class="w">
+</span><span class="o">-</span><span class="w"> </span><span class="n">Never</span><span class="w"> </span><span class="n">gonna</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">around</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">desert</span><span class="w"> </span><span class="n">you.</span><span class="w">
+</span><span class="o">-</span><span class="w"> </span><span class="n">Never</span><span class="w"> </span><span class="n">gonna</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">cry.</span><span class="w">
+</span><span class="o">-</span><span class="w"> </span><span class="n">Never</span><span class="w"> </span><span class="n">gonna</span><span class="w"> </span><span class="n">say</span><span class="w"> </span><span class="n">goodbye.</span><span class="w">
+</span><span class="o">-</span><span class="w"> </span><span class="n">Never</span><span class="w"> </span><span class="n">gonna</span><span class="w"> </span><span class="n">tell</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">lie</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">hurt</span><span class="w"> </span><span class="n">you.</span><span class="w">
+
+</span><span class="n">Are</span><span class="w"> </span><span class="n">these</span><span class="w"> </span><span class="n">promises</span><span class="w"> </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="n">credible</span><span class="p">)</span><span class="w"> </span><span class="n">sufficient</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">secure</span><span class="w"> </span><span class="n">re</span><span class="o">-</span><span class="n">election</span><span class="o">?</span><span class="w">
+
+</span></code></pre></div></div>
+
+<p>We can visualize median voter theorem accordingly, which pits Congressman Astley’s campaign pledges against a hypothetical rival on the distribution of preferences for emotional support.</p>
+
+<p><img src="/images/rick-astley-never-gonna-give-you-up-median-voter-theorem-1.svg" alt="plot of chunk rick-astley-never-gonna-give-you-up-median-voter-theorem" /></p>
+
+<p>According to this graph, Congressman Astley comfortably secures re-election against his rival because his policy package of emotional support is closer to the median voter.</p>
+
+<h2 id="replication-and-such">Replication, and Such</h2>
+
+<p>You can find the files to reproduce this presentation <a href="https://github.com/svmiller/svm-r-markdown-templates/tree/master/beamer-example">here on my Github</a>. The template is <a href="https://github.com/svmiller/svm-r-markdown-templates/blob/master/svm-latex-beamer.tex">here</a>. The R Markdown file of the sample presentation is <a href="https://github.com/svmiller/svm-r-markdown-templates/blob/master/beamer-example/svm-rmarkdown-beamer-example.Rmd">here</a> and this PDF shows <a href="https://github.com/svmiller/svm-r-markdown-templates/blob/master/beamer-example/svm-rmarkdown-beamer-example.pdf">what the finished product looks like</a>.</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:cabo">
+      <p>Listen; I get it. You’ve been to <a href="https://en.wikipedia.org/wiki/Cabo_San_Lucas">Cabo</a>, but you didn’t need to get that to show everyone you made that trip. In fact, stop showing that thing to me. I didn’t ask to see it in the first place. <a href="#fnref:cabo" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </article>
+
+<div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'svmiller';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+<!--     <h2 class="footer-heading">Aditya Karanam</h2> -->
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li><strong>Aditya Karanam</strong></li>
+			<li>PhD Student</li>
+          <li><a href="mailto:aditya_ks@utexas.edu">aditya_ks@utexas.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+ 
+
+         <p class="text">
+		Department of Information, Risk, & Operations Management,<br />
+		McCombs School of Business, <br />
+    2110 Speed Way<br />
+		Austin, TX 78705</p> <!-- I'm a PhD Student at McCombs School of Business, UT, Austin with research interests in the area of Economics of Information Systems. Specifically, I am interested in New product design and Innovation. Topics on my site include my research interests and teaching.
+ -->
+      </div>
+
+      <div class="footer-col  footer-col-3">
+       <ul class="social-media-list">
+
+                  
+     
+
+          
+  <li>
+    <a href="https://github.com/askaranam">
+      <i class="fa fa-github" style="color:gray"></i> Github
+    </a>
+  </li>
+
+
+          
+
+          
+  <li>
+    <a href="https://twitter.com/aditya_karanam">
+      <i class="fa fa-twitter" style="color:gray"></i> Twitter
+    </a>
+  </li>
+
+
+
+
+
+
+
+       
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+		<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-37298398-1']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+	</script>
+  </body>
+</html>
+<!-- d.s.m.s.050600.062508.030515.080516.030818; k.050800.101218 | "Baby, I'm Yours" -->
+

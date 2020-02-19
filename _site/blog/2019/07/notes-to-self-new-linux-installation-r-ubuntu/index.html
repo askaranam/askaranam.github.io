@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Notes to Self: Configuring New Linux (Ubuntu) Installations for Your Workflow | Aditya Karanam</title>
+  <meta name="description" content="Every now and then I have to install a brand new Linux OS while I forget how I configured everything to be what I want it to be. This is mostly a note to myself, but others may find it useful.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/blog/2019/07/notes-to-self-new-linux-installation-r-ubuntu/">
+  <link rel="alternate" type="application/rss+xml" title="Aditya Karanam" href="http://localhost:4000/feed.xml" />
+<link rel='stylesheet' id='open-sans-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&#038;subset=latin%2Clatin-ext&#038;ver=4.2.4' type='text/css' media='all' />
+<link href='http://fonts.googleapis.com/css?family=Roboto:200' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:600italic,600,400,400italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://www.osu.edu/assets/fonts/webfonts.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/academicons-1.8.0/css/academicons.css">
+
+<!-- icon, perhaps -->
+<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="apple-touch-icon" type="image/png" href="/images/icon-192.png">
+
+
+<!-- OG protocol -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Notes to Self: Configuring New Linux (Ubuntu) Installations for Your Workflow">
+<meta property="og:description" content="Every now and then I have to install a brand new Linux OS while I forget how I configured everything to be what I want it to be. This is mostly a note to myself, but others may find it useful.">
+<meta property="og:url" content="http://localhost:4000/blog/2019/07/notes-to-self-new-linux-installation-r-ubuntu/">
+<meta property="og:site_name" content="Aditya Karanam">
+<meta property="og:image" content="http://localhost:4000/images/buckeyeprotesteriran.jpg">
+
+<meta property="og:image:width" content="637" />
+<meta property="og:image:height" content="403" />
+
+<!-- Twitter cards -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@aditya_karanam">
+<meta name="twitter:title" content="Notes to Self: Configuring New Linux (Ubuntu) Installations for Your Workflow" />
+<meta name="twitter:description" content="Every now and then I have to install a brand new Linux OS while I forget how I configured everything to be what I want it to be. This is mostly a note to myself, but others may find it useful." />
+<meta name="twitter:url" content="http://localhost:4000/blog/2019/07/notes-to-self-new-linux-installation-r-ubuntu/" />
+<meta name="twitter:image" content="http://localhost:4000/images/buckeyeprotesteriran-card.jpg">
+
+
+<link rel="author" href=""/>
+<meta name="google-site-verification" content="" />
+<meta name="msvalidate.01" content="" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Aditya Karanam</a>
+
+
+    <nav class="site-nav">
+
+      <a href="#" class="menu-icon menu.open">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>  
+
+    <div class="trigger"><h1>Main Navigation</h1>
+
+ <ul class="menu">
+
+    
+    
+     <li><a href="/about/" class="page-link">About</a>
+    
+    </li>
+    
+    
+     <li><a href="/research/" class="page-link">Research</a>
+    
+    </li>
+    
+    
+     <li><a href="/cv/" class="page-link">CV</a>
+    
+    </li>
+    
+    </ul>
+
+
+<!-- <ul class="menu">
+        <li> <a class="page-link" href="/about">About</a></li>
+        <li> <a class="page-link"  href="/blog">Blog</a>
+        <li> <a class="page-link" href="/blog">CV</a>
+        <li> <a class="page-link" href="/blog">For Students</a></li>
+        <li> <a class="page-link"  href="/blog">Research</a></a>
+        <li> <a class="page-link" href="/blog">Teaching</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">POSC 1020 – Introduction to International Relations</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">POSC 3410 – Quantitative Methods in Political Science</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">POSC 3610 – International Politics in Crisis</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3630-united-states-foreign-policy/">POSC 3630 – United States Foreign Policy</a></li>
+</ul></li>
+        <li> <a class="page-link" href="/blog">Miscellany</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">Clean USAID Greenbook Data</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">Journal of Peace Research *.bst File</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">My Custom Beamer Style</a></li>
+</ul> 
+
+</li>
+</ul> -->
+
+     </div>  
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Notes to Self: Configuring New Linux (Ubuntu) Installations for Your Workflow</h1>
+    <p class="post-meta">Posted on July 9, 2019 by  steve  
+
+  in
+  
+  <a href="/categories/#R" title="R">R</a>&nbsp;
+  
+  <a href="/categories/#Linux" title="Linux">Linux</a>&nbsp;
+  
+
+
+</p>
+  </header>
+
+  <article class="post-content">
+    <dl class="wp-caption alignright" style="max-width: 410px">
+
+<dt><a href=""><img class="" src="/images/monsoon-screenfetch.png" alt="screenfetch of the new rig/post-tenure gift to myself" /></a></dt>
+
+<dd>screenfetch of the new rig/post-tenure gift to myself</dd>
+</dl>
+
+<p>I’ve been a dedicated Linux user since 2005 and made the final switch from Stata to R for statistical analyses in 2012. There are always some configuration issues involved in getting a setup with which I’m comfortable, but I ultimately find it. However, this becomes a bit of a headache when I get a new computer and have to figure out how exactly I did what I did.</p>
+
+<p>Consider this mostly a note to myself on tailoring a Linux installation (preferred: Ubuntu and its derivatives like Linux Mint) to my preferred workflow. Others may find it useful but this is mostly for an audience of one (i.e. me) so that I can remember what I did the next time I have to install a brand new Linux distribution.</p>
+
+<ol>
+  <li><a href="#requiredpackages">Install These Packages Before Installing R</a></li>
+  <li><a href="#makevars">Getting Stan to Run on Ubuntu With Your Makevars File</a></li>
+  <li><a href="#alternater">Alternate Between Microsoft R Open and Vanilla R</a></li>
+  <li><a href="#bettersort">Make Underscored Directories Come First in Case-Insensitive Directory Listing</a></li>
+</ol>
+
+<h2 id="requiredpackages">Install These Packages Before Installing R</h2>
+
+<p>My preferred R is <a href="https://mran.microsoft.com/open">Microsoft R Open</a>, an enhanced distribution of R that is an easy installation on Ubuntu and its variants. Linux users, unlike Mac or Windows users, will need to install some other packages from the package repository in (Ubuntu) Linux before several R packages will work. Basically, make sure to install these packages in the command line before trying to do anything in R.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>curl libcurl4 libssl-dev libxml2-dev libcurl4-openssl-dev libgit2-dev
+</code></pre></div></div>
+
+<p>You’ll need <code class="language-plaintext highlighter-rouge">curl</code> for R Open. <code class="language-plaintext highlighter-rouge">libssl-dev</code> and <code class="language-plaintext highlighter-rouge">libxml2-dev</code> are required for the <code class="language-plaintext highlighter-rouge">openssl</code> and <code class="language-plaintext highlighter-rouge">xml2</code> packages in R, which are required packages for <code class="language-plaintext highlighter-rouge">tidyverse</code>. <code class="language-plaintext highlighter-rouge">libcurl4-openssl-dev</code> is required for <code class="language-plaintext highlighter-rouge">RCurl</code>, which <code class="language-plaintext highlighter-rouge">brms</code> requires for statistical modeling in <a href="https://mc-stan.org/">Stan</a>. Finally, you’ll need need <code class="language-plaintext highlighter-rouge">libgit2-dev</code> for the <code class="language-plaintext highlighter-rouge">git2r</code> package in R, the extent to which <code class="language-plaintext highlighter-rouge">git2r</code> is required for the <code class="language-plaintext highlighter-rouge">devtools</code> package.</p>
+
+<p>Install these packages before installing R or trying to install your favorite packages in R and you’ll ensure there are no package installation problems. I will probably revisit this and update it when I find another Linux package required for another R package.</p>
+
+<h2 id="makevars">Getting Stan to Run on Ubuntu With Your Makevars File</h2>
+
+<p>I forget why this keeps happening but a Stan model won’t compile in R out the box. There will be an error that reads something like “C++14 standard requested but CXX14 is not defined”, but the fix requires just one line of code. Create a blank document and copy-paste the following into it.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">CXX14</span> <span class="o">=</span> <span class="n">g</span><span class="o">++</span> <span class="o">-</span><span class="n">std</span><span class="o">=</span><span class="n">c</span><span class="o">++</span><span class="mi">1</span><span class="n">y</span> <span class="o">-</span><span class="n">Wno</span><span class="o">-</span><span class="n">unused</span><span class="o">-</span><span class="n">variable</span> <span class="o">-</span><span class="n">Wno</span><span class="o">-</span><span class="n">unused</span><span class="o">-</span><span class="n">function</span> <span class="o">-</span><span class="n">fPIC</span>
+</code></pre></div></div>
+
+<p>Save that file as <code class="language-plaintext highlighter-rouge">Makevars</code> and drop it into a <code class="language-plaintext highlighter-rouge">.R</code> folder in the home directory. Restart R/Rstudio if necessary but that should do it.</p>
+
+<h2 id="alternater">Alternate Between Microsoft R Open and Vanilla R</h2>
+
+<p>I’ll occasionally alternate between Microsoft R Open (my default R) and vanilla R that I installed from <a href="https://cran.r-project.org/bin/linux/ubuntu/">the official R repository for Ubuntu</a>. However, they install in different locations. Microsoft R Open installs to <code class="language-plaintext highlighter-rouge">/usr/bin/R</code> while vanilla R installs to a more convoluted directory of <code class="language-plaintext highlighter-rouge">/usr/lib/R/bin/R</code>. This arrangement means Microsoft R Open is the default R given its location in <code class="language-plaintext highlighter-rouge">/usr/bin/R</code>. It’ll be the first command found when scanning the /usr directory.</p>
+
+<p>This too is an easy thing to change. Open the <code class="language-plaintext highlighter-rouge">.bashrc</code> file in the home directory or, better yet, the <code class="language-plaintext highlighter-rouge">.bash_aliases</code> file in the home directory if there is one. Enter the following line for when you want vanilla R in lieu of Microsoft R Open.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">alias </span><span class="nv">R</span><span class="o">=</span><span class="s1">'/usr/lib/R/bin/R'</span>
+</code></pre></div></div>
+
+<p>This change will appear when you call R in the terminal. However, Rstudio will still want to point to Microsoft R Open. To get Rstudio to point to vanilla R, add the following line to the <code class="language-plaintext highlighter-rouge">.profile</code> file (again in the home directory).</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">RSTUDIO_WHICH_R</span><span class="o">=</span><span class="s1">'/usr/lib/R/bin/R'</span>
+</code></pre></div></div>
+
+<p>Logging out and logging back in should be sufficient to finalize these changes. Undoing these is as simple as commenting out those lines in the respective files and logging out/in again.</p>
+
+<h2 id="bettersort">Make Underscored Directories Come First in Case-Insensitive Directory Listing</h2>
+
+<p>Clemson University bought me a new laptop (<a href="https://www.lenovo.com/us/en/laptops/thinkpad/thinkpad-p/ThinkPad-P52s/p/22TP2WPP52S">Lenovo Thinkpad P52s</a>) this summer. It was one of those situations where the university stipulated 1) I must get a new laptop because the money is allocated for this and no other purpose even if it is not a purchase I wanted or expected (kind of like <a href="https://www.military.com/daily-news/2014/12/18/congress-again-buys-abrams-tanks-the-army-doesnt-want.html">this situation</a>) and 2) it must not cost more than $2,000. I’m normally a Macbook user, so this priced me out of a Macbook Pro. Truth is, though, I’m not sure I even wanted another Macbook anyway because <a href="https://www.reddit.com/r/apple/comments/823pa9/i_hate_the_new_macbooks_produced_after_2015/">the newer models look completely unappealing</a> for the price tag. So, after our college’s IT guy had a falling out trying to communicate with Dell, I got a new Lenovo Thinkpad P52s.</p>
+
+<p>Unrelated to that aside, Mac’s Finder (i.e. its file manager application) defaults to putting underscore directories first before a case-insensitive alphanumeric sort. I like that default a lot. Jekyll users will recognize that underscored directories coincide with important directories that <a href="https://jekyllrb.com/docs/collections/">contain site content</a>. I’ve started to extend that logic to my R projects, creating directories for <code class="language-plaintext highlighter-rouge">_cache</code> (code chunks) and <code class="language-plaintext highlighter-rouge">_figs</code> (document figures) that I keep elevated in a list view in my file manager. However, that option is nowhere a default in the <a href="https://www.tecmint.com/set-system-locales-in-linux/">various system locales</a> on Linux. <code class="language-plaintext highlighter-rouge">LC_COLLATE=C</code> will list underscored directories first before directories that start with a number or letter, but it is a case-sensitive setting that elevates uppercase directories above lowercase directories. That might work for some people, but it would make my sprawling Dropbox directory unnavigable.</p>
+
+<p>The good news is there’s a simple way to do this that leans on the default (American) locale of <code class="language-plaintext highlighter-rouge">en_US.utf8</code>. It requires a few sudo commands and edits in a text editor.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /usr/share/i18n/locales
+<span class="nb">sudo cp </span>en_US en_US_edited <span class="c"># make a copy of en_US</span>
+<span class="nb">sudo cp </span>iso14651_t1 iso14651_t1_edited <span class="c"># make a copy of iso14651_t1</span>
+<span class="nb">sudo cp </span>iso14651_t1_common iso14651_t1_common_edited <span class="c"># make a copy of iso14651_t1_common</span>
+</code></pre></div></div>
+
+<p>Next, open <code class="language-plaintext highlighter-rouge">en_US_edited</code> in a text editor (e.g. <code class="language-plaintext highlighter-rouge">sudo gedit en_US_edited</code>, if you’re in the directory) and find the line where you see <code class="language-plaintext highlighter-rouge">copy "iso14651_t1"</code>. Change that to <code class="language-plaintext highlighter-rouge">copy "iso14651_t1_edited"</code> and save the file.</p>
+
+<p>Then, open <code class="language-plaintext highlighter-rouge">iso14651_t1_edited</code> as you did before with a sudo command. Find the line that reads <code class="language-plaintext highlighter-rouge">copy "iso14651_t1_common"</code>. Change that to <code class="language-plaintext highlighter-rouge">copy "iso14651_t1_common_edited"</code> and save.</p>
+
+<p>Thereafter, open <code class="language-plaintext highlighter-rouge">iso14651_t1_common_edited</code> and scroll down a bit until you see this line:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;U005F&gt; IGNORE;IGNORE;IGNORE;&lt;U005F&gt; # 33 _
+</code></pre></div></div>
+
+<p>Change that to this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;U005F&gt; &lt;RES-1&gt;;IGNORE;IGNORE;&lt;U005F&gt; # 33 _
+</code></pre></div></div>
+
+<p>The last set of steps will involve getting your Linux setup to recognize this new (modified) locale. Open <code class="language-plaintext highlighter-rouge">/etc/locale.gen</code> in a text editor with a sudo command and add a line that reads <code class="language-plaintext highlighter-rouge">en_US_edited.UTF-8 UTF-8</code> somewhere as a new line. Save that and run the following commands to finalize what you did.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>locale-gen
+validlocale en_US_edited.UTF-8
+<span class="nb">sudo </span>localectl set-locale <span class="nv">LANG</span><span class="o">=</span>en_US_edited.utf8
+</code></pre></div></div>
+
+<p>Finally, reboot the system (not just logout) for the changes to take effect.</p>
+
+  </article>
+
+<div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'svmiller';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+<!--     <h2 class="footer-heading">Aditya Karanam</h2> -->
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li><strong>Aditya Karanam</strong></li>
+			<li>PhD Student</li>
+          <li><a href="mailto:aditya_ks@utexas.edu">aditya_ks@utexas.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+ 
+
+         <p class="text">
+		Department of Information, Risk, & Operations Management,<br />
+		McCombs School of Business, <br />
+    2110 Speed Way<br />
+		Austin, TX 78705</p> <!-- I'm a PhD Student at McCombs School of Business, UT, Austin with research interests in the area of Economics of Information Systems. Specifically, I am interested in New product design and Innovation. Topics on my site include my research interests and teaching.
+ -->
+      </div>
+
+      <div class="footer-col  footer-col-3">
+       <ul class="social-media-list">
+
+                  
+     
+
+          
+  <li>
+    <a href="https://github.com/askaranam">
+      <i class="fa fa-github" style="color:gray"></i> Github
+    </a>
+  </li>
+
+
+          
+
+          
+  <li>
+    <a href="https://twitter.com/aditya_karanam">
+      <i class="fa fa-twitter" style="color:gray"></i> Twitter
+    </a>
+  </li>
+
+
+
+
+
+
+
+       
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+		<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-37298398-1']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+	</script>
+  </body>
+</html>
+<!-- d.s.m.s.050600.062508.030515.080516.030818; k.050800.101218 | "Baby, I'm Yours" -->
+
