@@ -27,7 +27,7 @@ I also provide titles for working papers and works in progress below. I provide 
     * *Status:* Resubmission to Management Science <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span> <br/>
     
-* **Comovement of Stocks in Technology Partnerships** 
+* **[Comovement of Stocks in Technology Partnerships](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3534561)** 
     * *Presentations:*  ISS, Colombo, Sri Lanka, 2015
     * *Status:* Under Review at Management Science <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span>
