@@ -45,7 +45,8 @@ I also provide titles for working papers and works in progress below. I provide 
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span>
 
 * **New Product Development: Innovate, Imitate or Follow the Crowd**
-    * *Status:* working on the model <br/>
+    * *Status:* Preparing the draft <br/>
+    * *Presentations:*  SCECR, Spain, 2020 (Forthcoming)
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span> 
 
 
