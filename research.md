@@ -46,7 +46,7 @@ I also provide titles for working papers and works in progress below. I provide 
 
 * **New Product Development: Innovate, Imitate or Follow the Crowd**
     * *Status:* Preparing the draft <br/>
-    * *Presentations:*  SCECR, Spain, 2020 (Forthcoming)
+    * *Presentations:*  SCECR, Spain, 2020 (Forthcoming) <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span> 
 
 
