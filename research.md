@@ -19,18 +19,17 @@ I also provide titles for working papers and works in progress below. I provide 
 * **Designing for Visibility and Sharing: The Case of Mobile Apps** 
     * *Presentations:*  WISE, Seoul, 2017; SCECR, Netherlands, 2018; ICIS, SFO, 2018 
     * *Status:* R&R from Information Systems Research <br/>
-    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
-
+    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span> <br/>
+    
+* **[Comovement of Stocks in Technology Partnerships](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3534561)** 
+    * *Presentations:*  ISS, Colombo, Sri Lanka, 2015
+    * *Status:* R&R from Management Science <br/>
+    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span>
 
 * **[Ties that Bind: A Network Approach to Assessing Technology Spillovers from the ICT Industry and their Impact on R&D](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3436764)** (Featured in [Forbes India](http://www.forbesindia.com/article/isbinsight/more-bang-for-your-digital-spend-technology-and-rd/49951/1), [ISB Insight](http://isbinsight.isb.edu/the-digital-transformation-of-rd/)) <br/>
     * *Presentations:*  CIST, Nashville, Tensesse, 2016
     * *Status:* Resubmission to Management Science <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span> <br/>
-    
-* **[Comovement of Stocks in Technology Partnerships](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3534561)** 
-    * *Presentations:*  ISS, Colombo, Sri Lanka, 2015
-    * *Status:* Under Review at Management Science <br/>
-    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span>
 
 
 ## Work in Progress
