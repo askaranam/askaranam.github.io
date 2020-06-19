@@ -4,7 +4,7 @@ title: CV
 permalink: /cv/
 ---
 
-You can [download the PDF here](/docs/Aditya_updated_csv.pdf).
+You can [download the PDF here](/docs/Aditya_updated_cv.pdf).
 
 <iframe src="http://askaranam.github.io/docs/Aditya_updated_csv.pdf" class="gde-frame" style="height: 1000px; width: 100%; border: none;" scrolling="yes"></iframe>
 
