@@ -43,9 +43,9 @@ I also provide titles for working papers and works in progress below. I provide 
     * *Status:* Preparing the draft <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span>
 
-* **New Product Development: Innovate, Imitate or Follow the Crowd**
+* **Developer Instincts or User Insights? A Tale of Mobile App Design**
     * *Status:* Preparing the draft <br/>
-    * *Presentations:*  SCECR, Spain, 2020 (Forthcoming) <br/>
+    * *Presentations:*  SCECR - Online, 2020 <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span> 
 
 
