@@ -16,7 +16,7 @@ I also provide titles for working papers and works in progress below. I provide 
 
 ## Working Papers 
 
-* **Designing for Visibility and Sharing: The Case of Mobile Apps** 
+* **[Designing for Visibility: The Case of Mobile Apps](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3635854)** 
     * *Presentations:*  WISE, Seoul, 2017; SCECR, Netherlands, 2018; ICIS, SFO, 2018 
     * *Status:* R&R from Information Systems Research <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span> <br/>
