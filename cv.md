@@ -1,7 +1,7 @@
 ---
 layout: page
 title: CV
-permalink: /cv/
+permalink: /cv/(/docs/Aditya_CV.pdf)
 ---
 
 You can [download the PDF here](/docs/Aditya_CV.pdf).
