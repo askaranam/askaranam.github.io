@@ -18,35 +18,34 @@ I also provide titles for working papers and works in progress below. I provide 
 
 * **[Designing for Visibility: The Case of Mobile Apps](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3635854)** 
     * *Presentations:*  WISE, Seoul, 2017; SCECR, Netherlands, 2018; ICIS, SFO, 2018 
-    * *Status:* Under second round revision at Information Systems Research <br/>
+    * *Status:* Under third round revision at Information Systems Research <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span> <br/>
     
 * **[Comovement of Stocks in Technology Partnerships](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3534561)** 
-    * *Presentations:*  ISS, Colombo, Sri Lanka, 2015
-    * *Status:* R&R from Management Science <br/>
+    * *Status:* Under 2nd round revision at Management Science <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span>
 
 * **[Ties that Bind: A Network Approach to Assessing Technology Spillovers from the ICT Industry and their Impact on R&D](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3436764)** (Featured in [Forbes India](http://www.forbesindia.com/article/isbinsight/more-bang-for-your-digital-spend-technology-and-rd/49951/1), [ISB Insight](http://isbinsight.isb.edu/the-digital-transformation-of-rd/)) <br/>
     * *Presentations:*  CIST, Nashville, Tensesse, 2016
-    * *Status:* Resubmission to Management Science <br/>
+    * *Status:* Under 1st round review at Information Systems Research <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span> <br/>
 
 
 ## Work in Progress
 
-* **Information Extraction from Noisy User Generated Content**
-    * *Presentations:*  SCECR, Hong Kong, 2019
+* **Developer Instincts or User Insights? A Tale of Mobile App Design**
+    * *Status:* About to be submitted <br/>
+    * *Presentations:*  SCECR - Online, 2020 <br/>
+    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span> 
+
+* **Extracting user suggested features for product development from noisy user generated content**
+    * *Presentations:*  SCECR, Hong Kong, 2019; WITS - Online, 2020 (*Nominated for the best paper award*)
     * *Status:* Improving the robustness of the model to other data sets <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span> 
 
 * **Instrument Variable Networks: A Method to Mitigate Network Endogeneity** 
     * *Status:* Preparing the draft <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span>
-
-* **Developer Instincts or User Insights? A Tale of Mobile App Design**
-    * *Status:* Preparing the draft <br/>
-    * *Presentations:*  SCECR - Online, 2020 <br/>
-    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span> 
 
 
 
