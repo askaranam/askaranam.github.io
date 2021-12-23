@@ -18,7 +18,7 @@ I also provide titles for working papers and works in progress below. I provide 
 
 * **[Designing for Visibility: The Case of Mobile Apps](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3635854)** 
     * *Presentations:*  WISE, Seoul, 2017; SCECR, Netherlands, 2018; ICIS, SFO, 2018 
-    * *Status:* Under third round revision at Information Systems Research <br/>
+    * *Status:* Conditional Acceptance at Information Systems Research <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span> <br/>
     
 * **[Comovement of Stocks in Technology Partnerships](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3534561)** 
@@ -35,7 +35,7 @@ I also provide titles for working papers and works in progress below. I provide 
 
 * **Developer Instincts or User Insights? A Tale of Mobile App Design**
     * *Status:* About to be submitted <br/>
-    * *Presentations:*  SCECR - Online, 2020 <br/>
+    * *Presentations:*  SCECR - Online, 2020; ICIS, 2021 (*Nominated for Kauffman Best Student Paper Award*) <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span> 
 
 * **Extracting user suggested features for product development from noisy user generated content**
