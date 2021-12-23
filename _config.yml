@@ -1,10 +1,9 @@
 # Site settings
 title: Aditya Karanam
-email: aditya_ks@utexas.edu
+email: karanam@nus.edu.sg
 description: > # this means to ignore newlines until "baseurl:"
-  I'm a PhD Student at McCombs School of Business, UT, Austin with research interests in the
-  area of Economics of Information Systems. Specifically, I am interested in New product design and Innovation.
-  Topics on my site include my research interests and teaching.
+  I'm an Assistant Professor in the Department of Information Systems and Analytics at the School of Computing in the National University of Singapore. My research interests are in the
+  areas of Networked Economy and Economics of Information Systems.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://askaranam.github.io" # the base hostname & protocol for your site
 twitter_username: aditya_karanam
