@@ -34,7 +34,7 @@ I also provide titles for working papers and works in progress below. I provide 
 
 ## Work in Progress
 
-* **Developer Instincts or User Insights? A Tale of Mobile App Design**
+* **Follow Your Hear or Listen to Users? The Case of Mobile App Design**
     * *Status:* About to be submitted <br/>
     * *Presentations:*  SCECR, 2021; ICIS, 2021 (*Nominated for Kauffman Best Student Paper Award*) <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span> 
