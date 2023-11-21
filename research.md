@@ -22,22 +22,21 @@ I also provide titles for working papers and works in progress below. I provide 
 
 ## Working Papers 
 
-* **[Comovement of Stocks in Technology Partnerships](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3534561)** 
-    * *Status:* Under 2nd round revision at Management Science <br/>
-    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span>
-
 * **[Ties that Bind: A Network Approach to Assessing Technology Spillovers from the ICT Industry and their Impact on R&D](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3436764)** (Featured in [Forbes India](http://www.forbesindia.com/article/isbinsight/more-bang-for-your-digital-spend-technology-and-rd/49951/1), [ISB Insight](http://isbinsight.isb.edu/the-digital-transformation-of-rd/)) <br/>
     * *Presentations:*  CIST, Nashville, Tensesse, 2016
-    * *Status:* Under 1st round review at Information Systems Research <br/>
+    * *Status:* Under 3rd round review at Information Systems Research <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span> <br/>
 
+* **Follow Your Hear or Listen to Users? The Case of Mobile App Design**
+    * *Status:* Under 2nd round review at Information Systems Research <br/>
+    * *Presentations:*  SCECR, 2021; ICIS, 2021 (*Nominated for Kauffman Best Student Paper Award*) <br/>
+    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
 
 ## Work in Progress
 
-* **Follow Your Hear or Listen to Users? The Case of Mobile App Design**
-    * *Status:* About to be submitted <br/>
-    * *Presentations:*  SCECR, 2021; ICIS, 2021 (*Nominated for Kauffman Best Student Paper Award*) <br/>
-    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span> 
+* **[Comovement of Stocks in Technology Partnerships](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3534561)** 
+    * *Status:* To be submitted to Strategic Management Journal <br/>
+    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span>
 
 * **Extracting user suggested features for product development from noisy user generated content**
     * *Presentations:*  SCECR, Hong Kong, 2019; WITS - Online, 2020 (*Nominated for the best paper award*)
