@@ -15,17 +15,18 @@ I also provide titles for working papers and works in progress below. I provide 
 <hr style="clear:both;visibility: hidden;" />  
 
 ## Published Papers
+
+* **[Ties that Bind: A Network Approach to Assessing Technology Spillovers from the ICT Industry and their Impact on R&D](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3436764)** (Featured in [Forbes India](http://www.forbesindia.com/article/isbinsight/more-bang-for-your-digital-spend-technology-and-rd/49951/1), [ISB Insight](http://isbinsight.isb.edu/the-digital-transformation-of-rd/)) <br/>
+    * *Presentations:*  CIST, Nashville, Tensesse, 2016
+    * *Status:*Forthcoming at Information Systems Research <br/>
+    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span> <br/>
+    
 * **[Designing for Visibility: The Case of Mobile Apps](https://pubsonline.informs.org/doi/abs/10.1287/isre.2022.1151)** 
     * *Presentations:*  WISE, Seoul, 2017; SCECR, Netherlands, 2018; ICIS, SFO, 2018 
     * forthcoming at Information Systems Research <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span> <br/>
 
 ## Working Papers 
-
-* **[Ties that Bind: A Network Approach to Assessing Technology Spillovers from the ICT Industry and their Impact on R&D](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3436764)** (Featured in [Forbes India](http://www.forbesindia.com/article/isbinsight/more-bang-for-your-digital-spend-technology-and-rd/49951/1), [ISB Insight](http://isbinsight.isb.edu/the-digital-transformation-of-rd/)) <br/>
-    * *Presentations:*  CIST, Nashville, Tensesse, 2016
-    * *Status:* Under 3rd round review at Information Systems Research <br/>
-    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span> <br/>
 
 * **Follow Your Hear or Listen to Users? The Case of Mobile App Design**
     * *Status:* Under 2nd round review at Information Systems Research <br/>
