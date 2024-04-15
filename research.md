@@ -44,12 +44,17 @@ I also provide titles for working papers and works in progress below. I provide 
     * *Status:* Improving the robustness of the model to other data sets <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span> 
 
-* **Instrument Variable Networks: A Method to Mitigate Network Endogeneity** 
-    * *Status:* Preparing the draft <br/>
-    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span>
+* **Mapping the competitive landscape of Mobile Apps** 
+    * *Status:* Preliminary Analysis <br/>
+    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
 
+* **Fixing Bugs or Adding New Features? Exploring the strategies for new version releases of Mobile Apps** 
+    * *Status:* Preliminary Analysis <br/>
+    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
 
-
+* **Managing Content Creation through Selective Promotion of Apps** 
+    * *Status:* Preliminary Analysis <br/>
+    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
 
 <!-- ## Original Data
 
