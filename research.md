@@ -16,7 +16,7 @@ I also provide titles for working papers and works in progress below. I provide 
 
 ## Published Papers
 
-* **[Growing Technological Relatedness to the ICT Industry and Its Impacts](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3436764)** (Featured in [Forbes India](http://www.forbesindia.com/article/isbinsight/more-bang-for-your-digital-spend-technology-and-rd/49951/1), [ISB Insight](http://isbinsight.isb.edu/the-digital-transformation-of-rd/)) <br/>
+* **[Growing Technological Relatedness to the ICT Industry and Its Impacts](https://pubsonline.informs.org/doi/10.1287/isre.2020.0627)** (Featured in [Forbes India](http://www.forbesindia.com/article/isbinsight/more-bang-for-your-digital-spend-technology-and-rd/49951/1), [ISB Insight](http://isbinsight.isb.edu/the-digital-transformation-of-rd/)) <br/>
     * *Presentations:*  CIST, Nashville, Tensesse, 2016
     * *Status:*Forthcoming at Information Systems Research <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span> <br/>
