@@ -33,21 +33,22 @@ I also provide titles for working papers and works in progress below. I provide 
     * *Presentations:*  SCECR, 2021; ICIS, 2021 (*Nominated for Kauffman Best Student Paper Award*) <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
 
-## Work in Progress
-
 * **[Comovement of Stocks in Technology Partnerships](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3534561)** 
-    * *Status:* To be submitted to Strategic Management Journal <br/>
+    * *Status:* Under review at Information Systems Research <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span>
 
-* **Extracting user suggested features for product development from noisy user generated content**
-    * *Presentations:*  SCECR, Hong Kong, 2019; WITS - Online, 2020 (*Nominated for the best paper award*)
-    * *Status:* Improving the robustness of the model to other data sets <br/>
-    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span> 
+
+## Work in Progress
 
 * **Design Homogeneity and Market Concentration: Unintended Consequences of App Promotions?** 
-    * *Status:* Preliminary Analysis <br/>
+    * *Status:* Preparing the Draft <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
-    
+* **. Generative AI and Technical Debt: The Case of Open-Source Projects in GitHub ** 
+    * *Status:* Data Collection <br/>
+    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Vasundhara, and Deepa Mani</span>
+* **Collusion of Deep Reinforcement Learning Algorithms in Sponsored Search Auctions** 
+    * *Status:* Finalizing the Analyses <br/>
+    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
 
 <!-- ## Original Data
 
