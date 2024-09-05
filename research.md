@@ -43,7 +43,7 @@ I also provide titles for working papers and works in progress below. I provide 
 * **Design Homogeneity and Market Concentration: Unintended Consequences of App Promotions?** 
     * *Status:* Preparing the Draft <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
-* **. Generative AI and Technical Debt: The Case of Open-Source Projects in GitHub ** 
+* **Generative AI and Technical Debt: The Case of Open-Source Projects in GitHub** 
     * *Status:* Data Collection <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Vasundhara, and Deepa Mani</span>
 * **Collusion of Deep Reinforcement Learning Algorithms in Sponsored Search Auctions** 
