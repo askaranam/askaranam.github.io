@@ -42,7 +42,7 @@ Here, you can find materials relevant to my published research and research in p
     * *Status:* Preparing the Draft <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
 * **Generative AI and Technical Debt: The Case of Open-Source Projects in GitHub** 
-    * *Status:* Data Collection <br/>
+    * *Status:* Priliminary Analyses Done. <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b> and Vasundhara</span>
 * **Artificial Intelligence, Collusiong and Ad Auctions** 
     * *Status:* Finalizing the Analyses <br/>
