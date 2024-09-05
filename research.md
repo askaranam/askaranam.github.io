@@ -21,7 +21,7 @@ Here, you can find materials relevant to my published research and research in p
     
 * **[Designing for Visibility: The Case of Mobile Apps](https://pubsonline.informs.org/doi/abs/10.1287/isre.2022.1151)** 
     * *Presentations:*  WISE, Seoul, 2017; SCECR, Netherlands, 2018; ICIS, SFO, 2018 
-    * forthcoming at Information Systems Research <br/>
+    * Information Systems Research <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span> <br/>
 
 ## Working Papers 
