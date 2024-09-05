@@ -18,7 +18,7 @@ Here, you can find materials relevant to my published research and research in p
     <!-- * *Presentations:*  CIST, Nashville, Tensesse, 2016-->
     *  <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span> <br/>
     * Forthcoming at Information Systems Research <br/>
-    * Featured in [Forbes India](http://www.forbesindia.com/article/isbinsight/more-bang-for-your-digital-spend-technology-and-rd/49951/1), [ISB Insight](http://isbinsight.isb.edu/the-digital-transformation-of-rd/))
+    * Featured in [Forbes India](http://www.forbesindia.com/article/isbinsight/more-bang-for-your-digital-spend-technology-and-rd/49951/1), [ISB Insight](http://isbinsight.isb.edu/the-digital-transformation-of-rd/)
    
 
 
