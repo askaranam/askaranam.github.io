@@ -48,7 +48,7 @@ I also provide titles for working papers and works in progress below. I provide 
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Vasundhara, and Deepa Mani</span>
 * **Collusion of Deep Reinforcement Learning Algorithms in Sponsored Search Auctions** 
     * *Status:* Finalizing the Analyses <br/>
-    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
+    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Daniel Tan, Ashish Agarwal, and Anitesh Barua</span>
 
 <!-- ## Original Data
 
