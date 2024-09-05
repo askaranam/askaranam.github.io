@@ -6,9 +6,7 @@ permalink: /research/
 
 <!-- {% include image.html url="/images/falklands-rally-1982.jpg" caption="Argentine citizens rally in April 1982 at May Square in Buenos Aires, demonstrating support for their government's recent invasion of the British-held Falkland Islands. (Panta Astiazaran, AFP, Getty Images)" width=400 align="right" %} -->
 
-My research lies in the intersection of Economics and Computer Science. Am greatly interested in building market intelligent programs that can provide actionable insights for product developers. To this end, I use models from Deep Learning, Natural Language Understanding, Econometrics, Microeconomic theory. Here, you can find materials relevant to my published research and research in progress. 
-
-I also provide titles for working papers and works in progress below. I provide full links for these papers when I believe they are ready for peer review. Feel free to contact me if you are interested in some of these projects. [My CV](http://askaranam.github.io/cv/) contains more information about where some of these projects are in the peer review process.
+Here, you can find materials relevant to my published research and research in progress. I also provide titles for working papers and works in progress below. I provide full links for these papers when I believe they are ready for peer review. Feel free to contact me if you are interested in some of these projects. [My CV](http://askaranam.github.io/cv/) contains more information about where some of these projects are in the peer review process.
 
 <!-- I also offer [a three-page research statement](/docs/svm-research-statement.pdf) that summarizes and contextualizes my different research agendas. -->
  
@@ -46,7 +44,7 @@ I also provide titles for working papers and works in progress below. I provide 
 * **Generative AI and Technical Debt: The Case of Open-Source Projects in GitHub** 
     * *Status:* Data Collection <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Vasundhara, and Deepa Mani</span>
-* **Collusion of Deep Reinforcement Learning Algorithms in Sponsored Search Auctions** 
+* **Artificial Intelligence, Collusiong and Ad Auctions** 
     * *Status:* Finalizing the Analyses <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Daniel Tan, Ashish Agarwal, and Anitesh Barua</span>
 
