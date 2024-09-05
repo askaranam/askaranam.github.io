@@ -12,17 +12,21 @@ Here, you can find materials relevant to my published research and research in p
  
 <hr style="clear:both;visibility: hidden;" />  
 
-## Published Papers
+## Journal Publications
 
-* **[Growing Technological Relatedness to the ICT Industry and Its Impacts](https://pubsonline.informs.org/doi/10.1287/isre.2020.0627)** (Featured in [Forbes India](http://www.forbesindia.com/article/isbinsight/more-bang-for-your-digital-spend-technology-and-rd/49951/1), [ISB Insight](http://isbinsight.isb.edu/the-digital-transformation-of-rd/)) <br/>
-    * *Presentations:*  CIST, Nashville, Tensesse, 2016
+* **[Growing Technological Relatedness to the ICT Industry and Its Impacts](https://pubsonline.informs.org/doi/10.1287/isre.2020.0627)** 
+    <!-- * *Presentations:*  CIST, Nashville, Tensesse, 2016-->
+    *  <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span> <br/>
     * *Status:*Forthcoming at Information Systems Research <br/>
-    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span> <br/>
-    
+    * Featured in [Forbes India](http://www.forbesindia.com/article/isbinsight/more-bang-for-your-digital-spend-technology-and-rd/49951/1), [ISB Insight](http://isbinsight.isb.edu/the-digital-transformation-of-rd/))
+   
+
+
 * **[Designing for Visibility: The Case of Mobile Apps](https://pubsonline.informs.org/doi/abs/10.1287/isre.2022.1151)** 
-    * *Presentations:*  WISE, Seoul, 2017; SCECR, Netherlands, 2018; ICIS, SFO, 2018 
-    * Information Systems Research <br/>
-    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span> <br/>
+   <!-- * *Presentations:*  WISE, Seoul, 2017; SCECR, Netherlands, 2018; ICIS, SFO, 2018 -->
+    
+    * <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span> <br/>
+    * 2023,Information Systems Research <br/>
 
 ## Working Papers 
 
