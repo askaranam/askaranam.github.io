@@ -28,7 +28,7 @@ Here, you can find materials relevant to my published research and research in p
     * <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span> <br/>
     * 2023, Information Systems Research <br/>
 
-## Working Papers 
+## Manuscripts Under Revision / Preparation 
 
 * **[Follow Your Hear or Listen to Users? The Case of Mobile App Design](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3844787)**
     * *Status:* Under 3rd round review at Information Systems Research <br/>
@@ -38,13 +38,13 @@ Here, you can find materials relevant to my published research and research in p
 * **[Comovement of Stocks in Technology Partnerships](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3534561)** 
     * *Status:* Under review at Information Systems Research <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span>
-
-
-## Work in Progress
-
+    
 * **Design Homogeneity and Market Concentration: Unintended Consequences of App Promotions?** 
     * *Status:* Preparing the Draft <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
+
+## Research in Progress
+
 * **Generative AI and Technical Debt: The Case of Open-Source Projects in GitHub** 
     * *Status:* Priliminary Analyses Done. <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b> and Vasundhara</span>
