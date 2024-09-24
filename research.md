@@ -16,8 +16,7 @@ Here, you can find materials relevant to my published research and research in p
 
 * **[Follow Your Hear or Listen to Users? The Case of Mobile App Design](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3844787)**
     * Forthcoming at Information Systems Research <br/>
-    * *Presentations:*  SCECR, 2021; ICIS, 2021 (*Nominated for Kauffman Best Student Paper Award*) <br/>
-    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
+    * <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
 
 * **[Growing Technological Relatedness to the ICT Industry and Its Impacts](https://pubsonline.informs.org/doi/10.1287/isre.2020.0627)** 
     <!-- * *Presentations:*  CIST, Nashville, Tensesse, 2016-->
