@@ -42,14 +42,20 @@ Here, you can find materials relevant to my published research and research in p
 * **Design Homogeneity and Market Concentration: Unintended Consequences of App Promotions?** 
     * *Status:* Preparing the Draft <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
-
-## Research in Progress
-
-* **Generative AI and Technical Debt: The Case of Open-Source Projects in GitHub** 
-    * *Status:* Priliminary Analyses Done. <br/>
-    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b> and Vasundhara</span>
+    
 * **Artificial Intelligence, Collusiong and Ad Auctions** 
     * *Status:* Finalizing the Analyses <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Daniel Tan, Ashish Agarwal, and Anitesh Barua</span>
+
+## Research in Progress
+
+* **Generative AI Dilemma: Enhancing Productivity While Managing Technical Debt in Open Source Product Development** 
+    * *Status:* Priliminary Analyses Done. <br/>
+    <span style="color: rgb(204,102,0)"> with Vasundhara Sharma and Deepa Mani</span>
+
+* **Adding Features vs. Fixing Bugs: The Delicate Balance of Innovation and Reliability in Mobile App Development** 
+    * Won outstanding computing project price, School of Computing, NUS, 2022 <br/>
+   
+
 
 
