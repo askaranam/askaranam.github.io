@@ -14,13 +14,17 @@ Here, you can find materials relevant to my published research and research in p
 
 ## Journal Publications
 
+* **[Follow Your Hear or Listen to Users? The Case of Mobile App Design](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3844787)**
+    * Forthcoming at Information Systems Research <br/>
+    * *Presentations:*  SCECR, 2021; ICIS, 2021 (*Nominated for Kauffman Best Student Paper Award*) <br/>
+    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
+
 * **[Growing Technological Relatedness to the ICT Industry and Its Impacts](https://pubsonline.informs.org/doi/10.1287/isre.2020.0627)** 
     <!-- * *Presentations:*  CIST, Nashville, Tensesse, 2016-->
     *  <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span> <br/>
     * Forthcoming at Information Systems Research <br/>
     * Featured in [Forbes, India](http://www.forbesindia.com/article/isbinsight/more-bang-for-your-digital-spend-technology-and-rd/49951/1) and [ISB Insight](http://isbinsight.isb.edu/the-digital-transformation-of-rd/).
    
-
 
 * **[Designing for Visibility: The Case of Mobile Apps](https://pubsonline.informs.org/doi/abs/10.1287/isre.2022.1151)** 
    <!-- * *Presentations:*  WISE, Seoul, 2017; SCECR, Netherlands, 2018; ICIS, SFO, 2018 -->
@@ -30,13 +34,9 @@ Here, you can find materials relevant to my published research and research in p
 
 ## Manuscripts Under Revision / Preparation 
 
-* **[Follow Your Hear or Listen to Users? The Case of Mobile App Design](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3844787)**
-    * *Status:* Under 3rd round review at Information Systems Research <br/>
-    * *Presentations:*  SCECR, 2021; ICIS, 2021 (*Nominated for Kauffman Best Student Paper Award*) <br/>
-    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
 
 * **[Comovement of Stocks in Technology Partnerships](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3534561)** 
-    * *Status:* Under review at Information Systems Research <br/>
+    * *Status:* Preparation for submission to Information Systems Research <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span>
     
 * **Design Homogeneity and Market Concentration: Unintended Consequences of App Promotions?** 
