@@ -27,7 +27,6 @@ Here, you can find materials relevant to my published research and research in p
 
 * **[Designing for Visibility: The Case of Mobile Apps](https://pubsonline.informs.org/doi/abs/10.1287/isre.2022.1151)** 
    <!-- * *Presentations:*  WISE, Seoul, 2017; SCECR, Netherlands, 2018; ICIS, SFO, 2018 -->
-    
     * <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span> <br/>
     * 2023, Information Systems Research <br/>
 
@@ -39,11 +38,11 @@ Here, you can find materials relevant to my published research and research in p
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span>
     
 * **Design Homogeneity and Market Concentration: Unintended Consequences of App Promotions?** 
-    * *Status:* Preparing the Draft <br/>
+    * Presenting at INFORMS Annual Meeting, 2024 <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
     
 * **Artificial Intelligence, Collusiong and Ad Auctions** 
-    * *Status:* Finalizing the Analyses <br/>
+    * Presenting at WISE, 2024 <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Daniel Tan, Ashish Agarwal, and Anitesh Barua</span>
 
 ## Research in Progress
