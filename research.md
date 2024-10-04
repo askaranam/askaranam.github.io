@@ -47,7 +47,7 @@ Here, you can find materials relevant to my published research and research in p
 
 ## Research in Progress
 
-* **Generative AI Dilemma: Enhancing Productivity While Managing Technical Debt in Open Source Product Development** 
+* **Generative AI Dilemma: Enhancing Productivity While Managing Technical Debt in Open Source Software Development** 
     * *Status:* Priliminary Analyses Done. <br/>
     <span style="color: rgb(204,102,0)"> with Vasundhara Sharma and Deepa Mani</span>
 
