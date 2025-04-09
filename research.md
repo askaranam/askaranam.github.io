@@ -41,7 +41,7 @@ Here, you can find materials relevant to my published research and research in p
     * Presenting at INFORMS Annual Meeting, 2024; INFORMS Society for Marketing Science, 2025 <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
     
-* **Artificial Intelligence, Collusiong and Ad Auctions** 
+* **Artificial Intelligence, Collusion and Ad Auctions** 
     * Best Student Paper (Runner-Up) Award at WISE, 2024 <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
 
