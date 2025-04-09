@@ -15,8 +15,8 @@ Here, you can find materials relevant to my published research and research in p
 ## Journal Publications
 
 * **[Follow Your Hear or Listen to Users? The Case of Mobile App Design](https://pubsonline.informs.org/doi/10.1287/isre.2023.0060)**
-    * Forthcoming at Information Systems Research <br/>
     * <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
+    * Forthcoming at Information Systems Research <br/>
 
 * **[Growing Technological Relatedness to the ICT Industry and Its Impacts](https://pubsonline.informs.org/doi/10.1287/isre.2020.0627)** 
     <!-- * *Presentations:*  CIST, Nashville, Tensesse, 2016-->
@@ -37,13 +37,13 @@ Here, you can find materials relevant to my published research and research in p
     * *Status:* Preparation for submission to Information Systems Research <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span>
     
-* **Design Homogeneity and Market Concentration: Unintended Consequences of App Promotions?** 
-    * Presenting at INFORMS Annual Meeting, 2024 <br/>
+* **[Increasing Demand While Hurting Innovation? The Curious Case of Mobile App Promotions](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5007683)** 
+    * Presenting at INFORMS Annual Meeting, 2024; INFORMS Society for Marketing Science, 2025 <br/>
     <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
     
 * **Artificial Intelligence, Collusiong and Ad Auctions** 
-    * Presenting at WISE, 2024 <br/>
-    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Daniel Tan, Ashish Agarwal, and Anitesh Barua</span>
+    * Best Student Paper (Runner-Up) Award at WISE, 2024 <br/>
+    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
 
 ## Research in Progress
 
