@@ -14,14 +14,14 @@ Here, you can find materials relevant to my published research and research in p
 
 ## Journal Publications
 
-* **[Follow Your Hear or Listen to Users? The Case of Mobile App Design](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3844787)**
+* **[Follow Your Hear or Listen to Users? The Case of Mobile App Design](https://pubsonline.informs.org/doi/10.1287/isre.2023.0060)**
     * Forthcoming at Information Systems Research <br/>
     * <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
 
 * **[Growing Technological Relatedness to the ICT Industry and Its Impacts](https://pubsonline.informs.org/doi/10.1287/isre.2020.0627)** 
     <!-- * *Presentations:*  CIST, Nashville, Tensesse, 2016-->
     *  <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span> <br/>
-    * Forthcoming at Information Systems Research <br/>
+    * 2025,Information Systems Research <br/>
     * Featured in [Forbes, India](http://www.forbesindia.com/article/isbinsight/more-bang-for-your-digital-spend-technology-and-rd/49951/1) and [ISB Insight](http://isbinsight.isb.edu/the-digital-transformation-of-rd/).
    
 
