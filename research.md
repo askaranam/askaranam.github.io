@@ -17,12 +17,14 @@ Here, you can find materials relevant to my published research and research in p
 * **[Follow Your Hear or Listen to Users? The Case of Mobile App Design](https://pubsonline.informs.org/doi/10.1287/isre.2023.0060)**
     * <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
     * Forthcoming at Information Systems Research <br/>
+    * Featured in [Knowledge-at-computing](https://www.comp.nus.edu.sg/features/rethinking-innovation-in-the-app-economy/), National University of Singapore.
 
 * **[Growing Technological Relatedness to the ICT Industry and Its Impacts](https://pubsonline.informs.org/doi/10.1287/isre.2020.0627)** 
     <!-- * *Presentations:*  CIST, Nashville, Tensesse, 2016-->
     *  <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span> <br/>
     * 2025,Information Systems Research <br/>
     * Featured in [Forbes, India](http://www.forbesindia.com/article/isbinsight/more-bang-for-your-digital-spend-technology-and-rd/49951/1) and [ISB Insight](http://isbinsight.isb.edu/the-digital-transformation-of-rd/).
+    
    
 
 * **[Designing for Visibility: The Case of Mobile Apps](https://pubsonline.informs.org/doi/abs/10.1287/isre.2022.1151)** 
@@ -34,8 +36,8 @@ Here, you can find materials relevant to my published research and research in p
 
 
 * **[Comovement of Stocks in Technology Partnerships](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3534561)** 
-    * *Status:* Preparation for submission to Information Systems Research <br/>
-    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, and Rajib Saha</span>
+    * *Status:* Under revision at Information Systems Research <br/>
+    <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Deepa Mani, Rajib Saha, and Kannan Srikanth</span>
     
 * **[Increasing Demand While Hurting Innovation? The Curious Case of Mobile App Promotions](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5007683)** 
     * Presenting at INFORMS Annual Meeting, 2024; INFORMS Society for Marketing Science, 2025 <br/>
