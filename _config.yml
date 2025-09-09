@@ -1,8 +1,8 @@
 # Site settings
 title: Aditya Karanam
-email: karanam@nus.edu.sg
+email: aditya.karanam@utdallas.edu
 description: > # this means to ignore newlines until "baseurl:"
-  I'm an Assistant Professor in the Department of Information Systems and Analytics at the School of Computing in the National University of Singapore. My research interests are in the
+  I'm an Assistant Professor in the Naveen Jindal School of Management, University of Texas at Dallas. My research interests are in the
   areas of Digital Platforms, Networked Economy and Economics of AI.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://askaranam.github.io" # the base hostname & protocol for your site
