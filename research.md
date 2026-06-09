@@ -3,8 +3,7 @@ layout: page
 title: Research
 permalink: /research/
 ---
-
-<!-- {% include image.html url="/images/falklands-rally-1982.jpg" caption="Argentine citizens rally in April 1982 at May Square in Buenos Aires, demonstrating support for their government's recent invasion of the British-held Falkland Islands. (Panta Astiazaran, AFP, Getty Images)" width=400 align="right" %} -->
+My research examines the economics of digital platforms, artificial intelligence, and user innovation. I study how firms design digital products, how users shape innovation, and how emerging technologies affect markets, competition, and organizational outcomes. Methodologically, my work combines econometrics, machine learning, natural language processing, and network analytics.
 
 Here, you can find materials relevant to my published research and research in progress. I also provide titles for working papers and works in progress below. I provide full links for these papers when I believe they are ready for peer review. Feel free to contact me if you are interested in some of these projects. [My CV](http://askaranam.github.io/cv/) contains more information about where some of these projects are in the peer review process.
 
