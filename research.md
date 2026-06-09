@@ -53,7 +53,7 @@ Here, you can find materials relevant to my published research and research in p
     <span style="color: rgb(204,102,0)"> with Vasundhara Sharma and Deepa Mani</span>
 
 * **Adding Features vs. Fixing Bugs: The Delicate Balance of Innovation and Reliability in Mobile App Development** 
-    * Won outstanding computing project price, School of Computing, NUS, 2022 <br/>
+    * Won outstanding computing project prize, School of Computing, NUS, 2022 <br/>
    
 
 
