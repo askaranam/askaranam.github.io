@@ -13,7 +13,7 @@ Here, you can find materials relevant to my published research and research in p
 
 ## Journal Publications
 
-* **[Follow Your Hear or Listen to Users? The Case of Mobile App Design](https://pubsonline.informs.org/doi/10.1287/isre.2023.0060)**
+* **[Follow Your Heart or Listen to Users? The Case of Mobile App Design](https://pubsonline.informs.org/doi/10.1287/isre.2023.0060)**
     * <span style="color: rgb(204,102,0)"><b>Aditya Karanam</b>, Ashish Agarwal, and Anitesh Barua</span>
     * Forthcoming at Information Systems Research <br/>
     * Featured in [Knowledge-at-computing](https://www.comp.nus.edu.sg/features/rethinking-innovation-in-the-app-economy/), National University of Singapore.
