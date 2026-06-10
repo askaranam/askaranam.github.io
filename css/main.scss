@@ -6,7 +6,7 @@
 
 
 // Our variables
-$base-font-family: 'Inter', Helvetica, Arial, sans-serif;
+$base-font-family: Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
 $base-font-size:   .95em;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.75;
@@ -57,6 +57,10 @@ $on-laptop:        950px;
 }
 
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'EB Garamond', Garamond, Georgia, serif;
+    font-weight: 600;
+}
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
