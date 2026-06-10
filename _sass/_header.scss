@@ -8,6 +8,7 @@
     background:#333f48;
     // Positioning context for the mobile navigation icon
     position: relative;
+	
 
 }
 
@@ -66,6 +67,9 @@
 	padding: 0 0 2px 0;
 	position: relative;
 	vertical-align: top;
+	&.active, &.current {
+		border-bottom: 3px solid $utd-orange;
+	}
 }
 
 .site-nav a {
