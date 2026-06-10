@@ -7,7 +7,7 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://askaranam.github.io" # the base hostname & protocol for your site
 og_image: /images/profile2.png
 google_scholar_id: "hnaNLnoAAAAJ"
-github_username:  askaranam
+orcid_id: "0000-0002-5532-6628"
 twitter_username: aditya_karanam
 
 
