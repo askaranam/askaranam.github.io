@@ -217,4 +217,8 @@ z-index:999;
     }
 }
 
-
+.site-nav a.page-link.active {
+    border-bottom: 3px solid $utd-orange;
+    font-weight: 700;
+    padding-bottom: 2px;
+}
