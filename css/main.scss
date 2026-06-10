@@ -57,11 +57,6 @@ $on-laptop:        950px;
 }
 
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'EB Garamond', Garamond, Georgia, serif;
-    font-weight: 600;
-}
-
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
         "header",
@@ -72,3 +67,9 @@ h1, h2, h3, h4, h5, h6 {
 	"fancy-image",
 	"table"
 ;
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'EB Garamond', Garamond, Georgia, serif;
+    font-weight: 600;
+}
