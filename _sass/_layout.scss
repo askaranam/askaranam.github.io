@@ -184,7 +184,7 @@ h1 /* .post-title */ {
     letter-spacing: -1px;
     line-height: 1;
 		font-family: 'EB Garamond', Garamond, Georgia, serif;
-		color: $clemson-purple;
+		color: $utd-green;
 
     @include media-query($on-laptop) {
 /*        font-size: 36px; */
@@ -247,7 +247,7 @@ ul.listing li.listing-item time {
 }
 
 ul.listing li.listing-item a {
-	color: $clemson-purple;
+	color: $utd-green;
 	font-weight: 400;
 	font-family: 'EB Garamond', Garamond, Georgia, serif;
 }
@@ -288,7 +288,7 @@ ul#archive li.alt {
 }
 
 ul#archive li span a {
-       color: $clemson-purple;
+       color: $utd-green;
 	font-weight: bold;
 font-family: 'EB Garamond', Garamond, Georgia, serif;
 }
