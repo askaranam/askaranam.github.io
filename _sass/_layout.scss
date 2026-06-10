@@ -183,7 +183,7 @@ h1 /* .post-title */ {
 /*    font-size: 42px; */
     letter-spacing: -1px;
     line-height: 1;
-		font-family: 'Titillium Web', sans-serif;
+		font-family: 'EB Garamond', Garamond, Georgia, serif;
 		color: $clemson-purple;
 
     @include media-query($on-laptop) {
@@ -195,7 +195,7 @@ h1 /* .post-title */ {
     margin-bottom: $spacing-unit;
 
     h2 {
-		font-family: 'Titillium Web', sans-serif;
+		font-family: 'EB Garamond', Garamond, Georgia, serif;
 	font-weight: 500;
 /*        font-size: 32px; */
 
@@ -235,11 +235,8 @@ ul.listing {
 }
 
 ul.listing li.listing-seperator {
-	padding-top: 15px;
-	font-weight: bold;
-	font-family: 'Titillium Web', sans-serif;
-	font-size: 1.17em;
-}
+    font-weight: bold;
+    font-family: 'EB Garamond', Garamond, Georgia, serif;}
 
 ul.listing li.listing-item time {
 
