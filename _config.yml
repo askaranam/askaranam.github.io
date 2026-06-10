@@ -2,10 +2,10 @@
 title: Aditya Karanam
 email: aditya.karanam@utdallas.edu
 description: > # this means to ignore newlines until "baseurl:"
-  I'm an Assistant Professor in the Naveen Jindal School of Management, University of Texas at Dallas. My research interests are in the
-  areas of Digital Platforms, Networked Economy and Economics of AI.
+Assistant Professor at UT Dallas studying digital platforms, economics of AI, and innovation. Former faculty at NUS. PhD from UT Austin.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://askaranam.github.io" # the base hostname & protocol for your site
+og_image: /images/profile2.png
 twitter_username: aditya_karanam
 github_username:  askaranam
 
