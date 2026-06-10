@@ -2,6 +2,7 @@
 layout: page
 title: Research
 permalink: /research/
+hide_title: true
 ---
 My research examines the economics of digital platforms, artificial intelligence, and user innovation. I study how firms design digital products, how users shape innovation, and how emerging technologies affect markets, competition, and organizational outcomes. Methodologically, my work combines econometrics, machine learning, natural language processing, and network analytics.
 
