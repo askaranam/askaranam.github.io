@@ -1,62 +1,51 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
 @charset "utf-8";
- 
-// Google Fonts Import — place at the very top
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@300;400;500;600&display=swap');
- 
-// =====================
-// VARIABLES
-// =====================
- 
-// CHANGED: font stack now uses Inter (body) — Lora is applied to headings in _base.scss
-$base-font-family: 'Inter', Helvetica, Arial, sans-serif;
+// Our variables
+$base-font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 $base-font-size:   .95em;
 $small-font-size:  $base-font-size * 0.875;
-$base-line-height: 1.75;   // CHANGED: was 1.5 — slightly more open for readability
+$base-line-height: 1.5;
 $spacing-unit:     30px;
- 
-// CHANGED: slightly softer dark for body text (less harsh than pure #111)
-$text-color:       #1a1a2e;
- 
-// CHANGED: warm off-white background — easier on eyes than #fdfdfd
-$background-color: #F4F6F9;
- 
-$brand-color:      #1B4F72;   // CHANGED: deeper academic navy (was #0077CC)
- 
-$clemson-purple:   #522d80;
-$clemson-orange:   #f66733;
-$grey-color:       #828282;
+$text-color:       #111;
+$background-color: 
+#fdfdfd;
+$brand-color:      
+#0077CC;
+// $gameday-sky: 
+#109dc0;
+$clemson-purple:      
+#522d80;
+$clemson-orange:      
+#f66733;
+$grey-color:       
+#828282;
 $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark:  darken($grey-color, 25%);
- 
 // Width of the content area
 $content-width:    950px;
 $on-palm:          600px;
 $on-laptop:        950px;
- 
+// Using media queries with like this:
+// @include media-query($on-palm) {
+//     .wrapper {
+//         padding-right: $spacing-unit / 2;
+//         padding-left: $spacing-unit / 2;
+//     }
+// }
 @mixin media-query($device) {
     @media screen and (max-width: $device) {
         @content;
     }
 }
- 
-// Import partials from `_sass`
+// Import partials from sass_dir (defaults to _sass)
 @import
         "header",
-        "mobile-header",
+    "mobile-header",
         "base",
         "layout",
         "syntax-highlighting",
-        "fancy-image",
-        "table"
+    "fancy-image",
+    "table"
 ;
- 
-// =====================
-// HEADING FONT OVERRIDE
-// Apply Lora to all headings site-wide
-// =====================
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lora', Georgia, serif;
-  font-weight: 600;
-  color: #0d1b2a;
-  letter-spacing: -0.01em;
-}
