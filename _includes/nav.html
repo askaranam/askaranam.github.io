@@ -2,14 +2,16 @@
 
     {% for steve in site.data.menu %}
     {% if steve.subcategories != null %}
-    <li><a href="{{ steve.href }}" class="page-link">{{ steve.title }}</a>
+    <!-- <li><a href="{{ steve.href }}" class="page-link">{{ steve.title }}</a> -->
+    <li {% if page.url contains steve.href %}class="active"{% endif %}><a href="{{ steve.href }}" class="page-link {% if page.url contains steve.href %}active{% endif %}">{{ steve.title }}</a>
     <ul class="sub-menu">
     {% for subcategory in steve.subcategories %}
     <li><a href="{{ subcategory.subhref }}">{{ subcategory.subtitle }}</a></li>
     {% endfor %}
     </ul>
     {% else %}
-     <li><a href="{{ steve.href }}" class="page-link">{{ steve.title }}</a>
+     <!-- <li><a href="{{ steve.href }}" class="page-link">{{ steve.title }}</a> -->
+        <li {% if page.url contains steve.href %}class="active"{% endif %}><a href="{{ steve.href }}" class="page-link {% if page.url contains steve.href %}active{% endif %}">{{ steve.title }}</a>
     {% endif %}
     </li>
     {% endfor %}
