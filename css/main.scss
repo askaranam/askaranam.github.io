@@ -6,16 +6,25 @@
 
 
 // Our variables
-$base-font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+$base-font-family: 'Inter', Helvetica, Arial, sans-serif;
 $base-font-size:   .95em;
 $small-font-size:  $base-font-size * 0.875;
-$base-line-height: 1.5;
-
+$base-line-height: 1.75;
 $spacing-unit:     30px;
+$text-color:       #1a1a2e;
+$background-color: #F4F6F9;
+$brand-color:      #1B4F72;
 
-$text-color:       #111;
-$background-color: #fdfdfd;
-$brand-color:      #0077CC;
+// $base-font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+// $base-font-size:   .95em;
+// $small-font-size:  $base-font-size * 0.875;
+// $base-line-height: 1.5;
+
+// $spacing-unit:     30px;
+
+// $text-color:       #111;
+// $background-color: #fdfdfd;
+// $brand-color:      #0077CC;
 // $gameday-sky: #109dc0;
 $clemson-purple:      #522d80;
 $clemson-orange:      #f66733;
