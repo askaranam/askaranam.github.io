@@ -1,0 +1,267 @@
+---
+layout: page
+title: Research
+permalink: /research.html
+hide_title: true
+---
+
+<style>
+.research-intro { margin-bottom: 36px; padding-bottom: 28px; border-bottom: 1px solid #dde3ea; font-size: 0.97em; color: #3a3a4a; line-height: 1.75; }
+.research-intro p { margin-bottom: 10px; }
+
+.section-heading { font-family: 'EB Garamond', Garamond, Georgia, serif; font-size: 1.45em; font-weight: 600; color: #154734; margin: 40px 0 20px; padding-bottom: 8px; border-bottom: 2px solid #e87500; }
+
+.paper { background: #ffffff; border-left: 4px solid #154734; border-radius: 0 6px 6px 0; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); transition: border-color 0.2s, box-shadow 0.2s; overflow: hidden; display: flex; flex-direction: row; max-height: 160px; }
+.paper:hover { border-left-color: #e87500; box-shadow: 0 3px 10px rgba(0,0,0,0.09); }
+.paper.no-image { flex-direction: column; max-height: none; }
+
+.paper-image-col { flex: 0 0 240px; max-width: 240px; overflow: hidden; border-right: 1px solid #dde3ea; }
+.paper-image { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+.paper-image-placeholder { width: 100%; height: 100%; min-height: 160px; background: linear-gradient(135deg, #1a2a1e 0%, #0d1b2a 100%); display: flex; align-items: center; justify-content: center; color: #4a6a5a; font-size: 0.72em; font-family: Helvetica, Arial, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; }
+
+.paper-body { flex: 1; padding: 14px 18px; display: flex; flex-direction: column; overflow: hidden; }
+.paper.no-image .paper-body { padding: 16px 20px; overflow: visible; }
+
+.paper-title { font-family: 'EB Garamond', Garamond, Georgia, serif; font-size: 1.0em; font-weight: 600; margin-bottom: 3px; line-height: 1.35; }
+.paper-title a { color: #1a1a2e; text-decoration: none; }
+.paper-title a:hover { color: #154734; }
+
+.paper-authors { font-size: 0.84em; color: #5a6474; margin-bottom: 2px; }
+.paper-authors strong { color: #e87500; font-weight: 700; }
+
+.paper-venue { font-size: 0.81em; color: #5a6474; font-style: italic; margin-bottom: 6px; }
+
+.paper-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 6px; }
+.badge { display: inline-block; font-size: 0.7em; padding: 2px 9px; border-radius: 20px; font-family: Helvetica, Arial, sans-serif; font-weight: 600; }
+.badge-revision  { background: #fff3e0; color: #7a3d00; }
+.badge-award     { background: #fdecea; color: #8b1a1a; }
+.badge-progress  { background: #eef2ff; color: #2d3a8c; }
+.badge-conf      { background: #f0f0f0; color: #444; }
+.featured { font-size: 0.76em; color: #5a6474; }
+.featured a { color: #154734; text-decoration: none; }
+.featured a:hover { color: #e87500; }
+
+.paper-summary { font-size: 0.82em; color: #444; line-height: 1.55; margin-bottom: 8px; font-style: italic; border-left: 2px solid #dde3ea; padding-left: 10px; }
+
+.paper-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+.action-btn { display: inline-flex; align-items: center; gap: 4px; font-size: 0.7em; padding: 3px 10px; border-radius: 4px; font-family: Helvetica, Arial, sans-serif; font-weight: 600; text-decoration: none; cursor: pointer; border: none; letter-spacing: 0.02em; transition: all 0.2s; }
+.btn-html       { background: #e6f2ec; color: #154734; }
+.btn-html:hover { background: #154734; color: white; }
+.btn-pdf        { background: #fff3e0; color: #7a3d00; }
+.btn-pdf:hover  { background: #e87500; color: white; }
+.btn-cite       { background: #f0f0f4; color: #333; }
+.btn-cite:hover { background: #333; color: white; }
+
+.paper-panels { padding: 0 20px; }
+.bibtex-body { display: none; margin-bottom: 14px; padding: 14px 16px; background: #1a1a2e; border-radius: 4px; font-size: 0.76em; line-height: 1.6; color: #a8d8a8; font-family: 'Courier New', monospace; white-space: pre-wrap; position: relative; }
+.bibtex-body.open { display: block; }
+.copy-btn { position: absolute; top: 8px; right: 8px; background: #333; color: #ccc; border: none; font-size: 0.75em; padding: 3px 8px; border-radius: 3px; cursor: pointer; font-family: Helvetica, Arial, sans-serif; }
+.copy-btn:hover { background: #e87500; color: white; }
+</style>
+
+<div class="research-intro">
+<p>My research examines the economics of digital platforms, AI, and innovation. In one stream, I study mobile app design, platform governance, and the economic impacts of AI — including algorithmic collusion and AI-driven market entry. In a second stream, I study industry and firm-level outcomes, including strategic technology partnerships, knowledge flows, and ICT-driven transformation. Methodologically, I combine econometrics, natural language processing, reinforcement learning, and network analytics.</p>
+<p>Feel free to <a href="mailto:aditya.karanam@utdallas.edu">contact me</a> if you are interested in any of these projects. <a href="http://askaranam.github.io/docs/Aditya_CV.pdf">My CV</a> has more information on works in progress.</p>
+</div>
+
+<h2 class="section-heading">Journal Publications</h2>
+
+<!-- PAPER 1 — Update src to /images/paper1.jpg after uploading image -->
+<div class="paper">
+  <div class="paper-image-col">
+    <img class="paper-image" src="/images/paper1.jpg" alt="Lead or Follow? Innovation Strategies in the App Economy">
+  </div>
+  <div class="paper-body">
+    <div class="paper-title"><a href="https://pubsonline.informs.org/doi/10.1287/isre.2023.0060">Follow Your Heart or Listen to Users? The Case of Mobile App Design</a></div>
+    <div class="paper-authors"><strong>Aditya Karanam</strong>, Ashish Agarwal, and Anitesh Barua</div>
+    <div class="paper-venue">Information Systems Research, 2025 · Vol. 36(3):1846–1870</div>
+    <div class="paper-summary">Should app developers follow their own instincts or act on user feedback? We show that developer-led novel features and user-suggested imitative features drive demand — but blindly following user suggestions for novel features can backfire.</div>
+    <div class="paper-actions">
+      <a class="action-btn btn-html" href="https://pubsonline.informs.org/doi/10.1287/isre.2023.0060" target="_blank">HTML</a>
+      <a class="action-btn btn-pdf" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3844787" target="_blank">PDF</a>
+      <button class="action-btn btn-cite" onclick="toggleBibtex(this)">BibTeX</button>
+    </div>
+  </div>
+</div>
+<div class="paper-panels">
+  <div class="bibtex-body"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button>@article{karanam2025follow,
+  title     = {Follow Your Heart or Listen to Users? The Case of Mobile App Design},
+  author    = {Karanam, Aditya and Agarwal, Ashish and Barua, Anitesh},
+  journal   = {Information Systems Research},
+  volume    = {36},
+  number    = {3},
+  pages     = {1846--1870},
+  year      = {2025},
+  publisher = {INFORMS},
+  doi       = {10.1287/isre.2023.0060}
+}</div>
+</div>
+
+<!-- PAPER 2 — Replace placeholder with <img> after uploading image -->
+<div class="paper">
+  <div class="paper-image-col">
+    <div class="paper-image-placeholder">Image coming soon</div>
+  </div>
+  <div class="paper-body">
+    <div class="paper-title"><a href="https://pubsonline.informs.org/doi/10.1287/isre.2020.0627">Growing Technological Relatedness to the ICT Industry and Its Impacts</a></div>
+    <div class="paper-authors"><strong>Aditya Karanam</strong>, Deepa Mani, and Rajib Saha</div>
+    <div class="paper-venue">Information Systems Research, 2025</div>
+    <div class="paper-summary">As industries grow closer to ICT, what happens to their innovation and performance? We find that greater technological relatedness to the ICT sector significantly boosts firm-level innovation and productivity outcomes.</div>
+    <div class="paper-actions">
+      <a class="action-btn btn-html" href="https://pubsonline.informs.org/doi/10.1287/isre.2020.0627" target="_blank">HTML</a>
+      <button class="action-btn btn-cite" onclick="toggleBibtex(this)">BibTeX</button>
+    </div>
+  </div>
+</div>
+<div class="paper-panels">
+  <div class="bibtex-body"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button>@article{karanam2025growing,
+  title     = {Growing Technological Relatedness to the ICT Industry and Its Impacts},
+  author    = {Karanam, Aditya and Mani, Deepa and Saha, Rajib},
+  journal   = {Information Systems Research},
+  year      = {2025},
+  publisher = {INFORMS},
+  doi       = {10.1287/isre.2020.0627}
+}</div>
+</div>
+
+<!-- PAPER 3 — Replace placeholder with <img> after uploading image -->
+<div class="paper">
+  <div class="paper-image-col">
+    <div class="paper-image-placeholder">Image coming soon</div>
+  </div>
+  <div class="paper-body">
+    <div class="paper-title"><a href="https://pubsonline.informs.org/doi/abs/10.1287/isre.2022.1151">Design for Social Sharing: The Case of Mobile Apps</a></div>
+    <div class="paper-authors"><strong>Aditya Karanam</strong>, Ashish Agarwal, and Anitesh Barua</div>
+    <div class="paper-venue">Information Systems Research, 2023 · Vol. 34(2):721–743</div>
+    <div class="paper-summary">When should apps add social sharing features — and which ones work best? We show that social features boost demand especially for niche apps, and work better on platforms with stronger social ties like Facebook than on Twitter.</div>
+    <div class="paper-actions">
+      <a class="action-btn btn-html" href="https://pubsonline.informs.org/doi/abs/10.1287/isre.2022.1151" target="_blank">HTML</a>
+      <a class="action-btn btn-pdf" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3635854" target="_blank">PDF</a>
+      <button class="action-btn btn-cite" onclick="toggleBibtex(this)">BibTeX</button>
+    </div>
+  </div>
+</div>
+<div class="paper-panels">
+  <div class="bibtex-body"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button>@article{karanam2023design,
+  title     = {Design for Social Sharing: The Case of Mobile Apps},
+  author    = {Karanam, Aditya and Agarwal, Ashish and Barua, Anitesh},
+  journal   = {Information Systems Research},
+  volume    = {34},
+  number    = {2},
+  pages     = {721--743},
+  year      = {2023},
+  publisher = {INFORMS},
+  doi       = {10.1287/isre.2022.1151}
+}</div>
+</div>
+
+<h2 class="section-heading">Manuscripts Under Revision / Preparation</h2>
+
+<!-- PAPER 4 -->
+<div class="paper no-image">
+  <div class="paper-body">
+    <div class="paper-title"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3534561">Comovement of Stocks in Technology Partnerships</a></div>
+    <div class="paper-authors"><strong>Aditya Karanam</strong>, Deepa Mani, Rajib Saha, and Kannan Srikanth</div>
+    <div class="paper-meta"><span class="badge badge-revision">Under Revision · ISR</span></div>
+    <div class="paper-summary">Do technology partnerships cause firms' stock prices to move together? We find that strategic tech alliances create information linkages that drive significant stock price comovement between partner firms.</div>
+    <div class="paper-actions">
+      <a class="action-btn btn-pdf" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3534561" target="_blank">PDF</a>
+      <button class="action-btn btn-cite" onclick="toggleBibtex(this)">BibTeX</button>
+    </div>
+  </div>
+</div>
+<div class="paper-panels">
+  <div class="bibtex-body"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button>@unpublished{karanam2024comovement,
+  title  = {Comovement of Stocks in Technology Partnerships},
+  author = {Karanam, Aditya and Mani, Deepa and Saha, Rajib and Srikanth, Kannan},
+  note   = {Under Revision at Information Systems Research},
+  year   = {2024},
+  url    = {https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3534561}
+}</div>
+</div>
+
+<!-- PAPER 5 -->
+<div class="paper no-image">
+  <div class="paper-body">
+    <div class="paper-title"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5007683">Increasing Demand While Hurting Innovation? The Curious Case of Mobile App Promotions</a></div>
+    <div class="paper-authors"><strong>Aditya Karanam</strong>, Ashish Agarwal, and Anitesh Barua</div>
+    <div class="paper-meta">
+      <span class="badge badge-conf">INFORMS 2024</span>
+      <span class="badge badge-conf">ISMS 2025</span>
+    </div>
+    <div class="paper-summary">App promotions boost downloads — but at what cost? We find that promotional campaigns increase short-term demand but reduce developer incentives to innovate, leading to less creative apps over time.</div>
+    <div class="paper-actions">
+      <a class="action-btn btn-pdf" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5007683" target="_blank">PDF</a>
+      <button class="action-btn btn-cite" onclick="toggleBibtex(this)">BibTeX</button>
+    </div>
+  </div>
+</div>
+<div class="paper-panels">
+  <div class="bibtex-body"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button>@unpublished{karanam2024promotions,
+  title  = {Increasing Demand While Hurting Innovation? The Curious Case of Mobile App Promotions},
+  author = {Karanam, Aditya and Agarwal, Ashish and Barua, Anitesh},
+  note   = {Working Paper},
+  year   = {2024},
+  url    = {https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5007683}
+}</div>
+</div>
+
+<!-- PAPER 6 -->
+<div class="paper no-image">
+  <div class="paper-body">
+    <div class="paper-title">Artificial Intelligence, Collusion and Ad Auctions</div>
+    <div class="paper-authors"><strong>Aditya Karanam</strong>, Ashish Agarwal, and Anitesh Barua</div>
+    <div class="paper-meta"><span class="badge badge-award">🏆 Best Student Paper Runner-Up · WISE 2024</span></div>
+    <div class="paper-summary">Can AI pricing algorithms learn to collude without ever communicating? We show that AI-powered bidders in ad auctions can achieve tacit collusion autonomously, raising serious concerns for antitrust policy.</div>
+    <div class="paper-actions">
+      <button class="action-btn btn-cite" onclick="toggleBibtex(this)">BibTeX</button>
+    </div>
+  </div>
+</div>
+<div class="paper-panels">
+  <div class="bibtex-body"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button>@unpublished{karanam2024aicollusion,
+  title  = {Artificial Intelligence, Collusion and Ad Auctions},
+  author = {Karanam, Aditya and Agarwal, Ashish and Barua, Anitesh},
+  note   = {Working Paper. Best Student Paper Runner-Up, WISE 2024},
+  year   = {2024}
+}</div>
+</div>
+
+<h2 class="section-heading">Research in Progress</h2>
+
+<!-- PAPER 7 -->
+<div class="paper no-image">
+  <div class="paper-body">
+    <div class="paper-title">Generative AI Dilemma: Enhancing Productivity While Managing Technical Debt in Open Source Software Development</div>
+    <div class="paper-authors"><strong>Aditya Karanam</strong>, Vasundhara Sharma, and Deepa Mani</div>
+    <div class="paper-meta"><span class="badge badge-progress">Preliminary Analyses Done</span></div>
+    <div class="paper-summary">Does GenAI help or hurt open source software quality? We examine how AI-assisted coding boosts short-term productivity but may accumulate technical debt that slows long-run development.</div>
+  </div>
+</div>
+
+<!-- PAPER 8 -->
+<div class="paper no-image">
+  <div class="paper-body">
+    <div class="paper-title">Adding Features vs. Fixing Bugs: The Delicate Balance of Innovation and Reliability in Mobile App Development</div>
+    <div class="paper-authors"><strong>Aditya Karanam</strong></div>
+    <div class="paper-meta"><span class="badge badge-award">🏆 Outstanding Computing Project · NUS 2022</span></div>
+    <div class="paper-summary">When should developers prioritize new features over fixing existing bugs? We study this tradeoff in mobile app development and its consequences for user retention and app store rankings.</div>
+  </div>
+</div>
+
+<script>
+function toggleBibtex(btn) {
+  var paper = btn.closest('.paper');
+  var panels = paper.nextElementSibling;
+  if (!panels || !panels.classList.contains('paper-panels')) return;
+  var bibtex = panels.querySelector('.bibtex-body');
+  bibtex.classList.toggle('open');
+}
+function copyBibtex(btn) {
+  var bibtex = btn.parentElement.innerText.replace('Copy', '').trim();
+  navigator.clipboard.writeText(bibtex).then(function() {
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = 'Copy'; }, 2000);
+  });
+}
+</script>
