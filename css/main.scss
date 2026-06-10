@@ -70,6 +70,7 @@ $on-laptop:        950px;
 
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'EB Garamond', Garamond, Georgia, serif;
-    font-weight: 600;
+    font-family: 'EB Garamond', Garamond, Georgia, serif !important;
+    font-weight: 600 !important;
+	font-size: 1.6em !important;
 }
