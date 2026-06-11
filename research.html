@@ -292,7 +292,10 @@ function copyBibtex(btn) {
 }
 function toggleAbstract(btn) {
   var paper = btn.closest('.paper');
-  var abstract = paper.querySelector('.abstract-full');
+  var panels = paper.nextElementSibling;
+  if (!panels || !panels.classList.contains('paper-panels')) return;
+  var abstract = panels.querySelector('.abstract-full');
+  if (!abstract) return;
   abstract.classList.toggle('open');
   btn.textContent = abstract.classList.contains('open') ? 'Hide Abstract' : 'Abstract';
 }
