@@ -1,0 +1,178 @@
+---
+layout: page
+title: Media
+permalink: /media.html
+hide_title: true
+render_with_liquid: false
+---
+
+<style>
+.media-intro { margin-bottom: 36px; padding-bottom: 28px; border-bottom: 1px solid #dde3ea; font-size: 0.97em; color: #3a3a4a; line-height: 1.75; }
+
+.section-heading { font-family: 'EB Garamond', Garamond, Georgia, serif; font-size: 1.45em; font-weight: 600; color: #154734; margin: 40px 0 20px; padding-bottom: 8px; border-bottom: 1px solid #e87500; }
+
+.media-timeline { list-style: none; padding: 0; margin: 0; }
+
+.media-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 20px;
+  background: #ffffff;
+  border-left: 4px solid transparent;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+.media-item:hover {
+  border-left-color: #e87500;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.09);
+  text-decoration: none;
+  color: inherit;
+}
+
+.media-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3em;
+}
+.icon-video   { background: #fdecea; }
+.icon-press   { background: #e6f2ec; }
+.icon-podcast { background: #fff3e0; }
+
+.media-content { flex: 1; }
+
+.media-date {
+  font-size: 0.72em;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  color: #e87500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.media-title {
+  font-family: 'EB Garamond', Garamond, Georgia, serif;
+  font-size: 1.05em;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.media-source {
+  font-size: 0.82em;
+  color: #5a6474;
+  margin-bottom: 6px;
+  font-style: italic;
+}
+
+.media-description {
+  font-size: 0.84em;
+  color: #444;
+  line-height: 1.6;
+}
+
+.media-tag {
+  display: inline-block;
+  font-size: 0.68em;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  margin-top: 8px;
+}
+.tag-video   { background: #fdecea; color: #8b1a1a; }
+.tag-press   { background: #e6f2ec; color: #0d4a28; }
+.tag-podcast { background: #fff3e0; color: #7a3d00; }
+.tag-talk    { background: #eef2ff; color: #2d3a8c; }
+</style>
+
+<div class="media-intro">
+<p>Selected media coverage, talks, and press features on my research. For a full list of presentations, see my <a href="http://askaranam.github.io/docs/Aditya_CV.pdf" style="color:#154734;">CV</a>.</p>
+</div>
+
+<h2 class="section-heading">Media & Press</h2>
+
+<ul class="media-timeline">
+
+  <!-- YouTube panel -->
+  <li>
+    <a class="media-item" href="https://www.youtube.com/watch?v=farOrPaOTQY" target="_blank">
+      <div class="media-icon icon-video">🎥</div>
+      <div class="media-content">
+        <div class="media-date">2025</div>
+        <div class="media-title">Panel Discussion: Algorithmic Collusion and AI in Ad Auctions</div>
+        <div class="media-source">YouTube · Panel Talk</div>
+        <div class="media-description">Invited panelist discussing the implications of AI-powered bidding algorithms and tacit collusion in digital advertising markets.</div>
+        <span class="media-tag tag-video">▶ Video</span>
+      </div>
+    </a>
+  </li>
+
+  <!-- NUS Knowledge Hub -->
+  <li>
+    <a class="media-item" href="https://www.comp.nus.edu.sg/features/rethinking-innovation-in-the-app-economy/" target="_blank">
+      <div class="media-icon icon-press">📰</div>
+      <div class="media-content">
+        <div class="media-date">May 2025</div>
+        <div class="media-title">Building the Right Features: Rethinking Innovation in the App Economy</div>
+        <div class="media-source">Knowledge@NUS Computing · National University of Singapore</div>
+        <div class="media-description">Feature article on research findings from "Follow Your Heart or Listen to Users?" — exploring how developer-led vs user-driven features affect app demand.</div>
+        <span class="media-tag tag-press">📰 Press</span>
+      </div>
+    </a>
+  </li>
+
+  <!-- UT Austin McCombs -->
+  <li>
+    <a class="media-item" href="https://news.mccombs.utexas.edu/research/to-upgrade-apps-listen-to-users/" target="_blank">
+      <div class="media-icon icon-press">📰</div>
+      <div class="media-content">
+        <div class="media-date">2025</div>
+        <div class="media-title">To Upgrade Apps, Listen to Users</div>
+        <div class="media-source">McCombs School of Business · University of Texas at Austin</div>
+        <div class="media-description">Research feature covering findings on how user feedback shapes mobile app innovation and demand outcomes.</div>
+        <span class="media-tag tag-press">📰 Press</span>
+      </div>
+    </a>
+  </li>
+
+  <!-- Forbes India -->
+  <li>
+    <a class="media-item" href="https://www.forbesindia.com/article/isbinsight/more-bang-for-your-digital-spend-technology-and-rd/49951/1" target="_blank">
+      <div class="media-icon icon-press">📰</div>
+      <div class="media-content">
+        <div class="media-date">2020</div>
+        <div class="media-title">More Bang for Your Digital Spend: Technology and R&D</div>
+        <div class="media-source">Forbes India · ISB Insight</div>
+        <div class="media-description">Coverage of research on how ICT adoption drives innovation and R&D productivity across industries — from the paper "Growing Technological Relatedness to the ICT Industry."</div>
+        <span class="media-tag tag-press">📰 Press</span>
+      </div>
+    </a>
+  </li>
+
+  <!-- ICIS Presentation -->
+  <li>
+    <a class="media-item" href="https://aisel.aisnet.org/icis2021/digital_commerce/digital_commerce/12/" target="_blank">
+      <div class="media-icon icon-video">🎥</div>
+      <div class="media-content">
+        <div class="media-date">December 2021</div>
+        <div class="media-title">Research Presentation at ICIS 2021</div>
+        <div class="media-source">International Conference on Information Systems · Digital Commerce Track</div>
+        <div class="media-description">Video presentation of research on digital commerce and platform design at the premier IS conference.</div>
+        <span class="media-tag tag-talk">🎤 Talk</span>
+      </div>
+    </a>
+  </li>
+
+</ul>
