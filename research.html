@@ -69,6 +69,11 @@ render_with_liquid: false
 .copy-btn:hover { background: #e87500; color: white; }
 .read-more-btn { font-family: Helvetica, Arial, sans-serif; font-weight: 600; text-decoration: none; font-style: normal; }
 .read-more-btn:hover { color: #e87500; }
+
+.btn-abstract { background: #eef2ff; color: #2d3a8c; }
+.btn-abstract:hover { background: #2d3a8c; color: white; }
+.abstract-full { display: none; margin-top: 10px; padding: 10px 12px; background: #f7f9fb; border-left: 2px solid #dde3ea; border-radius: 0 4px 4px 0; font-size: 0.88em; line-height: 1.7; color: #3a3a4a; font-style: italic; }
+.abstract-full.open { display: block; }
 </style>
 
 <div class="research-intro">
@@ -151,16 +156,13 @@ render_with_liquid: false
     <div class="paper-authors"><strong>Aditya Karanam</strong>, Ashish Agarwal, and Anitesh Barua</div>
     <div class="paper-venue">Information Systems Research, 2023 · Vol. 34(2):721–743</div>
     <div class="paper-summary">When should apps add social sharing features and which of them work best? We show that social features boost demand especially for niche apps, and work better on platforms with stronger social ties like Facebook than on Twitter.</div>
-    <div class="paper-summary">While social sharing features boost demand, especially for niche (tail) apps, their effectiveness depends on platform tie strength and intrinsic capabilities of the app. Facebook outperforms Twitter, and pairing social features with differentiating functionality further amplifies this effect.
-  <span class="abstract-full" style="display:none;"> With a large number of mobile apps on platforms such as iOS and Android, app developers face a significant challenge in generating market demand. Apps can incorporate social features to share information and create awareness. We focus on the impact of these features and their interplay with intrinsic features in the head, body, and tail of the demand distribution. Using a panel of version release notes from the iOS platform, we develop a novel hierarchical deep learning model to extract intrinsic and social features. Our results suggest that social features help increase the demand for tail apps and are also useful for head apps in informing users about new intrinsic features. To explore possible mechanisms, we analyze how different types of social features (personal and platform), intrinsic features (common versus differentiating), and app quality influence demand. We find that social features that allow sharing on platforms with large audiences are more effective at increasing demand than those on personal messaging systems. Furthermore, within platforms, social features perform better on those with stronger ties, such as Facebook as opposed to Twitter. Our analysis of different types of intrinsic features reveals that social features can help increase the demand for all apps when introduced with differentiating or less common intrinsic features. Furthermore, we find that there is a negative effect on the demand of tail apps when differentiating intrinsic features are combined with platform-based social features that have weaker ties. However, this negative effect is limited to low-quality tail apps only. Our results underscore the differences in the effect of different types of social and intrinsic features in various parts of the demand distribution. Our study provides managerial guidance to app developers in enabling social sharing through design choices and generating higher demand. </span>
-  <a class="read-more-btn" onclick="toggleAbstract(this)" style="cursor:pointer; color:#154734; font-size:0.85em; margin-left:4px;">Read more</a>
+    <div class="abstract-full">While social sharing features boost demand, especially for niche (tail) apps, their effectiveness depends on platform tie strength and intrinsic capabilities of the app. Facebook outperforms Twitter, and pairing social features with differentiating functionality further amplifies this effect.
+<div class="paper-actions">
+  <a class="action-btn btn-html" href="..." target="_blank">HTML</a>
+  <a class="action-btn btn-pdf" href="..." target="_blank">PDF</a>
+  <button class="action-btn btn-abstract" onclick="toggleAbstract(this)">Abstract</button>
+  <button class="action-btn btn-cite" onclick="toggleBibtex(this)">BibTeX</button>
 </div>
-    
-    <div class="paper-actions">
-      <a class="action-btn btn-html" href="https://pubsonline.informs.org/doi/abs/10.1287/isre.2022.1151" target="_blank">HTML</a>
-      <a class="action-btn btn-pdf" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3635854" target="_blank">PDF</a>
-      <button class="action-btn btn-cite" onclick="toggleBibtex(this)">BibTeX</button>
-    </div>
   </div>
 </div>
 <div class="paper-panels">
@@ -287,13 +289,9 @@ function copyBibtex(btn) {
   });
 }
 function toggleAbstract(btn) {
-  var full = btn.previousElementSibling;
-  if (full.style.display === 'none') {
-    full.style.display = 'inline';
-    btn.textContent = 'Read less';
-  } else {
-    full.style.display = 'none';
-    btn.textContent = 'Read more';
-  }
+  var paper = btn.closest('.paper');
+  var abstract = paper.querySelector('.abstract-full');
+  abstract.classList.toggle('open');
+  btn.textContent = abstract.classList.contains('open') ? 'Hide Abstract' : 'Abstract';
 }
 </script>
