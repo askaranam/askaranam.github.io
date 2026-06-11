@@ -12,6 +12,13 @@ render_with_liquid: false
 
 .section-heading { font-family: 'EB Garamond', Garamond, Georgia, serif; font-size: 1.45em; font-weight: 600; color: #154734; margin: 40px 0 20px; padding-bottom: 8px; border-bottom: 1px solid #e87500; }
 .paper { background: #ffffff; border-left: 4px solid #154734; border-radius: 0 6px 6px 0; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); transition: border-color 0.2s, box-shadow 0.2s; overflow: hidden; display: flex; flex-direction: row; }
+@media (max-width: 600px) {
+  .paper { flex-direction: column; }
+  .paper-image-col { max-width: 100% !important; width: 100% !important; flex: none !important; border-right: none !important; border-bottom: 1px solid #dde3ea; }
+  .paper-image { width: 100% !important; height: 200px !important; object-fit: cover !important; position: static !important; }
+  .paper-body { overflow: visible !important; }
+}
+/* .paper { background: #ffffff; border-left: 4px solid #154734; border-radius: 0 6px 6px 0; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); transition: border-color 0.2s, box-shadow 0.2s; overflow: hidden; display: flex; flex-direction: row; } */
 /* .paper { background: #ffffff; border-left: 4px solid #154734; border-radius: 0 6px 6px 0; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); transition: border-color 0.2s, box-shadow 0.2s; overflow: hidden; display: flex; flex-direction: row; max-height: 240px; } */
 .paper:hover { border-left-color: #e87500; box-shadow: 0 3px 10px rgba(0,0,0,0.09); }
 .paper.no-image { flex-direction: column; max-height: none; }
