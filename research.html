@@ -54,7 +54,7 @@ render_with_liquid: false
 .btn-cite       { background: #f0f0f4; color: #333; }
 .btn-cite:hover { background: #333; color: white; }
 
-.paper-panels { padding: 0 20px; margin-bottom: 6px;}
+.paper-panels { padding: 0 20px;}
 .bibtex-body { display: none; margin-bottom: 14px; padding: 14px 16px; background: #1a1a2e; border-radius: 4px; font-size: 0.76em; line-height: 1.6; color: #a8d8a8; font-family: 'Courier New', monospace; white-space: pre-wrap; position: relative; }
 .bibtex-body.open { display: block; }
 .copy-btn { position: absolute; top: 8px; right: 8px; background: #333; color: #ccc; border: none; font-size: 0.75em; padding: 3px 8px; border-radius: 3px; cursor: pointer; font-family: Helvetica, Arial, sans-serif; }
@@ -218,16 +218,18 @@ render_with_liquid: false
       <span class="badge badge-conf">INFORMS 2024</span>
       <span class="badge badge-conf">ISMS 2025</span>
     </div>
-    <div class="paper-summary">App promotions boost downloads — but at what cost? We find that promotional campaigns increase short-term demand but reduce developer incentives to innovate, leading to less creative apps over time.</div>
+        <div class="paper-summary">App promotions boost downloads — but at what cost? We find that promotional campaigns increase short-term demand but reduce developer incentives to innovate, leading to less creative apps over time.</div>
     <div class="paper-actions">
+      <button class="action-btn btn-abstract" onclick="toggleAbstract(this)">Abstract</button>
       <a class="action-btn btn-pdf" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5007683" target="_blank">PDF</a>
       <button class="action-btn btn-cite" onclick="toggleBibtex(this)">BibTeX</button>
     </div>
   </div>
 </div>
 <div class="paper-panels">
+  <div class="abstract-full">Digital platforms such as Apple’s iOS App Store regularly promote selected apps. Prior research shows that such promotions influence user demand through attention spillovers to competing apps. We examine whether promotions also shape developers’ design choices and, if so, how the resulting design changes influence demand across the distribution, product variety, and demand concentration. We examine these questions using a panel dataset obtained from the iOS App Store spanning the years 2017 to 2023. We implement a hierarchical deep learning model to extract features of an app from its version release notes and use these features to measure the design similarity between promoted and competing apps. Subsequently, we estimate the effect of app promotions on the similarity of competing apps to the promoted apps, and in turn, the impact of this similarity on their demand. Our results show that promotions induce imitation rather than innovation: both incumbent competitors and new entrants add features similar to those of promoted apps. Increased design similarity increases demand primarily for popular non-promoted apps, while less popular apps are more likely to imitate. Overall, platform-initiated promotions lead to design convergence and demand concentration within a category. These findings uncover a novel design spillover mechanism beyond attention spillovers and suggest that platform promotion efforts may inadvertently reduce product differentiation, with important implications for platform governance and developer strategy.</div>
   <div class="bibtex-body"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button>@unpublished{karanam2024promotions,
-  title  = {Increasing Demand While Hurting Innovation? The Curious Case of Mobile App Promotions},
+  title  = {Increasing Demand While Hurting Innovation? The Curios Case of Mobile App Promotions},
   author = {Karanam, Aditya and Agarwal, Ashish and Barua, Anitesh},
   note   = {Working Paper},
   year   = {2024},
@@ -243,11 +245,15 @@ render_with_liquid: false
     <div class="paper-meta"><span class="badge badge-award">🏆 Best Student Paper Runner-Up · WISE 2024</span></div>
     <div class="paper-summary">Can AI pricing algorithms learn to collude without ever communicating? We show that AI-powered bidders in ad auctions can achieve tacit collusion autonomously, raising serious concerns for antitrust policy.</div>
     <div class="paper-actions">
+      <button class="action-btn btn-abstract" onclick="toggleAbstract(this)">Abstract</button>
       <button class="action-btn btn-cite" onclick="toggleBibtex(this)">BibTeX</button>
     </div>
   </div>
 </div>
+
 <div class="paper-panels">
+  <div class="abstract-full">The rapid growth of Artificial Intelligence (AI) has led to its widespread deployment in automating decision-making and growing concerns about tacit collusive behavior among AI algorithms. One application involves real-time bidding for display advertisements, where collusion among bidders can negatively impact auctioneer revenues. Our study investigates this issue by analyzing the behavior of budget-constrained deep Q-learning algorithms in Firstprice auctions (FPA) through simulated computational experiments. We also examine how the advancement of AI technology and data policies affect the competitiveness of the auction. Overall, we find collusion among algorithmic bidders to be prevalent in FPA. The competitiveness of auctions further diminishes with more advanced AI algorithms. Contrary to findings in the literature on AI bidding with no budget constraints, our results suggest that when advertising platforms provide more detailed information about the auctions, it facilitates collusive behavior among budget-constrained AI bidders. We observe that this collusion is primarily sustained by the increased ability of AI agents to reward and punish competitor algorithms based on their previous bids and their tendency to stick to these strategies when more information is available regarding the competitors’ bidding behavior. Our results highlight the impact of using AI-powered algorithms on the outcomes in FPA and call for revisiting their design in order to enforce competitive behavior. Our findings also emphasize that the use of AI algorithms in display advertising auctions can potentially increase consumer surplus on the platform by reducing advertisement costs for firms.</div>
+  <button class="action-btn btn-abstract" onclick="toggleAbstract(this)">Abstract</button>
   <div class="bibtex-body"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button>@unpublished{karanam2024aicollusion,
   title  = {Artificial Intelligence, Collusion and Ad Auctions},
   author = {Karanam, Aditya and Agarwal, Ashish and Barua, Anitesh},
