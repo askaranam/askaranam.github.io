@@ -222,3 +222,40 @@ z-index:999;
     font-weight: 700;
     padding-bottom: 2px;
 }
+
+@media screen and (max-width: 600px) {
+  .site-nav .trigger {
+    display: none;
+    position: absolute;
+    top: 58px;
+    right: 0;
+    background: #1a1a2e;
+    width: 100%;
+    padding: 10px 0;
+    z-index: 999;
+  }
+  .site-nav .trigger.open {
+    display: block;
+  }
+  .site-nav .menu {
+    padding: 0;
+    margin: 0;
+  }
+  .site-nav .menu > li {
+    display: block;
+    margin: 0;
+    height: auto;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .site-nav .menu > li a {
+    display: block;
+    padding: 12px 20px;
+    color: white;
+    font-size: 0.85em;
+    letter-spacing: 1px;
+  }
+  .site-nav .menu > li a:hover {
+    background: rgba(255,255,255,0.05);
+    color: #e87500;
+  }
+}
